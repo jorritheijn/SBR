@@ -248,9 +248,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(125, 96);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 17);
+            this.label8.Size = new System.Drawing.Size(83, 17);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Bijwerking";
+            this.label8.Text = "Bijwerking 2";
             // 
             // KeukenScherm
             // 
