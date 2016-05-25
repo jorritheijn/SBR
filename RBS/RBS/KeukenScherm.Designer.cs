@@ -250,7 +250,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 17);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Bijwerking 2";
+            this.label8.Text = "Bijwerking 3";
             // 
             // KeukenScherm
             // 
