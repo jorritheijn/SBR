@@ -184,7 +184,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 17);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Bijwerking 20";
+            this.label8.Text = "Bijwerking 21";
             // 
             // panel2
             // 
