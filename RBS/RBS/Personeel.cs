@@ -8,5 +8,41 @@ namespace RBS
 {
     class Personeel
     {
+        private int id;
+        private string username;    //max 15 chars
+        private int pincode;
+        private string functie;     //max 15 chars
+
+        public Personeel(int id, string username, int pincode, string functie)
+        {
+            this.id = id;
+            this.username = username;
+            this.pincode = pincode;
+            this.functie = functie;
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
+        public int Pincode
+        {
+            get { return pincode; }
+            set { pincode = value; }
+        }
+
+        public string Functie
+        {
+            get { return functie; }
+            set { functie = value; }
+        }
     }
 }

@@ -73,6 +73,12 @@
     </Compile>
     <Compile Include="Personeel.cs" />
     <Compile Include="PersoneelDAO.cs" />
+    <Compile Include="PersoneelsBeheer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersoneelsBeheer.Designer.cs">
+      <DependentUpon>PersoneelsBeheer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Program.cs" />
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KeukenScherm.resx">
       <DependentUpon>KeukenScherm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersoneelsBeheer.resx">
+      <DependentUpon>PersoneelsBeheer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

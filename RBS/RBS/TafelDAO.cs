@@ -10,17 +10,6 @@ namespace RBS
 {
     class TafelDAO
     {
-        bool status;
-
-        private void LeesTafel(int tafelId)
-        {
-            string connString = ConfigurationManager
-                .ConnectionStrings["ReserveringsConnectionStringSQL"]
-                .ConnectionString;
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Open();
-
-
-        }
+        
     }
 }
