@@ -32,12 +32,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.productlabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.productlabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
@@ -60,7 +60,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(502, 488);
+            this.tabPage1.Size = new System.Drawing.Size(506, 488);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Actuele bestellingen";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -71,7 +71,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(510, 488);
+            this.tabPage2.Size = new System.Drawing.Size(506, 488);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Afgeronde bestellingen";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -91,6 +91,43 @@
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(408, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(102, 469);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Location = new System.Drawing.Point(0, 19);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(411, 466);
+            this.panel8.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(405, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Hoeveelheid";
+            // 
+            // productlabel
+            // 
+            this.productlabel.AutoSize = true;
+            this.productlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productlabel.Location = new System.Drawing.Point(15, 3);
+            this.productlabel.Name = "productlabel";
+            this.productlabel.Size = new System.Drawing.Size(51, 13);
+            this.productlabel.TabIndex = 0;
+            this.productlabel.Text = "Product";
+            this.productlabel.Click += new System.EventHandler(this.label1_Click_1);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(1, 87);
@@ -109,48 +146,11 @@
             this.button2.Text = "Etenswaren";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // productlabel
-            // 
-            this.productlabel.AutoSize = true;
-            this.productlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productlabel.Location = new System.Drawing.Point(15, 3);
-            this.productlabel.Name = "productlabel";
-            this.productlabel.Size = new System.Drawing.Size(51, 13);
-            this.productlabel.TabIndex = 0;
-            this.productlabel.Text = "Product";
-            this.productlabel.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(405, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Hoeveelheid";
-            // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Location = new System.Drawing.Point(0, 19);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(411, 466);
-            this.panel8.TabIndex = 4;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(408, 19);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(102, 469);
-            this.panel1.TabIndex = 4;
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Crimson;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(517, 2);
+            this.button3.Location = new System.Drawing.Point(537, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 12;

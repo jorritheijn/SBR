@@ -34,6 +34,7 @@ namespace RBS
                 prijs = (double)reader["rekeningen.prijs"];
                 totaalPrijs = aantal * prijs;
             }
+            conn.Close();
         }
     }
 }
