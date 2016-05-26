@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace RBS
 {
-    class Bestelling
+    class ProductDAO
     {
-
     }
 }

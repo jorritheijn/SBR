@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RBS
 {
-    class Bestelling
+    public class BestellingDAO
     {
+        private List<Bestelling> bestellingen;
 
     }
 }
