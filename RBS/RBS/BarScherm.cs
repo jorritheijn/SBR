@@ -15,8 +15,6 @@ namespace RBS
         public BarScherm()
         {
 
-
-
             InitializeComponent();
         }
     }
