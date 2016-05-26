@@ -12,6 +12,18 @@ namespace RBS
     {
         private List<Bestelling> bestellingen;
 
+        //fake database voor tests 
+        public BestellingDAO()
+        {
+            bestellingen = new List<Bestelling>();
+            bestellingen.Add(new Bestelling(22, "kip", 5));
+        }
+        public List<Bestelling> GetAll()
+        {
+            return bestellingen;
+        }
+        
+
         private void LeesRekening(int bestelId)
         {
             /*string connString = ConfigurationManager
