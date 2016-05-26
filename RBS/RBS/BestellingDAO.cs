@@ -14,7 +14,7 @@ namespace RBS
 
         private void LeesRekening(int bestelId)
         {
-            string connString = ConfigurationManager
+            /*string connString = ConfigurationManager
                 .ConnectionStrings["ReserveringsConnectionStringSQL"]
                 .ConnectionString;
             SqlConnection conn = new SqlConnection(connString);
@@ -31,7 +31,7 @@ namespace RBS
                 prijs = (double)reader["rekeningen.prijs"];
                 totaalPrijs = aantal * prijs;
             }
-            conn.Close();
+            conn.Close();*/
         }
 
     }
