@@ -98,6 +98,9 @@
     <Compile Include="VoorraadScherm.Designer.cs">
       <DependentUpon>VoorraadScherm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Afrekenen.resx">
+      <DependentUpon>Afrekenen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>
     </EmbeddedResource>

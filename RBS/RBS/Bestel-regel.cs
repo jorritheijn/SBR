@@ -32,7 +32,6 @@ namespace RBS
                 product = (string)reader["producten.naam"];
                 aantal = (int)reader["rekeningen.aantal"];
                 prijs = (double)reader["rekeningen.prijs"];
-                totaalPrijs = aantal * prijs;
             }
             conn.Close();
         }

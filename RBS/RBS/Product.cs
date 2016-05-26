@@ -8,5 +8,18 @@ namespace RBS
 {
     class Product
     {
+        private int id;
+        private string naam;
+        private double prijs;
+        private int aantalVoorraad;
+
+         public Product(int id, string naam, double prijs, int aantalVoorraad)
+        {
+            this.id = id;
+            this.naam = naam;
+            this.prijs = prijs;
+            this.aantalVoorraad = aantalVoorraad;
+        }
     }
 }
+ 
