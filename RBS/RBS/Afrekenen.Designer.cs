@@ -1,6 +1,6 @@
 ﻿namespace RBS
 {
-    partial class Test
+    partial class Afrekenen
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Test";
+            this.Text = "Afrekenen";
         }
 
         #endregion

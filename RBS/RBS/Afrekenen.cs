@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RBS
 {
-    public partial class Test : Form
+    public partial class Afrekenen : Form
     {
-        public Test()
+        public Afrekenen()
         {
             InitializeComponent();
         }
