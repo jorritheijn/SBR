@@ -50,6 +50,12 @@
     <Compile Include="BarScherm.Designer.cs">
       <DependentUpon>BarScherm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InlogScherm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InlogScherm.Designer.cs">
+      <DependentUpon>InlogScherm.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeukenScherm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InlogScherm.resx">
+      <DependentUpon>InlogScherm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KeukenScherm.resx">
       <DependentUpon>KeukenScherm.cs</DependentUpon>
