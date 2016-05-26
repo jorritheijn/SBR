@@ -10,7 +10,7 @@ namespace RBS
 {
     public class TafelDAO
     {
-        protected SqlConnection dbConnection;
+       /* protected SqlConnection dbConnection;
 
         public TafelDAO(SqlConnection dbConnection)
         {
@@ -27,6 +27,6 @@ namespace RBS
 
             //sluit de connectie
             dbConnection.Close();
-        }
+        }*/
     }
 }
