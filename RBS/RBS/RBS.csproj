@@ -91,11 +91,11 @@
     <Compile Include="Tafeloverzicht.Designer.cs">
       <DependentUpon>Tafeloverzicht.cs</DependentUpon>
     </Compile>
-    <Compile Include="VoorraadScherm.cs">
+    <Compile Include="BeheerScherm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VoorraadScherm.Designer.cs">
-      <DependentUpon>VoorraadScherm.cs</DependentUpon>
+    <Compile Include="BeheerScherm.Designer.cs">
+      <DependentUpon>BeheerScherm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>
@@ -121,8 +121,8 @@
     <EmbeddedResource Include="Tafeloverzicht.resx">
       <DependentUpon>Tafeloverzicht.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VoorraadScherm.resx">
-      <DependentUpon>VoorraadScherm.cs</DependentUpon>
+    <EmbeddedResource Include="BeheerScherm.resx">
+      <DependentUpon>BeheerScherm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
