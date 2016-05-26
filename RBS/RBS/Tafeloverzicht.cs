@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RBS
 {
-    public partial class Tafeloverzicht : Form
+    public partial class TafelOverzicht : Form
     {
-        public Tafeloverzicht()
+        public TafelOverzicht()
         {
             InitializeComponent();
         }
