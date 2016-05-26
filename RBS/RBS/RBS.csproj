@@ -84,6 +84,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bestel-regel.cs" />
+    <Compile Include="Tafel.cs" />
     <Compile Include="TafelDAO.cs" />
     <Compile Include="Tafeloverzicht.cs">
       <SubType>Form</SubType>
@@ -97,6 +98,9 @@
     <Compile Include="VoorraadScherm.Designer.cs">
       <DependentUpon>VoorraadScherm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Afrekenen.resx">
+      <DependentUpon>Afrekenen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>
     </EmbeddedResource>

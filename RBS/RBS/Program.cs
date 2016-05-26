@@ -16,7 +16,7 @@ namespace RBS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InlogScherm());
+            Application.Run(new Afrekenen());
         }
     }
 }
