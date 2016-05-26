@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace RBS
 {
@@ -16,7 +18,13 @@ namespace RBS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BarScherm());
+
+            string connString = ConfigurationManager.ConnectionStrings["ReserveringenConnectionStringSQL"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+
+            PersoneelDAO personeelDAO = new PersoneelDAO(dbConnection);
+
+            Application.Run(new PersoneelsBeheer());
         }
     }
 }
