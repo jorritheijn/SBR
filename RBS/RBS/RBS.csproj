@@ -85,7 +85,6 @@
     <Compile Include="Tafeloverzicht.Designer.cs">
       <DependentUpon>Tafeloverzicht.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tafel.cs" />
     <Compile Include="VoorraadScherm.cs">
       <SubType>Form</SubType>
     </Compile>
