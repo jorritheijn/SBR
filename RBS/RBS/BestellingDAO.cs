@@ -8,6 +8,7 @@ namespace RBS
 {
     public class BestellingDAO
     {
-        
+        private List<Bestelling> bestellingen;
+
     }
 }
