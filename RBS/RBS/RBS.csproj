@@ -78,12 +78,6 @@
     <Compile Include="Tafeloverzicht.Designer.cs">
       <DependentUpon>Tafeloverzicht.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="VoorraadScherm.cs">
       <SubType>Form</SubType>
     </Compile>
