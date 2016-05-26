@@ -30,28 +30,30 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tafel1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,31 +78,6 @@
             this.tabControl1.Size = new System.Drawing.Size(567, 482);
             this.tabControl1.TabIndex = 7;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPage2.Controls.Add(this.panel9);
-            this.tabPage2.Controls.Add(this.panel8);
-            this.tabPage2.Controls.Add(this.panel5);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(559, 452);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Afgeronde bestellingen";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Crimson;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(524, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Log uit";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // tabPage1
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -115,6 +92,23 @@
             this.tabPage1.Text = "Actuele bestellingen";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Location = new System.Drawing.Point(81, 23);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(393, 428);
+            this.panel4.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.tafel1);
+            this.panel2.Location = new System.Drawing.Point(-1, 23);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(83, 428);
+            this.panel2.TabIndex = 2;
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -122,7 +116,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(-2, -1);
+            this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(559, 25);
             this.panel1.TabIndex = 1;
@@ -162,21 +156,35 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Tafel";
             // 
-            // panel2
+            // tabPage2
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(-1, 23);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(83, 428);
-            this.panel2.TabIndex = 2;
+            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage2.Controls.Add(this.panel9);
+            this.tabPage2.Controls.Add(this.panel8);
+            this.tabPage2.Controls.Add(this.panel5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(559, 452);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Afgeronde bestellingen";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // panel4
+            // panel9
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Location = new System.Drawing.Point(81, 23);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(393, 428);
-            this.panel4.TabIndex = 3;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Location = new System.Drawing.Point(81, 23);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(393, 428);
+            this.panel9.TabIndex = 4;
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Location = new System.Drawing.Point(-1, 23);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(83, 428);
+            this.panel8.TabIndex = 3;
             // 
             // panel5
             // 
@@ -190,6 +198,14 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(559, 25);
             this.panel5.TabIndex = 2;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Location = new System.Drawing.Point(0, 23);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(83, 428);
+            this.panel7.TabIndex = 3;
             // 
             // panel6
             // 
@@ -226,29 +242,25 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Tafel";
             // 
-            // panel7
+            // button1
             // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Location = new System.Drawing.Point(0, 23);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(83, 428);
-            this.panel7.TabIndex = 3;
+            this.button1.BackColor = System.Drawing.Color.Crimson;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(524, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Log uit";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // panel8
+            // tafel1
             // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Location = new System.Drawing.Point(-1, 23);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(83, 428);
-            this.panel8.TabIndex = 3;
-            // 
-            // panel9
-            // 
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Location = new System.Drawing.Point(81, 23);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(393, 428);
-            this.panel9.TabIndex = 4;
+            this.tafel1.AutoSize = true;
+            this.tafel1.Location = new System.Drawing.Point(7, 7);
+            this.tafel1.Name = "tafel1";
+            this.tafel1.Size = new System.Drawing.Size(46, 17);
+            this.tafel1.TabIndex = 0;
+            this.tafel1.Text = "label8";
             // 
             // BarScherm
             // 
@@ -261,10 +273,12 @@
             this.Name = "BarScherm";
             this.Text = "Baroverzicht";
             this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
@@ -294,6 +308,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label tafel1;
     }
 }
 
