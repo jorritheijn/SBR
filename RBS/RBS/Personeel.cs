@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace RBS
 {
-    class Personeel
+    public class Personeel
     {
         private int id;
         private string username;    //max 15 chars
         private int pincode;
         private string functie;     //max 15 chars
+
+        public Personeel()
+        {
+            id = 1234;
+            username = "Bob Ross";
+            pincode = 1234;
+            functie = "Manager";
+        }
 
         public Personeel(int id, string username, int pincode, string functie)
         {

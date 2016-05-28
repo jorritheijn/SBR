@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
-    class PersoneelDAO
+    public class PersoneelDAO
     {
         protected SqlConnection dbConnection;
 
@@ -35,6 +35,36 @@ namespace RBS
             dbConnection.Close();
 
             return allePersoneel;
+        }
+
+        public void AddEmployee(string username, int pincode, string functie)
+        {
+            dbConnection.Open();
+
+            string query = String.Format("INSERT INTO personeel (username, pincode, functie) " +
+                "VALUES (@username,{0},@functie)",
+                pincode);
+
+            SqlCommand command = new SqlCommand(query, dbConnection);
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@functie", functie);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
+
+        public void DeleteEmployee(int id)
+        {
+            dbConnection.Open();
+
+            string query = String.Format("DELETE FROM personeel WHERE id={0}", id);
+
+            SqlCommand command = new SqlCommand(query, dbConnection);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
         }
 
         private Personeel ReadPersoneel(SqlDataReader reader)

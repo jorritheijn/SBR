@@ -13,7 +13,10 @@ namespace RBS
     public partial class BarScherm : Form
     {
         BestellingDAO bestellingDAO;
-        public void ShowBestelling();
+        public void ShowBestelling()
+        {
+
+        }
 
         private void ShowBestelling(BestellingDAO bestellingDAO)
         {

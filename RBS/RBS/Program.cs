@@ -19,12 +19,12 @@ namespace RBS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string connString = ConfigurationManager.ConnectionStrings["ReserveringenConnectionStringSQL"].ConnectionString;
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
 
             PersoneelDAO personeelDAO = new PersoneelDAO(dbConnection);
 
-            Application.Run(new PersoneelsBeheer());
+            Application.Run(new PersoneelsBeheer(personeelDAO));
         }
     }
 }
