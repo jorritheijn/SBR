@@ -57,6 +57,12 @@
     <Compile Include="BarScherm.Designer.cs">
       <DependentUpon>BarScherm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BeheerScherm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BeheerScherm.Designer.cs">
+      <DependentUpon>BeheerScherm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bestelling.cs" />
     <Compile Include="BestellingDAO.cs" />
     <Compile Include="InlogScherm.cs">
@@ -73,17 +79,13 @@
     </Compile>
     <Compile Include="Personeel.cs" />
     <Compile Include="PersoneelDAO.cs" />
-    <Compile Include="PersoneelsBeheer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PersoneelsBeheer.Designer.cs">
-      <DependentUpon>PersoneelsBeheer.cs</DependentUpon>
-    </Compile>
+    <Compile Include="PersoneelsBeheer.Designer.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bestel-regel.cs" />
+    <Compile Include="Tafel.cs" />
     <Compile Include="TafelDAO.cs" />
     <Compile Include="Tafeloverzicht.cs">
       <SubType>Form</SubType>
@@ -91,14 +93,14 @@
     <Compile Include="Tafeloverzicht.Designer.cs">
       <DependentUpon>Tafeloverzicht.cs</DependentUpon>
     </Compile>
-    <Compile Include="VoorraadScherm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VoorraadScherm.Designer.cs">
-      <DependentUpon>VoorraadScherm.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Afrekenen.resx">
+      <DependentUpon>Afrekenen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BeheerScherm.resx">
+      <DependentUpon>BeheerScherm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InlogScherm.resx">
       <DependentUpon>InlogScherm.cs</DependentUpon>
@@ -106,9 +108,7 @@
     <EmbeddedResource Include="KeukenScherm.resx">
       <DependentUpon>KeukenScherm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersoneelsBeheer.resx">
-      <DependentUpon>PersoneelsBeheer.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="PersoneelsBeheer.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -121,9 +121,7 @@
     <EmbeddedResource Include="Tafeloverzicht.resx">
       <DependentUpon>Tafeloverzicht.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VoorraadScherm.resx">
-      <DependentUpon>VoorraadScherm.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

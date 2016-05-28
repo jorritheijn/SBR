@@ -8,28 +8,25 @@ using System.Configuration;
 
 namespace RBS
 {
-    class TafelDAO
+    public class TafelDAO
     {
-        bool status;
+       /* protected SqlConnection dbConnection;
 
-        private void LeesTafel(int tafelId)
+        public TafelDAO(SqlConnection dbConnection)
         {
-            string connString = ConfigurationManager
-                .ConnectionStrings["ReserveringsConnectionStringSQL"]
-                .ConnectionString;
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Open();
+            this.dbConnection = dbConnection;
+        }
 
-            string sql = string.Format("SELECT * FROM ", tafelId);
-            SqlCommand command = new SqlCommand(sql, conn);
+        public List <Tafel> GetAll()
+        {
+            //opent connectie
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT * FROM TAFEL", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
-            {
-                status = (bool)reader["status"];
-            }
-
-            conn.Close();
-        }
+            //sluit de connectie
+            dbConnection.Close();
+        }*/
     }
 }
