@@ -61,6 +61,7 @@
     <Compile Include="BestellingDAO.cs" />
     <Compile Include="Enums\Afdelingen.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Enums\TafelStatus.cs" />
     <Compile Include="InlogScherm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,11 +89,11 @@
     <Compile Include="Bestel-regel.cs" />
     <Compile Include="Tafel.cs" />
     <Compile Include="TafelDAO.cs" />
-    <Compile Include="Tafeloverzicht.cs">
+    <Compile Include="TafelOverzicht.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tafeloverzicht.Designer.cs">
-      <DependentUpon>Tafeloverzicht.cs</DependentUpon>
+    <Compile Include="TafelOverzicht.Designer.cs">
+      <DependentUpon>TafelOverzicht.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Afrekenen.resx">
       <DependentUpon>Afrekenen.cs</DependentUpon>
@@ -118,8 +119,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Tafeloverzicht.resx">
-      <DependentUpon>Tafeloverzicht.cs</DependentUpon>
+    <EmbeddedResource Include="TafelOverzicht.resx">
+      <DependentUpon>TafelOverzicht.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
