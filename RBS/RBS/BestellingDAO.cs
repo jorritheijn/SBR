@@ -12,6 +12,13 @@ namespace RBS
     {
         private List<Bestelling> bestellingen;
 
+        protected SqlConnection dbConnection;
+
+        public BestellingDAO(SqlConnection dbConnection)
+        {
+            this.dbConnection = dbConnection;
+        }
+
         //fake database voor tests 
         public BestellingDAO()
         {
