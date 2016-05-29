@@ -37,6 +37,28 @@ namespace RBS
             return allePersoneel;
         }
 
+        public Personeel GetByPincode(int pincode)
+        {
+            dbConnection.Open();
+
+            var command = new SqlCommand("SELECT * FROM personeel WHERE pincode=@pincode", dbConnection);
+            command.Parameters.AddWithValue("@pincode", pincode);
+
+            var reader = command.ExecuteReader();
+
+            Personeel werknemer = null;
+            while (reader.Read())
+            {
+                // Creeer een nieuw werknemer model
+                werknemer = ReadPersoneel(reader);
+            }
+
+            //sluit de connectie
+            dbConnection.Close();
+
+            return werknemer;
+        }
+
         public void AddEmployee(string username, int pincode, string functie)
         {
             dbConnection.Open();

@@ -59,6 +59,8 @@
     </Compile>
     <Compile Include="Bestelling.cs" />
     <Compile Include="BestellingDAO.cs" />
+    <Compile Include="Enums\Afdelingen.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="InlogScherm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -30,20 +30,20 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.cijfer1 = new System.Windows.Forms.Button();
+            this.cijfer5 = new System.Windows.Forms.Button();
+            this.cijfer6 = new System.Windows.Forms.Button();
+            this.cijfer8 = new System.Windows.Forms.Button();
+            this.cijfer7 = new System.Windows.Forms.Button();
+            this.cijfer0 = new System.Windows.Forms.Button();
+            this.cijfer9 = new System.Windows.Forms.Button();
+            this.cijfer4 = new System.Windows.Forms.Button();
+            this.cijfer3 = new System.Windows.Forms.Button();
+            this.cijfer2 = new System.Windows.Forms.Button();
+            this.code0 = new System.Windows.Forms.Label();
+            this.code3 = new System.Windows.Forms.Label();
+            this.code1 = new System.Windows.Forms.Label();
+            this.code2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -67,169 +67,179 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "MayaMaya";
             // 
-            // button1
+            // cijfer1
             // 
-            this.button1.Location = new System.Drawing.Point(368, 451);
-            this.button1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 110);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cijfer1.Location = new System.Drawing.Point(368, 451);
+            this.cijfer1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer1.Name = "cijfer1";
+            this.cijfer1.Size = new System.Drawing.Size(131, 110);
+            this.cijfer1.TabIndex = 2;
+            this.cijfer1.Text = "1";
+            this.cijfer1.UseVisualStyleBackColor = true;
+            this.cijfer1.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button2
+            // cijfer5
             // 
-            this.button2.Location = new System.Drawing.Point(579, 613);
-            this.button2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 110);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "5";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cijfer5.Location = new System.Drawing.Point(579, 613);
+            this.cijfer5.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer5.Name = "cijfer5";
+            this.cijfer5.Size = new System.Drawing.Size(131, 110);
+            this.cijfer5.TabIndex = 3;
+            this.cijfer5.Text = "5";
+            this.cijfer5.UseVisualStyleBackColor = true;
+            this.cijfer5.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button3
+            // cijfer6
             // 
-            this.button3.Location = new System.Drawing.Point(781, 613);
-            this.button3.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(131, 110);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "6";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cijfer6.Location = new System.Drawing.Point(781, 613);
+            this.cijfer6.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer6.Name = "cijfer6";
+            this.cijfer6.Size = new System.Drawing.Size(131, 110);
+            this.cijfer6.TabIndex = 4;
+            this.cijfer6.Text = "6";
+            this.cijfer6.UseVisualStyleBackColor = true;
+            this.cijfer6.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button4
+            // cijfer8
             // 
-            this.button4.Location = new System.Drawing.Point(579, 773);
-            this.button4.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(131, 110);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "8";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cijfer8.Location = new System.Drawing.Point(579, 773);
+            this.cijfer8.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer8.Name = "cijfer8";
+            this.cijfer8.Size = new System.Drawing.Size(131, 110);
+            this.cijfer8.TabIndex = 5;
+            this.cijfer8.Text = "8";
+            this.cijfer8.UseVisualStyleBackColor = true;
+            this.cijfer8.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button5
+            // cijfer7
             // 
-            this.button5.Location = new System.Drawing.Point(368, 773);
-            this.button5.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(131, 110);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "7";
-            this.button5.UseVisualStyleBackColor = true;
+            this.cijfer7.Location = new System.Drawing.Point(368, 773);
+            this.cijfer7.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer7.Name = "cijfer7";
+            this.cijfer7.Size = new System.Drawing.Size(131, 110);
+            this.cijfer7.TabIndex = 6;
+            this.cijfer7.Text = "7";
+            this.cijfer7.UseVisualStyleBackColor = true;
+            this.cijfer7.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button6
+            // cijfer0
             // 
-            this.button6.Location = new System.Drawing.Point(579, 944);
-            this.button6.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(131, 110);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "0";
-            this.button6.UseVisualStyleBackColor = true;
+            this.cijfer0.Location = new System.Drawing.Point(579, 944);
+            this.cijfer0.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer0.Name = "cijfer0";
+            this.cijfer0.Size = new System.Drawing.Size(131, 110);
+            this.cijfer0.TabIndex = 7;
+            this.cijfer0.Text = "0";
+            this.cijfer0.UseVisualStyleBackColor = true;
+            this.cijfer0.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button7
+            // cijfer9
             // 
-            this.button7.Location = new System.Drawing.Point(781, 775);
-            this.button7.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(131, 110);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "9";
-            this.button7.UseVisualStyleBackColor = true;
+            this.cijfer9.Location = new System.Drawing.Point(781, 775);
+            this.cijfer9.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer9.Name = "cijfer9";
+            this.cijfer9.Size = new System.Drawing.Size(131, 110);
+            this.cijfer9.TabIndex = 8;
+            this.cijfer9.Text = "9";
+            this.cijfer9.UseVisualStyleBackColor = true;
+            this.cijfer9.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button8
+            // cijfer4
             // 
-            this.button8.Location = new System.Drawing.Point(368, 613);
-            this.button8.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(131, 110);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "4";
-            this.button8.UseVisualStyleBackColor = true;
+            this.cijfer4.Location = new System.Drawing.Point(368, 613);
+            this.cijfer4.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer4.Name = "cijfer4";
+            this.cijfer4.Size = new System.Drawing.Size(131, 110);
+            this.cijfer4.TabIndex = 9;
+            this.cijfer4.Text = "4";
+            this.cijfer4.UseVisualStyleBackColor = true;
+            this.cijfer4.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button9
+            // cijfer3
             // 
-            this.button9.Location = new System.Drawing.Point(781, 451);
-            this.button9.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(131, 110);
-            this.button9.TabIndex = 10;
-            this.button9.Text = "3";
-            this.button9.UseVisualStyleBackColor = true;
+            this.cijfer3.Location = new System.Drawing.Point(781, 451);
+            this.cijfer3.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer3.Name = "cijfer3";
+            this.cijfer3.Size = new System.Drawing.Size(131, 110);
+            this.cijfer3.TabIndex = 10;
+            this.cijfer3.Text = "3";
+            this.cijfer3.UseVisualStyleBackColor = true;
+            this.cijfer3.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // button10
+            // cijfer2
             // 
-            this.button10.Location = new System.Drawing.Point(579, 451);
-            this.button10.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(131, 110);
-            this.button10.TabIndex = 11;
-            this.button10.Text = "2";
-            this.button10.UseVisualStyleBackColor = true;
+            this.cijfer2.Location = new System.Drawing.Point(579, 451);
+            this.cijfer2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cijfer2.Name = "cijfer2";
+            this.cijfer2.Size = new System.Drawing.Size(131, 110);
+            this.cijfer2.TabIndex = 11;
+            this.cijfer2.Text = "2";
+            this.cijfer2.UseVisualStyleBackColor = true;
+            this.cijfer2.Click += new System.EventHandler(this.Cijfer_Click);
             // 
-            // label3
+            // code0
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(400, 327);
-            this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 55);
-            this.label3.TabIndex = 12;
-            this.label3.Text = ".";
+            this.code0.AutoSize = true;
+            this.code0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code0.Location = new System.Drawing.Point(400, 327);
+            this.code0.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.code0.Name = "code0";
+            this.code0.Size = new System.Drawing.Size(37, 55);
+            this.code0.TabIndex = 12;
+            this.code0.Text = ".";
             // 
-            // label4
+            // code3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(845, 327);
-            this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 55);
-            this.label4.TabIndex = 13;
-            this.label4.Text = ".";
+            this.code3.AutoSize = true;
+            this.code3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code3.Location = new System.Drawing.Point(845, 327);
+            this.code3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.code3.Name = "code3";
+            this.code3.Size = new System.Drawing.Size(37, 55);
+            this.code3.TabIndex = 13;
+            this.code3.Text = ".";
             // 
-            // label5
+            // code1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(568, 327);
-            this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 55);
-            this.label5.TabIndex = 14;
-            this.label5.Text = ".";
+            this.code1.AutoSize = true;
+            this.code1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code1.Location = new System.Drawing.Point(568, 327);
+            this.code1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.code1.Name = "code1";
+            this.code1.Size = new System.Drawing.Size(37, 55);
+            this.code1.TabIndex = 14;
+            this.code1.Text = ".";
             // 
-            // label6
+            // code2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(715, 327);
-            this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 55);
-            this.label6.TabIndex = 15;
-            this.label6.Text = ".";
+            this.code2.AutoSize = true;
+            this.code2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code2.Location = new System.Drawing.Point(715, 327);
+            this.code2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.code2.Name = "code2";
+            this.code2.Size = new System.Drawing.Size(37, 55);
+            this.code2.TabIndex = 15;
+            this.code2.Text = ".";
             // 
             // InlogScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 1221);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.code2);
+            this.Controls.Add(this.code1);
+            this.Controls.Add(this.code3);
+            this.Controls.Add(this.code0);
+            this.Controls.Add(this.cijfer2);
+            this.Controls.Add(this.cijfer3);
+            this.Controls.Add(this.cijfer4);
+            this.Controls.Add(this.cijfer9);
+            this.Controls.Add(this.cijfer0);
+            this.Controls.Add(this.cijfer7);
+            this.Controls.Add(this.cijfer8);
+            this.Controls.Add(this.cijfer6);
+            this.Controls.Add(this.cijfer5);
+            this.Controls.Add(this.cijfer1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -244,19 +254,19 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button cijfer1;
+        private System.Windows.Forms.Button cijfer5;
+        private System.Windows.Forms.Button cijfer6;
+        private System.Windows.Forms.Button cijfer8;
+        private System.Windows.Forms.Button cijfer7;
+        private System.Windows.Forms.Button cijfer0;
+        private System.Windows.Forms.Button cijfer9;
+        private System.Windows.Forms.Button cijfer4;
+        private System.Windows.Forms.Button cijfer3;
+        private System.Windows.Forms.Button cijfer2;
+        private System.Windows.Forms.Label code0;
+        private System.Windows.Forms.Label code3;
+        private System.Windows.Forms.Label code1;
+        private System.Windows.Forms.Label code2;
     }
 }
