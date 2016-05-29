@@ -48,7 +48,9 @@ namespace RBS
             dbConnection.Open();
 
             // Lees de data uit de database
-            SqlCommand command = new SqlCommand("SELECT * FROM tafels WHERE id='" + ID + "'", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM tafels WHERE id=@id", dbConnection);
+            command.Parameters.AddWithValue("@id", ID);
+
             SqlDataReader reader = command.ExecuteReader();
 
             Tafel tafel = null;
