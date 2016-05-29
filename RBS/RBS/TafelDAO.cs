@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using RBS.Helpers;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace RBS
 {
     public class TafelDAO
     {
-        protected SqlConnection dbConnection;
-
-        public TafelDAO(SqlConnection dbConnection)
-        {
-            this.dbConnection = dbConnection;
+        protected SqlConnection dbConnection {
+            get
+            {
+                return DataHelper.Connection;
+            }
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ namespace RBS.Helpers
     class DataHelper
     {
         private static SqlConnection _connection;
-        private static SqlConnection Connection
+        public static SqlConnection Connection
         {
             get
             {
@@ -64,6 +64,20 @@ namespace RBS.Helpers
                 }
 
                 return _productDao;
+            }
+        }
+
+        private static TafelDAO _tafelDao;
+        public static TafelDAO TafelDao
+        {
+            get
+            {
+                if (_tafelDao == null)
+                {
+                    _tafelDao = new TafelDAO();
+                }
+
+                return _tafelDao;
             }
         }
     }

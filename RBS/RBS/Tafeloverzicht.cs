@@ -1,4 +1,5 @@
 ﻿using RBS.Enums;
+using RBS.Helpers;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,28 +9,11 @@ namespace RBS
     public partial class TafelOverzicht : Form
     {
         /// <summary>
-        /// Data Access Object voor de tafels.
-        /// </summary>
-        public TafelDAO dao;
-
-        /// <summary>
         /// Constructor van het TafelOverzicht component.
         /// </summary>
         public TafelOverzicht()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Constructor van het TafelOverzicht component met DAO.
-        /// </summary>
-        public TafelOverzicht(TafelDAO dao)
-        {
-            InitializeComponent();
-
-            this.dao = dao;
-
-            UpdateOverzicht();
         }
 
         /// <summary>
@@ -53,7 +37,7 @@ namespace RBS
         /// Update het tafeloverzicht met de statussen.
         /// </summary>
         public void UpdateOverzicht() {
-            var list = dao.GetAll();
+            var list = DataHelper.TafelDao.GetAll();
 
             // Loop alle tafels langs
             foreach (Tafel tafel in list)
@@ -96,7 +80,7 @@ namespace RBS
             Console.WriteLine("Geklikt op tafel " + tafelID);
 
             // Voorbeeld om een tafel op te halen
-            // var t = dao.GetTafel(Convert.ToInt32(tafelID));
+            // var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
         }
     }
 }
