@@ -46,6 +46,7 @@
             this.lstAccounts.GridLines = true;
             this.lstAccounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lstAccounts.Location = new System.Drawing.Point(12, 12);
+            this.lstAccounts.MultiSelect = false;
             this.lstAccounts.Name = "lstAccounts";
             this.lstAccounts.Size = new System.Drawing.Size(472, 170);
             this.lstAccounts.TabIndex = 0;
