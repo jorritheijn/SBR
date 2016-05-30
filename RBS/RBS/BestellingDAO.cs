@@ -10,7 +10,6 @@ namespace RBS
 {
     public class BestellingDAO
     {
-        private List<Bestelling> bestellingen;
 
         protected SqlConnection dbConnection;
 
@@ -18,18 +17,6 @@ namespace RBS
         {
             this.dbConnection = dbConnection;
         }
-
-        //fake database voor tests 
-        public BestellingDAO()
-        {
-            bestellingen = new List<Bestelling>();
-            bestellingen.Add(new Bestelling(22, "kip", 5));
-        }
-        public List<Bestelling> GetAll()
-        {
-            return bestellingen;
-        }
-        
 
         private void LeesRekening(int bestelId)
         {
