@@ -10,18 +10,18 @@ namespace RBS
     {
         private int id;
         private string username;    //max 15 chars
-        private int pincode;
+        private string pincode;
         private string functie;     //max 15 chars
 
         public Personeel()
         {
             id = 1234;
             username = "Bob Ross";
-            pincode = 1234;
+            pincode = "1234";
             functie = "Manager";
         }
 
-        public Personeel(int id, string username, int pincode, string functie)
+        public Personeel(int id, string username, string pincode, string functie)
         {
             this.id = id;
             this.username = username;
@@ -41,7 +41,7 @@ namespace RBS
             set { username = value; }
         }
 
-        public int Pincode
+        public string Pincode
         {
             get { return pincode; }
             set { pincode = value; }

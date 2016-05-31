@@ -22,9 +22,9 @@ namespace RBS
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
 
-            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+            PersoneelDAO PersoneelDAO = new PersoneelDAO(dbConnection);
 
-            Application.Run(new BarScherm());
+            Application.Run(new TafelOverzicht());
         }
     }
 }

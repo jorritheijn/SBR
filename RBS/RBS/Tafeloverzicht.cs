@@ -82,5 +82,12 @@ namespace RBS
             // Voorbeeld om een tafel op te halen
             // var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
         }
+
+        private void LogUitBttn_Click(object sender, EventArgs e)
+        {
+            InlogScherm Check = new InlogScherm();
+            Check.Show();
+            Hide();
+        }
     }
 }
