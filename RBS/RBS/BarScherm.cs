@@ -30,6 +30,8 @@ namespace RBS
             lvi.SubItems.Add(bestelling);
             lvi.SubItems.Add(aantal);
             listView1.Items.Add(lvi);
+
+
             
 
 
