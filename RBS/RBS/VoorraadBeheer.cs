@@ -12,7 +12,7 @@ namespace RBS
 {
     public partial class VoorraadBeheer : Form
     {
-        private TabControl tabControl1;
+        //private TabControl tabControl1;
         private TabPage personeelszaken;
         private TabPage klachten;
         private TabPage voorraad;

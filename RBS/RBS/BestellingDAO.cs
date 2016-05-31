@@ -46,12 +46,11 @@ namespace RBS
         {
             dbConnection.Open();
 
-            string sql2 = string.Format("SELECT * FROM rekeningen INNER JOIN producten ON rekeningen.productId = producten.id WHERE bestelId={0}", bestelId);
             string sql = string.Format(
-                "SELECT * FROM bestellingen" +
-                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId" +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}"
-            , bestelId);
+                "SELECT * FROM bestellingen " +
+                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
+           
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -59,6 +58,7 @@ namespace RBS
 
             while (reader.Read())
             {
+                //System.Diagnostics.Debug.WriteLine((int)reader["tafelId"]);
                 BestelRegel bestelRegel = ReadBestelRegel(reader);
                 rekeningRegels.Add(bestelRegel);
             }
@@ -81,11 +81,13 @@ namespace RBS
 
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
-            int tafelId = (int)reader["bestellingen.tafelId"];
-            string product = (string)reader["producten.naam"];
-            int aantal = (int)reader["bestelRegels.aantal"];
-            int prijs = (int)reader["producten.prijs"];
-            int totaalPrijs = prijs * aantal;
+            
+            int tafelId = (int)reader["tafelId"];
+            string product = (string)reader["naam"];
+            int aantal = (int)reader["aantal"];
+            decimal prijs = (decimal)reader["prijs"];
+            //double prijs = (double)reader["prijs"];
+            decimal totaalPrijs = prijs * (decimal)aantal;
 
             return new BestelRegel(tafelId, product, aantal, totaalPrijs);
         }
