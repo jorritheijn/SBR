@@ -59,7 +59,7 @@
     </Compile>
     <Compile Include="Bestelling.cs" />
     <Compile Include="BestellingDAO.cs" />
-    <Compile Include="Enums\Afdelingen.cs" />
+    <Compile Include="Enums\Functies.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Enums\TafelStatus.cs" />
     <Compile Include="InlogScherm.cs">

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RBS.Enums
 {
-    public enum Afdelingen
+    public enum Functies
     {
         Bediening = 0,
-        Keuken,
+        Kok,
         Bar,
-        Management
+        Manager
     }
 }
