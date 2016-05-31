@@ -12,22 +12,7 @@ namespace RBS
 {
     public partial class BarScherm : Form
     {
-        BestellingDAO bestellingDAO;
-        public void ShowBestelling()
-        {
 
-        }
-
-        private void ShowBestelling(BestellingDAO bestellingDAO)
-        {
-            this.bestellingDAO = bestellingDAO;
-            foreach (Bestelling item in bestellingDAO.GetAll())
-            {
-                ListViewItem test = new ListViewItem(item.id.ToString());
-
-            }
-
-        }
     }
 
 }

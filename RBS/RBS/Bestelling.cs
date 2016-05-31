@@ -8,16 +8,21 @@ namespace RBS
 {
     public class Bestelling
     {
-        //om te testen, weet niet zeker of dit goed is
-        public int id;
-        public string bestelling;
-        public int tafel;
+        int id;
+        int personeelId;
+        int tafelId;
+        int betaalMethode;
+        DateTime opnameTijd;
+        string status;
 
-        public Bestelling(int id, string bestelling, int tafel)
+        public Bestelling(int id, int personeelId, int tafelId, int betaalMethode, DateTime opnameTijd, string status)
         {
             this.id = id;
-            this.bestelling = bestelling;
-            this.tafel = tafel;
+            this.personeelId = personeelId;
+            this.tafelId = tafelId;
+            this.betaalMethode = betaalMethode;
+            this.opnameTijd = opnameTijd;
+            this.status = status;
         }
     }
 }
