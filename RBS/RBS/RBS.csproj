@@ -86,7 +86,7 @@
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Bestel-regel.cs" />
+    <Compile Include="BestelRegel.cs" />
     <Compile Include="Tafel.cs" />
     <Compile Include="TafelDAO.cs" />
     <Compile Include="TafelOverzicht.cs">
