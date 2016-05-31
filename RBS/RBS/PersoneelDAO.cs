@@ -37,7 +37,7 @@ namespace RBS
             return allePersoneel;
         }
 
-        public Personeel GetByPincode(int pincode)
+        public Personeel GetByPincode(string pincode)
         {
             dbConnection.Open();
 
@@ -59,7 +59,7 @@ namespace RBS
             return werknemer;
         }
 
-        public void AddEmployee(string username, int pincode, string functie)
+        public void AddEmployee(string username, string pincode, string functie)
         {
             dbConnection.Open();
 
@@ -93,7 +93,7 @@ namespace RBS
         {
             int id = (int)reader["id"];
             string username = (string)reader["username"];
-            int pincode = (int)reader["pincode"];
+            string pincode = (string)reader["pincode"];
             string functie = (string)reader["functie"];
 
             return new Personeel(id, username, pincode, functie);

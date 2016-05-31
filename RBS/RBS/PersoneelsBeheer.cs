@@ -96,7 +96,7 @@ namespace RBS
 
             DialogResult result = form.ShowDialog();
             personeel.Username = tbNaam.Text;
-            personeel.Pincode = int.Parse(tbPin.Text);
+            personeel.Pincode = tbPin.Text;
             personeel.Functie = tbFunctie.Text;
             return result;
         }

@@ -75,6 +75,7 @@
             this.LogUitBttn.TabIndex = 2;
             this.LogUitBttn.Text = "Log Uit";
             this.LogUitBttn.UseVisualStyleBackColor = false;
+            this.LogUitBttn.Click += new System.EventHandler(this.LogUitBttn_Click);
             // 
             // Tafel1
             // 
