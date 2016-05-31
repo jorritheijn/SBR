@@ -80,22 +80,30 @@ namespace RBS
         }
 
         //voor bestell-regel class.
-        /*private void GetRekening(int bestelId)
+        public List<BestelRegel> GetRekening(int bestelId)
         {
             dbConnection.Open();
 
-            string sql = string.Format("SELECT * FROM rekeningen INNER JOIN producten ON rekeningen.productId = producten.id WHERE bestelId={0}", bestelId);
+            string sql2 = string.Format("SELECT * FROM rekeningen INNER JOIN producten ON rekeningen.productId = producten.id WHERE bestelId={0}", bestelId);
+            string sql = string.Format(
+                "SELECT * FROM bestellingen" +
+                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId" +
+                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}"
+            , bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
+            List<BestelRegel> rekeningRegels = new List<BestelRegel>();
+
             while (reader.Read())
             {
-                product = (string)reader["producten.naam"];
-                aantal = (int)reader["rekeningen.aantal"];
-                prijs = (double)reader["rekeningen.prijs"]; 
+                BestelRegel bestelRegel = ReadBestelRegel(reader);
+                rekeningRegels.Add(bestelRegel);
             }
             dbConnection.Close();
-        }*/
+
+            return rekeningRegels;
+        }
 
         private Bestelling ReadBestelling(SqlDataReader reader)
         {
@@ -107,6 +115,17 @@ namespace RBS
             string status = (string)reader["status"];
 
             return new Bestelling(id, personeelId, tafelId, betaalMethode, opnameTijd, status);
+        }
+
+        private BestelRegel ReadBestelRegel(SqlDataReader reader)
+        {
+            int tafelId = (int)reader["bestellingen.tafelId"];
+            string product = (string)reader["producten.naam"];
+            int aantal = (int)reader["bestelRegels.aantal"];
+            int prijs = (int)reader["producten.prijs"];
+            int totaalPrijs = prijs * aantal;
+
+            return new BestelRegel(tafelId, product, aantal, totaalPrijs);
         }
     }
 }

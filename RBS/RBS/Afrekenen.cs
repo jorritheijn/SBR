@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace RBS
 {
@@ -15,6 +17,18 @@ namespace RBS
         public Afrekenen()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+
+            bestellingDAO.GetRekening(1);
+
+
+
         }
     }
 }
