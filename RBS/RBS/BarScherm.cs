@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace RBS
 {
@@ -20,6 +22,11 @@ namespace RBS
 
         private void BarScherm_load()
         {
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+
+
             //fake db
             string tafel = "4";
             string bestelling = "eten";

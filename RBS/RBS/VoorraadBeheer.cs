@@ -12,24 +12,44 @@ namespace RBS
 {
     public partial class VoorraadBeheer : Form
     {
+        private TabControl tabControl1;
+        private TabPage personeelszaken;
+        private TabPage klachten;
+        private TabPage voorraad;
+        private TabPage tafels;
+
+        private void MyTabs()
+        {
+            
+            this.personeelszaken = new TabPage();
+            this.klachten = new TabPage();
+            this.voorraad = new TabPage();
+            this.tafels = new TabPage();
+        }
+
+          
+
         private ProductDAO dao;
         
         public VoorraadBeheer()
         {
-
+            
             InitializeComponent();
-        }
 
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
+            
+            InlogScherm Check = new InlogScherm();
+            Check.Show();
+            Hide();
+        }
         }
 
        
+
+       
     }
-}
+

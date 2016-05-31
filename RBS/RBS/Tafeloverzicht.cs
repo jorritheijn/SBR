@@ -80,7 +80,7 @@ namespace RBS
             Console.WriteLine("Geklikt op tafel " + tafelID);
 
             // Voorbeeld om een tafel op te halen
-            // var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
+            //var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
         }
 
         private void LogUitBttn_Click(object sender, EventArgs e)
