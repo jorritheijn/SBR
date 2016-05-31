@@ -27,13 +27,16 @@ namespace RBS
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
 
             List<BestelRegel> rekeningRegels = bestellingDAO.GetRekening(1);
+            decimal totaalPrijs = 0;
             foreach (var rekeningRegel in rekeningRegels)
             {
                 label1.Text = "Tafel " + rekeningRegel.TafelId.ToString();
                 listBox1.Items.Add(rekeningRegel.Product);
                 listBox2.Items.Add(rekeningRegel.Aantal.ToString());
                 listBox3.Items.Add(rekeningRegel.TotaalPrijs.ToString());
+                totaalPrijs += rekeningRegel.TotaalPrijs;
             }
+            label5.Text = "Totaal: " + totaalPrijs;
         }
 
         private void label1_Click(object sender, EventArgs e)
