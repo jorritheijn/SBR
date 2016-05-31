@@ -17,31 +17,12 @@ namespace RBS
         {
             this.dbConnection = dbConnection;
         }
-        public List<Bestelling> GetAllBesteld()
+        
+        public List<Bestelling> GetAll(string status)
         {
             dbConnection.Open();
 
-            string sql = string.Format("SELECT * FROM bestellingen WHERE status='besteld' ORDER by tafelId");
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Bestelling> alleBestellingen = new List<Bestelling>();
-
-            while (reader.Read())
-            {
-                Bestelling bestelling = ReadBestelling(reader);
-                alleBestellingen.Add(bestelling);
-            }
-
-            dbConnection.Close();
-
-            return alleBestellingen;
-        }
-        public List<Bestelling> GetAllGereed()
-        {
-            dbConnection.Open();
-
-            string sql = string.Format("SELECT * FROM bestellingen WHERE status='gereed' ORDER by tafelId");
+            string sql = string.Format("SELECT * FROM bestellingen WHERE status='{0}' ORDER by tafelId", status);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -58,26 +39,7 @@ namespace RBS
             return alleBestellingen;
         }
 
-        public List<Bestelling> GetAllGereserveerd()
-        {
-            dbConnection.Open();
-
-            string sql = string.Format("SELECT * FROM bestellingen WHERE status='gereserveerd' ORDER by tafelId");
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Bestelling> alleBestellingen = new List<Bestelling>();
-
-            while (reader.Read())
-            {
-                Bestelling bestelling = ReadBestelling(reader);
-                alleBestellingen.Add(bestelling);
-            }
-
-            dbConnection.Close();
-
-            return alleBestellingen;
-        }
+        
 
         //voor bestell-regel class.
         public List<BestelRegel> GetRekening(int bestelId)

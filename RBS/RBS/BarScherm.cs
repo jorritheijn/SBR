@@ -28,6 +28,8 @@ namespace RBS
 
             bestellingDAO.GetAllBesteld();
 
+            bestellingDAO.Equals("1");
+
             //fake db
             string tafel = "4";
             string bestelling = "eten";
