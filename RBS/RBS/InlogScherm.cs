@@ -107,10 +107,11 @@ namespace RBS
             }
 
             // Werknemer zoeken op basis van de pincode
-            var werknemer = DataHelper.PersoneelDao.GetByPincode(Convert.ToInt32(Code));
+            var werknemer = DataHelper.PersoneelDao.GetByPincode(Code);
             if (werknemer != null)
             {
-                // TODO: Navigeer op basis van afdeling naar de juiste pagina.
+                //Navigeer op basis van functie naar de juiste pagina.
+
             }
             else
             {
