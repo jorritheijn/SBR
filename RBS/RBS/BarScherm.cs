@@ -26,9 +26,6 @@ namespace RBS
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
 
-            bestellingDAO.GetAllBesteld();
-
-            bestellingDAO.Equals("1");
 
             //fake db
             string tafel = "4";
