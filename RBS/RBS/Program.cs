@@ -24,7 +24,7 @@ namespace RBS
 
             PersoneelDAO PersoneelDAO = new PersoneelDAO(dbConnection);
 
-            Application.Run(new TafelOverzicht());
+            Application.Run(new PersoneelsBeheer(PersoneelDAO));
         }
     }
 }
