@@ -37,6 +37,27 @@ namespace RBS
             return alleProduct;
         }
 
+        public List<Product> GetLunch()
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT * FROM product WHERE subCategorieID=1", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> lunch = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                lunch.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return lunch;
+        }
+
         private Product ReadProduct(SqlDataReader reader)
         {
             int id = (int)reader["id"];

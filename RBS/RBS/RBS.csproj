@@ -59,6 +59,12 @@
     </Compile>
     <Compile Include="Bestelling.cs" />
     <Compile Include="BestellingDAO.cs" />
+    <Compile Include="BestelScherm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BestelScherm.Designer.cs">
+      <DependentUpon>BestelScherm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums\Functies.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Enums\TafelStatus.cs" />
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BestelScherm.resx">
+      <DependentUpon>BestelScherm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InlogScherm.resx">
       <DependentUpon>InlogScherm.cs</DependentUpon>

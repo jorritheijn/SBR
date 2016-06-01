@@ -104,8 +104,8 @@ namespace RBS
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            dbConnection.Close();*/
+            dbConnection.Close();
 
-        }
+        }*/
     }
 }
