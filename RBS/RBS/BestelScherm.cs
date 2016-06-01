@@ -12,7 +12,7 @@ namespace RBS
 {
     public partial class BestelScherm : Form
     {
-        public BestelScherm()
+        public BestelScherm(ProductDAO productDAO)
         {
             InitializeComponent();
         }

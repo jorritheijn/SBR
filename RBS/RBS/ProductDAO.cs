@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
-    class ProductDAO
+    public class ProductDAO
     {
         protected SqlConnection dbConnection;
 
