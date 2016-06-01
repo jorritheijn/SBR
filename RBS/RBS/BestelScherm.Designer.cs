@@ -117,6 +117,7 @@
             // 
             // btnRemove0
             // 
+            this.btnRemove0.Enabled = false;
             this.btnRemove0.Location = new System.Drawing.Point(665, 9);
             this.btnRemove0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRemove0.Name = "btnRemove0";
@@ -127,6 +128,7 @@
             // 
             // btnDecrement0
             // 
+            this.btnDecrement0.Enabled = false;
             this.btnDecrement0.Location = new System.Drawing.Point(597, 9);
             this.btnDecrement0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDecrement0.Name = "btnDecrement0";
@@ -137,6 +139,7 @@
             // 
             // btnItem0
             // 
+            this.btnItem0.Enabled = false;
             this.btnItem0.Location = new System.Drawing.Point(9, 9);
             this.btnItem0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnItem0.Name = "btnItem0";
@@ -168,6 +171,7 @@
             // 
             // btnRemove1
             // 
+            this.btnRemove1.Enabled = false;
             this.btnRemove1.Location = new System.Drawing.Point(665, 56);
             this.btnRemove1.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove1.Name = "btnRemove1";
@@ -178,6 +182,7 @@
             // 
             // btnDecrement1
             // 
+            this.btnDecrement1.Enabled = false;
             this.btnDecrement1.Location = new System.Drawing.Point(597, 56);
             this.btnDecrement1.Margin = new System.Windows.Forms.Padding(4);
             this.btnDecrement1.Name = "btnDecrement1";
@@ -188,6 +193,7 @@
             // 
             // btnItem1
             // 
+            this.btnItem1.Enabled = false;
             this.btnItem1.Location = new System.Drawing.Point(9, 56);
             this.btnItem1.Margin = new System.Windows.Forms.Padding(4);
             this.btnItem1.Name = "btnItem1";
@@ -208,6 +214,7 @@
             // 
             // btnRemove2
             // 
+            this.btnRemove2.Enabled = false;
             this.btnRemove2.Location = new System.Drawing.Point(665, 103);
             this.btnRemove2.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove2.Name = "btnRemove2";
@@ -218,6 +225,7 @@
             // 
             // btnDecrement2
             // 
+            this.btnDecrement2.Enabled = false;
             this.btnDecrement2.Location = new System.Drawing.Point(597, 103);
             this.btnDecrement2.Margin = new System.Windows.Forms.Padding(4);
             this.btnDecrement2.Name = "btnDecrement2";
@@ -228,6 +236,7 @@
             // 
             // btnItem2
             // 
+            this.btnItem2.Enabled = false;
             this.btnItem2.Location = new System.Drawing.Point(9, 103);
             this.btnItem2.Margin = new System.Windows.Forms.Padding(4);
             this.btnItem2.Name = "btnItem2";
@@ -248,6 +257,7 @@
             // 
             // btnRemove3
             // 
+            this.btnRemove3.Enabled = false;
             this.btnRemove3.Location = new System.Drawing.Point(665, 150);
             this.btnRemove3.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove3.Name = "btnRemove3";
@@ -258,6 +268,7 @@
             // 
             // btnDecrement3
             // 
+            this.btnDecrement3.Enabled = false;
             this.btnDecrement3.Location = new System.Drawing.Point(597, 150);
             this.btnDecrement3.Margin = new System.Windows.Forms.Padding(4);
             this.btnDecrement3.Name = "btnDecrement3";
@@ -268,6 +279,7 @@
             // 
             // btnItem3
             // 
+            this.btnItem3.Enabled = false;
             this.btnItem3.Location = new System.Drawing.Point(9, 150);
             this.btnItem3.Margin = new System.Windows.Forms.Padding(4);
             this.btnItem3.Name = "btnItem3";
@@ -288,6 +300,7 @@
             // 
             // btnRemove4
             // 
+            this.btnRemove4.Enabled = false;
             this.btnRemove4.Location = new System.Drawing.Point(664, 197);
             this.btnRemove4.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove4.Name = "btnRemove4";
@@ -298,6 +311,7 @@
             // 
             // btnDecrement4
             // 
+            this.btnDecrement4.Enabled = false;
             this.btnDecrement4.Location = new System.Drawing.Point(596, 197);
             this.btnDecrement4.Margin = new System.Windows.Forms.Padding(4);
             this.btnDecrement4.Name = "btnDecrement4";
@@ -308,6 +322,7 @@
             // 
             // btnItem4
             // 
+            this.btnItem4.Enabled = false;
             this.btnItem4.Location = new System.Drawing.Point(9, 197);
             this.btnItem4.Margin = new System.Windows.Forms.Padding(4);
             this.btnItem4.Name = "btnItem4";
@@ -328,6 +343,7 @@
             // 
             // btnRemove5
             // 
+            this.btnRemove5.Enabled = false;
             this.btnRemove5.Location = new System.Drawing.Point(665, 244);
             this.btnRemove5.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove5.Name = "btnRemove5";
@@ -338,6 +354,7 @@
             // 
             // btnDecrement5
             // 
+            this.btnDecrement5.Enabled = false;
             this.btnDecrement5.Location = new System.Drawing.Point(597, 244);
             this.btnDecrement5.Margin = new System.Windows.Forms.Padding(4);
             this.btnDecrement5.Name = "btnDecrement5";
@@ -348,6 +365,7 @@
             // 
             // btnItem5
             // 
+            this.btnItem5.Enabled = false;
             this.btnItem5.Location = new System.Drawing.Point(9, 244);
             this.btnItem5.Margin = new System.Windows.Forms.Padding(4);
             this.btnItem5.Name = "btnItem5";
