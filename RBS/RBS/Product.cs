@@ -6,20 +6,52 @@ using System.Threading.Tasks;
 
 namespace RBS
 {
-    class Product
+    public class Product
     {
-        private int productId;
-        private string productNaam;
-        private double productPrijs;
+        //test
+        private int id;
+        private string naam;
+        private decimal prijs;
         private int aantalVoorraad;
+        private int subCategorieId;
 
-         public Product(int productId, string productNaam, double productPrijs, int aantalVoorraad)
+        public Product(int id, string naam, decimal prijs, int aantalVoorraad, int subCategorieId)
         {
-            this.productId = productId;
-            this.productNaam = productNaam;
-            this.productPrijs = productPrijs;
+            this.id = id;
+            this.naam = naam;
+            this.prijs = prijs;
             this.aantalVoorraad = aantalVoorraad;
+            this.subCategorieId = subCategorieId;
         }
-       
-         }
+
+        public int Id
+        {
+            get { return id; }
+        }
+
+        public string Naam
+        {
+            get { return naam; }
+            set { naam = value; }
+        }
+
+        public decimal Prijs
+        {
+            get { return prijs; }
+            set { prijs = value; }
+        }
+
+        public int AantalVoorraad
+        {
+            get { return aantalVoorraad; }
+            set { aantalVoorraad = value; }
+        }
+
+        public int SubCategorieId
+        {
+            get { return subCategorieId; }
+            set { subCategorieId = value; }
+        }
     }
+}
+ 

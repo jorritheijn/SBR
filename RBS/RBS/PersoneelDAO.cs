@@ -63,12 +63,12 @@ namespace RBS
         {
             dbConnection.Open();
 
-            string query = String.Format("INSERT INTO personeel (username, pincode, functie) " +
-                "VALUES (@username,{0},@functie)",
-                pincode);
+            string query = "INSERT INTO personeel (username, pincode, functie) " +
+                "VALUES (@username,@pincode,@functie)";
 
             SqlCommand command = new SqlCommand(query, dbConnection);
             command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@pincode", pincode);
             command.Parameters.AddWithValue("@functie", functie);
 
             command.ExecuteNonQuery();
