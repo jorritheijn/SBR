@@ -41,7 +41,7 @@ namespace RBS
             ListViewItem product = new ListViewItem("Product");
             foreach (string Productennaam in productennaam)
             {
-                product.SubItems.Add(productennaam.ToString());        
+                product.SubItems.Add(Productennaam);        
             }
             ListViewItem aaantal = new ListViewItem("Aantal");
             foreach (int Aantal in aantal)
