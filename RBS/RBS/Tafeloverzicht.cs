@@ -8,12 +8,15 @@ namespace RBS
 {
     public partial class TafelOverzicht : Form
     {
+        private int LaatstGeklikteTafel;
+
         /// <summary>
         /// Constructor van het TafelOverzicht component.
         /// </summary>
         public TafelOverzicht()
         {
             InitializeComponent();
+            UpdateOverzicht();
         }
 
         /// <summary>
@@ -69,25 +72,20 @@ namespace RBS
         /// <param name="sender">De geklikte button</param>
         /// <param name="e">Klik argumenten</param>
         /// 
-        int tafelId;
         private void TafelButton_Click(object sender, EventArgs e)
         {
             var tafelButton = sender as Button;
 
             // Als er op de button geklikt wordt wordt de naam vb. tafel1 veranderd door
             // 1 door de Name.Replace (haalt tafel weg uit de naam) en maakt hiervan het tafelID
-            tafelId = int.Parse(tafelButton.Name.Replace("Tafel", ""));
+            LaatstGeklikteTafel = int.Parse(tafelButton.Name.Replace("Tafel", ""));
 
             //Keuze menu voor betreffende tafel
             Point ptLowerLeft = new Point(0, tafelButton.Height);
             ptLowerLeft = tafelButton.PointToScreen(ptLowerLeft);
             contextMenuStrip1.Show(ptLowerLeft);
             contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(contextMenuStrip1_ItemClicked);
-
-
-            // TODO: Ga naar bestel scherm en geef tafelID mee
-            Console.WriteLine("Geklikt op tafel " + tafelId);
-
+            
             // Voorbeeld om een tafel op te halen
             //var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
         }
@@ -95,21 +93,36 @@ namespace RBS
 
         private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            ToolStripItem Afrekenen = e.ClickedItem;
-            System.Diagnostics.Debug.WriteLine("balls");
-            Afrekenen afrekenen = new Afrekenen(tafelId);
-            afrekenen.Show();
+            ToolStripItem item = e.ClickedItem;
 
+            switch (item.Text)
+            {
+                case "Bezet zetten":
+                    DataHelper.TafelDao.UpdateTafel(LaatstGeklikteTafel, TafelStatus.Bezet);
+                    UpdateOverzicht();
+                    break;
+                case "Vrij zetten":
+                    DataHelper.TafelDao.UpdateTafel(LaatstGeklikteTafel, TafelStatus.Vrij);
+                    UpdateOverzicht();
+                    break;
+                case "Afrekenen":
+                    var afrekenen = new Afrekenen(LaatstGeklikteTafel);
+                    afrekenen.Show();
+                    break;
+                case "Bestelling plaatsen":
+                    var bestellen = new BestelScherm(LaatstGeklikteTafel);
+                    bestellen.Show();
+                    break;
+            }
         }
-
-        //afrekenenToolStripMenuItem
-
-        //private void TafelButton_Click(object sender, EventArgs e)
 
         private void LogUitBttn_Click(object sender, EventArgs e)
         {
-            InlogScherm Check = new InlogScherm();
-            Check.Show();
+            InlogScherm Inloggen = new InlogScherm();
+
+            UserHelper.Uitloggen();
+
+            Inloggen.Show();
             Hide();
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RBS.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,15 @@ namespace RBS
     {
         private ProductDAO productDAO;
 
-        public BestelScherm(ProductDAO productDAO)
+        private int TafelId;
+
+        public BestelScherm(int tafelId)
         {
-            this.productDAO = productDAO;
             InitializeComponent();
+
+            this.productDAO = DataHelper.ProductDao;
+            this.TafelId = tafelId;
+
             SetButtons();
         }
 
