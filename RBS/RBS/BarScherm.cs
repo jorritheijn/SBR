@@ -26,22 +26,29 @@ namespace RBS
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
 
-            List<string> tafelid = new List<string>();
+            List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
-            List<string> aantal = new List<string>();
+            List<int> aantal = new List<int>();
             tafelid = bestellingDAO.GetAllTafel();
             productennaam = bestellingDAO.GetAllProducten();
             aantal = bestellingDAO.GetAllAantal();
 
-            foreach (string tafelID in tafelid)
+            ListViewItem lvi = new ListViewItem();
+
+            foreach (int tafelID in tafelid)
             {
-                ListViewItem lvi = new ListViewItem(tafelID.ToString());
-                lvi.SubItems.Add(productennaam.ToString());
-                lvi.SubItems.Add(aantal.ToString());
-                listView1.Items.Add(lvi);
+                lvi.SubItems.Add(tafelID.ToString());
             }
-            //vul kolommen
-   
+            foreach (string Productennaam in productennaam)
+            {
+                lvi.SubItems.Add(productennaam.ToString());
+            }
+            foreach (int Aantal in aantal)
+            {
+                lvi.SubItems.Add(Aantal.ToString());
+            }
+
+            listView1.Items.Add(lvi);
         }
     }
 
