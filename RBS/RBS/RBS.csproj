@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Bestelling.cs" />
     <Compile Include="BestellingDAO.cs" />
+    <Compile Include="Bestelling_actief.cs" />
     <Compile Include="BestelScherm.cs">
       <SubType>Form</SubType>
     </Compile>

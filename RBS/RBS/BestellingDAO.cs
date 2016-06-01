@@ -92,28 +92,102 @@ namespace RBS
             return new BestelRegel(tafelId, product, aantal, totaalPrijs);
         }
 
-        public List<int> GetAllTafels()
+
+        public List<string> GetAllTafel()
         {
             dbConnection.Open();
 
             string sql = string.Format(
-                    "SELECT tafelId FROM bestellingen");
-           
+                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen" +
+                        "INNER JOIN bestelRegels on bestellingen.id = productId" +
+                        "INNER JOIN producten on productId = producten.id " +
+                        "ORDER BY tafelId");
+
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            List<int> tafelid = new List<int>();
+            List<string> tafelid = new List<string>();
+            List<string> productennaam = new List<string>();
+            List<string> aantal = new List<string>();
 
             while (reader.Read())
             {
-                int tafelID = (int)reader["tafelId"];    
+                string tafelID = (string)reader["tafelId"];
+                string Productennaam = (string)reader["naam"];
+                string Aantal = (string)reader["aantal"];
+
                 tafelid.Add(tafelID);
+                productennaam.Add(Productennaam);
+                aantal.Add(Aantal);
             }
 
             dbConnection.Close();
 
             return tafelid;
+        }
+        public List<string> GetAllProducten()
+        {
+            dbConnection.Open();
 
+            string sql = string.Format(
+                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen" +
+                        "INNER JOIN bestelRegels on bestellingen.id = productId" +
+                        "INNER JOIN producten on productId = producten.id " +
+                        "ORDER BY tafelId");
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<string> tafelid = new List<string>();
+            List<string> productennaam = new List<string>();
+            List<string> aantal = new List<string>();
+
+            while (reader.Read())
+            {
+                string tafelID = (string)reader["tafelId"];
+                string Productennaam = (string)reader["naam"];
+                string Aantal = (string)reader["aantal"];
+
+                tafelid.Add(tafelID);
+                productennaam.Add(Productennaam);
+                aantal.Add(Aantal);
+            }
+
+            dbConnection.Close();
+
+            return productennaam;
+        }
+        public List<string> GetAllAantal()
+        {
+            dbConnection.Open();
+
+            string sql = string.Format(
+                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen" +
+                        "INNER JOIN bestelRegels on bestellingen.id = productId" +
+                        "INNER JOIN producten on productId = producten.id " +
+                        "ORDER BY tafelId");
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<string> tafelid = new List<string>();
+            List<string> productennaam = new List<string>();
+            List<string> aantal = new List<string>();
+
+            while (reader.Read())
+            {
+                string tafelID = (string)reader["tafelId"];
+                string Productennaam = (string)reader["naam"];
+                string Aantal = (string)reader["aantal"];
+
+                tafelid.Add(tafelID);
+                productennaam.Add(Productennaam);
+                aantal.Add(Aantal);
+            }
+
+            dbConnection.Close();
+
+            return aantal;
         }
     }
 }
