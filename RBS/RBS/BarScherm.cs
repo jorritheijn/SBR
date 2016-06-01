@@ -38,6 +38,7 @@ namespace RBS
             foreach (int tafelID in tafelid)
             {
                 lvi.SubItems.Add(tafelID.ToString());
+                listView1.Items.Add(lvi);
             }
             foreach (string Productennaam in productennaam)
             {
@@ -48,7 +49,6 @@ namespace RBS
                 lvi.SubItems.Add(Aantal.ToString());
             }
 
-            listView1.Items.Add(lvi);
         }
     }
 
