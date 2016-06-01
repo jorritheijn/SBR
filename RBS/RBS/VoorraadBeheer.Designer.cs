@@ -33,6 +33,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -92,16 +93,25 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Voorraad";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(81, 23);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(423, 436);
             this.panel1.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(29, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "label4";
             // 
             // panel2
             // 
@@ -179,6 +189,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Log uit";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // VoorraadBeheer
             // 
@@ -194,6 +205,7 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,5 +226,6 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label4;
     }
 }

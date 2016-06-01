@@ -43,7 +43,7 @@ namespace RBS
             Label lblFunctie = new Label();
             TextBox tbNaam = new TextBox();
             TextBox tbPin = new TextBox();
-            TextBox tbFunctie = new TextBox();
+            ComboBox cbFunctie = new ComboBox();
             Button btnOk = new Button();
             Button btnCancel = new Button();
 
@@ -55,7 +55,10 @@ namespace RBS
             
             tbNaam.Text = "";
             tbPin.Text = "";
-            tbFunctie.Text = "";
+            cbFunctie.Items.Add("˙͜ >˙");
+            cbFunctie.Items.Add("( ͡° ͜ʖ ͡°)");
+            cbFunctie.Items.Add("(˵ ͡° ͜ʖ ͡°˵)");
+            cbFunctie.Items.Add("¯\\_(ツ)_/¯");
 
             btnOk.Text = "Toevoegen";
             btnCancel.Text = "Annuleren";
@@ -69,7 +72,8 @@ namespace RBS
             tbPin.SetBounds(12, 63, 372, 20);
 
             lblFunctie.SetBounds(9, 95, 372, 13);
-            tbFunctie.SetBounds(12, 109, 372, 20);
+            cbFunctie.SetBounds(12, 109, 372, 20);
+            cbFunctie.DropDownStyle = ComboBoxStyle.DropDownList;
 
             btnOk.SetBounds(182, 141, 100, 25);
             btnCancel.SetBounds(285, 141, 100, 25);
@@ -80,13 +84,13 @@ namespace RBS
             
             tbNaam.Anchor = tbNaam.Anchor | AnchorStyles.Right;
             tbPin.Anchor = tbPin.Anchor | AnchorStyles.Right;
-            tbFunctie.Anchor = tbFunctie.Anchor | AnchorStyles.Right;
+            cbFunctie.Anchor = cbFunctie.Anchor | AnchorStyles.Right;
             btnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
             form.ClientSize = new Size(396, 169);
             form.Controls.AddRange(new Control[] { lblNaam, lblPin, lblFunctie,
-                tbNaam, tbPin, tbFunctie, btnOk, btnCancel });
+                tbNaam, tbPin, cbFunctie, btnOk, btnCancel });
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MinimizeBox = false;
@@ -95,9 +99,12 @@ namespace RBS
             form.CancelButton = btnCancel;
 
             DialogResult result = form.ShowDialog();
-            personeel.Username = tbNaam.Text;
-            personeel.Pincode = tbPin.Text;
-            personeel.Functie = tbFunctie.Text;
+            if (result == DialogResult.OK)
+            {
+                personeel.Username = tbNaam.Text;
+                personeel.Pincode = tbPin.Text;
+                personeel.Functie = cbFunctie.Text;
+            }
             return result;
         }
 
@@ -113,7 +120,7 @@ namespace RBS
             label.Text = String.Format("Weet u zeker dat u {0} uit het systeem wilt verwijderen?",
                 lstAccounts.SelectedItems[0].SubItems[1].Text.Trim());
 
-            btnOk.Text = "Toevoegen";
+            btnOk.Text = "Verwijderen";
             btnCancel.Text = "Annuleren";
             btnOk.DialogResult = DialogResult.OK;
             btnCancel.DialogResult = DialogResult.Cancel;
@@ -159,6 +166,16 @@ namespace RBS
                 dao.DeleteEmployee(int.Parse(lstAccounts.SelectedItems[0].Text));
                 CreateList();
             }
+        }
+
+        //private void ToggleButton(Button b)
+        //{
+        //    b.Enabled = !b.Enabled;
+        //}
+
+        private void lstAccounts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            btnDelEmployee.Enabled = lstAccounts.SelectedIndices.Count != 0;
         }
     }
 }
