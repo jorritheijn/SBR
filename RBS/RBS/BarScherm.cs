@@ -30,18 +30,18 @@ namespace RBS
             tafelid = bestellingDAO.GetAllTafels();
 
             //fake db
-            string tafel = "4";
             string bestelling = "eten";
             string aantal = "8";
 
+            foreach (int tafelID in tafelid)
+            {
+                ListViewItem lvi = new ListViewItem(tafelID.ToString());
+                lvi.SubItems.Add(bestelling);
+                lvi.SubItems.Add(aantal);
+                listView1.Items.Add(lvi);
+            }
             //vul kolommen
-            ListViewItem lvi = new ListViewItem(tafelid.ToString());
-            lvi.SubItems.Add(bestelling);
-            lvi.SubItems.Add(aantal);
-            listView1.Items.Add(lvi);
-
-
-            
+        
 
 
         }
