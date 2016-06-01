@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RBS
 {
-    class Product
+    public class Product
     {
         private int id;
         private string naam;
