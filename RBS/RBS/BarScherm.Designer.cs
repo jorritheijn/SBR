@@ -32,9 +32,9 @@
             this.LogOut = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -81,19 +81,20 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tafel";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Bestelling";
-            this.columnHeader2.Width = 445;
-            // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Aantal";
             this.columnHeader3.Width = 54;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Bestelling";
+            this.columnHeader2.Width = 455;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tafel";
+            this.columnHeader1.Width = 50;
             // 
             // BarScherm
             // 

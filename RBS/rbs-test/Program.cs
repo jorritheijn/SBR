@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace RBS
+namespace rbs_test
 {
     static class Program
     {
@@ -19,14 +19,10 @@ namespace RBS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            string connString = ConfigurationManager.ConnectionStrings["ReserveringenConnectionStringSQL"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
 
-            PersoneelDAO personeelDAO = new PersoneelDAO(dbConnection);
-            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
-            ProductDAO productDAO = new ProductDAO(dbConnection);
-
-            Application.Run( new BarScherm());
+            Application.Run(new Form1());
         }
     }
 }

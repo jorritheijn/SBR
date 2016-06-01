@@ -25,24 +25,32 @@ namespace RBS
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+            listView1.View = View.Details;
 
             List<int> tafelid = new List<int>();
-            tafelid = bestellingDAO.GetAllTafels();
+            List<string> productennaam = new List<string>();
+            List<int> aantal = new List<int>();
+            tafelid = bestellingDAO.GetAllTafel();
+            productennaam = bestellingDAO.GetAllProducten();
+            aantal = bestellingDAO.GetAllAantal();
 
-            //fake db
-            string bestelling = "eten";
-            string aantal = "8";
-
+            ListViewItem tafel = new ListViewItem("Tafels");
             foreach (int tafelID in tafelid)
             {
-                ListViewItem lvi = new ListViewItem(tafelID.ToString());
-                lvi.SubItems.Add(bestelling);
-                lvi.SubItems.Add(aantal);
-                listView1.Items.Add(lvi);
+                tafel.SubItems.Add(tafelID.ToString());
             }
-            //vul kolommen
-        
+            ListViewItem product = new ListViewItem("Product");
+            foreach (string Productennaam in productennaam)
+            {
+                product.SubItems.Add(Productennaam);        
+            }
+            ListViewItem aaantal = new ListViewItem("Aantal");
+            foreach (int Aantal in aantal)
+            {
+                aaantal.SubItems.Add(Aantal.ToString());
+            }
 
+            listView1.Items.AddRange(new ListViewItem[] { tafel, product, aaantal });
 
         }
     }
