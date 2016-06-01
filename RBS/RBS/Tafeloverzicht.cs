@@ -76,6 +76,11 @@ namespace RBS
             // 1 door de Name.Replace (haalt tafel weg uit de naam) en maakt hiervan het tafelID
             string tafelID = tafelButton.Name.Replace("Tafel", "");
 
+            //Keuze menu voor betreffende tafel
+            Point ptLowerLeft = new Point(0, tafelButton.Height);
+            ptLowerLeft = tafelButton.PointToScreen(ptLowerLeft);
+            contextMenuStrip1.Show(ptLowerLeft);
+
             // TODO: Ga naar bestel scherm en geef tafelID mee
             Console.WriteLine("Geklikt op tafel " + tafelID);
 

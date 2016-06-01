@@ -28,6 +28,7 @@ namespace RBS
 
             List<BestelRegel> rekeningRegels = bestellingDAO.GetRekening(1);
             decimal totaalPrijs = 0;
+            int regels = 0;
             foreach (var rekeningRegel in rekeningRegels)
             {
                 label1.Text = "Tafel " + rekeningRegel.TafelId.ToString();
@@ -35,8 +36,15 @@ namespace RBS
                 listBox2.Items.Add(rekeningRegel.Aantal.ToString());
                 listBox3.Items.Add(rekeningRegel.TotaalPrijs.ToString());
                 totaalPrijs += rekeningRegel.TotaalPrijs;
+                regels++;
             }
             label5.Text = "Totaal: " + totaalPrijs;
+            int y = 63 + (regels * 13);                    //één regel is 13 pixels, basis plaats is 63pixels
+            label5.Location = new Point(203, y);
+            listBox1.Height = listBox1.PreferredHeight;
+            listBox2.Height = listBox2.PreferredHeight;
+            listBox3.Height = listBox3.PreferredHeight;
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,6 +53,11 @@ namespace RBS
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

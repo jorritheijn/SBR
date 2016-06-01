@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.LogUitBttn = new System.Windows.Forms.Button();
@@ -41,15 +42,20 @@
             this.Tafel4 = new System.Windows.Forms.Button();
             this.Tafel3 = new System.Windows.Forms.Button();
             this.Tafel2 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bezetZettenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bestellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vrijZettenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.afrekenenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 32);
+            this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "MayaMaya";
             // 
@@ -57,10 +63,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(512, 100);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label2.Location = new System.Drawing.Point(192, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(345, 55);
+            this.label2.Size = new System.Drawing.Size(135, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tafel Overzicht";
             // 
@@ -68,10 +73,9 @@
             // 
             this.LogUitBttn.BackColor = System.Drawing.Color.Red;
             this.LogUitBttn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LogUitBttn.Location = new System.Drawing.Point(1165, 29);
-            this.LogUitBttn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.LogUitBttn.Location = new System.Drawing.Point(437, 12);
             this.LogUitBttn.Name = "LogUitBttn";
-            this.LogUitBttn.Size = new System.Drawing.Size(200, 55);
+            this.LogUitBttn.Size = new System.Drawing.Size(75, 23);
             this.LogUitBttn.TabIndex = 2;
             this.LogUitBttn.Text = "Log Uit";
             this.LogUitBttn.UseVisualStyleBackColor = false;
@@ -79,10 +83,9 @@
             // 
             // Tafel1
             // 
-            this.Tafel1.Location = new System.Drawing.Point(461, 331);
-            this.Tafel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel1.Location = new System.Drawing.Point(173, 139);
             this.Tafel1.Name = "Tafel1";
-            this.Tafel1.Size = new System.Drawing.Size(133, 107);
+            this.Tafel1.Size = new System.Drawing.Size(50, 45);
             this.Tafel1.TabIndex = 3;
             this.Tafel1.Text = "1";
             this.Tafel1.UseVisualStyleBackColor = true;
@@ -90,10 +93,9 @@
             // 
             // Tafel10
             // 
-            this.Tafel10.Location = new System.Drawing.Point(781, 1025);
-            this.Tafel10.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel10.Location = new System.Drawing.Point(293, 430);
             this.Tafel10.Name = "Tafel10";
-            this.Tafel10.Size = new System.Drawing.Size(133, 107);
+            this.Tafel10.Size = new System.Drawing.Size(50, 45);
             this.Tafel10.TabIndex = 4;
             this.Tafel10.Text = "10";
             this.Tafel10.UseVisualStyleBackColor = true;
@@ -101,10 +103,9 @@
             // 
             // Tafel9
             // 
-            this.Tafel9.Location = new System.Drawing.Point(461, 1025);
-            this.Tafel9.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel9.Location = new System.Drawing.Point(173, 430);
             this.Tafel9.Name = "Tafel9";
-            this.Tafel9.Size = new System.Drawing.Size(133, 107);
+            this.Tafel9.Size = new System.Drawing.Size(50, 45);
             this.Tafel9.TabIndex = 5;
             this.Tafel9.Text = "9";
             this.Tafel9.UseVisualStyleBackColor = true;
@@ -112,10 +113,9 @@
             // 
             // Tafel8
             // 
-            this.Tafel8.Location = new System.Drawing.Point(781, 851);
-            this.Tafel8.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel8.Location = new System.Drawing.Point(293, 357);
             this.Tafel8.Name = "Tafel8";
-            this.Tafel8.Size = new System.Drawing.Size(133, 107);
+            this.Tafel8.Size = new System.Drawing.Size(50, 45);
             this.Tafel8.TabIndex = 6;
             this.Tafel8.Text = "8";
             this.Tafel8.UseVisualStyleBackColor = true;
@@ -123,10 +123,9 @@
             // 
             // Tafel7
             // 
-            this.Tafel7.Location = new System.Drawing.Point(461, 851);
-            this.Tafel7.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel7.Location = new System.Drawing.Point(173, 357);
             this.Tafel7.Name = "Tafel7";
-            this.Tafel7.Size = new System.Drawing.Size(133, 107);
+            this.Tafel7.Size = new System.Drawing.Size(50, 45);
             this.Tafel7.TabIndex = 7;
             this.Tafel7.Text = "7";
             this.Tafel7.UseVisualStyleBackColor = true;
@@ -134,10 +133,9 @@
             // 
             // Tafel6
             // 
-            this.Tafel6.Location = new System.Drawing.Point(781, 689);
-            this.Tafel6.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel6.Location = new System.Drawing.Point(293, 289);
             this.Tafel6.Name = "Tafel6";
-            this.Tafel6.Size = new System.Drawing.Size(133, 107);
+            this.Tafel6.Size = new System.Drawing.Size(50, 45);
             this.Tafel6.TabIndex = 8;
             this.Tafel6.Text = "6";
             this.Tafel6.UseVisualStyleBackColor = true;
@@ -145,10 +143,9 @@
             // 
             // Tafel5
             // 
-            this.Tafel5.Location = new System.Drawing.Point(461, 689);
-            this.Tafel5.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel5.Location = new System.Drawing.Point(173, 289);
             this.Tafel5.Name = "Tafel5";
-            this.Tafel5.Size = new System.Drawing.Size(133, 107);
+            this.Tafel5.Size = new System.Drawing.Size(50, 45);
             this.Tafel5.TabIndex = 9;
             this.Tafel5.Text = "5";
             this.Tafel5.UseVisualStyleBackColor = true;
@@ -156,10 +153,9 @@
             // 
             // Tafel4
             // 
-            this.Tafel4.Location = new System.Drawing.Point(781, 513);
-            this.Tafel4.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel4.Location = new System.Drawing.Point(293, 215);
             this.Tafel4.Name = "Tafel4";
-            this.Tafel4.Size = new System.Drawing.Size(133, 107);
+            this.Tafel4.Size = new System.Drawing.Size(50, 45);
             this.Tafel4.TabIndex = 10;
             this.Tafel4.Text = "4";
             this.Tafel4.UseVisualStyleBackColor = true;
@@ -167,10 +163,9 @@
             // 
             // Tafel3
             // 
-            this.Tafel3.Location = new System.Drawing.Point(461, 513);
-            this.Tafel3.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel3.Location = new System.Drawing.Point(173, 215);
             this.Tafel3.Name = "Tafel3";
-            this.Tafel3.Size = new System.Drawing.Size(133, 107);
+            this.Tafel3.Size = new System.Drawing.Size(50, 45);
             this.Tafel3.TabIndex = 11;
             this.Tafel3.Text = "3";
             this.Tafel3.UseVisualStyleBackColor = true;
@@ -178,20 +173,53 @@
             // 
             // Tafel2
             // 
-            this.Tafel2.Location = new System.Drawing.Point(781, 331);
-            this.Tafel2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Tafel2.Location = new System.Drawing.Point(293, 139);
             this.Tafel2.Name = "Tafel2";
-            this.Tafel2.Size = new System.Drawing.Size(133, 107);
+            this.Tafel2.Size = new System.Drawing.Size(50, 45);
             this.Tafel2.TabIndex = 12;
             this.Tafel2.Text = "2";
             this.Tafel2.UseVisualStyleBackColor = true;
             this.Tafel2.Click += new System.EventHandler(this.TafelButton_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bezetZettenToolStripMenuItem,
+            this.bestellenToolStripMenuItem,
+            this.vrijZettenToolStripMenuItem,
+            this.afrekenenToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(140, 92);
+            // 
+            // bezetZettenToolStripMenuItem
+            // 
+            this.bezetZettenToolStripMenuItem.Name = "bezetZettenToolStripMenuItem";
+            this.bezetZettenToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.bezetZettenToolStripMenuItem.Text = "Bezet Zetten";
+            // 
+            // bestellenToolStripMenuItem
+            // 
+            this.bestellenToolStripMenuItem.Name = "bestellenToolStripMenuItem";
+            this.bestellenToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.bestellenToolStripMenuItem.Text = "Bestellen";
+            // 
+            // vrijZettenToolStripMenuItem
+            // 
+            this.vrijZettenToolStripMenuItem.Name = "vrijZettenToolStripMenuItem";
+            this.vrijZettenToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.vrijZettenToolStripMenuItem.Text = "Vrij Zetten";
+            // 
+            // afrekenenToolStripMenuItem
+            // 
+            this.afrekenenToolStripMenuItem.Name = "afrekenenToolStripMenuItem";
+            this.afrekenenToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.afrekenenToolStripMenuItem.Text = "Afrekenen";
+            // 
             // TafelOverzicht
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1397, 1235);
+            this.ClientSize = new System.Drawing.Size(514, 314);
             this.Controls.Add(this.Tafel2);
             this.Controls.Add(this.Tafel3);
             this.Controls.Add(this.Tafel4);
@@ -205,9 +233,9 @@
             this.Controls.Add(this.LogUitBttn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "TafelOverzicht";
             this.Text = "TafelOverzicht";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +256,10 @@
         private System.Windows.Forms.Button Tafel4;
         private System.Windows.Forms.Button Tafel3;
         private System.Windows.Forms.Button Tafel2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem bezetZettenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bestellenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vrijZettenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem afrekenenToolStripMenuItem;
     }
 }
