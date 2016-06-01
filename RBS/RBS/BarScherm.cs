@@ -25,6 +25,7 @@ namespace RBS
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+            listView1.View = View.Details;
 
             List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
