@@ -93,7 +93,7 @@ namespace RBS
         }
 
 
-        public List<string> GetAllTafel()
+        public List<int> GetAllTafel()
         {
             dbConnection.Open();
 
@@ -106,15 +106,15 @@ namespace RBS
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            List<string> tafelid = new List<string>();
+            List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
-            List<string> aantal = new List<string>();
+            List<int> aantal = new List<int>();
 
             while (reader.Read())
             {
-                string tafelID = (string)reader["tafelId"];
+                int tafelID = (int)reader["tafelId"];
                 string Productennaam = (string)reader["naam"];
-                string Aantal = (string)reader["aantal"];
+                int Aantal = (int)reader["aantal"];
 
                 tafelid.Add(tafelID);
                 productennaam.Add(Productennaam);
@@ -138,15 +138,15 @@ namespace RBS
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            List<string> tafelid = new List<string>();
+            List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
-            List<string> aantal = new List<string>();
+            List<int> aantal = new List<int>();
 
             while (reader.Read())
             {
-                string tafelID = (string)reader["tafelId"];
+                int tafelID = (int)reader["tafelId"];
                 string Productennaam = (string)reader["naam"];
-                string Aantal = (string)reader["aantal"];
+                int Aantal = (int)reader["aantal"];
 
                 tafelid.Add(tafelID);
                 productennaam.Add(Productennaam);
@@ -157,7 +157,7 @@ namespace RBS
 
             return productennaam;
         }
-        public List<string> GetAllAantal()
+        public List<int> GetAllAantal()
         {
             dbConnection.Open();
 
@@ -170,15 +170,15 @@ namespace RBS
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            List<string> tafelid = new List<string>();
+            List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
-            List<string> aantal = new List<string>();
+            List<int> aantal = new List<int>();
 
             while (reader.Read())
             {
-                string tafelID = (string)reader["tafelId"];
+                int tafelID = (int)reader["tafelId"];
                 string Productennaam = (string)reader["naam"];
-                string Aantal = (string)reader["aantal"];
+                int Aantal = (int)reader["aantal"];
 
                 tafelid.Add(tafelID);
                 productennaam.Add(Productennaam);
