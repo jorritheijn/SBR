@@ -26,6 +26,8 @@ namespace RBS
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
 
+            List<int> tafelid = new List<int>();
+            tafelid = bestellingDAO.GetAllTafels();
 
             //fake db
             string tafel = "4";
@@ -33,7 +35,7 @@ namespace RBS
             string aantal = "8";
 
             //vul kolommen
-            ListViewItem lvi = new ListViewItem(tafel);
+            ListViewItem lvi = new ListViewItem(tafelid.ToString());
             lvi.SubItems.Add(bestelling);
             lvi.SubItems.Add(aantal);
             listView1.Items.Add(lvi);

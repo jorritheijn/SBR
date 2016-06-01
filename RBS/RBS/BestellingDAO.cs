@@ -92,19 +92,27 @@ namespace RBS
             return new BestelRegel(tafelId, product, aantal, totaalPrijs);
         }
 
-        /*public GetAllBarBestelling(int bestelId, int aantal, int tafelId, int productId)
+        public List<int> GetAllTafels()
         {
             dbConnection.Open();
 
             string sql = string.Format(
-                "SELECT * FROM bestellingen " +
-                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
+                    "SELECT tafelId FROM bestellingen");
            
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            dbConnection.Close();*/
+            List<int> tafelid = new List<int>();
+
+            while (reader.Read())
+            {
+                int tafelID = (int)reader["tafelId"];    
+                tafelid.Add(tafelID);
+            }
+
+            dbConnection.Close();
+
+            return tafelid;
 
         }
     }
