@@ -55,10 +55,10 @@ namespace RBS
             
             tbNaam.Text = "";
             tbPin.Text = "";
-            cbFunctie.Items.Add("˙͜ >˙");
-            cbFunctie.Items.Add("( ͡° ͜ʖ ͡°)");
-            cbFunctie.Items.Add("(˵ ͡° ͜ʖ ͡°˵)");
-            cbFunctie.Items.Add("¯\\_(ツ)_/¯");
+            cbFunctie.Items.Add("Manager");
+            cbFunctie.Items.Add("Keuken");
+            cbFunctie.Items.Add("Bar");
+            cbFunctie.Items.Add("Bediening");
 
             btnOk.Text = "Toevoegen";
             btnCancel.Text = "Annuleren";
@@ -167,11 +167,6 @@ namespace RBS
                 CreateList();
             }
         }
-
-        //private void ToggleButton(Button b)
-        //{
-        //    b.Enabled = !b.Enabled;
-        //}
 
         private void lstAccounts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
