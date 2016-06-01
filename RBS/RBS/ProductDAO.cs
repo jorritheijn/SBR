@@ -41,7 +41,7 @@ namespace RBS
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM product WHERE subCategorieID=1", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieID=1", dbConnection);
 
             SqlDataReader reader = command.ExecuteReader();
 
@@ -62,10 +62,11 @@ namespace RBS
         {
             int id = (int)reader["id"];
             string naam = (string)reader["naam"];
-            double prijs = (double)reader["prijs"];
+            decimal prijs = (decimal)reader["prijs"];
             int aantalVoorraad = (int)reader["aantalVoorraad"];
+            int subCategorieId = (int)reader["subCategorieId"];
 
-            return new Product(id, naam, prijs, aantalVoorraad);
+            return new Product(id, naam, prijs, aantalVoorraad, subCategorieId);
         }
     }
 }

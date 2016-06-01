@@ -12,9 +12,29 @@ namespace RBS
 {
     public partial class BestelScherm : Form
     {
+        private ProductDAO productDAO;
+
         public BestelScherm(ProductDAO productDAO)
         {
+            this.productDAO = productDAO;
             InitializeComponent();
+            SetButtons();
+        }
+
+        private void SetButtons()
+        {
+            List<Product> lunch = productDAO.GetLunch();
+            for(int i = 0; i < lunch.Count; i++)
+            {
+                Button btnItem = this.Controls.Find("btnItem" + i, true).FirstOrDefault() as Button;
+                Button btnDecrement = this.Controls.Find("btnDecrement" + i, true).FirstOrDefault() as Button;
+                Button btnRemove = this.Controls.Find("btnRemove" + i, true).FirstOrDefault() as Button;
+
+                btnItem.Text = lunch[i].Naam.Trim();
+                btnItem.Enabled = true;
+                btnDecrement.Enabled = true;
+                btnRemove.Enabled = true;
+            }
         }
     }
 }
