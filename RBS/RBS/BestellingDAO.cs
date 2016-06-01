@@ -98,9 +98,10 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen" +
-                        "INNER JOIN bestelRegels on bestellingen.id = productId" +
-                        "INNER JOIN producten on productId = producten.id ORDER BY tafelId");
+                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen " +
+                        "INNER JOIN bestelRegels on bestellingen.id = productId " +
+                        "INNER JOIN producten on productId = producten.id " +
+                        "ORDER BY tafelId");
 
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
@@ -129,8 +130,8 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen" +
-                        "INNER JOIN bestelRegels on bestellingen.id = productId" +
+                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen " +
+                        "INNER JOIN bestelRegels on bestellingen.id = productId " +
                         "INNER JOIN producten on productId = producten.id " +
                         "ORDER BY tafelId");
 
@@ -161,8 +162,8 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen" +
-                        "INNER JOIN bestelRegels on bestellingen.id = productId" +
+                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen " +
+                        "INNER JOIN bestelRegels on bestellingen.id = productId " +
                         "INNER JOIN producten on productId = producten.id " +
                         "ORDER BY tafelId");
 
