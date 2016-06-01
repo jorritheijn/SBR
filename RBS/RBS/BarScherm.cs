@@ -49,6 +49,8 @@ namespace RBS
                 aaantal.SubItems.Add(Aantal.ToString());
             }
 
+            listView1.Items.AddRange(new ListViewItem[] { tafel, product, aaantal });
+
         }
     }
 
