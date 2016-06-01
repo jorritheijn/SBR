@@ -57,6 +57,39 @@ namespace RBS
 
             return lunch;
         }
+        
+        public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)
+        {
+            dbConnection.Open();
+            string sql = "INSERT INTO Producten (id, naam, prijs, aantal) " + "VALUES (@id, @naam, @prijs, @aantal)";
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.Parameters.AddWithValue("@id", ProductId);
+            command.Parameters.AddWithValue("@naam", productNaam);
+            command.Parameters.AddWithValue("@prijs", productPrijs);
+            command.Parameters.AddWithValue("@aantal", aantalVoorraad);
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
+        public void WijzigProduct(int productId, string productNaam, double productPrijs, int aantalVoorraad)
+        {
+            dbConnection.Open();
+            string sql = String.Format(
+                "UPDATE Producten " + "SET naam = @naam, prijs = @prijs, aantal= @aantal" + "WHERE Id={0}", productId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.Parameters.AddWithValue("@naam", productNaam);
+            command.Parameters.AddWithValue("@prijs", productPrijs);
+            command.Parameters.AddWithValue("@aantal", aantalVoorraad);
+            command.ExecuteNonQuery();
+        }
+        public void VerwijderProduct(int productId, string productNaam, double ProductPrijs, int aantalVoorraad)
+        {
+            dbConnection.Open();
+            string sql = String.Format("DELETE FROM Producten WHERE ID={0}", productId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.ExecuteNonQuery();
+        }
+
 
         private Product ReadProduct(SqlDataReader reader)
         {
