@@ -71,6 +71,7 @@ namespace RBS
 
             dbConnection.Close();
         }
+
         public void WijzigProduct(int productId, string productNaam, double productPrijs, int aantalVoorraad)
         {
             dbConnection.Open();
@@ -81,13 +82,16 @@ namespace RBS
             command.Parameters.AddWithValue("@prijs", productPrijs);
             command.Parameters.AddWithValue("@aantal", aantalVoorraad);
             command.ExecuteNonQuery();
+            dbConnection.Close();
         }
+
         public void VerwijderProduct(int productId, string productNaam, double ProductPrijs, int aantalVoorraad)
         {
             dbConnection.Open();
             string sql = String.Format("DELETE FROM Producten WHERE ID={0}", productId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             command.ExecuteNonQuery();
+            dbConnection.Close();
         }
 
 

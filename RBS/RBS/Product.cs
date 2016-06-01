@@ -8,7 +8,6 @@ namespace RBS
 {
     public class Product
     {
-        //test
         private int id;
         private string naam;
         private decimal prijs;
