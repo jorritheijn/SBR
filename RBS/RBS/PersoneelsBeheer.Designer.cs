@@ -53,6 +53,7 @@
             this.lstAccounts.Tag = "";
             this.lstAccounts.UseCompatibleStateImageBehavior = false;
             this.lstAccounts.View = System.Windows.Forms.View.Details;
+            this.lstAccounts.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lstAccounts_ItemSelectionChanged);
             // 
             // lstColID
             // 
@@ -84,6 +85,7 @@
             // 
             // btnDelEmployee
             // 
+            this.btnDelEmployee.Enabled = false;
             this.btnDelEmployee.Location = new System.Drawing.Point(179, 216);
             this.btnDelEmployee.Name = "btnDelEmployee";
             this.btnDelEmployee.Size = new System.Drawing.Size(142, 48);
