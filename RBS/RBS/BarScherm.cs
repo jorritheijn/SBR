@@ -33,20 +33,20 @@ namespace RBS
             productennaam = bestellingDAO.GetAllProducten();
             aantal = bestellingDAO.GetAllAantal();
 
-            ListViewItem lvi = new ListViewItem();
-
+            ListViewItem tafel = new ListViewItem("Tafels");
             foreach (int tafelID in tafelid)
             {
-                lvi.SubItems.Add(tafelID.ToString());
-                listView1.Items.Add(lvi);
+                tafel.SubItems.Add(tafelID.ToString());
             }
+            ListViewItem product = new ListViewItem("Product");
             foreach (string Productennaam in productennaam)
             {
-                lvi.SubItems.Add(productennaam.ToString());
+                product.SubItems.Add(productennaam.ToString());        
             }
+            ListViewItem aaantal = new ListViewItem("Aantal");
             foreach (int Aantal in aantal)
             {
-                lvi.SubItems.Add(Aantal.ToString());
+                aaantal.SubItems.Add(Aantal.ToString());
             }
 
         }
