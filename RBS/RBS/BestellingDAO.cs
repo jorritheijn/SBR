@@ -129,19 +129,13 @@ namespace RBS
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
-            List<int> aantal = new List<int>();
 
             while (reader.Read())
             {
-                int tafelID = (int)reader["tafelId"];
                 string Productennaam = (string)reader["naam"];
-                int Aantal = (int)reader["aantal"];
 
-                tafelid.Add(tafelID);
                 productennaam.Add(Productennaam);
-                aantal.Add(Aantal);
             }
 
             dbConnection.Close();
@@ -161,18 +155,12 @@ namespace RBS
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            List<int> tafelid = new List<int>();
-            List<string> productennaam = new List<string>();
             List<int> aantal = new List<int>();
 
             while (reader.Read())
             {
-                int tafelID = (int)reader["tafelId"];
-                string Productennaam = (string)reader["naam"];
                 int Aantal = (int)reader["aantal"];
 
-                tafelid.Add(tafelID);
-                productennaam.Add(Productennaam);
                 aantal.Add(Aantal);
             }
 
