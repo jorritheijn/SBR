@@ -91,5 +91,21 @@ namespace RBS
 
             return new BestelRegel(tafelId, product, aantal, totaalPrijs);
         }
+
+        /*public GetAllBarBestelling(int bestelId, int aantal, int tafelId, int productId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format(
+                "SELECT * FROM bestellingen " +
+                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
+           
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            dbConnection.Close();*/
+
+        }
     }
 }
