@@ -22,12 +22,46 @@ namespace RBS
 
         private void BarScherm_load()
         {
-            /*string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
             listView1.View = View.Details;
 
-            List<int> tafelid = new List<int>();
+            string status = "In_progress";
+            string afdeling = "bar";
+            List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
+
+            int top = 126;
+            int left = 500;
+            foreach (var Bestelregel in bestelregel)
+	        {
+                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
+                lvi.SubItems.Add(Bestelregel.ProductId.ToString());
+                lvi.SubItems.Add(Bestelregel.Comment.ToString());
+                lvi.SubItems.Add(Bestelregel.Aantal.ToString());
+                listView1.Items.AddRange(new ListViewItem[] { lvi });
+
+                //create buttons
+                Button button = new Button();
+                button.Left = left;
+                button.Top = top;
+                button.Size = new Size(76, 16);
+                button.BackColor = Color.Green;
+                button.Text = "Klaar";
+                //button.Tag = bestelRegel;
+                button.Font = new Font("Arial", 6);
+                button.Click += button_Click;
+                this.Controls.Add(button);
+                top += button.Height + 2;		        
+	        }
+        }
+            void button_Click(object sender, EventArgs e)
+            {
+                Button btn = (Button)sender;
+                //Bestelregel regel = (BstelRegel)btn.Tag;*/
+            }
+
+            /*List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
             List<string> comments = new List<string>();
             List<int> aantal = new List<int>();
@@ -74,4 +108,3 @@ namespace RBS
             //Bestelregel regel = (BstelRegel)btn.Tag;*/
         }
     }
-}
