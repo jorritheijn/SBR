@@ -18,20 +18,21 @@ namespace RBS
             this.dbConnection = dbConnection;
         }
 
-        public List<BestelRegel> GetAllByStatus(string status, string afdeling)
+        public List<BestelRegel> GetAllByStatus(int status, string afdeling)
         {
             dbConnection.Open();
 
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
-                    "WHERE status='{0}' ",status);
+                    "INNER JOIN categorieen ON bestellingen.id = categorieen.id " +
+                    "WHERE productStatus = {0} ", status);
             if (afdeling == "keuken"){
-                sql = sql + " AND categorie!=3";
+                sql = sql + " AND categorieen.id!=3";
             }
             else
             {
-                sql = sql + " AND categorie=3";
+                sql = sql + " AND categorieen.id=3";
             }
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
@@ -56,7 +57,7 @@ namespace RBS
             int bestelId = (int)reader["bestelId"];
             int tafelId = (int)reader["tafelId"];
             string comment = (string)reader["comment"];
-            string status = (string)reader["status"];
+            int status = (int)reader["status"];
 
             return new BestelRegel(productId, aantal, bestelId, tafelId, comment, status);
         }

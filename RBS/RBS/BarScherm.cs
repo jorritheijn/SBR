@@ -27,7 +27,7 @@ namespace RBS
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
             listView1.View = View.Details;
 
-            string status = "Besteld";
+            int status = 1;
             string afdeling = "bar";
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
