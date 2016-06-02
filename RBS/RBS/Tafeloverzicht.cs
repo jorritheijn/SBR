@@ -14,6 +14,9 @@ namespace RBS
         public TafelOverzicht()
         {
             InitializeComponent();
+
+            //checkt welke context menu geklikt is
+            contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(contextMenuStrip1_ItemClicked);
         }
 
         /// <summary>
@@ -78,12 +81,10 @@ namespace RBS
             // 1 door de Name.Replace (haalt tafel weg uit de naam) en maakt hiervan het tafelID
             tafelId = int.Parse(tafelButton.Name.Replace("Tafel", ""));
 
-            //Keuze menu voor betreffende tafel
-            Point ptLowerLeft = new Point(0, tafelButton.Height);
-            ptLowerLeft = tafelButton.PointToScreen(ptLowerLeft);
-            contextMenuStrip1.Show(ptLowerLeft);
-            contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(contextMenuStrip1_ItemClicked);
-
+            //Keuze menu locatie onder tafel knop
+            Point point = new Point(0, tafelButton.Height);
+            point = tafelButton.PointToScreen(point);
+            contextMenuStrip1.Show(point);
 
             // TODO: Ga naar bestel scherm en geef tafelID mee
             Console.WriteLine("Geklikt op tafel " + tafelId);
@@ -91,20 +92,15 @@ namespace RBS
             // Voorbeeld om een tafel op te halen
             //var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
         }
-        
 
+        //click handler voor menu strip
         private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ToolStripItem Afrekenen = e.ClickedItem;
             System.Diagnostics.Debug.WriteLine("balls");
             Afrekenen afrekenen = new Afrekenen(tafelId);
             afrekenen.Show();
-
         }
-
-        //afrekenenToolStripMenuItem
-
-        //private void TafelButton_Click(object sender, EventArgs e)
 
         private void LogUitBttn_Click(object sender, EventArgs e)
         {
