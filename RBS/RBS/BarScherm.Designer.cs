@@ -34,6 +34,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -62,11 +63,12 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.columnHeader4});
             this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(33, 100);
+            this.listView1.Location = new System.Drawing.Point(33, 93);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(461, 391);
+            this.listView1.Size = new System.Drawing.Size(547, 391);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -79,12 +81,16 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Bestelling";
-            this.columnHeader2.Width = 351;
+            this.columnHeader2.Width = 304;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Aantal";
-            this.columnHeader3.Width = 54;
+            this.columnHeader3.Text = "Comment";
+            this.columnHeader3.Width = 123;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Aantal";
             // 
             // BarScherm
             // 
@@ -110,6 +116,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
 
