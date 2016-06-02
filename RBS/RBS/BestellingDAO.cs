@@ -112,7 +112,7 @@ namespace RBS
         }
 
 
-        public List<int> GetAllTafel()
+        /*public List<Tafel> GetAllTafel()
         {
             dbConnection.Open();
 
@@ -182,10 +182,6 @@ namespace RBS
                 try { comments = (string)reader["comment"]; }
                 catch { comments = ""; }
 
-                if (comments)
-                {
-                    
-                }
                 comment.Add(comments);
             }
 
@@ -218,7 +214,6 @@ namespace RBS
             dbConnection.Close();
 
             return aantal;
-        }
-
+        }*/
     }
 }

@@ -57,6 +57,7 @@
     <Compile Include="BarScherm.Designer.cs">
       <DependentUpon>BarScherm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BestelLine.cs" />
     <Compile Include="Bestelling.cs" />
     <Compile Include="BestellingDAO.cs" />
     <Compile Include="BestelScherm.cs">
