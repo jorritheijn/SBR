@@ -18,7 +18,7 @@ namespace RBS
             this.dbConnection = dbConnection;
         }
         
-        public List<Bestelling> GetAll(string status)
+        /*public List<Bestelling> GetAll(string status)
         {
             dbConnection.Open();
 
@@ -112,7 +112,7 @@ namespace RBS
         }
 
 
-        /*public List<Tafel> GetAllTafel()
+        public List<Tafel> GetAllTafel()
         {
             dbConnection.Open();
 
