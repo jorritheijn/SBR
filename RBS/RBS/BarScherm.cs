@@ -59,6 +59,7 @@ namespace RBS
                 this.Controls.Add(button);
                 top += button.Height + 2;
             }   
+
         }
     }
 
