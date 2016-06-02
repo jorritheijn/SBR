@@ -180,6 +180,10 @@ namespace RBS
             {
                 string comments = (string)reader["comment"];
 
+                if (comments)
+                {
+                    
+                }
                 comment.Add(comments);
             }
 
