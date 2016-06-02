@@ -18,15 +18,9 @@ namespace RBS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
-            SqlConnection dbConnection = new SqlConnection(connString);
-
-            PersoneelDAO personeelDAO = new PersoneelDAO(dbConnection);
-            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
-            ProductDAO productDAO = new ProductDAO(dbConnection);
-
-            Application.Run( new TafelOverzicht());
+            
+            // Start de applicatie op het login scherm
+            Application.Run(new InlogScherm());
         }
     }
 }
