@@ -30,11 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.LogOut = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -58,15 +57,6 @@
             this.LogOut.Text = "Log uit";
             this.LogOut.UseVisualStyleBackColor = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(216, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -76,25 +66,25 @@
             this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(33, 100);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(566, 391);
+            this.listView1.Size = new System.Drawing.Size(461, 391);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Aantal";
-            this.columnHeader3.Width = 54;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Bestelling";
-            this.columnHeader2.Width = 455;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Tafel";
             this.columnHeader1.Width = 50;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Bestelling";
+            this.columnHeader2.Width = 351;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Aantal";
+            this.columnHeader3.Width = 54;
             // 
             // BarScherm
             // 
@@ -102,7 +92,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 582);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.LogOut);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -117,7 +106,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button LogOut;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
