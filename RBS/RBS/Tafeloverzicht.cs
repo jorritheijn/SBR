@@ -17,6 +17,7 @@ namespace RBS
         {
             InitializeComponent();
             UpdateOverzicht();
+            contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(contextMenuStrip1_ItemClicked);
         }
 
         /// <summary>
@@ -84,7 +85,6 @@ namespace RBS
             Point ptLowerLeft = new Point(0, tafelButton.Height);
             ptLowerLeft = tafelButton.PointToScreen(ptLowerLeft);
             contextMenuStrip1.Show(ptLowerLeft);
-            contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(contextMenuStrip1_ItemClicked);
             
             // Voorbeeld om een tafel op te halen
             //var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
