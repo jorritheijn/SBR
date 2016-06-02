@@ -41,7 +41,8 @@ namespace RBS
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieID=1", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
+                "WHERE subCategorieID=1 OR subCategorieID=2 OR subCategorieID=3", dbConnection);
 
             SqlDataReader reader = command.ExecuteReader();
 
@@ -57,7 +58,31 @@ namespace RBS
 
             return lunch;
         }
-        
+
+        public List<Product> GetDiner()
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
+                "INNER JOIN subCategorieen ON producten.subCategorieId=subCategorieen.id " +
+                "INNER JOIN categorieen ON subCategorieen.categorieId=categorieen.id " +
+                "WHERE categorieen.id=2", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> lunch = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                lunch.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return lunch;
+        }
+
         public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)
         {
             dbConnection.Open();

@@ -24,7 +24,8 @@ namespace RBS
             this.productDAO = DataHelper.ProductDao;
             this.TafelId = tafelId;
 
-            SetButtons();
+            //SetButtons();
+            DrawButtons();
         }
 
         private void SetButtons()
@@ -40,6 +41,29 @@ namespace RBS
                 btnItem.Enabled = true;
                 btnDecrement.Enabled = true;
                 btnRemove.Enabled = true;
+            }
+        }
+
+        private void DrawButtons()
+        {
+            List<Product> lunch = productDAO.GetLunch();
+            for (int i = 0; i < lunch.Count; i++)
+            {
+                int width = 350, height = 30;
+                Button btn = new Button();
+                btn.SetBounds(7, 7 + ((height + 3) * i), width, height);
+                btn.Text = lunch[i].Naam.Trim();
+                tabPageLunch.Controls.Add(btn);
+            }
+
+            List<Product> diner = productDAO.GetDiner();
+            for (int i = 0; i < diner.Count; i++)
+            {
+                int width = 350, height = 30;
+                Button btn = new Button();
+                btn.SetBounds(7, 7 + ((height + 3) * i), width, height);
+                btn.Text = diner[i].Naam.Trim();
+                tabPageDiner.Controls.Add(btn);
             }
         }
     }

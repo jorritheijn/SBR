@@ -17,8 +17,51 @@ namespace RBS
         {
             this.dbConnection = dbConnection;
         }
+
+        public List<BestelRegel> GetAllByStatus(string status, string afdeling)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format(
+                "SELECT * FROM bestellingen " +
+                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
+                    "WHERE status='{0}' ",status);
+            if (afdeling == "keuken"){
+                sql = sql + " AND categorie!=3";
+            }
+            else
+            {
+                sql = sql + " AND categorie=3";
+            }
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<BestelRegel> alleBestellingen = new List<BestelRegel>();
+
+            while (reader.Read())
+            {
+                BestelRegel bestelling = ReadBestelRegel(reader);
+                alleBestellingen.Add(bestelling);
+            }
+
+            dbConnection.Close();
+
+            return alleBestellingen;
+        }
+
+        private BestelRegel ReadBestelRegel(SqlDataReader reader)
+        {
+            int productId = (int)reader["productId"];
+            int aantal = (int)reader["aantal"];
+            int bestelId = (int)reader["bestelId"];
+            int tafelId = (int)reader["tafelId"];
+            string comment = (string)reader["comment"];
+            string status = (string)reader["status"];
+
+            return new BestelRegel(productId, aantal, bestelId, tafelId, comment, status);
+        }
         
-        public List<Bestelling> GetAll(string status)
+        /*public List<Bestelling> GetAll(string status)
         {
             dbConnection.Open();
 
@@ -112,13 +155,13 @@ namespace RBS
         }
 
 
-        public List<int> GetAllTafel()
+        public List<Tafel> GetAllTafel()
         {
             dbConnection.Open();
 
             string sql = string.Format(
-                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen " +
-                        "INNER JOIN bestelRegels on bestellingen.id = productId " +
+                    "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
+                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
                         "INNER JOIN producten on productId = producten.id " +
                         "ORDER BY tafelId");
 
@@ -140,8 +183,8 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen " +
-                        "INNER JOIN bestelRegels on bestellingen.id = productId " +
+                     "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
+                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
                         "INNER JOIN producten on productId = producten.id " +
                         "ORDER BY tafelId");
 
@@ -161,13 +204,41 @@ namespace RBS
 
             return productennaam;
         }
+        public List<string> GetAllComment()
+        {
+            dbConnection.Open();
+
+            string sql = string.Format(
+                     "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
+                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
+                        "INNER JOIN producten on productId = producten.id " +
+                        "ORDER BY tafelId");
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<string> comment = new List<string>();
+
+            while (reader.Read())
+            {
+                string comments;
+                try { comments = (string)reader["comment"]; }
+                catch { comments = ""; }
+
+                comment.Add(comments);
+            }
+
+            dbConnection.Close();
+
+            return comment;
+        }
         public List<int> GetAllAantal()
         {
             dbConnection.Open();
 
             string sql = string.Format(
-                    "SELECT tafelId, producten.naam, bestelRegels.aantal FROM bestellingen " +
-                        "INNER JOIN bestelRegels on bestellingen.id = productId " +
+                     "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
+                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
                         "INNER JOIN producten on productId = producten.id " +
                         "ORDER BY tafelId");
 
@@ -186,6 +257,6 @@ namespace RBS
             dbConnection.Close();
 
             return aantal;
-        }
+        }*/
     }
 }

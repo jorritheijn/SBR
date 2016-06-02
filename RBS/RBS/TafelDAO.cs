@@ -44,6 +44,11 @@ namespace RBS
             return tafels;
         }
 
+        /// <summary>
+        /// Lees de data en creer een nieuwe tafel.
+        /// </summary>
+        /// <param name="ID">Id van de tafel</param>
+        /// <returns>De gevonden tafel</returns>
         public Tafel GetTafel(int ID)
         {
             //opent connectie
@@ -68,6 +73,11 @@ namespace RBS
             return tafel;
         }
 
+        /// <summary>
+        /// hier wordt de data uit de database gehaald en de tafels worden geupdate.
+        /// </summary>
+        /// <param name="ID">id van de tafel</param>
+        /// <param name="status">status tafel</param>
         public void UpdateTafel(int ID, TafelStatus status)
         {
             //opent connectie
