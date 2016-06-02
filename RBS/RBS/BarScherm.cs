@@ -19,7 +19,7 @@ namespace RBS
             InitializeComponent();
             BarScherm_load();
         }
-
+        //test
         private void BarScherm_load()
         {
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
