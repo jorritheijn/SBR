@@ -17,7 +17,7 @@ namespace RBS
         public Afrekenen(int tafelId)
         {
             InitializeComponent();
-            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            /*string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
 
@@ -42,7 +42,7 @@ namespace RBS
             label5.Location = new Point(203, y);
             listBox1.Height = listBox1.PreferredHeight;
             listBox2.Height = listBox2.PreferredHeight;
-            listBox3.Height = listBox3.PreferredHeight;
+            listBox3.Height = listBox3.PreferredHeight;*/
 
         }
 

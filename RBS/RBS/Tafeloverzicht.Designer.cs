@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.LogUitBttn = new System.Windows.Forms.Button();
+            this.LogUitBtn = new System.Windows.Forms.Button();
             this.Tafel1 = new System.Windows.Forms.Button();
             this.Tafel10 = new System.Windows.Forms.Button();
             this.Tafel9 = new System.Windows.Forms.Button();
@@ -53,39 +53,42 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(35, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 32);
+            this.label1.Size = new System.Drawing.Size(151, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "MayaMaya";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(512, 100);
             this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(345, 55);
+            this.label2.Size = new System.Drawing.Size(337, 65);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tafel Overzicht";
             // 
-            // LogUitBttn
+            // LogUitBtn
             // 
-            this.LogUitBttn.BackColor = System.Drawing.Color.Red;
-            this.LogUitBttn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LogUitBttn.Location = new System.Drawing.Point(1165, 29);
-            this.LogUitBttn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.LogUitBttn.Name = "LogUitBttn";
-            this.LogUitBttn.Size = new System.Drawing.Size(200, 55);
-            this.LogUitBttn.TabIndex = 2;
-            this.LogUitBttn.Text = "Log Uit";
-            this.LogUitBttn.UseVisualStyleBackColor = false;
-            this.LogUitBttn.Click += new System.EventHandler(this.LogUitBttn_Click);
+            this.LogUitBtn.BackColor = System.Drawing.Color.Red;
+            this.LogUitBtn.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogUitBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LogUitBtn.Location = new System.Drawing.Point(1165, 29);
+            this.LogUitBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.LogUitBtn.Name = "LogUitBtn";
+            this.LogUitBtn.Size = new System.Drawing.Size(200, 55);
+            this.LogUitBtn.TabIndex = 2;
+            this.LogUitBtn.Text = "Log Uit";
+            this.LogUitBtn.UseVisualStyleBackColor = false;
+            this.LogUitBtn.Click += new System.EventHandler(this.LogUitBtn_Click);
             // 
             // Tafel1
             // 
+            this.Tafel1.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel1.Location = new System.Drawing.Point(461, 331);
             this.Tafel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel1.Name = "Tafel1";
@@ -97,6 +100,7 @@
             // 
             // Tafel10
             // 
+            this.Tafel10.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel10.Location = new System.Drawing.Point(781, 1025);
             this.Tafel10.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel10.Name = "Tafel10";
@@ -108,6 +112,7 @@
             // 
             // Tafel9
             // 
+            this.Tafel9.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel9.Location = new System.Drawing.Point(461, 1025);
             this.Tafel9.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel9.Name = "Tafel9";
@@ -119,6 +124,7 @@
             // 
             // Tafel8
             // 
+            this.Tafel8.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel8.Location = new System.Drawing.Point(781, 851);
             this.Tafel8.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel8.Name = "Tafel8";
@@ -130,6 +136,7 @@
             // 
             // Tafel7
             // 
+            this.Tafel7.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel7.Location = new System.Drawing.Point(461, 851);
             this.Tafel7.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel7.Name = "Tafel7";
@@ -141,6 +148,7 @@
             // 
             // Tafel6
             // 
+            this.Tafel6.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel6.Location = new System.Drawing.Point(781, 689);
             this.Tafel6.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel6.Name = "Tafel6";
@@ -152,6 +160,7 @@
             // 
             // Tafel5
             // 
+            this.Tafel5.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel5.Location = new System.Drawing.Point(461, 689);
             this.Tafel5.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel5.Name = "Tafel5";
@@ -163,6 +172,7 @@
             // 
             // Tafel4
             // 
+            this.Tafel4.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel4.Location = new System.Drawing.Point(781, 513);
             this.Tafel4.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel4.Name = "Tafel4";
@@ -174,6 +184,7 @@
             // 
             // Tafel3
             // 
+            this.Tafel3.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel3.Location = new System.Drawing.Point(461, 513);
             this.Tafel3.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel3.Name = "Tafel3";
@@ -185,6 +196,7 @@
             // 
             // Tafel2
             // 
+            this.Tafel2.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tafel2.Location = new System.Drawing.Point(781, 331);
             this.Tafel2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Tafel2.Name = "Tafel2";
@@ -203,7 +215,7 @@
             this.bestellingPlaatsenToolStripMenuItem,
             this.afrekenenToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(381, 243);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(381, 188);
             // 
             // tblOptionBezet
             // 
@@ -234,7 +246,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1371, 749);
+            this.ClientSize = new System.Drawing.Size(1371, 1186);
             this.Controls.Add(this.Tafel2);
             this.Controls.Add(this.Tafel3);
             this.Controls.Add(this.Tafel4);
@@ -245,7 +257,7 @@
             this.Controls.Add(this.Tafel9);
             this.Controls.Add(this.Tafel10);
             this.Controls.Add(this.Tafel1);
-            this.Controls.Add(this.LogUitBttn);
+            this.Controls.Add(this.LogUitBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -261,7 +273,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button LogUitBttn;
+        private System.Windows.Forms.Button LogUitBtn;
         private System.Windows.Forms.Button Tafel1;
         private System.Windows.Forms.Button Tafel10;
         private System.Windows.Forms.Button Tafel9;

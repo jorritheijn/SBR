@@ -116,7 +116,7 @@ namespace RBS
             }
         }
 
-        private void LogUitBttn_Click(object sender, EventArgs e)
+        private void LogUitBtn_Click(object sender, EventArgs e)
         {
             InlogScherm Inloggen = new InlogScherm();
 
