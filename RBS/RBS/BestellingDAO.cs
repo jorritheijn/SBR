@@ -18,6 +18,32 @@ namespace RBS
             this.dbConnection = dbConnection;
         }
 
+        public List<BestelRegel> GetRekening(int bestelId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format(
+                "SELECT * FROM bestellingen " +
+                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
+
+            System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<BestelRegel> rekeningRegels = new List<BestelRegel>();
+
+            while (reader.Read())
+            {
+                //System.Diagnostics.Debug.WriteLine((int)reader["tafelId"]);
+                BestelRegel bestelRegel = ReadBestelRegel(reader);
+                rekeningRegels.Add(bestelRegel);
+            }
+            dbConnection.Close();
+
+            return rekeningRegels;
+        }
+
         public List<BestelRegel> GetAllByStatus(int status, string afdeling)
         {
             dbConnection.Open();
@@ -25,6 +51,7 @@ namespace RBS
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON bestelRegels.productId = producten.id " +
                     "INNER JOIN categorieen ON bestellingen.id = categorieen.id " +
                     "WHERE productStatus = {0} ", status);
             if (afdeling == "keuken"){
@@ -50,6 +77,8 @@ namespace RBS
             return alleBestellingen;
         }
 
+        
+
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
             int productId = (int)reader["productId"];
@@ -57,7 +86,7 @@ namespace RBS
             int bestelId = (int)reader["bestelId"];
             int tafelId = (int)reader["tafelId"];
             string comment = (string)reader["comment"];
-            int status = (int)reader["status"];
+            int status = (int)reader["productStatus"];
 
             return new BestelRegel(productId, aantal, bestelId, tafelId, comment, status);
         }
