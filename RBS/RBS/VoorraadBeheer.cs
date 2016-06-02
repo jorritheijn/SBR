@@ -46,10 +46,6 @@ namespace RBS
             Check.Show();
             Hide();
         }
-        }
-
-       
-
-       
-    }
+    }    
+}
 
