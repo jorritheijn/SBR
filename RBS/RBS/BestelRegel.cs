@@ -10,12 +10,15 @@ namespace RBS
 {
     public class BestelRegel
     {
-        int tafelId;
-        string product;
+        int productId;
         int aantal;
-        decimal totaalPrijs;
+        int bestelId;
+        int tafelId;
+        string comment;
+        string status;
 
-        public BestelRegel(int tafelId, string product, int aantal, decimal totaalPrijs)
+
+        /*public BestelRegel(int tafelId, string product, int aantal, decimal totaalPrijs)
         {
             this.tafelId = tafelId;
             this.product = product;
@@ -45,6 +48,6 @@ namespace RBS
         {
             get { return totaalPrijs; }
             set { totaalPrijs = value; }
-        }
+        }*/
     }
 }
