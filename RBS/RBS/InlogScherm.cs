@@ -107,16 +107,38 @@ namespace RBS
             }
 
             // Werknemer zoeken op basis van de pincode
-            var werknemer = DataHelper.PersoneelDao.GetByPincode(Code);
-            if (werknemer != null)
+            if (UserHelper.Inloggen(Code))
             {
-                //Navigeer op basis van functie naar de juiste pagina.
+                var gebruiker = UserHelper.Gebruiker;
+                Form view = null;
 
+                switch (gebruiker.Functie)
+                {
+                    case "Manager":
+                        view = new PersoneelsBeheer();
+                        break;
+                    case "Keuken":
+                        view = new KeukenScherm();
+                        break;
+                    case "Bar":
+                        view = new BarScherm();
+                        break;
+                    case "Bediening":
+                        view = new TafelOverzicht();
+                        break;
+                    default:
+                        Console.WriteLine("Ongeldige functie");
+                        break;
+                }
+
+                if (view != null)
+                {
+                    view.Show();
+                    Hide();
+                }
             }
-            else
-            {
-                UpdateCode("");
-            }
+
+            UpdateCode("");
         }
     }
 }

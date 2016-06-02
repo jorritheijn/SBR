@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RBS.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,12 @@ namespace RBS
     {
         private PersoneelDAO dao;
 
-        public PersoneelsBeheer(PersoneelDAO dao)
+        public PersoneelsBeheer()
         {
-            this.dao = dao;
             InitializeComponent();
+
+            this.dao = DataHelper.PersoneelDao;
+
             CreateList();
         }
 
