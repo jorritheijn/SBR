@@ -13,9 +13,9 @@ namespace RBS
         int bestelId;
         int tafelId;
         string comment;
-        string status;
+        int status;
 
-        public BestelRegel(int tafelId, int productId, int aantal,  int bestelId, string comment, string status)
+        public BestelRegel(int tafelId, int productId, int aantal,  int bestelId, string comment, int status)
         {
             this.tafelId = tafelId;
             this.productId = productId;
@@ -55,7 +55,7 @@ namespace RBS
             set { comment = value; }
         }
 
-        public string Status
+        public int Status
         {
             get { return status; }
             set { status = value; }
