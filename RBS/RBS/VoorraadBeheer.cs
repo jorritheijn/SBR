@@ -1,5 +1,4 @@
-﻿using RBS.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,19 +39,13 @@ namespace RBS
 
         }
 
-        private void LogUitBtn_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            InlogScherm Inloggen = new InlogScherm();
-
-            UserHelper.Uitloggen();
-
-            Inloggen.Show();
+            
+            InlogScherm Check = new InlogScherm();
+            Check.Show();
             Hide();
         }
-    }
-
-       
-
-       
-    }
+    }    
+}
 

@@ -17,6 +17,7 @@ namespace RBS
         {
             InitializeComponent();
             UpdateOverzicht();
+            contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(contextMenuStrip1_ItemClicked);
         }
 
         /// <summary>
@@ -66,7 +67,8 @@ namespace RBS
         }
 
         /// <summary>
-        /// Wanneer er op een tafel geklikt wordt opent het context menu.
+        /// Wanneer er op een tafel geklikt wordt verwijst deze naar het
+        /// bestelformulier.
         /// </summary>
         /// <param name="sender">De geklikte button</param>
         /// <param name="e">Klik argumenten</param>
@@ -82,16 +84,13 @@ namespace RBS
             //Keuze menu voor betreffende tafel
             Point ptLowerLeft = new Point(0, tafelButton.Height);
             ptLowerLeft = tafelButton.PointToScreen(ptLowerLeft);
-
             contextMenuStrip1.Show(ptLowerLeft);
-            contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(contextMenuStrip1_ItemClicked);
+            
+            // Voorbeeld om een tafel op te halen
+            //var t = DataHelper.TafelDao.GetTafel(Convert.ToInt32(tafelID));
         }
+        
 
-        /// <summary>
-        /// Hierin staan de opties van de menustrip en de navigatie naar de gewenste optie.
-        /// </summary>
-        /// <param name="sender">De geklikte menu optie</param>
-        /// <param name="e">klik argumenten</param>
         private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ToolStripItem item = e.ClickedItem;
@@ -117,12 +116,7 @@ namespace RBS
             }
         }
 
-        /// <summary>
-        /// Als er op de uitlogbutton wordt geklikt, logt de gebruiker uit mbv de userhelper.
-        /// </summary>
-        /// <param name="sender">de geklikte button</param>
-        /// <param name="e">klik argumenten/param>
-        private void LogUitBtn_Click(object sender, EventArgs e)
+        private void LogUitBttn_Click(object sender, EventArgs e)
         {
             InlogScherm Inloggen = new InlogScherm();
 

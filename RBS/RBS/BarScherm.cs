@@ -29,29 +29,36 @@ namespace RBS
 
             List<int> tafelid = new List<int>();
             List<string> productennaam = new List<string>();
+            List<string> comments = new List<string>();
             List<int> aantal = new List<int>();
             tafelid = bestellingDAO.GetAllTafel();
             productennaam = bestellingDAO.GetAllProducten();
+            comments = bestellingDAO.GetAllComment();
             aantal = bestellingDAO.GetAllAantal();
 
-            ListViewItem tafel = new ListViewItem("Tafels");
-            foreach (int tafelID in tafelid)
-            {
-                tafel.SubItems.Add(tafelID.ToString());
-            }
-            ListViewItem product = new ListViewItem("Product");
-            foreach (string Productennaam in productennaam)
-            {
-                product.SubItems.Add(Productennaam);        
-            }
-            ListViewItem aaantal = new ListViewItem("Aantal");
-            foreach (int Aantal in aantal)
-            {
-                aaantal.SubItems.Add(Aantal.ToString());
-            }
+            int top = 126;
+            int left = 500;
 
-            listView1.Items.AddRange(new ListViewItem[] { tafel, product, aaantal });
-
+            //vull listview en create button 
+            for (int i = 0; i < tafelid.Count; i++)
+            {
+                //vul listviewitem
+                ListViewItem lvi = new ListViewItem(tafelid[i].ToString());
+                lvi.SubItems.Add(productennaam[i]);
+                lvi.SubItems.Add(comments[i]);
+                lvi.SubItems.Add(aantal[i].ToString());
+                listView1.Items.AddRange(new ListViewItem[] { lvi });
+                //create buttons
+                Button button = new Button();
+                button.Left = left;
+                button.Top = top;
+                button.Size = new Size(76, 16);
+                button.BackColor = Color.Green;
+                button.Text = "Klaar";
+                button.Font = new Font("Arial", 6);
+                this.Controls.Add(button);
+                top += button.Height + 2;
+            }   
         }
     }
 
