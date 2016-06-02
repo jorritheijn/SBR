@@ -178,9 +178,9 @@ namespace RBS
 
             while (reader.Read())
             {
-                string Aantal = (string)reader["comment"];
+                string comments = (string)reader["comment"];
 
-                comment.Add(Aantal);
+                comment.Add(comments);
             }
 
             dbConnection.Close();
