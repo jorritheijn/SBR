@@ -141,19 +141,6 @@ namespace RBS
             return new Bestelling(id, personeelId, tafelId, betaalMethode, opnameTijd, status);
         }
 
-        private BestelRegel ReadBestelRegel(SqlDataReader reader)
-        {
-            
-            int tafelId = (int)reader["tafelId"];
-            string product = (string)reader["naam"];
-            int aantal = (int)reader["aantal"];
-            decimal prijs = (decimal)reader["prijs"];
-            //double prijs = (double)reader["prijs"];
-            decimal totaalPrijs = prijs * (decimal)aantal;
-
-            return new BestelRegel(tafelId, product, aantal, totaalPrijs);
-        }
-
 
         public List<Tafel> GetAllTafel()
         {

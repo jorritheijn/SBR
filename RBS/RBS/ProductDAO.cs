@@ -16,7 +16,8 @@ namespace RBS
             this.dbConnection = dbConnection;
         }
 
-        public List<Product> GetAll()
+        // niet nodig???? altijd per categorie verdeelt volgens mij, ivbm met bar/keuken
+        /*public List<Product> GetAll()
         {
             dbConnection.Open();
 
@@ -35,8 +36,32 @@ namespace RBS
             dbConnection.Close();
 
             return alleProduct;
-        }
+        }*/
 
+        public List<Product> GetAllByCategorie(int categorie)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT * FROM producten " +
+                "INNER JOIN subCategorieen ON oducten.prsubCategorieId = subCategorieen.id " +
+                "WHERE categorieId={0}", categorie);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> producten = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product product = ReadProduct(reader);
+                producten.Add(product);
+            }
+
+            dbConnection.Close();
+
+            return producten;
+        }
+        //getLunch en getDiner is één methode met een categorie parameter
         public List<Product> GetLunch()
         {
             dbConnection.Open();
@@ -123,7 +148,7 @@ namespace RBS
         private Product ReadProduct(SqlDataReader reader)
         {
             int id = (int)reader["id"];
-            string naam = (string)reader["naam"];
+            string naam = (string)reader["productNaam"];
             decimal prijs = (decimal)reader["prijs"];
             int aantalVoorraad = (int)reader["aantalVoorraad"];
             int subCategorieId = (int)reader["subCategorieId"];
