@@ -34,24 +34,25 @@ namespace RBS
             productennaam = bestellingDAO.GetAllProducten();
             aantal = bestellingDAO.GetAllAantal();
 
-            ListViewItem tafel = new ListViewItem("Tafels");
-            foreach (int tafelID in tafelid)
-            {
-                tafel.SubItems.Add(tafelID.ToString());
-            }
-            ListViewItem product = new ListViewItem("Product");
-            foreach (string Productennaam in productennaam)
-            {
-                product.SubItems.Add(Productennaam);        
-            }
-            ListViewItem aaantal = new ListViewItem("Aantal");
-            foreach (int Aantal in aantal)
-            {
-                aaantal.SubItems.Add(Aantal.ToString());
-            }
+            int top = 126;
+            int left = 500;
 
-            listView1.Items.AddRange(new ListViewItem[] { tafel, product, aaantal });
-
+            for (int i = 0; i < tafelid.Count; i++)
+            {
+                ListViewItem lvi = new ListViewItem(tafelid[i].ToString());
+                lvi.SubItems.Add(productennaam[i]);
+                lvi.SubItems.Add(aantal[i].ToString());
+                listView1.Items.AddRange(new ListViewItem[] { lvi });
+                Button button = new Button();
+                button.Left = left;
+                button.Top = top;
+                button.Size = new Size(76, 16);
+                button.BackColor = Color.Green;
+                button.Text = "Klaar";
+                button.Font = new Font("Arial", 6);
+                this.Controls.Add(button);
+                top += button.Height + 2;
+            }   
         }
     }
 
