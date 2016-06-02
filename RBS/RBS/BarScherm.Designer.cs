@@ -68,7 +68,7 @@
             this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(33, 93);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(547, 391);
+            this.listView1.Size = new System.Drawing.Size(462, 391);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -81,7 +81,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Bestelling";
-            this.columnHeader2.Width = 304;
+            this.columnHeader2.Width = 236;
             // 
             // columnHeader3
             // 

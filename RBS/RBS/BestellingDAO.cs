@@ -178,7 +178,9 @@ namespace RBS
 
             while (reader.Read())
             {
-                string comments = (string)reader["comment"];
+                string comments;
+                try { comments = (string)reader["comment"]; }
+                catch { comments = ""; }
 
                 if (comments)
                 {
