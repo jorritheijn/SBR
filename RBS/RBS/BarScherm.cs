@@ -46,9 +46,8 @@ namespace RBS
                 button.Left = left;
                 button.Top = top;
                 button.Size = new Size(76, 16);
-                button.BackColor = Color.Green;
                 button.Text = "Klaar";
-                //button.Tag = bestelRegel;
+                button.Tag = Bestelregel;
                 button.Font = new Font("Arial", 6);
                 button.Click += button_Click;
                 this.Controls.Add(button);
@@ -58,7 +57,8 @@ namespace RBS
             void button_Click(object sender, EventArgs e)
             {
                 Button btn = (Button)sender;
-                //Bestelregel regel = (BstelRegel)btn.Tag;*/
+                BestelRegel regel = (BestelRegel)btn.Tag;
+                MessageBox.Show("test" + regel.ProductId);
             }
 
             /*List<int> tafelid = new List<int>();
