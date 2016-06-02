@@ -50,7 +50,8 @@ namespace RBS
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
                     "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
-           
+
+            System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -65,6 +66,24 @@ namespace RBS
             dbConnection.Close();
 
             return rekeningRegels;
+        }
+        public int GetBestelIdFromTafel(int tafelId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+            int bestelId = 0;
+            while (reader.Read())
+            {
+                bestelId = (int)reader["id"];
+            }
+
+            dbConnection.Close();
+
+            return bestelId;
         }
 
         private Bestelling ReadBestelling(SqlDataReader reader)

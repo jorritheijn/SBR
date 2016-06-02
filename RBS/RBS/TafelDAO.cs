@@ -1,4 +1,5 @@
-﻿using RBS.Helpers;
+﻿using RBS.Enums;
+using RBS.Helpers;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -65,6 +66,21 @@ namespace RBS
             dbConnection.Close();
 
             return tafel;
+        }
+
+        public void UpdateTafel(int ID, TafelStatus status)
+        {
+            //opent connectie
+            dbConnection.Open();
+
+            // Lees de data uit de database
+            SqlCommand command = new SqlCommand("UPDATE tafels SET status=@status WHERE id=@id", dbConnection);
+            command.Parameters.AddWithValue("@id", ID);
+            command.Parameters.AddWithValue("@status", status);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            dbConnection.Close();
         }
     }
 }
