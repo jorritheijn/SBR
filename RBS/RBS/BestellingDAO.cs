@@ -44,7 +44,7 @@ namespace RBS
             return rekeningRegels;
         }
 
-        public List<BestelRegel> GetAllByStatus(int status, string afdeling)
+        public List<BestelRegel> GetAllByStatus(int status, int afdeling)
         {
             dbConnection.Open();
 
@@ -53,7 +53,7 @@ namespace RBS
                     "INNER JOIN bestellingen ON bestellingen.id = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.id = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
-            if (afdeling == "keuken"){
+            if (afdeling != 3){
                 sql = sql + " AND subCategorieId!=3";
             }
             else

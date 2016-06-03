@@ -28,7 +28,7 @@ namespace RBS
             listView1.View = View.Details;
 
             int status = 1;
-            string afdeling = "bar";
+            int afdeling = 1;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 126;
