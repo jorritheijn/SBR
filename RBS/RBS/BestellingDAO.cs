@@ -100,13 +100,14 @@ namespace RBS
             string sql = string.Format(
             "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
             SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.ExecuteNonQuery();
             dbConnection.Close();
         }
 
         public int GetBestelIdFromTafel(int tafelId)
         {
             dbConnection.Open();
-
+            
             string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
 
             SqlCommand command = new SqlCommand(sql, dbConnection);
