@@ -93,7 +93,7 @@ namespace RBS
             return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status, BestelRegelId);
         }
 
-        public void MarkeerBestelRegel(string bestelregelid)
+        public void MarkeerBestelRegel(int bestelregelid)
         {
             dbConnection.Open();
             string sql = string.Format(
