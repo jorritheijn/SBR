@@ -95,10 +95,11 @@ namespace RBS
 
         public void MarkeerBestelRegel(int bestelregelid)
         {
+            
             dbConnection.Open();
             string sql = string.Format(
             "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
-
+            SqlCommand command = new SqlCommand(sql, dbConnection);
             dbConnection.Close();
         }
 

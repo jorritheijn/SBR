@@ -65,6 +65,7 @@ namespace RBS
                 bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID);
                 
                 MessageBox.Show("test" + regel.ProductId);
+                BarScherm_load();
             }
 
             /*List<int> tafelid = new List<int>();
