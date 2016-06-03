@@ -37,7 +37,22 @@ namespace RBS
 
             return alleProduct;
         }*/
+        public Product GetProductById(int productId)
+        {
+            dbConnection.Open();
 
+            string sql = string.Format("SELECT * FROM producten " +
+                "WHERE productId={0}", productId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            Product product = ReadProduct(reader);
+
+            dbConnection.Close();
+
+            return product;
+        }
         public List<Product> GetAllByCategorie(int categorie)
         {
             dbConnection.Open();

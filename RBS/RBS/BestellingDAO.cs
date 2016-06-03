@@ -53,7 +53,7 @@ namespace RBS
                     "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
                     "INNER JOIN producten ON bestelRegels.productId = producten.id " +
                     "INNER JOIN categorieen ON bestellingen.id = categorieen.id " +
-                    "WHERE productStatus = {0} ", status);
+                    "WHERE productStatus= {0} ", status);
             if (afdeling == "keuken"){
                 sql = sql + " AND categorieen.id!=3";
             }
@@ -77,7 +77,25 @@ namespace RBS
             return alleBestellingen;
         }
 
-        
+        public int GetBestelIdFromTafel(int tafelId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+            int bestelId = 0;
+            while (reader.Read())
+            {
+                bestelId = (int)reader["id"];
+            }
+
+            dbConnection.Close();
+
+            return bestelId;
+        }
+
 
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
@@ -139,24 +157,6 @@ namespace RBS
             dbConnection.Close();
 
             return rekeningRegels;
-        }
-        public int GetBestelIdFromTafel(int tafelId)
-        {
-            dbConnection.Open();
-
-            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
-
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-            int bestelId = 0;
-            while (reader.Read())
-            {
-                bestelId = (int)reader["id"];
-            }
-
-            dbConnection.Close();
-
-            return bestelId;
         }
 
         private Bestelling ReadBestelling(SqlDataReader reader)
