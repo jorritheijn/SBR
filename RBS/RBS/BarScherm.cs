@@ -56,9 +56,15 @@ namespace RBS
         }
             void button_Click(object sender, EventArgs e)
             {
+                string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+                SqlConnection dbConnection = new SqlConnection(connString);
+                BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
 
+                bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID.ToString());
+                
                 MessageBox.Show("test" + regel.ProductId);
             }
 

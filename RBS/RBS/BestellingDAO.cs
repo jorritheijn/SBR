@@ -88,13 +88,18 @@ namespace RBS
                 comment= (string)reader["comment"];
             }
             int status = (int)reader["productStatus"];
+            int BestelRegelId = (int)reader["bestelRegels.id"];
 
-            return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status);
+            return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status, BestelRegelId);
         }
 
-        public BestelRegel MarkeerBestelRegel(string ProductNaam)
+        public void MarkeerBestelRegel(string bestelregelid)
         {
-            //UPDATE bestelRegels SET productStatus = 2 WHERE productId = 1 AND bestelId = 2
+            dbConnection.Open();
+            string sql = string.Format(
+            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = 4 ");
+
+            dbConnection.Close();
         }
         
         /*public List<Bestelling> GetAll(string status)
