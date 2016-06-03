@@ -101,7 +101,26 @@ namespace RBS
 
             dbConnection.Close();
         }
-        
+
+        public int GetBestelIdFromTafel(int tafelId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+            int bestelId = 0;
+            while (reader.Read())
+            {
+                bestelId = (int)reader["id"];
+            }
+
+            dbConnection.Close();
+
+            return bestelId;
+        }
+
         /*public List<Bestelling> GetAll(string status)
         {
             dbConnection.Open();
