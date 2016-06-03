@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RBS.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,26 +15,39 @@ namespace RBS
 {
     public partial class Afrekenen : Form
     {
+        private BestellingDAO bestellingDao;
+        private ProductDAO productDao;
+
         public Afrekenen(int tafelId)
         {
             InitializeComponent();
+
+            this.bestellingDao = DataHelper.BestellingDao;
+            this.productDao = DataHelper.ProductDao;
+ 
+
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+            ProductDAO productdao = new ProductDAO(dbConnection);
 
             int bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
             List<BestelRegel> rekeningRegels = bestellingDAO.GetRekening(bestelId);
             decimal totaalPrijs = 0;
             int regels = 0;
+
             foreach (var rekeningRegel in rekeningRegels)
             {
                 //form items toevoegen
+
+                /*product = productdao.GetProductById(rekeningRegel.ProductId);
                 label1.Text = "Tafel " + rekeningRegel.TafelId.ToString();
+
                 listBox1.Items.Add(rekeningRegel.Product);
                 listBox2.Items.Add(rekeningRegel.Aantal.ToString());
                 listBox3.Items.Add(rekeningRegel.TotaalPrijs.ToString());
                 totaalPrijs += rekeningRegel.TotaalPrijs;
-                regels++;
+                regels++;*/
             }
 
             //Form aanpassen op hoogte van de lijst

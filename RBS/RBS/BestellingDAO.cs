@@ -17,8 +17,112 @@ namespace RBS
         {
             this.dbConnection = dbConnection;
         }
-        
-        public List<Bestelling> GetAll(string status)
+
+        public List<BestelRegel> GetRekening(int bestelId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format(
+                "SELECT * FROM bestellingen " +
+                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
+
+            System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<BestelRegel> rekeningRegels = new List<BestelRegel>();
+
+            while (reader.Read())
+            {
+                //System.Diagnostics.Debug.WriteLine((int)reader["tafelId"]);
+                BestelRegel bestelRegel = ReadBestelRegel(reader);
+                rekeningRegels.Add(bestelRegel);
+            }
+            dbConnection.Close();
+
+            return rekeningRegels;
+        }
+
+        public List<BestelRegel> GetAllByStatus(int status, int afdeling)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format(
+                "SELECT producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
+                    "INNER JOIN bestellingen ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON producten.id = bestelRegels.productId " +
+                    "WHERE bestelRegels.productStatus = {0} ", status);
+            if (afdeling != 3){
+                sql = sql + " AND subCategorieId!=3";
+            }
+            else
+            {
+                sql = sql + " AND subCategorieId=3";
+            }
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<BestelRegel> alleBestellingen = new List<BestelRegel>();
+
+            while (reader.Read())
+            {
+                BestelRegel bestelling = ReadBestelRegel(reader);
+                alleBestellingen.Add(bestelling);
+            }
+
+            dbConnection.Close();
+
+            return alleBestellingen;
+        }
+
+        private BestelRegel ReadBestelRegel(SqlDataReader reader)
+        {
+            string productNaam = (string)reader["productNaam"];
+            int aantal = (int)reader["aantal"];
+            int bestelId = (int)reader["bestelId"];
+            int tafelId = (int)reader["tafelId"];
+            string comment = "";
+            if (reader["comment"] != DBNull.Value)
+            {
+                comment= (string)reader["comment"];
+            }
+            int status = (int)reader["productStatus"];
+            int BestelRegelId = (int)reader["bestelregels_id"];
+
+            return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status, BestelRegelId);
+        }
+
+        public void MarkeerBestelRegel(int bestelregelid)
+        {
+            
+            dbConnection.Open();
+            string sql = string.Format(
+            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            dbConnection.Close();
+        }
+
+        public int GetBestelIdFromTafel(int tafelId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+            int bestelId = 0;
+            while (reader.Read())
+            {
+                bestelId = (int)reader["id"];
+            }
+
+            dbConnection.Close();
+
+            return bestelId;
+        }
+
+        /*public List<Bestelling> GetAll(string status)
         {
             dbConnection.Open();
 
@@ -98,21 +202,8 @@ namespace RBS
             return new Bestelling(id, personeelId, tafelId, betaalMethode, opnameTijd, status);
         }
 
-        private BestelRegel ReadBestelRegel(SqlDataReader reader)
-        {
-            
-            int tafelId = (int)reader["tafelId"];
-            string product = (string)reader["naam"];
-            int aantal = (int)reader["aantal"];
-            decimal prijs = (decimal)reader["prijs"];
-            //double prijs = (double)reader["prijs"];
-            decimal totaalPrijs = prijs * (decimal)aantal;
 
-            return new BestelRegel(tafelId, product, aantal, totaalPrijs);
-        }
-
-
-        public List<int> GetAllTafel()
+        public List<Tafel> GetAllTafel()
         {
             dbConnection.Open();
 
@@ -182,10 +273,6 @@ namespace RBS
                 try { comments = (string)reader["comment"]; }
                 catch { comments = ""; }
 
-                if (comments)
-                {
-                    
-                }
                 comment.Add(comments);
             }
 
@@ -218,7 +305,6 @@ namespace RBS
             dbConnection.Close();
 
             return aantal;
-        }
-
+        }*/
     }
 }

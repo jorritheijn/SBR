@@ -16,7 +16,8 @@ namespace RBS
             this.dbConnection = dbConnection;
         }
 
-        public List<Product> GetAll()
+        // niet nodig???? altijd per categorie verdeelt volgens mij, ivbm met bar/keuken
+        /*public List<Product> GetAll()
         {
             dbConnection.Open();
 
@@ -35,13 +36,53 @@ namespace RBS
             dbConnection.Close();
 
             return alleProduct;
-        }
+        }*/
+        public Product GetProductById(int productId)
+        {
+            dbConnection.Open();
 
+            string sql = string.Format("SELECT * FROM producten " +
+                "WHERE productId={0}", productId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            Product product = ReadProduct(reader);
+
+            dbConnection.Close();
+
+            return product;
+        }
+        public List<Product> GetAllByCategorie(int categorie)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT * FROM producten " +
+                "INNER JOIN subCategorieen ON oducten.prsubCategorieId = subCategorieen.id " +
+                "WHERE categorieId={0}", categorie);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> producten = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product product = ReadProduct(reader);
+                producten.Add(product);
+            }
+
+            dbConnection.Close();
+
+            return producten;
+        }
+        //getLunch en getDiner is één methode met een categorie parameter
         public List<Product> GetLunch()
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieID=1", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
+                "WHERE subCategorieID=1 OR subCategorieID=2 OR subCategorieID=3", dbConnection);
 
             SqlDataReader reader = command.ExecuteReader();
 
@@ -57,7 +98,92 @@ namespace RBS
 
             return lunch;
         }
-        
+
+        public List<Product> GetDiner()
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
+                "INNER JOIN subCategorieen ON producten.subCategorieId=subCategorieen.id " +
+                "INNER JOIN categorieen ON subCategorieen.categorieId=categorieen.id " +
+                "WHERE categorieen.id=2", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> diner = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                diner.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return diner;
+        }
+
+        public List<Product> GetFrisdrank()
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=8", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> fris = new List<Product>();
+
+            while(reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                fris.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return fris;
+        }
+
+        public List<Product> GetAlcoholhoudend()
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
+                "WHERE subCategorieId=9 OR subCategorieId=10 OR subCategorieId=11", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> alcohol = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                alcohol.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return alcohol;
+        }
+
+        public List<Product> GetWarmeDranken()
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=12", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> dranken = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                dranken.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return dranken;
+        }
+
         public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)
         {
             dbConnection.Open();
@@ -98,7 +224,7 @@ namespace RBS
         private Product ReadProduct(SqlDataReader reader)
         {
             int id = (int)reader["id"];
-            string naam = (string)reader["naam"];
+            string naam = (string)reader["productNaam"];
             decimal prijs = (decimal)reader["prijs"];
             int aantalVoorraad = (int)reader["aantalVoorraad"];
             int subCategorieId = (int)reader["subCategorieId"];

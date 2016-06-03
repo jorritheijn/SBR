@@ -3,24 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Configuration;
 
 namespace RBS
 {
     public class BestelRegel
     {
-        int tafelId;
-        string product;
+        string productNaam;
         int aantal;
-        decimal totaalPrijs;
+        int bestelId;
+        int tafelId;
+        string comment;
+        int status;
+        int BestelRegelId;
 
-        public BestelRegel(int tafelId, string product, int aantal, decimal totaalPrijs)
+        public BestelRegel(int tafelId, string productNaam, int aantal,  int bestelId, string comment, int status, int BestelRegelId)
         {
             this.tafelId = tafelId;
-            this.product = product;
+            this.productNaam = productNaam;
             this.aantal = aantal;
-            this.totaalPrijs = totaalPrijs;
+            this.bestelId = bestelId;
+            this.comment = comment;
+            this.status = status;
+            this.BestelRegelId = BestelRegelId;
         }
 
         public int TafelId
@@ -29,10 +33,10 @@ namespace RBS
             set { tafelId = value; }
         }
 
-        public string Product
+        public string ProductId
         {
-            get { return product; }
-            set { product = value; }
+            get { return productNaam; }
+            set { productNaam = value; }
         }
 
         public int Aantal
@@ -41,10 +45,27 @@ namespace RBS
             set { aantal = value; }
         }
 
-        public decimal TotaalPrijs
+        public int BestelId
         {
-            get { return totaalPrijs; }
-            set { totaalPrijs = value; }
+            get { return bestelId; }
+            set { bestelId = value; }
+        }
+
+        public string Comment
+        {
+            get { return comment; }
+            set { comment = value; }
+        }
+
+        public int Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+        public int BestelRegelID
+        {
+            get { return BestelRegelId; }
+            set {BestelRegelId = value; }
         }
     }
 }

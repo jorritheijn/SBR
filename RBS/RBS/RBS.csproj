@@ -57,6 +57,7 @@
     <Compile Include="BarScherm.Designer.cs">
       <DependentUpon>BarScherm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BestelRegel.cs" />
     <Compile Include="Bestelling.cs" />
     <Compile Include="BestellingDAO.cs" />
     <Compile Include="BestelScherm.cs">
@@ -94,7 +95,6 @@
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BestelRegel.cs" />
     <Compile Include="Tafel.cs" />
     <Compile Include="TafelDAO.cs" />
     <Compile Include="TafelOverzicht.cs">
