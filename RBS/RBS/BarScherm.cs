@@ -28,10 +28,10 @@ namespace RBS
             listView1.View = View.Details;
 
             int status = 1;
-            string afdeling = "bar";
+            int afdeling = 1;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
-            int top = 126;
+            int top = 119;
             int left = 500;
             foreach (var Bestelregel in bestelregel)
 	        {
@@ -45,7 +45,7 @@ namespace RBS
                 Button button = new Button();
                 button.Left = left;
                 button.Top = top;
-                button.Size = new Size(76, 16);
+                button.Size = new Size(76, 15);
                 button.Text = "Klaar";
                 button.Tag = Bestelregel;
                 button.Font = new Font("Arial", 6);
@@ -56,8 +56,14 @@ namespace RBS
         }
             void button_Click(object sender, EventArgs e)
             {
+                string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+                SqlConnection dbConnection = new SqlConnection(connString);
+                BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
+                bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID.ToString());
+                
                 MessageBox.Show("test" + regel.ProductId);
             }
 
