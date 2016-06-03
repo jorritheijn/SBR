@@ -49,17 +49,16 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                "SELECT * FROM bestellingen " +
-                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.id " +
-                    "INNER JOIN categorieen ON bestellingen.id = categorieen.id " +
-                    "WHERE productStatus = {0} ", status);
+                "SELECT * FROM bestelRegels " +
+                    "INNER JOIN bestellingen ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON producten.id = bestelRegels.productId " +
+                    "WHERE bestelRegels.productStatus = {0} ", status);
             if (afdeling == "keuken"){
-                sql = sql + " AND categorieen.id!=3";
+                sql = sql + " AND subCategorieId!=3";
             }
             else
             {
-                sql = sql + " AND categorieen.id=3";
+                sql = sql + " AND subCategorieId=3";
             }
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
