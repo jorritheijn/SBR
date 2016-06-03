@@ -64,7 +64,7 @@ namespace RBS
                 BestelRegel regel = (BestelRegel)btn.Tag;
                 bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID);
                 listView1.Items.Clear();
-               
+                btn.Dispose();
                 BarScherm_load(); 
             }
 
