@@ -76,8 +76,6 @@ namespace RBS
             return alleBestellingen;
         }
 
-        
-
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
             string productNaam = (string)reader["productNaam"];
@@ -92,6 +90,11 @@ namespace RBS
             int status = (int)reader["productStatus"];
 
             return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status);
+        }
+
+        public BestelRegel MarkeerBestelRegel(string ProductNaam)
+        {
+            //UPDATE bestelRegels SET productStatus = 2 WHERE productId = 1 AND bestelId = 2
         }
         
         /*public List<Bestelling> GetAll(string status)

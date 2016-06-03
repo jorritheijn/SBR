@@ -58,6 +58,7 @@ namespace RBS
             {
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
+
                 MessageBox.Show("test" + regel.ProductId);
             }
 
