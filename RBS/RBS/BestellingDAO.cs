@@ -49,7 +49,7 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                "SELECT * FROM bestelRegels " +
+                "SELECT producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
                     "INNER JOIN bestellingen ON bestellingen.id = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.id = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
@@ -88,7 +88,7 @@ namespace RBS
                 comment= (string)reader["comment"];
             }
             int status = (int)reader["productStatus"];
-            int BestelRegelId = (int)reader["id"];
+            int BestelRegelId = (int)reader["bestelregels_id"];
 
             return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status, BestelRegelId);
         }
