@@ -88,7 +88,7 @@ namespace RBS
                 comment= (string)reader["comment"];
             }
             int status = (int)reader["productStatus"];
-            int BestelRegelId = (int)reader["id"];
+            int BestelRegelId = (int)reader["bestelRegels.id"];
 
             return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status, BestelRegelId);
         }
