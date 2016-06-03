@@ -17,6 +17,8 @@ namespace RBS
 
         private int TafelId;
 
+        private List<BestelRegel> bestelRegels = new List<BestelRegel>();
+
         public BestelScherm(int tafelId)
         {
             InitializeComponent();
@@ -52,24 +54,57 @@ namespace RBS
                 int width = 350, height = 30;
 
                 Button btnItem = new Button();
-                btnItem.Click += BtnItem_Click;
-                btnItem.Tag = lunch[i];
-                if(i<10) { btnItem.Name = "row0" + i;}
-                else { btnItem.Name = "row" + i; }
-                btnItem.Enabled = lunch[i].AantalVoorraad > 0;
                 Label lblNum = new Label();
-                if(i<10) { lblNum.Name = "row0" + i; }
-                else { lblNum.Name = "row" + i; }
+                Button btnDecrement = new Button();
+                Button btnRemove = new Button();
+                
+                btnItem.Click += BtnItem_Click;
+                btnDecrement.Click += BtnDecrement_Click;
+                btnRemove.Click += BtnRemove_Click;
+
+                btnItem.Tag = lunch[i];
+                lblNum.Tag = 0;
+                btnDecrement.Tag = lunch[i];
+
+                if(!(lunch[i].AantalVoorraad > 0))
+                {
+                    btnItem.Enabled = false;
+                    btnDecrement.Enabled = false;
+                    btnRemove.Enabled = false;
+                }
+
+                if (i < 10)
+                {
+                    btnItem.Name = "row0" + i;
+                    lblNum.Name = "row0" + i;
+                    btnDecrement.Name = "row0" + i;
+                    btnRemove.Name = "row0" + i;
+                }
+                else
+                {
+                    btnItem.Name = "row" + i;
+                    lblNum.Name = "row" + i;
+                    btnDecrement.Name = "row" + i;
+                    btnRemove.Name = "row" + i;
+                }
+
+                
 
                 btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
                 lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
+                btnDecrement.SetBounds(390, 7 + ((height + 3) * i), 50, height);
+                btnRemove.SetBounds(450, 7 + ((height + 3) * i), 50, height);
 
                 btnItem.Text = lunch[i].Naam.Trim();
                 lblNum.Text = "0";
-                lblNum.Tag = 0;
+                btnDecrement.Text = "-";
+                btnRemove.Text = "x";
+                
 
                 tabPageLunch.Controls.Add(btnItem);
                 tabPageLunch.Controls.Add(lblNum);
+                tabPageLunch.Controls.Add(btnDecrement);
+                tabPageLunch.Controls.Add(btnRemove);
             }
 
             List<Product> diner = productDAO.GetDiner();
@@ -128,6 +163,25 @@ namespace RBS
             }
         }
 
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDecrement_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            Control[] controls = tabControl1.SelectedTab.Controls.Find(btn.Name, true);
+            Product p = (Product)controls[0].Tag;
+
+            p.AantalVoorraad += 1;
+            int n = (int)controls[1].Tag;
+            controls[1].Tag = --n;
+            controls[1].Text = n.ToString();
+
+            if(!btn.Enabled) { EnableButtons(controls); }
+        }
+
         /// <summary>
         /// Pakt alle Controls in de regel van de gedrukte btnItem, voegt item toe aan bestellingen.</summary>
         /// <remarks>
@@ -136,27 +190,23 @@ namespace RBS
         /// <param name="e"></param>
         private void BtnItem_Click(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
-
             Button btn = sender as Button;
-            //Control[] controls = tabControl1.SelectedTab.Controls.Find(btn.Name[btn.Name.Length - 1].ToString(), true);
             Control[] controls = tabControl1.SelectedTab.Controls.Find(btn.Name, true);
             Product p = (Product)btn.Tag;
-            //tabControl1.SelectedTab.Controls.Find(btn.Name[btn.Name.Length-1].ToString(), true)[1].Text = "2";
-            //controls[0].Text = btn.Name;
-            if(p.AantalVoorraad > 1)
+
+            if(p.AantalVoorraad > 0)
             {
-                int i = (int)controls[1].Tag;
-                controls[1].Tag = ++i;
-                controls[1].Text = i.ToString();
+                int n = (int)controls[1].Tag;
+                controls[1].Tag = ++n;
+                controls[1].Text = n.ToString();
+                p.AantalVoorraad -= 1;
+
+                if (p.AantalVoorraad == 0) { DisableButtons(controls); }
             }
-            
-            if (p.AantalVoorraad == 1)
-                DisableButtons(controls);
         }
 
         /// <summary>
-        /// Disabled alle Buttons in een gegeven rij.
+        /// Disable alle Buttons in een gegeven rij.
         /// </summary>
         /// <param name="controls"></param>
         private void DisableButtons(Control[] controls)
@@ -164,6 +214,18 @@ namespace RBS
             foreach(Control c in controls)
             {
                 c.Enabled = c.GetType() != typeof(Button);
+            }
+        }
+
+        /// <summary>
+        /// Enable alle Buttons in een gegeven rij.
+        /// </summary>
+        /// <param name="controls"></param>
+        private void EnableButtons(Control[] controls)
+        {
+            foreach (Control c in controls)
+            {
+                c.Enabled = c.GetType() == typeof(Button);
             }
         }
     }
