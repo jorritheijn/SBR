@@ -76,6 +76,8 @@ namespace RBS
             return alleBestellingen;
         }
 
+        
+
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
             string productNaam = (string)reader["productNaam"];
@@ -88,18 +90,8 @@ namespace RBS
                 comment= (string)reader["comment"];
             }
             int status = (int)reader["productStatus"];
-            int BestelRegelId = (int)reader["bestelRegels.id"];
 
             return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status, BestelRegelId);
-        }
-
-        public void MarkeerBestelRegel(string bestelregelid)
-        {
-            dbConnection.Open();
-            string sql = string.Format(
-            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = 4 ");
-
-            dbConnection.Close();
         }
         
         /*public List<Bestelling> GetAll(string status)
