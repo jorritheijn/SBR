@@ -8,17 +8,17 @@ namespace RBS
 {
     public class BestelRegel
     {
-        int productId;
+        string productNaam;
         int aantal;
         int bestelId;
         int tafelId;
         string comment;
         int status;
 
-        public BestelRegel(int tafelId, int productId, int aantal,  int bestelId, string comment, int status)
+        public BestelRegel(int tafelId, string productNaam, int aantal,  int bestelId, string comment, int status)
         {
             this.tafelId = tafelId;
-            this.productId = productId;
+            this.productNaam = productNaam;
             this.aantal = aantal;
             this.bestelId = bestelId;
             this.comment = comment;
@@ -31,10 +31,10 @@ namespace RBS
             set { tafelId = value; }
         }
 
-        public int ProductId
+        public string ProductId
         {
-            get { return productId; }
-            set { productId = value; }
+            get { return productNaam; }
+            set { productNaam = value; }
         }
 
         public int Aantal

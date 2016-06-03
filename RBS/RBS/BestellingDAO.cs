@@ -80,7 +80,7 @@ namespace RBS
 
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
-            int productId = (int)reader["productId"];
+            string productNaam = (string)reader["productNaam"];
             int aantal = (int)reader["aantal"];
             int bestelId = (int)reader["bestelId"];
             int tafelId = (int)reader["tafelId"];
@@ -91,7 +91,7 @@ namespace RBS
             }
             int status = (int)reader["productStatus"];
 
-            return new BestelRegel(productId, aantal, bestelId, tafelId, comment, status);
+            return new BestelRegel(productNaam, aantal, bestelId, tafelId, comment, status);
         }
         
         /*public List<Bestelling> GetAll(string status)
