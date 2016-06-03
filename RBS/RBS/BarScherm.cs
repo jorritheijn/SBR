@@ -31,7 +31,7 @@ namespace RBS
             int afdeling = 1;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
-            int top = 126;
+            int top = 119;
             int left = 500;
             foreach (var Bestelregel in bestelregel)
 	        {
@@ -45,7 +45,7 @@ namespace RBS
                 Button button = new Button();
                 button.Left = left;
                 button.Top = top;
-                button.Size = new Size(76, 16);
+                button.Size = new Size(76, 15);
                 button.Text = "Klaar";
                 button.Tag = Bestelregel;
                 button.Font = new Font("Arial", 6);
