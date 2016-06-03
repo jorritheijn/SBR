@@ -47,7 +47,7 @@ namespace RBS
                 button.Top = top;
                 button.Size = new Size(76, 15);
                 button.Text = "Klaar";
-                button.Tag = Bestelregel;
+                button.Tag = Bestelregel.BestelRegelID;
                 button.Font = new Font("Arial", 6);
                 button.Click += button_Click;
                 this.Controls.Add(button);
@@ -65,6 +65,7 @@ namespace RBS
                 bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID);
                 
                 MessageBox.Show("test" + regel.ProductId);
+                BarScherm_load();
             }
 
             /*List<int> tafelid = new List<int>();
