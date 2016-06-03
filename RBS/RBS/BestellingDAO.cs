@@ -84,7 +84,11 @@ namespace RBS
             int aantal = (int)reader["aantal"];
             int bestelId = (int)reader["bestelId"];
             int tafelId = (int)reader["tafelId"];
-            string comment = (string)reader["comment"];
+            string comment = "";
+            if (reader["comment"] != DBNull.Value)
+            {
+                comment= (string)reader["comment"];
+            }
             int status = (int)reader["productStatus"];
 
             return new BestelRegel(productId, aantal, bestelId, tafelId, comment, status);
