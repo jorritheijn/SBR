@@ -63,8 +63,8 @@ namespace RBS
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
                 bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID);
-                
-                MessageBox.Show("test" + regel.ProductId);
+                listView1.Items.Clear();
+               
                 BarScherm_load(); 
             }
 
