@@ -91,7 +91,7 @@ namespace RBS
             }
             int status = (int)reader["productStatus"];
 
-            return new BestelRegel(productNaam, aantal, bestelId, tafelId, comment, status);
+            return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status);
         }
         
         /*public List<Bestelling> GetAll(string status)
