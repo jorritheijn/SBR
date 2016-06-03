@@ -97,7 +97,7 @@ namespace RBS
         {
             dbConnection.Open();
             string sql = string.Format(
-            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = 4 ");
+            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
 
             dbConnection.Close();
         }

@@ -62,7 +62,6 @@ namespace RBS
 
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
-
                 bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID.ToString());
                 
                 MessageBox.Show("test" + regel.ProductId);
