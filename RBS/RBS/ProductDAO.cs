@@ -95,17 +95,78 @@ namespace RBS
 
             SqlDataReader reader = command.ExecuteReader();
 
-            List<Product> lunch = new List<Product>();
+            List<Product> diner = new List<Product>();
 
             while (reader.Read())
             {
                 Product p = ReadProduct(reader);
-                lunch.Add(p);
+                diner.Add(p);
             }
 
             dbConnection.Close();
 
-            return lunch;
+            return diner;
+        }
+
+        public List<Product> GetFrisdrank()
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=8", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> fris = new List<Product>();
+
+            while(reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                fris.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return fris;
+        }
+
+        public List<Product> GetAlcoholhoudend()
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
+                "WHERE subCategorieId=9 OR subCategorieId=10 OR subCategorieId=11", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> alcohol = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                alcohol.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return alcohol;
+        }
+
+        public List<Product> GetWarmeDranken()
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=12", dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> dranken = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product p = ReadProduct(reader);
+                dranken.Add(p);
+            }
+
+            dbConnection.Close();
+
+            return dranken;
         }
 
         public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)

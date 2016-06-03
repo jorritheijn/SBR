@@ -31,6 +31,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLunch = new System.Windows.Forms.TabPage();
             this.tabPageDiner = new System.Windows.Forms.TabPage();
+            this.tabPageFris = new System.Windows.Forms.TabPage();
+            this.tabPageDrank = new System.Windows.Forms.TabPage();
+            this.tabPageKoffieThee = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,6 +41,9 @@
             // 
             this.tabControl1.Controls.Add(this.tabPageLunch);
             this.tabControl1.Controls.Add(this.tabPageDiner);
+            this.tabControl1.Controls.Add(this.tabPageFris);
+            this.tabControl1.Controls.Add(this.tabPageDrank);
+            this.tabControl1.Controls.Add(this.tabPageKoffieThee);
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -65,6 +71,33 @@
             this.tabPageDiner.Text = "Diner";
             this.tabPageDiner.UseVisualStyleBackColor = true;
             // 
+            // tabPageFris
+            // 
+            this.tabPageFris.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFris.Name = "tabPageFris";
+            this.tabPageFris.Size = new System.Drawing.Size(550, 313);
+            this.tabPageFris.TabIndex = 2;
+            this.tabPageFris.Text = "Frisdranken";
+            this.tabPageFris.UseVisualStyleBackColor = true;
+            // 
+            // tabPageDrank
+            // 
+            this.tabPageDrank.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDrank.Name = "tabPageDrank";
+            this.tabPageDrank.Size = new System.Drawing.Size(550, 313);
+            this.tabPageDrank.TabIndex = 3;
+            this.tabPageDrank.Text = "Alcoholhoudend";
+            this.tabPageDrank.UseVisualStyleBackColor = true;
+            // 
+            // tabPageKoffieThee
+            // 
+            this.tabPageKoffieThee.Location = new System.Drawing.Point(4, 22);
+            this.tabPageKoffieThee.Name = "tabPageKoffieThee";
+            this.tabPageKoffieThee.Size = new System.Drawing.Size(550, 313);
+            this.tabPageKoffieThee.TabIndex = 4;
+            this.tabPageKoffieThee.Text = "Warme dranken";
+            this.tabPageKoffieThee.UseVisualStyleBackColor = true;
+            // 
             // BestelScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -83,5 +116,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageLunch;
         private System.Windows.Forms.TabPage tabPageDiner;
+        private System.Windows.Forms.TabPage tabPageFris;
+        private System.Windows.Forms.TabPage tabPageDrank;
+        private System.Windows.Forms.TabPage tabPageKoffieThee;
     }
 }
