@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 namespace RBS.Enums
 {
     /// <summary>
-    /// Enumeratie voor de functies
+    /// Enumeratie voor de ProductStatus
     /// </summary>
-    public enum Functies
+    public enum ProductStatus
     {
-        Bediening = 0,
-        Kok,
-        Bar,
-        Manager
+        Besteld = 1,
+        Gereed,
+        Geserveerd
     }
 }
