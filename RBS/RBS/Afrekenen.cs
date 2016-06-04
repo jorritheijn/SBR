@@ -39,8 +39,9 @@ namespace RBS
             foreach (var rekeningRegel in rekeningRegels)
             {
                 //form items toevoegen
-
-                Product product = productdao.GetProductById(rekeningRegel.ProductId);
+                //rekeningRegel.ProductId;
+                int p = 3;
+                Product product = productdao.GetProductById(p);
                 label1.Text = "Tafel " + rekeningRegel.TafelId.ToString();
 
                 //listBox1.Items.Add(rekeningRegel.Product);

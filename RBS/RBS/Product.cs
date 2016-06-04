@@ -14,6 +14,8 @@ namespace RBS
         private int aantalVoorraad;
         private int subCategorieId;
 
+        public Product() { }
+
         public Product(int id, string naam, decimal prijs, int aantalVoorraad, int subCategorieId)
         {
             this.id = id;

@@ -25,7 +25,7 @@ namespace RBS
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelId={0}", bestelId);
+                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0}", bestelId);
 
             System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);

@@ -16,38 +16,22 @@ namespace RBS
             this.dbConnection = dbConnection;
         }
 
-        // niet nodig???? altijd per categorie verdeelt volgens mij, ivbm met bar/keuken
-        /*public List<Product> GetAll()
-        {
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("SELECT * FROM product", dbConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> alleProduct = new List<Product>();
-
-            while (reader.Read())
-            {
-                Product product = ReadProduct(reader);
-                alleProduct.Add(product);
-            }
-
-            dbConnection.Close();
-
-            return alleProduct;
-        }*/
         public Product GetProductById(int productId)
         {
             dbConnection.Open();
 
-            string sql = string.Format("SELECT * FROM producten " +
-                "WHERE productId={0}", productId);
+            string sql = string.Format("SELECT TOP 1 * FROM producten WHERE productId={0}", productId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
 
             SqlDataReader reader = command.ExecuteReader();
 
-            Product product = ReadProduct(reader);
+            Product product = new Product();
+
+            while (reader.Read())
+            {
+
+                product = ReadProduct(reader);
+            }
 
             dbConnection.Close();
 
@@ -199,7 +183,8 @@ namespace RBS
 
         private Product ReadProduct(SqlDataReader reader)
         {
-            int id = (int)reader["productId"];
+            //int id = (int)reader["productId"];
+            int id = 1;
             string naam = (string)reader["productNaam"];
             decimal prijs = (decimal)reader["prijs"];
             int aantalVoorraad = (int)reader["aantalVoorraad"];
