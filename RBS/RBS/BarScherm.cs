@@ -32,8 +32,8 @@ namespace RBS
             int afdeling = 1;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
-            int top = 99;
-            int left = 520;
+            int top = 25;
+            int left = 480;
             foreach (var Bestelregel in bestelregel)
 	        {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -41,6 +41,7 @@ namespace RBS
                 lvi.SubItems.Add(Bestelregel.Comment.ToString());
                 lvi.SubItems.Add(Bestelregel.Aantal.ToString());
                 listView1.Items.AddRange(new ListViewItem[] { lvi });
+
 
                 //create buttons
                 Button button = new Button();
@@ -51,8 +52,9 @@ namespace RBS
                 button.Tag = Bestelregel;
                 button.Font = new Font("Arial", 5);
                 button.Click += button_Click;
-                this.Controls.Add(button);
                 top += button.Height + 2;
+                tabPage1.Controls.Add(button);
+
             }
         }
             void button_Click(object sender, EventArgs e)
@@ -63,12 +65,14 @@ namespace RBS
 
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
-                bestellingDAO.MarkeerBestelRegel(regel.Id);
+
+                bestellingDAO.MarkeerBestelRegel(regel.Status, regel.Id);
                 listView1.Items.Clear();
-                btn.Hide();
+                listView2.Items.Clear();
                 BarScherm_Huidig_load();
                 BarScherm_Geschiedenis_load();
-            }
+                btn.Dispose();           
+        }
 
         private void BarScherm_Geschiedenis_load()
         {
@@ -81,8 +85,8 @@ namespace RBS
             int afdeling = 1;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
-            int top = 99;
-            int left = 520;
+            int top = 25;
+            int left = 480;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -90,17 +94,18 @@ namespace RBS
                 lvi.SubItems.Add(Bestelregel.Comment.ToString());
                 lvi.SubItems.Add(Bestelregel.Aantal.ToString());
                 listView2.Items.AddRange(new ListViewItem[] { lvi });
+                listView2.Tag = Bestelregel;
 
                 //create buttons
                 Button button = new Button();
                 button.Left = left;
                 button.Top = top;
                 button.Size = new Size(76, 15);
-                button.Text = "Klaar";
+                button.Text = "Verwijder";
                 button.Tag = Bestelregel;
-                button.Font = new Font("Arial", 6);
+                button.Font = new Font("Arial", 5);
                 button.Click += button_Click;
-                this.Controls.Add(button);
+                tabPage2.Controls.Add(button);
                 top += button.Height + 2;
             }
         }

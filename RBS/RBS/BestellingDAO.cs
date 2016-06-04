@@ -49,17 +49,18 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                "SELECT producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
+                "SELECT producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productId, subCategorieId FROM bestelRegels " +
                     "INNER JOIN bestellingen ON bestellingen.id = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.id = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
             if (afdeling != 3){
-                sql = sql + " AND subCategorieId!=3";
+                sql += " AND subCategorieId!=3";
             }
             else
             {
-                sql = sql + " AND subCategorieId=3";
+                sql += " AND subCategorieId=3";
             }
+            sql += " ORDER BY tafelId DESC ";
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -96,12 +97,20 @@ namespace RBS
             return new BestelRegel(tafelId, productId, aantal, bestelId, comment, status, BestelRegelId);
         }
 
-        public void MarkeerBestelRegel(int bestelregelid)
+        public void MarkeerBestelRegel(int productstatus, int bestelregelid)
         {
             
             dbConnection.Open();
+            if (productstatus == 2)
+            {
+                productstatus = 1;
+            }
+            else
+            {
+                productstatus = 2;
+            }
             string sql = string.Format(
-            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
+            "UPDATE bestelRegels SET productStatus = {0} WHERE  bestelRegels.id = {1}", productstatus, bestelregelid);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             command.ExecuteNonQuery();
             dbConnection.Close();
