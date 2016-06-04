@@ -93,7 +93,7 @@ namespace RBS
             }
         }
 
-        private void BtnRemove_Click(object sender, EventArgs e)
+        private void BtnAddComment_Click(object sender, EventArgs e)
         {
 
         }
@@ -108,8 +108,7 @@ namespace RBS
             int n = (int)controls[1].Tag;
             controls[1].Tag = --n;
             controls[1].Text = n.ToString();
-
-            //if(!btn.Enabled) { EnableButtons(controls); }
+            
             controls[0].Enabled = true;
 
             if (n == 0)
@@ -117,6 +116,7 @@ namespace RBS
                 controls[2].Enabled = false;
                 controls[3].Enabled = false;
             }
+            UpdateListView();
         }
 
         /// <summary>
@@ -133,8 +133,8 @@ namespace RBS
 
             if(p.AantalVoorraad > 0)
             {
-                BestelRegel b = new BestelRegel(tafelId, p.Id, 1, 33, "", 1, 0);
-                AddProduct(b);
+                AddProduct(p.Id);
+
                 int n = (int)controls[1].Tag;
                 controls[1].Tag = ++n;
                 controls[1].Text = n.ToString();
@@ -146,6 +146,7 @@ namespace RBS
                 controls[2].Enabled = true;
                 controls[3].Enabled = true;
             }
+            UpdateListView();
         }
 
         /// <summary>
@@ -182,49 +183,49 @@ namespace RBS
                 Button btnItem = new Button();
                 Label lblNum = new Label();
                 Button btnDecrement = new Button();
-                Button btnRemove = new Button();
+                Button btnAddComment = new Button();
 
                 btnItem.Click += BtnItem_Click;
                 btnDecrement.Click += BtnDecrement_Click;
-                btnRemove.Click += BtnRemove_Click;
-
+                btnAddComment.Click += BtnAddComment_Click;
+                
                 btnItem.Tag = lunch[i];
                 lblNum.Tag = 0;
                 btnDecrement.Tag = lunch[i];
                 
                 btnItem.Enabled = lunch[i].AantalVoorraad > 0;
                 btnDecrement.Enabled = false;
-                btnRemove.Enabled = false;
+                btnAddComment.Enabled = false;
 
                 if (i < 10)
                 {
                     btnItem.Name = "row0" + i;
                     lblNum.Name = "row0" + i;
                     btnDecrement.Name = "row0" + i;
-                    btnRemove.Name = "row0" + i;
+                    btnAddComment.Name = "row0" + i;
                 }
                 else
                 {
                     btnItem.Name = "row" + i;
                     lblNum.Name = "row" + i;
                     btnDecrement.Name = "row" + i;
-                    btnRemove.Name = "row" + i;
+                    btnAddComment.Name = "row" + i;
                 }
 
                 btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
                 lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
                 btnDecrement.SetBounds(390, 7 + ((height + 3) * i), 50, height);
-                btnRemove.SetBounds(450, 7 + ((height + 3) * i), 50, height);
+                btnAddComment.SetBounds(450, 7 + ((height + 3) * i), 100, height);
 
                 btnItem.Text = lunch[i].Naam.Trim();
                 lblNum.Text = "0";
                 btnDecrement.Text = "-";
-                btnRemove.Text = "x";
+                btnAddComment.Text = "Opmerking";
 
                 tabPageLunch.Controls.Add(btnItem);
                 tabPageLunch.Controls.Add(lblNum);
                 tabPageLunch.Controls.Add(btnDecrement);
-                tabPageLunch.Controls.Add(btnRemove);
+                tabPageLunch.Controls.Add(btnAddComment);
             }
         }
 
@@ -248,17 +249,44 @@ namespace RBS
 
         }
 
-        private void AddProduct(BestelRegel br)
+        private void AddProduct(int productId)
         {
             for(int i = 0; i < bestelRegels.Count; i++)
             {
-                if(bestelRegels[i].ProductId == br.ProductId)
+                if(bestelRegels[i].ProductId == productId)
                 {
                     bestelRegels[i].Aantal++;
                     return;
                 }
             }
-            bestelRegels.Add(br);
+            bestelRegels.Add(new BestelRegel(tafelId, productId, 1, 0, "", 1, 0));
+        }
+
+        private void RemoveProduct(int productId)
+        {
+            for(int i = 0; i < bestelRegels.Count; i++)
+            {
+                if(bestelRegels[i].ProductId == productId)
+                {
+                    if (bestelRegels[i].Aantal > 1)
+                        bestelRegels[i].Aantal--;
+                    else
+                        bestelRegels.Remove(bestelRegels[i]);
+                }
+            }
+        }
+
+        private void UpdateListView()
+        {
+            lstProducten.Items.Clear();
+
+            foreach (BestelRegel br in bestelRegels)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = br.ProductId.ToString();
+                item.SubItems.Add(br.Aantal.ToString());
+                lstProducten.Items.Add(item);
+            }
         }
     }
 }
