@@ -58,8 +58,32 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format("SELECT * FROM producten " +
-                "INNER JOIN subCategorieen ON producten.subCategorieId = subCategorieen.id " +
+                "INNER JOIN subCategorieen ON producten.subCategorieId = subCategorieen.subCategorieId " +
                 "WHERE categorieId={0}", categorie);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> producten = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product product = ReadProduct(reader);
+                producten.Add(product);
+            }
+
+            dbConnection.Close();
+
+            return producten;
+        }
+
+        public List<Product> GetAllBySubCategorie(int subCategorie)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT * FROM producten " +
+                "INNER JOIN subCategorieen ON producten.subCategorieId = subCategorieen.subCategorieId " +
+                "WHERE categorieId={0}", subCategorie);
             SqlCommand command = new SqlCommand(sql, dbConnection);
 
             SqlDataReader reader = command.ExecuteReader();
