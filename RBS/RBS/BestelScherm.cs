@@ -69,6 +69,7 @@ namespace RBS
             label.Text = "Voeg een opmerking toe:";
 
             comment.Text = br.Comment;
+            comment.MaxLength = 255;
 
             btnOk.Text = "Toevoegen";
             btnCancel.Text = "Annuleren";
@@ -507,6 +508,11 @@ namespace RBS
             foreach (BestelRegel br in bestelRegels)
                 if (br.ProductId == productId) return br;
             return bestelRegels[0];
+        }
+
+        private void btnVerwerkBestelling_Click(object sender, EventArgs e)
+        {
+            productDAO.VerwerkBestelling(bestelRegels);
         }
     }
 }

@@ -53,7 +53,8 @@ namespace RBS
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
-            if (afdeling != 3) {
+            if (afdeling != 3)
+            {
                 sql = sql + " AND subCategorieId!=3";
             }
             else
@@ -96,7 +97,7 @@ namespace RBS
             int bestelId = (int)reader["bestelId"];
             int tafelId = (int)reader["tafelId"];
             string comment = "";
-            if (reader["comment"] != DBNull.Value) comment= (string)reader["comment"];
+            if (reader["comment"] != DBNull.Value) comment = (string)reader["comment"];
             int status = (int)reader["productStatus"];
             int BestelRegelId = (int)reader["RegelId"];
 
@@ -105,7 +106,7 @@ namespace RBS
 
         public void MarkeerBestelRegel(int bestelregelid)
         {
-            
+
             dbConnection.Open();
             string sql = string.Format(
             "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
@@ -117,7 +118,7 @@ namespace RBS
         public int GetBestelIdFromTafel(int tafelId)
         {
             dbConnection.Open();
-            
+
             string sql = string.Format("SELECT TOP 1 bestelId FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
 
             SqlCommand command = new SqlCommand(sql, dbConnection);

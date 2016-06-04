@@ -84,65 +84,36 @@ namespace RBS
             return producten;
         }
 
-        public List<Product> GetFrisdrank()
+        public void VerwerkBestelling(List<BestelRegel> items)
         {
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=8", dbConnection);
 
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> fris = new List<Product>();
-
-            while(reader.Read())
+            foreach (BestelRegel br in items)
             {
-                Product p = ReadProduct(reader);
-                fris.Add(p);
+                string query = String.Format("INSERT INTO bestelRegels (bestelId, productId, aantal, comment, productstatus) " +
+                    "VALUES ({0},{1},{2},@comment,{3})", br.BestelId, br.ProductId, br.Aantal, br.Status);
+                SqlCommand command = new SqlCommand(query, dbConnection);
+                command.Parameters.AddWithValue("@comment", br.Comment);
+                command.ExecuteNonQuery();
+
+                query = String.Format("UPDATE producten " +
+                    "SET aantalVoorraad=aantalVoorraad-{0} " +
+                    "WHERE productId={1}", br.Aantal, br.ProductId);
+                command = new SqlCommand(query, dbConnection);
+                command.ExecuteNonQuery();
             }
+            
+            //string query = "INSERT INTO personeel (username, pincode, functie) " +
+            //    "VALUES (@username,@pincode,@functie)";
+
+            //SqlCommand command = new SqlCommand(query, dbConnection);
+            //command.Parameters.AddWithValue("@username", username);
+            //command.Parameters.AddWithValue("@pincode", pincode);
+            //command.Parameters.AddWithValue("@functie", functie);
+
+            //command.ExecuteNonQuery();
 
             dbConnection.Close();
-
-            return fris;
-        }
-
-        public List<Product> GetAlcoholhoudend()
-        {
-            dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
-                "WHERE subCategorieId=9 OR subCategorieId=10 OR subCategorieId=11", dbConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> alcohol = new List<Product>();
-
-            while (reader.Read())
-            {
-                Product p = ReadProduct(reader);
-                alcohol.Add(p);
-            }
-
-            dbConnection.Close();
-
-            return alcohol;
-        }
-
-        public List<Product> GetWarmeDranken()
-        {
-            dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=12", dbConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> dranken = new List<Product>();
-
-            while (reader.Read())
-            {
-                Product p = ReadProduct(reader);
-                dranken.Add(p);
-            }
-
-            dbConnection.Close();
-
-            return dranken;
         }
 
         public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)

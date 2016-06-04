@@ -35,9 +35,10 @@
             this.tabPageDrank = new System.Windows.Forms.TabPage();
             this.tabPageKoffieThee = new System.Windows.Forms.TabPage();
             this.lstProducten = new System.Windows.Forms.ListView();
+            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnVerwerkBestelling = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,6 +121,10 @@
             this.lstProducten.UseCompatibleStateImageBehavior = false;
             this.lstProducten.View = System.Windows.Forms.View.Details;
             // 
+            // colId
+            // 
+            this.colId.Text = "ID";
+            // 
             // colName
             // 
             this.colName.Text = "Producten";
@@ -130,15 +135,22 @@
             this.colNum.Text = "Aantal";
             this.colNum.Width = 50;
             // 
-            // colId
+            // btnVerwerkBestelling
             // 
-            this.colId.Text = "ID";
+            this.btnVerwerkBestelling.Location = new System.Drawing.Point(17, 624);
+            this.btnVerwerkBestelling.Name = "btnVerwerkBestelling";
+            this.btnVerwerkBestelling.Size = new System.Drawing.Size(163, 59);
+            this.btnVerwerkBestelling.TabIndex = 2;
+            this.btnVerwerkBestelling.Text = "Bestelling gereed";
+            this.btnVerwerkBestelling.UseVisualStyleBackColor = true;
+            this.btnVerwerkBestelling.Click += new System.EventHandler(this.btnVerwerkBestelling_Click);
             // 
             // BestelScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 729);
+            this.Controls.Add(this.btnVerwerkBestelling);
             this.Controls.Add(this.lstProducten);
             this.Controls.Add(this.tabControl);
             this.Name = "BestelScherm";
@@ -160,5 +172,6 @@
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colNum;
         private System.Windows.Forms.ColumnHeader colId;
+        private System.Windows.Forms.Button btnVerwerkBestelling;
     }
 }
