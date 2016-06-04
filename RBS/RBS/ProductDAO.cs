@@ -58,7 +58,7 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format("SELECT * FROM producten " +
-                "INNER JOIN subCategorieen ON oducten.prsubCategorieId = subCategorieen.id " +
+                "INNER JOIN subCategorieen ON producten.subCategorieId = subCategorieen.id " +
                 "WHERE categorieId={0}", categorie);
             SqlCommand command = new SqlCommand(sql, dbConnection);
 
@@ -75,52 +75,6 @@ namespace RBS
             dbConnection.Close();
 
             return producten;
-        }
-        //getLunch en getDiner is één methode met een categorie parameter
-        public List<Product> GetLunch()
-        {
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
-                "WHERE subCategorieID=1 OR subCategorieID=2 OR subCategorieID=3", dbConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> lunch = new List<Product>();
-
-            while (reader.Read())
-            {
-                Product p = ReadProduct(reader);
-                lunch.Add(p);
-            }
-
-            dbConnection.Close();
-
-            return lunch;
-        }
-
-        public List<Product> GetDiner()
-        {
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
-                "INNER JOIN subCategorieen ON producten.subCategorieId=subCategorieen.id " +
-                "INNER JOIN categorieen ON subCategorieen.categorieId=categorieen.id " +
-                "WHERE categorieen.id=2", dbConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> diner = new List<Product>();
-
-            while (reader.Read())
-            {
-                Product p = ReadProduct(reader);
-                diner.Add(p);
-            }
-
-            dbConnection.Close();
-
-            return diner;
         }
 
         public List<Product> GetFrisdrank()

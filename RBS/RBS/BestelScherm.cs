@@ -30,84 +30,12 @@ namespace RBS
             DrawButtons();
         }
 
-        private void SetButtons()
-        {
-            List<Product> lunch = productDAO.GetLunch();
-            for(int i = 0; i < lunch.Count; i++)
-            {
-                Button btnItem = this.Controls.Find("btnItem" + i, true).FirstOrDefault() as Button;
-                Button btnDecrement = this.Controls.Find("btnDecrement" + i, true).FirstOrDefault() as Button;
-                Button btnRemove = this.Controls.Find("btnRemove" + i, true).FirstOrDefault() as Button;
-
-                btnItem.Text = lunch[i].Naam.Trim();
-                btnItem.Enabled = true;
-                btnDecrement.Enabled = true;
-                btnRemove.Enabled = true;
-            }
-        }
-
         private void DrawButtons()
         {
-            List<Product> lunch = productDAO.GetLunch();
-            for (int i = 0; i < lunch.Count; i++)
-            {
-                int width = 350, height = 30;
+            DrawLunch();
 
-                Button btnItem = new Button();
-                Label lblNum = new Label();
-                Button btnDecrement = new Button();
-                Button btnRemove = new Button();
-                
-                btnItem.Click += BtnItem_Click;
-                btnDecrement.Click += BtnDecrement_Click;
-                btnRemove.Click += BtnRemove_Click;
-
-                btnItem.Tag = lunch[i];
-                lblNum.Tag = 0;
-                btnDecrement.Tag = lunch[i];
-
-                if(!(lunch[i].AantalVoorraad > 0))
-                {
-                    btnItem.Enabled = false;
-                    btnDecrement.Enabled = false;
-                    btnRemove.Enabled = false;
-                }
-
-                if (i < 10)
-                {
-                    btnItem.Name = "row0" + i;
-                    lblNum.Name = "row0" + i;
-                    btnDecrement.Name = "row0" + i;
-                    btnRemove.Name = "row0" + i;
-                }
-                else
-                {
-                    btnItem.Name = "row" + i;
-                    lblNum.Name = "row" + i;
-                    btnDecrement.Name = "row" + i;
-                    btnRemove.Name = "row" + i;
-                }
-
-                
-
-                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
-                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(390, 7 + ((height + 3) * i), 50, height);
-                btnRemove.SetBounds(450, 7 + ((height + 3) * i), 50, height);
-
-                btnItem.Text = lunch[i].Naam.Trim();
-                lblNum.Text = "0";
-                btnDecrement.Text = "-";
-                btnRemove.Text = "x";
-                
-
-                tabPageLunch.Controls.Add(btnItem);
-                tabPageLunch.Controls.Add(lblNum);
-                tabPageLunch.Controls.Add(btnDecrement);
-                tabPageLunch.Controls.Add(btnRemove);
-            }
-
-            List<Product> diner = productDAO.GetDiner();
+            //List<Product> diner = productDAO.GetDiner();
+            List<Product> diner = productDAO.GetAllByCategorie(2);
             for (int i = 0; i < diner.Count; i++)
             {
                 int width = 350, height = 30;
@@ -227,6 +155,86 @@ namespace RBS
             {
                 c.Enabled = c.GetType() == typeof(Button);
             }
+        }
+
+        private void DrawLunch()
+        {
+            //List<Product> lunch = productDAO.GetLunch();
+            List<Product> lunch = productDAO.GetAllByCategorie(1);
+            for (int i = 0; i < lunch.Count; i++)
+            {
+                int width = 350, height = 30;
+
+                Button btnItem = new Button();
+                Label lblNum = new Label();
+                Button btnDecrement = new Button();
+                Button btnRemove = new Button();
+
+                btnItem.Click += BtnItem_Click;
+                btnDecrement.Click += BtnDecrement_Click;
+                btnRemove.Click += BtnRemove_Click;
+
+                btnItem.Tag = lunch[i];
+                lblNum.Tag = 0;
+                btnDecrement.Tag = lunch[i];
+
+                if (!(lunch[i].AantalVoorraad > 0))
+                {
+                    btnItem.Enabled = false;
+                    btnDecrement.Enabled = false;
+                    btnRemove.Enabled = false;
+                }
+
+                if (i < 10)
+                {
+                    btnItem.Name = "row0" + i;
+                    lblNum.Name = "row0" + i;
+                    btnDecrement.Name = "row0" + i;
+                    btnRemove.Name = "row0" + i;
+                }
+                else
+                {
+                    btnItem.Name = "row" + i;
+                    lblNum.Name = "row" + i;
+                    btnDecrement.Name = "row" + i;
+                    btnRemove.Name = "row" + i;
+                }
+
+                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
+                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
+                btnDecrement.SetBounds(390, 7 + ((height + 3) * i), 50, height);
+                btnRemove.SetBounds(450, 7 + ((height + 3) * i), 50, height);
+
+                btnItem.Text = lunch[i].Naam.Trim();
+                lblNum.Text = "0";
+                btnDecrement.Text = "-";
+                btnRemove.Text = "x";
+
+                tabPageLunch.Controls.Add(btnItem);
+                tabPageLunch.Controls.Add(lblNum);
+                tabPageLunch.Controls.Add(btnDecrement);
+                tabPageLunch.Controls.Add(btnRemove);
+            }
+        }
+
+        private void DrawDiner()
+        {
+
+        }
+
+        private void DrawFrisdranken()
+        {
+
+        }
+
+        private void DrawAlcoholhoudend()
+        {
+
+        }
+
+        private void DrawWarmeDranken()
+        {
+
         }
     }
 }
