@@ -63,7 +63,7 @@ namespace RBS
 
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
-                bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID);
+                bestellingDAO.MarkeerBestelRegel(regel.Id);
                 listView1.Items.Clear();
                 btn.Hide();
                 BarScherm_Huidig_load();
