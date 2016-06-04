@@ -40,14 +40,14 @@ namespace RBS
             {
                 //form items toevoegen
 
-                /*product = productdao.GetProductById(rekeningRegel.ProductId);
+                Product product = productdao.GetProductById(rekeningRegel.ProductId);
                 label1.Text = "Tafel " + rekeningRegel.TafelId.ToString();
 
-                listBox1.Items.Add(rekeningRegel.Product);
+                //listBox1.Items.Add(rekeningRegel.Product);
                 listBox2.Items.Add(rekeningRegel.Aantal.ToString());
-                listBox3.Items.Add(rekeningRegel.TotaalPrijs.ToString());
-                totaalPrijs += rekeningRegel.TotaalPrijs;
-                regels++;*/
+                //listBox3.Items.Add(rekeningRegel.TotaalPrijs.ToString());
+                //totaalPrijs += rekeningRegel.TotaalPrijs;
+                regels++;
             }
 
             //Form aanpassen op hoogte van de lijst
