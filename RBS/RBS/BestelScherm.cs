@@ -15,7 +15,7 @@ namespace RBS
     {
         private ProductDAO productDAO;
 
-        private int TafelId;
+        private int tafelId;
 
         private List<BestelRegel> bestelRegels = new List<BestelRegel>();
 
@@ -24,17 +24,18 @@ namespace RBS
             InitializeComponent();
 
             this.productDAO = DataHelper.ProductDao;
-            this.TafelId = tafelId;
-
-            //SetButtons();
+            this.tafelId = tafelId;
+            
             DrawButtons();
         }
 
+        /// <summary>
+        /// Creëert 
+        /// </summary>
         private void DrawButtons()
         {
             DrawLunch();
-
-            //List<Product> diner = productDAO.GetDiner();
+            
             List<Product> diner = productDAO.GetAllByCategorie(2);
             for (int i = 0; i < diner.Count; i++)
             {
@@ -43,6 +44,7 @@ namespace RBS
                 Button btnItem = new Button();
                 btnItem.Click += BtnItem_Click;
                 btnItem.Tag = diner[i];
+
                 if (i < 10) { btnItem.Name = "row0" + i; }
                 else { btnItem.Name = "row" + i; }
                 btnItem.Enabled = diner[i].AantalVoorraad > 0;
@@ -107,7 +109,14 @@ namespace RBS
             controls[1].Tag = --n;
             controls[1].Text = n.ToString();
 
-            if(!btn.Enabled) { EnableButtons(controls); }
+            //if(!btn.Enabled) { EnableButtons(controls); }
+            controls[0].Enabled = true;
+
+            if (n == 0)
+            {
+                controls[2].Enabled = false;
+                controls[3].Enabled = false;
+            }
         }
 
         /// <summary>
@@ -124,12 +133,18 @@ namespace RBS
 
             if(p.AantalVoorraad > 0)
             {
+                BestelRegel b = new BestelRegel(tafelId, p.Id, 1, 33, "", 1, 0);
+                AddProduct(b);
                 int n = (int)controls[1].Tag;
                 controls[1].Tag = ++n;
                 controls[1].Text = n.ToString();
                 p.AantalVoorraad -= 1;
 
-                if (p.AantalVoorraad == 0) { DisableButtons(controls); }
+                //if (p.AantalVoorraad == 0) { DisableButtons(controls); }
+                btn.Enabled = p.AantalVoorraad != 0;
+
+                controls[2].Enabled = true;
+                controls[3].Enabled = true;
             }
         }
 
@@ -159,7 +174,6 @@ namespace RBS
 
         private void DrawLunch()
         {
-            //List<Product> lunch = productDAO.GetLunch();
             List<Product> lunch = productDAO.GetAllByCategorie(1);
             for (int i = 0; i < lunch.Count; i++)
             {
@@ -177,13 +191,10 @@ namespace RBS
                 btnItem.Tag = lunch[i];
                 lblNum.Tag = 0;
                 btnDecrement.Tag = lunch[i];
-
-                if (!(lunch[i].AantalVoorraad > 0))
-                {
-                    btnItem.Enabled = false;
-                    btnDecrement.Enabled = false;
-                    btnRemove.Enabled = false;
-                }
+                
+                btnItem.Enabled = lunch[i].AantalVoorraad > 0;
+                btnDecrement.Enabled = false;
+                btnRemove.Enabled = false;
 
                 if (i < 10)
                 {
@@ -235,6 +246,19 @@ namespace RBS
         private void DrawWarmeDranken()
         {
 
+        }
+
+        private void AddProduct(BestelRegel br)
+        {
+            for(int i = 0; i < bestelRegels.Count; i++)
+            {
+                if(bestelRegels[i].ProductId == br.ProductId)
+                {
+                    bestelRegels[i].Aantal++;
+                    return;
+                }
+            }
+            bestelRegels.Add(br);
         }
     }
 }
