@@ -106,14 +106,14 @@ namespace RBS
         {
             dbConnection.Open();
             
-            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+            string sql = string.Format("SELECT TOP 1 bestelId FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
 
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
             int bestelId = 0;
             while (reader.Read())
             {
-                bestelId = (int)reader["id"];
+                bestelId = (int)reader["bestelId"];
             }
 
             dbConnection.Close();

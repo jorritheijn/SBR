@@ -20,7 +20,7 @@ namespace RBS
             if (record == null) return;
 
             // Zet de waarden in de eigenschappen
-            ID = (int) record["id"];
+            ID = (int) record["tafelId"];
             Status = (TafelStatus) record["status"];
         }
     }
