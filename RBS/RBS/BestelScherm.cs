@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace RBS
 {
@@ -25,7 +26,6 @@ namespace RBS
 
             this.productDAO = DataHelper.ProductDao;
             this.tafelId = tafelId;
-            
             DrawButtons();
         }
 
@@ -104,6 +104,7 @@ namespace RBS
             Control[] controls = tabControl1.SelectedTab.Controls.Find(btn.Name, true);
             Product p = (Product)controls[0].Tag;
 
+            RemoveProduct(p.Id);
             p.AantalVoorraad += 1;
             int n = (int)controls[1].Tag;
             controls[1].Tag = --n;
@@ -214,8 +215,8 @@ namespace RBS
 
                 btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
                 lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(390, 7 + ((height + 3) * i), 50, height);
-                btnAddComment.SetBounds(450, 7 + ((height + 3) * i), 100, height);
+                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
+                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
 
                 btnItem.Text = lunch[i].Naam.Trim();
                 lblNum.Text = "0";
@@ -251,14 +252,15 @@ namespace RBS
 
         private void AddProduct(int productId)
         {
-            for(int i = 0; i < bestelRegels.Count; i++)
-            {
-                if(bestelRegels[i].ProductId == productId)
+                for (int i = 0; i < bestelRegels.Count; i++)
                 {
-                    bestelRegels[i].Aantal++;
-                    return;
+                    if (bestelRegels[i].ProductId == productId)
+                    {
+                        bestelRegels[i].Aantal++;
+                        return;
+                    }
                 }
-            }
+
             bestelRegels.Add(new BestelRegel(tafelId, productId, 1, 0, "", 1, 0));
         }
 
@@ -286,6 +288,7 @@ namespace RBS
                 item.Text = br.ProductId.ToString();
                 item.SubItems.Add(br.Aantal.ToString());
                 lstProducten.Items.Add(item);
+                Debug.WriteLine(br.ToString());
             }
         }
     }

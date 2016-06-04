@@ -37,6 +37,7 @@
             this.lstProducten = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(558, 339);
+            this.tabControl1.Size = new System.Drawing.Size(526, 461);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageLunch
@@ -58,7 +59,7 @@
             this.tabPageLunch.Location = new System.Drawing.Point(4, 22);
             this.tabPageLunch.Name = "tabPageLunch";
             this.tabPageLunch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLunch.Size = new System.Drawing.Size(550, 313);
+            this.tabPageLunch.Size = new System.Drawing.Size(518, 313);
             this.tabPageLunch.TabIndex = 0;
             this.tabPageLunch.Text = "Lunch";
             this.tabPageLunch.UseVisualStyleBackColor = true;
@@ -69,7 +70,7 @@
             this.tabPageDiner.Location = new System.Drawing.Point(4, 22);
             this.tabPageDiner.Name = "tabPageDiner";
             this.tabPageDiner.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDiner.Size = new System.Drawing.Size(550, 313);
+            this.tabPageDiner.Size = new System.Drawing.Size(518, 313);
             this.tabPageDiner.TabIndex = 1;
             this.tabPageDiner.Text = "Diner";
             this.tabPageDiner.UseVisualStyleBackColor = true;
@@ -78,7 +79,7 @@
             // 
             this.tabPageFris.Location = new System.Drawing.Point(4, 22);
             this.tabPageFris.Name = "tabPageFris";
-            this.tabPageFris.Size = new System.Drawing.Size(550, 313);
+            this.tabPageFris.Size = new System.Drawing.Size(518, 313);
             this.tabPageFris.TabIndex = 2;
             this.tabPageFris.Text = "Frisdranken";
             this.tabPageFris.UseVisualStyleBackColor = true;
@@ -87,16 +88,17 @@
             // 
             this.tabPageDrank.Location = new System.Drawing.Point(4, 22);
             this.tabPageDrank.Name = "tabPageDrank";
-            this.tabPageDrank.Size = new System.Drawing.Size(550, 313);
+            this.tabPageDrank.Size = new System.Drawing.Size(518, 313);
             this.tabPageDrank.TabIndex = 3;
             this.tabPageDrank.Text = "Alcoholhoudend";
             this.tabPageDrank.UseVisualStyleBackColor = true;
             // 
             // tabPageKoffieThee
             // 
+            this.tabPageKoffieThee.AutoScroll = true;
             this.tabPageKoffieThee.Location = new System.Drawing.Point(4, 22);
             this.tabPageKoffieThee.Name = "tabPageKoffieThee";
-            this.tabPageKoffieThee.Size = new System.Drawing.Size(550, 313);
+            this.tabPageKoffieThee.Size = new System.Drawing.Size(518, 435);
             this.tabPageKoffieThee.TabIndex = 4;
             this.tabPageKoffieThee.Text = "Warme dranken";
             this.tabPageKoffieThee.UseVisualStyleBackColor = true;
@@ -104,13 +106,16 @@
             // lstProducten
             // 
             this.lstProducten.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colId,
             this.colName,
             this.colNum});
-            this.lstProducten.Location = new System.Drawing.Point(17, 358);
+            this.lstProducten.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lstProducten.Location = new System.Drawing.Point(17, 480);
             this.lstProducten.Name = "lstProducten";
-            this.lstProducten.Size = new System.Drawing.Size(394, 243);
+            this.lstProducten.Size = new System.Drawing.Size(518, 121);
             this.lstProducten.TabIndex = 1;
             this.lstProducten.UseCompatibleStateImageBehavior = false;
+            this.lstProducten.View = System.Windows.Forms.View.Details;
             // 
             // colName
             // 
@@ -122,15 +127,19 @@
             this.colNum.Text = "Aantal";
             this.colNum.Width = 50;
             // 
+            // colId
+            // 
+            this.colId.Text = "ID";
+            // 
             // BestelScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 613);
+            this.ClientSize = new System.Drawing.Size(551, 729);
             this.Controls.Add(this.lstProducten);
             this.Controls.Add(this.tabControl1);
             this.Name = "BestelScherm";
-            this.Text = "BestelScherm";
+            this.Text = "Bestelling opnemen";
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -147,5 +156,6 @@
         private System.Windows.Forms.ListView lstProducten;
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colNum;
+        private System.Windows.Forms.ColumnHeader colId;
     }
 }
