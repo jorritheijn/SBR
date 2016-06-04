@@ -17,10 +17,11 @@ namespace RBS
         public BarScherm()
         {
             InitializeComponent();
-            BarScherm_load();
+            BarScherm_Huidig_load();
+            BarScherm_Geschiedenis_load();
         }
         //test
-        private void BarScherm_load()
+        private void BarScherm_Huidig_load()
         {
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
@@ -31,11 +32,11 @@ namespace RBS
             int afdeling = 1;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
-            int top = 119;
-            int left = 500;
+            int top = 99;
+            int left = 520;
             foreach (var Bestelregel in bestelregel)
 	        {
-                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
+                ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
                 lvi.SubItems.Add(Bestelregel.ProductId.ToString());
                 lvi.SubItems.Add(Bestelregel.Comment.ToString());
                 lvi.SubItems.Add(Bestelregel.Aantal.ToString());
@@ -48,11 +49,11 @@ namespace RBS
                 button.Size = new Size(76, 15);
                 button.Text = "Klaar";
                 button.Tag = Bestelregel;
-                button.Font = new Font("Arial", 6);
+                button.Font = new Font("Arial", 5);
                 button.Click += button_Click;
                 this.Controls.Add(button);
-                top += button.Height + 2;		        
-	        }
+                top += button.Height + 2;
+            }
         }
             void button_Click(object sender, EventArgs e)
             {
@@ -64,52 +65,48 @@ namespace RBS
                 BestelRegel regel = (BestelRegel)btn.Tag;
                 bestellingDAO.MarkeerBestelRegel(regel.BestelRegelID);
                 listView1.Items.Clear();
-                btn.Dispose();
-                BarScherm_load(); 
+                btn.Hide();
+                BarScherm_Huidig_load();
+                BarScherm_Geschiedenis_load();
             }
 
-            /*List<int> tafelid = new List<int>();
-            List<string> productennaam = new List<string>();
-            List<string> comments = new List<string>();
-            List<int> aantal = new List<int>();
-            tafelid = bestellingDAO.GetAllTafel();
-            productennaam = bestellingDAO.GetAllProducten();
-            comments = bestellingDAO.GetAllComment();
-            aantal = bestellingDAO.GetAllAantal();
+        private void BarScherm_Geschiedenis_load()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+            listView2.View = View.Details;
 
-            int top = 126;
-            int left = 500;
+            int status = 2;
+            int afdeling = 1;
+            List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
-            //vull listview en create button 
-            for (int i = 0; i < tafelid.Count; i++)
+            int top = 99;
+            int left = 520;
+            foreach (var Bestelregel in bestelregel)
             {
-                //vul listviewitem
-                ListViewItem lvi = new ListViewItem(tafelid[i].ToString());
-                lvi.SubItems.Add(productennaam[i]);
-                lvi.SubItems.Add(comments[i]);
-                lvi.SubItems.Add(aantal[i].ToString());
-                listView1.Items.AddRange(new ListViewItem[] { lvi });
-
-                //if (tafel change...)
-                //    ListViewGroup group = new ListViewGroup("tafel x");
+                ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
+                lvi.SubItems.Add(Bestelregel.ProductId.ToString());
+                lvi.SubItems.Add(Bestelregel.Comment.ToString());
+                lvi.SubItems.Add(Bestelregel.Aantal.ToString());
+                listView2.Items.AddRange(new ListViewItem[] { lvi });
 
                 //create buttons
                 Button button = new Button();
                 button.Left = left;
                 button.Top = top;
-                button.Size = new Size(76, 16);
-                button.BackColor = Color.Green;
+                button.Size = new Size(76, 15);
                 button.Text = "Klaar";
-                //button.Tag = bestelRegel;
+                button.Tag = Bestelregel;
                 button.Font = new Font("Arial", 6);
                 button.Click += button_Click;
                 this.Controls.Add(button);
                 top += button.Height + 2;
-            }   
-
+            }
         }
 
-        void button_Click(object sender, EventArgs e)
+
+        /*void button_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             //Bestelregel regel = (BstelRegel)btn.Tag;*/
