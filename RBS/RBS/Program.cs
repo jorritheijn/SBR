@@ -26,7 +26,7 @@ namespace RBS
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
             ProductDAO productDAO = new ProductDAO(dbConnection);
 
-            Application.Run(new TafelOverzicht());
+            Application.Run(new BestelScherm(1));
         }
     }
 }

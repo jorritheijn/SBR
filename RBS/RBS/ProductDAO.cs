@@ -184,8 +184,7 @@ namespace RBS
 
         private Product ReadProduct(SqlDataReader reader)
         {
-            //int id = (int)reader["productId"];
-            int id = 1;
+            int id = (int)reader["productId"];
             string naam = (string)reader["productNaam"];
             decimal prijs = (decimal)reader["prijs"];
             int aantalVoorraad = (int)reader["aantalVoorraad"];
