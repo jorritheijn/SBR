@@ -81,9 +81,7 @@ namespace RBS
         {
             dbConnection.Open();
 
-            string sql = string.Format("SELECT * FROM producten " +
-                "INNER JOIN subCategorieen ON producten.subCategorieId = subCategorieen.subCategorieId " +
-                "WHERE categorieId={0}", subCategorie);
+            string sql = string.Format("SELECT * FROM producten WHERE subCategorieId={0}", subCategorie);
             SqlCommand command = new SqlCommand(sql, dbConnection);
 
             SqlDataReader reader = command.ExecuteReader();
@@ -201,7 +199,7 @@ namespace RBS
 
         private Product ReadProduct(SqlDataReader reader)
         {
-            int id = (int)reader["id"];
+            int id = (int)reader["productId"];
             string naam = (string)reader["productNaam"];
             decimal prijs = (decimal)reader["prijs"];
             int aantalVoorraad = (int)reader["aantalVoorraad"];
