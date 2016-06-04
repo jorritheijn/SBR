@@ -147,7 +147,7 @@
             this.listView2.FullRowSelect = true;
             this.listView2.Location = new System.Drawing.Point(-1, -1);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(487, 475);
+            this.listView2.Size = new System.Drawing.Size(491, 475);
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
