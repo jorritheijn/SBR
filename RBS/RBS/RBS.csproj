@@ -51,6 +51,12 @@
     <Compile Include="Afrekenen.Designer.cs">
       <DependentUpon>Afrekenen.cs</DependentUpon>
     </Compile>
+    <Compile Include="AfrondingAfrekenen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AfrondingAfrekenen.Designer.cs">
+      <DependentUpon>AfrondingAfrekenen.cs</DependentUpon>
+    </Compile>
     <Compile Include="BarScherm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </Compile>
     <EmbeddedResource Include="Afrekenen.resx">
       <DependentUpon>Afrekenen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AfrondingAfrekenen.resx">
+      <DependentUpon>AfrondingAfrekenen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>

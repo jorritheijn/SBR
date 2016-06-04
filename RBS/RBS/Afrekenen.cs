@@ -18,6 +18,8 @@ namespace RBS
         private BestellingDAO bestellingDao;
         private ProductDAO productDao;
 
+        //int bestelId;
+
         public Afrekenen(int tafelId)
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace RBS
             ProductDAO productdao = new ProductDAO(dbConnection);
 
             int bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
+
             List<BestelRegel> rekeningRegels = bestellingDAO.GetRekening(bestelId);
 
             decimal totaalPrijs = 0;
@@ -38,6 +41,7 @@ namespace RBS
             int regels = 0;
 
             label1.Text = "Tafel " + tafelId;
+            listBox3.RightToLeft = RightToLeft.Yes;
 
             foreach (BestelRegel rekeningRegel in rekeningRegels)
             {
@@ -61,12 +65,11 @@ namespace RBS
             label5.Text = "Totaal: " + totaalPrijs;
             label6.Text = "BTW: " + totaalBtw;
             int y = regels * 13;                    //één regel is 13 pixels, basis plaats is 63pixels
-            label5.Location = new Point(203, (63 + y));
-            label6.Location = new Point(203, (78 + y));
+            label5.Location = new Point(208, (85 + y));
+            label6.Location = new Point(208, (70 + y));
             listBox1.Height = listBox1.PreferredHeight;
             listBox2.Height = listBox2.PreferredHeight;
             listBox3.Height = listBox3.PreferredHeight;
-
         }
 
         private void printBon_Click(object sender, EventArgs e)
@@ -75,6 +78,12 @@ namespace RBS
             pin.Enabled = true;
             cash.Enabled = true;
             creditcard.Enabled = true;
+        }
+
+        private void afronding_Click(object sender, EventArgs e)
+        {
+            //string naam = this.Name.ToLower();
+            //new AfrondingAfrekenen(bestelId, naam);
         }
 
         private void button1_Click(object sender, EventArgs e)

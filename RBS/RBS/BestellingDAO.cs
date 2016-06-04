@@ -25,7 +25,7 @@ namespace RBS
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0}", bestelId);
+                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0} AND bestelStatus=''", bestelId);
 
             System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
@@ -75,6 +75,18 @@ namespace RBS
             dbConnection.Close();
 
             return alleBestellingen;
+        }
+
+        public void AfrondingBestelling(int bestelId, string betaalMethode)
+        {
+            dbConnection.Open();
+            string sql = String.Format(
+                "UPDATE bestellingen SET bestelStatus = @status, betaalMethode = @betaalMethode WHERE bestelId={0}", bestelId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.Parameters.AddWithValue("@status", "betaald");
+            command.Parameters.AddWithValue("@betaalMethode", betaalMethode);
+            command.ExecuteNonQuery();
+            dbConnection.Close();
         }
 
         private BestelRegel ReadBestelRegel(SqlDataReader reader)

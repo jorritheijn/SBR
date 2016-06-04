@@ -113,12 +113,13 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(196, 155);
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label5.Location = new System.Drawing.Point(197, 170);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.Size = new System.Drawing.Size(82, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "Totaal: ";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pin
             // 
@@ -132,6 +133,7 @@
             this.pin.TabIndex = 9;
             this.pin.Text = "Pin";
             this.pin.UseVisualStyleBackColor = true;
+            this.pin.Click += new System.EventHandler(this.afronding_Click);
             // 
             // cash
             // 
@@ -145,6 +147,7 @@
             this.cash.TabIndex = 10;
             this.cash.Text = "Cash";
             this.cash.UseVisualStyleBackColor = true;
+            this.cash.Click += new System.EventHandler(this.afronding_Click);
             // 
             // creditcard
             // 
@@ -158,6 +161,7 @@
             this.creditcard.TabIndex = 11;
             this.creditcard.Text = "Creditcard";
             this.creditcard.UseVisualStyleBackColor = true;
+            this.creditcard.Click += new System.EventHandler(this.afronding_Click);
             // 
             // printBon
             // 
@@ -175,12 +179,13 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(201, 168);
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.Location = new System.Drawing.Point(196, 187);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 13;
+            this.label6.Size = new System.Drawing.Size(83, 15);
+            this.label6.TabIndex = 0;
             this.label6.Text = "BTW: ";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Afrekenen
             // 
