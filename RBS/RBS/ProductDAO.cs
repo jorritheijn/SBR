@@ -58,7 +58,7 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format("SELECT * FROM producten " +
-                "INNER JOIN subCategorieen ON oducten.prsubCategorieId = subCategorieen.id " +
+                "INNER JOIN subCategorieen ON producten.subCategorieId = subCategorieen.id " +
                 "WHERE categorieId={0}", categorie);
             SqlCommand command = new SqlCommand(sql, dbConnection);
 
