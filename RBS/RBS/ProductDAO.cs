@@ -37,6 +37,7 @@ namespace RBS
 
             return product;
         }
+
         public List<Product> GetAllByCategorie(int categorie)
         {
             dbConnection.Open();

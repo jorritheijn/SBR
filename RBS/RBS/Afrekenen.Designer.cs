@@ -40,6 +40,7 @@
             this.cash = new System.Windows.Forms.Button();
             this.creditcard = new System.Windows.Forms.Button();
             this.printBon = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -172,11 +173,21 @@
             this.printBon.UseVisualStyleBackColor = false;
             this.printBon.Click += new System.EventHandler(this.printBon_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(201, 168);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "BTW: ";
+            // 
             // Afrekenen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(343, 473);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.printBon);
             this.Controls.Add(this.creditcard);
             this.Controls.Add(this.cash);
@@ -210,5 +221,6 @@
         private System.Windows.Forms.Button cash;
         private System.Windows.Forms.Button creditcard;
         private System.Windows.Forms.Button printBon;
+        private System.Windows.Forms.Label label6;
     }
 }

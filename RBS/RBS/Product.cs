@@ -25,6 +25,18 @@ namespace RBS
             this.subCategorieId = subCategorieId;
         }
 
+        public decimal BerekenBTW
+        {
+            get
+            {
+                decimal btw = (decimal)0.09;
+                // subCategorie 9, 10 en 11 zijn de alcohol houdende producten. Hebben andere BTW.
+                if (subCategorieId == 9 || subCategorieId == 10 || subCategorieId == 11) btw = (decimal)0.21;
+                btw = prijs * btw;
+                return btw;
+            }
+        }
+
         public int Id
         {
             get { return id; }
