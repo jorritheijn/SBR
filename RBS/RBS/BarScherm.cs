@@ -14,6 +14,7 @@ namespace RBS
 {
     public partial class BarScherm : Form
     {
+        List<Button> button = new List<Button>();
         public BarScherm()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace RBS
 
             int status = 1;
             int afdeling = 1;
+            int i = 0;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
@@ -44,16 +46,16 @@ namespace RBS
 
 
                 //create buttons
-                Button button = new Button();
-                button.Left = left;
-                button.Top = top;
-                button.Size = new Size(76, 15);
-                button.Text = "Klaar";
-                button.Tag = Bestelregel;
-                button.Font = new Font("Arial", 5);
-                button.Click += button_Click;
-                top += button.Height + 2;
-                tabPage1.Controls.Add(button);
+                button[i].Left = left;
+                button[i].Top = top;
+                button[i].Size = new Size(76, 15);
+                button[i].Text = "Klaar";
+                button[i].Tag = Bestelregel;
+                button[i].Font = new Font("Arial", 5);
+                button[i].Click += button_Click;
+                top += button[i].Height + 2;
+                tabPage1.Controls.Add(button[i]);
+                i++;
 
             }
         }
@@ -66,12 +68,17 @@ namespace RBS
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
 
-                //bestellingDAO.MarkeerBestelRegel(regel.Status, regel.Id);
+                bestellingDAO.MarkeerBestelRegel(regel.Status, regel.Id);
                 listView1.Items.Clear();
                 listView2.Items.Clear();
                 BarScherm_Huidig_load();
                 BarScherm_Geschiedenis_load();
-                btn.Dispose();           
+                int i = 0;
+                foreach (var buttonlist in button)
+                {
+                    button[i].Dispose();
+                    i++;
+                }         
         }
 
         private void BarScherm_Geschiedenis_load()
@@ -83,6 +90,7 @@ namespace RBS
 
             int status = 2;
             int afdeling = 1;
+            int i = 0;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
@@ -97,16 +105,15 @@ namespace RBS
                 listView2.Tag = Bestelregel;
 
                 //create buttons
-                Button button = new Button();
-                button.Left = left;
-                button.Top = top;
-                button.Size = new Size(76, 15);
-                button.Text = "Verwijder";
-                button.Tag = Bestelregel;
-                button.Font = new Font("Arial", 5);
-                button.Click += button_Click;
-                tabPage2.Controls.Add(button);
-                top += button.Height + 2;
+                button[i].Left = left;
+                button[i].Top = top;
+                button[i].Size = new Size(76, 15);
+                button[i].Text = "Verwijder";
+                button[i].Tag = Bestelregel;
+                button[i].Font = new Font("Arial", 5);
+                button[i].Click += button_Click;
+                tabPage2.Controls.Add(button[i]);
+                top += button[i].Height + 2;
             }
         }
 

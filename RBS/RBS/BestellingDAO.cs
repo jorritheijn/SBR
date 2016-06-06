@@ -104,12 +104,12 @@ namespace RBS
             return new BestelRegel(tafelId, productId, aantal, bestelId, comment, status, BestelRegelId);
         }
 
-        public void MarkeerBestelRegel(int bestelregelid)
+        public void MarkeerBestelRegel(int bestelregelid, int status)
         {
 
             dbConnection.Open();
             string sql = string.Format(
-            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
+            "UPDATE bestelRegels SET productStatus = {1} WHERE  bestelRegels.id = {0}", bestelregelid, status);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             command.ExecuteNonQuery();
             dbConnection.Close();
