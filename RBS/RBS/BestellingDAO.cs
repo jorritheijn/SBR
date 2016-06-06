@@ -49,10 +49,13 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                "SELECT * FROM bestellingen " + //producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
-                    "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
+                 "SELECT producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
+                    "INNER JOIN bestellingen ON bestellingen.id = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON producten.id = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
+               /* "SELECT * FROM bestellingen " + producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
+                    "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON producten.productId = bestelRegels.productId " +*/
             if (afdeling != 3)
             {
                 sql = sql + " AND subCategorieId!=3";
