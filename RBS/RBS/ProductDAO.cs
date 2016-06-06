@@ -102,16 +102,6 @@ namespace RBS
                 command = new SqlCommand(query, dbConnection);
                 command.ExecuteNonQuery();
             }
-            
-            //string query = "INSERT INTO personeel (username, pincode, functie) " +
-            //    "VALUES (@username,@pincode,@functie)";
-
-            //SqlCommand command = new SqlCommand(query, dbConnection);
-            //command.Parameters.AddWithValue("@username", username);
-            //command.Parameters.AddWithValue("@pincode", pincode);
-            //command.Parameters.AddWithValue("@functie", functie);
-
-            //command.ExecuteNonQuery();
 
             dbConnection.Close();
         }
