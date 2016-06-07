@@ -15,6 +15,9 @@ namespace RBS
     {
         private PersoneelDAO dao;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public PersoneelsBeheer()
         {
             InitializeComponent();
@@ -24,6 +27,9 @@ namespace RBS
             CreateList();
         }
 
+        /// <summary>
+        /// Maakt een lijst van personeel en toont deze op de ListView
+        /// </summary>
         private void CreateList()
         {
             lstAccounts.Items.Clear();
@@ -38,6 +44,11 @@ namespace RBS
             }
         }
 
+        /// <summary>
+        /// Pop-up dialog voor het toevoegen van personeel
+        /// </summary>
+        /// <param name="personeel"></param>
+        /// <returns>De waarde van de gekozen DialogResult</returns>
         private DialogResult InputForm_AddUser(ref Personeel personeel)
         {
             Form form = new Form();
@@ -111,6 +122,10 @@ namespace RBS
             return result;
         }
 
+        /// <summary>
+        /// Pop-up dialog voor het verwijderen van personeel
+        /// </summary>
+        /// <returns>De waarde van de gekozen DialogResult</returns>
         private DialogResult InputForm_DeleteUser()
         {
             Form form = new Form();
@@ -151,6 +166,11 @@ namespace RBS
             return result;
         }
 
+        /// <summary>
+        /// Event voor de Button om personeel toe te voegen, roept InputForm_AddUser
+        /// </summary>
+        /// <param name="sender">De Button waar op gedrukt is</param>
+        /// <param name="e"></param>
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
             Personeel p = new Personeel();
@@ -162,6 +182,11 @@ namespace RBS
             }
         }
 
+        /// <summary>
+        /// Event voor de Button om personeel te verwijderen, roept InputForm_DeleteUser
+        /// </summary>
+        /// <param name="sender">De Button waar op gedrukt is</param>
+        /// <param name="e"></param>
         private void btnDelEmployee_Click(object sender, EventArgs e)
         {
             if (lstAccounts.SelectedIndices.Count == 1 && InputForm_DeleteUser() == DialogResult.OK)
@@ -171,6 +196,12 @@ namespace RBS
             }
         }
 
+        /// <summary>
+        /// Event bij het veranderen van de selectie in de ListView.
+        /// Enabled/disabled de Delete Employee Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstAccounts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             btnDelEmployee.Enabled = lstAccounts.SelectedIndices.Count != 0;
