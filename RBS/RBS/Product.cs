@@ -14,8 +14,19 @@ namespace RBS
         private int aantalVoorraad;
         private int subCategorieId;
 
+        /// <summary>
+        /// Lege constructor
+        /// </summary>
         public Product() { }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="naam"></param>
+        /// <param name="prijs"></param>
+        /// <param name="aantalVoorraad"></param>
+        /// <param name="subCategorieId"></param>
         public Product(int id, string naam, decimal prijs, int aantalVoorraad, int subCategorieId)
         {
             this.id = id;
@@ -25,6 +36,9 @@ namespace RBS
             this.subCategorieId = subCategorieId;
         }
 
+        /// <summary>
+        /// Berekent de btw op het product
+        /// </summary>
         public decimal BerekenBTW
         {
             get
@@ -37,29 +51,44 @@ namespace RBS
             }
         }
 
+        /// <summary>
+        /// get methode voor id
+        /// </summary>
         public int Id
         {
             get { return id; }
         }
 
+        /// <summary>
+        /// get/set voor naam
+        /// </summary>
         public string Naam
         {
             get { return naam; }
             set { naam = value; }
         }
 
+        /// <summary>
+        /// get/set voor prijs
+        /// </summary>
         public decimal Prijs
         {
             get { return prijs; }
             set { prijs = value; }
         }
 
+        /// <summary>
+        /// get/set voor aantalVoorraad
+        /// </summary>
         public int AantalVoorraad
         {
             get { return aantalVoorraad; }
             set { aantalVoorraad = value; }
         }
 
+        /// <summary>
+        /// get/set voor subCategorieId
+        /// </summary>
         public int SubCategorieId
         {
             get { return subCategorieId; }

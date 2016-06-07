@@ -11,11 +11,20 @@ namespace RBS
     {
         protected SqlConnection dbConnection;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dbConnection">Connectie info</param>
         public ProductDAO(SqlConnection dbConnection)
         {
             this.dbConnection = dbConnection;
         }
 
+        /// <summary>
+        /// Pakt 't eerste product met 't gegeven ID
+        /// </summary>
+        /// <param name="productId">ID van een product</param>
+        /// <returns>Geeft één object van 't type Product</returns>
         public Product GetProductById(int productId)
         {
             dbConnection.Open();
@@ -38,6 +47,11 @@ namespace RBS
             return product;
         }
 
+        /// <summary>
+        /// Maakt een lijst van producten van een gegeven categorie
+        /// </summary>
+        /// <param name="categorie">ID van een categorie</param>
+        /// <returns>Lijst met objecten van 't type Product</returns>
         public List<Product> GetAllByCategorie(int categorie)
         {
             dbConnection.Open();
@@ -62,6 +76,11 @@ namespace RBS
             return producten;
         }
 
+        /// <summary>
+        /// Maakt een lijst van producten van een gegeven subcategorie
+        /// </summary>
+        /// <param name="subCategorie">ID van een subcategorie</param>
+        /// <returns>Een lijst met objecten van het type Product</returns>
         public List<Product> GetAllBySubCategorie(int subCategorie)
         {
             dbConnection.Open();
@@ -84,6 +103,10 @@ namespace RBS
             return producten;
         }
 
+        /// <summary>
+        /// Gooit een bestelling per product in de database en verwijdert deze uit de voorraad
+        /// </summary>
+        /// <param name="items">Lijst van BestelRegels</param>
         public void VerwerkBestelling(List<BestelRegel> items)
         {
             dbConnection.Open();
@@ -106,6 +129,13 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Voegt een product toe aan de database tabel producten
+        /// </summary>
+        /// <param name="ProductId">ID van het nieuwe product</param>
+        /// <param name="productNaam">Naam van het nieuwe product</param>
+        /// <param name="productPrijs">Prijs van het nieuwe product</param>
+        /// <param name="aantalVoorraad">Grootte van het voorraad van het nieuwe product</param>
         public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)
         {
             dbConnection.Open();
@@ -120,6 +150,13 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Wijzigt een product in de database
+        /// </summary>
+        /// <param name="productId">Nieuwe ID van het product</param>
+        /// <param name="productNaam">Nieuwe naam van het product</param>
+        /// <param name="productPrijs">Nieuwe prijs van het product</param>
+        /// <param name="aantalVoorraad">Nieuwe voorraad van het product</param>
         public void WijzigProduct(int productId, string productNaam, double productPrijs, int aantalVoorraad)
         {
             dbConnection.Open();
@@ -133,6 +170,14 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Verwijdert een product uit de database
+        /// </summary>
+        /// <remarks>Waar zijn de extra 3 parameters voor?</remarks>
+        /// <param name="productId">ID van het product</param>
+        /// <param name="productNaam">???</param>
+        /// <param name="ProductPrijs">???</param>
+        /// <param name="aantalVoorraad">???</param>
         public void VerwijderProduct(int productId, string productNaam, double ProductPrijs, int aantalVoorraad)
         {
             dbConnection.Open();
@@ -142,7 +187,11 @@ namespace RBS
             dbConnection.Close();
         }
 
-
+        /// <summary>
+        /// Leest records van producten, kolom voor kolom, uit de database
+        /// </summary>
+        /// <param name="reader">Bevat de informatie om de juiste records te lezen</param>
+        /// <returns>Een object van het type Product</returns>
         private Product ReadProduct(SqlDataReader reader)
         {
             int id = (int)reader["productId"];
