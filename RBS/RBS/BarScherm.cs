@@ -15,6 +15,7 @@ namespace RBS
     public partial class BarScherm : Form
     {
         List<Button> button = new List<Button>();
+
         public BarScherm()
         {
             InitializeComponent();
@@ -44,17 +45,18 @@ namespace RBS
                 lvi.SubItems.Add(Bestelregel.Aantal.ToString());
                 listView1.Items.AddRange(new ListViewItem[] { lvi });
 
-
                 //create buttons
-                button[i].Left = left;
-                button[i].Top = top;
-                button[i].Size = new Size(76, 15);
-                button[i].Text = "Klaar";
-                button[i].Tag = Bestelregel;
-                button[i].Font = new Font("Arial", 5);
-                button[i].Click += button_Click;
-                top += button[i].Height + 2;
-                tabPage1.Controls.Add(button[i]);
+                Button btn = new Button();
+                btn.Left = left;
+                btn.Top = top;
+                btn.Size = new Size(76, 15);
+                btn.Text = "Klaar";
+                btn.Tag = Bestelregel;
+                btn.Font = new Font("Arial", 5);
+                btn.Click += button_Click;
+                top += btn.Height + 2;
+                tabPage1.Controls.Add(btn);
+                button.Add(btn);
                 i++;
 
             }
