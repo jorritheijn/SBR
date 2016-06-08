@@ -25,7 +25,7 @@ namespace RBS
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0} AND bestelStatus=''", bestelId);
+                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0} AND bestelStatus=1", bestelId);
 
             System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
@@ -77,14 +77,15 @@ namespace RBS
             return alleBestellingen;
         }
 
-        public void AfrondingBestelling(int bestelId, string betaalMethode)
+        public void AfrondingBestelling(int bestelId, string betaalMethode, string commentaar)
         {
             dbConnection.Open();
             string sql = String.Format(
-                "UPDATE bestellingen SET bestelStatus = @status, betaalMethode = @betaalMethode WHERE bestelId={0}", bestelId);
+                "UPDATE bestellingen SET bestelStatus = @status, betaalMethode = @betaalMethode, bestelComment = @commentaar WHERE bestelId={0}", bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
-            command.Parameters.AddWithValue("@status", "betaald");
+            command.Parameters.AddWithValue("@status", 2);
             command.Parameters.AddWithValue("@betaalMethode", betaalMethode);
+            command.Parameters.AddWithValue("@commentaar", commentaar);
             command.ExecuteNonQuery();
             dbConnection.Close();
         }
