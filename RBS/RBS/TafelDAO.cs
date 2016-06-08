@@ -84,7 +84,7 @@ namespace RBS
             dbConnection.Open();
 
             // Lees de data uit de database
-            SqlCommand command = new SqlCommand("UPDATE tafels SET status=@status WHERE id=@id", dbConnection);
+            SqlCommand command = new SqlCommand("UPDATE tafels SET status=@status WHERE tafelId=@id", dbConnection);
             command.Parameters.AddWithValue("@id", ID);
             command.Parameters.AddWithValue("@status", status);
 
