@@ -19,9 +19,11 @@ namespace RBS
         private ProductDAO productDao;
 
         int bestelId;
+        int tafelId;
 
-        public Afrekenen(int tafelId)
+        public Afrekenen(int tafelIdPara)
         {
+            tafelId = tafelIdPara;
             InitializeComponent();
 
             this.bestellingDao = DataHelper.BestellingDao;
@@ -54,55 +56,6 @@ namespace RBS
                 listBox1.Items.Add(product.Naam);
                 listBox2.Items.Add(aantal.ToString());
                 listBox3.Items.Add(regelPrijs.ToString());
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-
 
                 totaalPrijs += regelPrijs;
                 decimal btw = Math.Ceiling(product.BerekenBTW * 100) / 100;
@@ -126,7 +79,7 @@ namespace RBS
                 panel1.Height = 330;
                 //set other padding for labels because of the vertical scrollbar
                 totaalTxt.Padding = new Padding(0, 0, 8, 0);
-                btwTxt.Padding = new Padding(0, 15, 8, 0);  //15top for space between listbox and label
+                btwTxt.Padding = new Padding(0, 9, 8, 0);  //9top for space between listbox and label
             }
 
         }
@@ -141,9 +94,12 @@ namespace RBS
 
             var afronding = sender as Button;
             string naam = afronding.Name.ToLower();
-            var afronden = new AfrondingAfrekenen(bestelId, naam);
-            afronden.Show();
-            this.Hide();
+            //var afronden = new AfrondingAfrekenen(bestelId, naam);
+            /*afronden.Show();
+            this.Hide();*/
+            Form afrondFrm = new AfrondingAfrekenen(bestelId, naam, tafelId);
+            afrondFrm.Show();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -171,6 +127,11 @@ namespace RBS
         private void btwTxt_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void terugBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
