@@ -206,5 +206,18 @@ namespace RBS
         {
             btnDelEmployee.Enabled = lstAccounts.SelectedIndices.Count != 0;
         }
+
+        /// <summary>
+        /// Uitloggen als gebruiker en teruggaan naar het inlogscherm
+        /// </summary>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InlogScherm Inloggen = new InlogScherm();
+
+            UserHelper.Uitloggen();
+
+            Inloggen.Show();
+            Hide();
+        }
     }
 }

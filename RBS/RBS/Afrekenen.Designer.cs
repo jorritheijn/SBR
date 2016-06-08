@@ -35,12 +35,12 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.totaalTxt = new System.Windows.Forms.Label();
             this.pin = new System.Windows.Forms.Button();
             this.cash = new System.Windows.Forms.Button();
             this.creditcard = new System.Windows.Forms.Button();
             this.printBon = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btwTxt = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,13 +49,13 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(-1, 24);
             this.label1.MinimumSize = new System.Drawing.Size(800, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.label1.Size = new System.Drawing.Size(800, 17);
+            this.label1.Size = new System.Drawing.Size(800, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tafel";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -63,75 +63,86 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 41);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.Size = new System.Drawing.Size(41, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Item";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(196, 41);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(311, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(55, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Aantal";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(237, 41);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(389, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.Size = new System.Drawing.Size(38, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Prijs";
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(4, 3);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(173, 17);
+            this.listBox1.Size = new System.Drawing.Size(293, 20);
             this.listBox1.TabIndex = 5;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBox2
             // 
+            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(183, 3);
+            this.listBox2.ItemHeight = 16;
+            this.listBox2.Location = new System.Drawing.Point(305, 3);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(32, 17);
+            this.listBox2.Size = new System.Drawing.Size(51, 20);
             this.listBox2.TabIndex = 6;
             // 
             // listBox3
             // 
+            this.listBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(221, 3);
+            this.listBox3.ItemHeight = 16;
+            this.listBox3.Location = new System.Drawing.Point(362, 3);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(51, 17);
+            this.listBox3.Size = new System.Drawing.Size(55, 20);
             this.listBox3.TabIndex = 7;
             this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
-            // label5
+            // totaalTxt
             // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label5.Location = new System.Drawing.Point(0, 257);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(529, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Totaal: ";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.totaalTxt.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.totaalTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totaalTxt.Location = new System.Drawing.Point(0, 51);
+            this.totaalTxt.Name = "totaalTxt";
+            this.totaalTxt.Padding = new System.Windows.Forms.Padding(0, 0, 25, 0);
+            this.totaalTxt.Size = new System.Drawing.Size(442, 20);
+            this.totaalTxt.TabIndex = 8;
+            this.totaalTxt.Text = "Totaal: 0,00";
+            this.totaalTxt.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pin
             // 
             this.pin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pin.Enabled = false;
             this.pin.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.pin.FlatAppearance.BorderSize = 4;
-            this.pin.Location = new System.Drawing.Point(28, 603);
+            this.pin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pin.Location = new System.Drawing.Point(16, 514);
             this.pin.Name = "pin";
-            this.pin.Size = new System.Drawing.Size(150, 100);
+            this.pin.Size = new System.Drawing.Size(125, 75);
             this.pin.TabIndex = 9;
             this.pin.Text = "Pin";
             this.pin.UseVisualStyleBackColor = true;
@@ -140,12 +151,12 @@
             // cash
             // 
             this.cash.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cash.Enabled = false;
             this.cash.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.cash.FlatAppearance.BorderSize = 4;
-            this.cash.Location = new System.Drawing.Point(199, 603);
+            this.cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cash.Location = new System.Drawing.Point(157, 514);
             this.cash.Name = "cash";
-            this.cash.Size = new System.Drawing.Size(150, 100);
+            this.cash.Size = new System.Drawing.Size(125, 75);
             this.cash.TabIndex = 10;
             this.cash.Text = "Cash";
             this.cash.UseVisualStyleBackColor = true;
@@ -154,12 +165,12 @@
             // creditcard
             // 
             this.creditcard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.creditcard.Enabled = false;
             this.creditcard.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.creditcard.FlatAppearance.BorderSize = 4;
-            this.creditcard.Location = new System.Drawing.Point(374, 603);
+            this.creditcard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creditcard.Location = new System.Drawing.Point(302, 514);
             this.creditcard.Name = "creditcard";
-            this.creditcard.Size = new System.Drawing.Size(150, 100);
+            this.creditcard.Size = new System.Drawing.Size(125, 75);
             this.creditcard.TabIndex = 11;
             this.creditcard.Text = "Creditcard";
             this.creditcard.UseVisualStyleBackColor = true;
@@ -171,42 +182,46 @@
             this.printBon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.printBon.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.printBon.FlatAppearance.BorderSize = 4;
-            this.printBon.Location = new System.Drawing.Point(199, 476);
+            this.printBon.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printBon.Location = new System.Drawing.Point(157, 420);
             this.printBon.Name = "printBon";
-            this.printBon.Size = new System.Drawing.Size(150, 100);
+            this.printBon.Size = new System.Drawing.Size(125, 75);
             this.printBon.TabIndex = 12;
             this.printBon.Text = "Print bon";
             this.printBon.UseVisualStyleBackColor = false;
             this.printBon.Click += new System.EventHandler(this.printBon_Click);
             // 
-            // label6
+            // btwTxt
             // 
-            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label6.Location = new System.Drawing.Point(0, 242);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(529, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "BTW: ";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btwTxt.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btwTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btwTxt.Location = new System.Drawing.Point(0, 24);
+            this.btwTxt.Name = "btwTxt";
+            this.btwTxt.Padding = new System.Windows.Forms.Padding(0, 10, 25, 0);
+            this.btwTxt.Size = new System.Drawing.Size(442, 27);
+            this.btwTxt.TabIndex = 0;
+            this.btwTxt.Text = "BTW:  0,00";
+            this.btwTxt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btwTxt.Click += new System.EventHandler(this.btwTxt_Click);
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.btwTxt);
             this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.listBox3);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(10, 57);
+            this.panel1.Controls.Add(this.totaalTxt);
+            this.panel1.Location = new System.Drawing.Point(10, 78);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(529, 274);
+            this.panel1.Size = new System.Drawing.Size(442, 71);
             this.panel1.TabIndex = 13;
             // 
             // Afrekenen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 729);
+            this.ClientSize = new System.Drawing.Size(464, 601);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.printBon);
             this.Controls.Add(this.creditcard);
@@ -233,12 +248,12 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label totaalTxt;
         private System.Windows.Forms.Button pin;
         private System.Windows.Forms.Button cash;
         private System.Windows.Forms.Button creditcard;
         private System.Windows.Forms.Button printBon;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label btwTxt;
         private System.Windows.Forms.Panel panel1;
     }
 }

@@ -34,6 +34,7 @@
             this.lstColFunctie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnDelEmployee = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstAccounts
@@ -45,10 +46,11 @@
             this.lstAccounts.FullRowSelect = true;
             this.lstAccounts.GridLines = true;
             this.lstAccounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lstAccounts.Location = new System.Drawing.Point(12, 12);
+            this.lstAccounts.Location = new System.Drawing.Point(32, 119);
+            this.lstAccounts.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.lstAccounts.MultiSelect = false;
             this.lstAccounts.Name = "lstAccounts";
-            this.lstAccounts.Size = new System.Drawing.Size(472, 170);
+            this.lstAccounts.Size = new System.Drawing.Size(1252, 400);
             this.lstAccounts.TabIndex = 0;
             this.lstAccounts.Tag = "";
             this.lstAccounts.UseCompatibleStateImageBehavior = false;
@@ -75,9 +77,10 @@
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(13, 216);
+            this.btnAddEmployee.Location = new System.Drawing.Point(32, 623);
+            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(137, 48);
+            this.btnAddEmployee.Size = new System.Drawing.Size(365, 114);
             this.btnAddEmployee.TabIndex = 1;
             this.btnAddEmployee.Text = "Add employee";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
@@ -86,22 +89,37 @@
             // btnDelEmployee
             // 
             this.btnDelEmployee.Enabled = false;
-            this.btnDelEmployee.Location = new System.Drawing.Point(179, 216);
+            this.btnDelEmployee.Location = new System.Drawing.Point(471, 623);
+            this.btnDelEmployee.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnDelEmployee.Name = "btnDelEmployee";
-            this.btnDelEmployee.Size = new System.Drawing.Size(142, 48);
+            this.btnDelEmployee.Size = new System.Drawing.Size(379, 114);
             this.btnDelEmployee.TabIndex = 2;
             this.btnDelEmployee.Text = "Delete employee";
             this.btnDelEmployee.UseVisualStyleBackColor = true;
             this.btnDelEmployee.Click += new System.EventHandler(this.btnDelEmployee_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(1302, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 55);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Log Uit";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PersoneelsBeheer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 729);
+            this.ClientSize = new System.Drawing.Size(1564, 1433);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDelEmployee);
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.lstAccounts);
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "PersoneelsBeheer";
             this.Text = "PersoneelsBeheer";
             this.ResumeLayout(false);
@@ -115,5 +133,6 @@
         private System.Windows.Forms.ListView lstAccounts;
         private System.Windows.Forms.Button btnAddEmployee;
         private System.Windows.Forms.Button btnDelEmployee;
+        private System.Windows.Forms.Button button1;
     }
 }

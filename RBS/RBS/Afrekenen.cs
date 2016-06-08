@@ -102,74 +102,6 @@ namespace RBS
                 listBox2.Items.Add(aantal.ToString());
                 listBox3.Items.Add(regelPrijs.ToString());
                 regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
-                listBox1.Items.Add(product.Naam);
-                listBox2.Items.Add(aantal.ToString());
-                listBox3.Items.Add(regelPrijs.ToString());
-                regels++;
 
 
                 totaalPrijs += regelPrijs;
@@ -177,27 +109,31 @@ namespace RBS
                 totaalBtw += (btw * aantal);
                 regels++;
             }
+            // ----- Form changes ----- //
+            totaalTxt.Text = "Totaal: " + totaalPrijs;
+            btwTxt.Text = "BTW: " + totaalBtw;
 
-            //Form aanpassen op hoogte van de lijst
-            label5.Text = "Totaal: " + totaalPrijs;
-            label6.Text = "BTW: " + totaalBtw;
-            int y = regels * 13;                    //één regel is 13 pixels, basis plaats is 63pixels
             listBox1.Height = listBox1.PreferredHeight;
             listBox2.Height = listBox2.PreferredHeight;
             listBox3.Height = listBox3.PreferredHeight;
 
-            panel1.Height = listBox1.Height;
-            if (panel1.Height > 300) panel1.Height = 300;
+            //set panel height Listbox + BTW and Totaal labels(40px)
+            panel1.Height = listBox1.Height + 50;
 
+            //set max panel Height
+            if (panel1.Height > 330)
+            {
+                panel1.Height = 330;
+                //set other padding for labels because of the vertical scrollbar
+                totaalTxt.Padding = new Padding(0, 0, 8, 0);
+                btwTxt.Padding = new Padding(0, 15, 8, 0);  //15top for space between listbox and label
+            }
 
         }
 
         private void printBon_Click(object sender, EventArgs e)
         {
             printBon.Enabled = false;
-            pin.Enabled = true;
-            cash.Enabled = true;
-            creditcard.Enabled = true;
         }
 
         private void afronding_Click(object sender, EventArgs e)
@@ -228,6 +164,11 @@ namespace RBS
         }
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btwTxt_Click(object sender, EventArgs e)
         {
 
         }
