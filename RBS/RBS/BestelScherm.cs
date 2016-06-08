@@ -15,7 +15,8 @@ namespace RBS
     public partial class BestelScherm : Form
     {
         private ProductDAO productDAO;
-        private int tafelId, bestelId;
+        private BestellingDAO bestellingDAO;
+        private int bestelId, personeelId, tafelId;
         private List<BestelRegel> bestelRegels = new List<BestelRegel>();
 
         /// <summary>
@@ -32,7 +33,14 @@ namespace RBS
                 tabControl.SelectedTab = tabPageDiner;
 
             this.productDAO = DataHelper.ProductDao;
+            this.bestellingDAO = DataHelper.BestellingDao;
+
+            //this.personeelId = personeelId;
+            personeelId = 2;
             this.tafelId = tafelId;
+
+            InitBestelId();
+            Debug.WriteLine(bestelId);
             DrawButtons();
         }
 
@@ -373,9 +381,17 @@ namespace RBS
             productDAO.VerwerkBestelling(bestelRegels);
         }
 
-        private void CheckBestelId()
+        private void InitBestelId()
         {
+            //bestelId = bestellingDAO.GetBestelId(tafelId);
 
+            if (bestellingDAO.OpenstaandeBestelling(tafelId))
+                bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
+            else
+            {
+                bestellingDAO.CreateNewBestelling(personeelId, tafelId);
+                bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
+            }
         }
     }
 }
