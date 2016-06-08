@@ -14,6 +14,8 @@ namespace RBS
 {
     public partial class BarScherm : Form
     {
+        List<Button> button = new List<Button>();
+
         public BarScherm()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace RBS
 
             int status = 1;
             int afdeling = 1;
+            int i = 0;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
@@ -42,18 +45,19 @@ namespace RBS
                 lvi.SubItems.Add(Bestelregel.Aantal.ToString());
                 listView1.Items.AddRange(new ListViewItem[] { lvi });
 
-
                 //create buttons
-                Button button = new Button();
-                button.Left = left;
-                button.Top = top;
-                button.Size = new Size(76, 15);
-                button.Text = "Klaar";
-                button.Tag = Bestelregel;
-                button.Font = new Font("Arial", 5);
-                button.Click += button_Click;
-                top += button.Height + 2;
-                tabPage1.Controls.Add(button);
+                Button btn = new Button();
+                btn.Left = left;
+                btn.Top = top;
+                btn.Size = new Size(76, 15);
+                btn.Text = "Klaar";
+                btn.Tag = Bestelregel;
+                btn.Font = new Font("Arial", 5);
+                btn.Click += button_Click;
+                tabPage1.Controls.Add(btn);
+                button.Add(btn);
+                top += btn.Height + 2;
+                i++;
 
             }
         }
@@ -66,12 +70,18 @@ namespace RBS
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
 
-                //bestellingDAO.MarkeerBestelRegel(regel.Status, regel.Id);
+                bestellingDAO.MarkeerBestelRegel(regel.BestelId);
                 listView1.Items.Clear();
                 listView2.Items.Clear();
+            int i = 0;
+            foreach (var buttonlist in button)
+            {
+                button[i].Dispose();
+                i++;
+            }
                 BarScherm_Huidig_load();
                 BarScherm_Geschiedenis_load();
-                btn.Dispose();           
+     
         }
 
         private void BarScherm_Geschiedenis_load()
@@ -83,6 +93,7 @@ namespace RBS
 
             int status = 2;
             int afdeling = 1;
+            int i = 0;
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
@@ -94,19 +105,31 @@ namespace RBS
                 lvi.SubItems.Add(Bestelregel.Comment.ToString());
                 lvi.SubItems.Add(Bestelregel.Aantal.ToString());
                 listView2.Items.AddRange(new ListViewItem[] { lvi });
-                listView2.Tag = Bestelregel;
+                //listView2.Tag = Bestelregel;
 
                 //create buttons
-                Button button = new Button();
-                button.Left = left;
-                button.Top = top;
-                button.Size = new Size(76, 15);
-                button.Text = "Verwijder";
-                button.Tag = Bestelregel;
-                button.Font = new Font("Arial", 5);
-                button.Click += button_Click;
-                tabPage2.Controls.Add(button);
-                top += button.Height + 2;
+                /*button[i].Left = left;
+                button[i].Top = top;
+                button[i].Size = new Size(76, 15);
+                button[i].Text = "Verwijder";
+                button[i].Tag = Bestelregel;
+                button[i].Font = new Font("Arial", 5);
+                button[i].Click += button_Click;
+                tabPage2.Controls.Add(button[i]);
+                top += button[i].Height + 2;*/
+
+                Button btn = new Button();
+                btn.Left = left;
+                btn.Top = top;
+                btn.Size = new Size(76, 15);
+                btn.Text = "Klaar";
+                btn.Tag = Bestelregel;
+                btn.Font = new Font("Arial", 5);
+                btn.Click += button_Click;
+                tabPage2.Controls.Add(btn);
+                button.Add(btn);
+                top += btn.Height + 2;
+                i++;
             }
         }
 

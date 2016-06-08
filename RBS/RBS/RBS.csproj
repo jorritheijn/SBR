@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\RBS.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -99,6 +100,16 @@
     </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="ProductDAO.cs" />
+    <Compile Include="ProductToevoegen.cs" />
+    <Compile Include="ProductToevoegen.Designer.cs">
+      <DependentUpon>ProductToevoegen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductUpdaten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductUpdaten.Designer.cs">
+      <DependentUpon>ProductUpdaten.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tafel.cs" />
@@ -135,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PersoneelsBeheer.resx">
       <DependentUpon>PersoneelsBeheer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductToevoegen.resx">
+      <DependentUpon>ProductToevoegen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductUpdaten.resx">
+      <DependentUpon>ProductUpdaten.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

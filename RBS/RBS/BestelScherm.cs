@@ -15,11 +15,13 @@ namespace RBS
     public partial class BestelScherm : Form
     {
         private ProductDAO productDAO;
-
         private int tafelId;
-
         private List<BestelRegel> bestelRegels = new List<BestelRegel>();
 
+        /// <summary>
+        /// Tovert 't BestelScherm in beeld
+        /// </summary>
+        /// <param name="tafelId">De tafel waarvoor besteld wordt</param>
         public BestelScherm(int tafelId)
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace RBS
         }
 
         /// <summary>
-        /// Creëert alle buttons en toont deze
+        /// Maak de controls
         /// </summary>
         private void DrawButtons()
         {
@@ -46,6 +48,11 @@ namespace RBS
             DrawWarmeDranken();
         }
 
+        /// <summary>
+        /// Event, roept InputForm_AddComment
+        /// </summary>
+        /// <param name="sender">Button waarop geklikt is</param>
+        /// <param name="e"></param>
         private void BtnAddComment_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -56,6 +63,10 @@ namespace RBS
             InputForm_AddComment(ref br);
         }
 
+        /// <summary>
+        /// Pop-up venster om een opmerking toe te voegen
+        /// </summary>
+        /// <param name="br">De BestelRegel waar een opmerking aan toegevoegd wordt</param>
         private void InputForm_AddComment(ref BestelRegel br)
         {
             Form form = new Form();
@@ -69,6 +80,7 @@ namespace RBS
             label.Text = "Voeg een opmerking toe:";
 
             comment.Text = br.Comment;
+            comment.MaxLength = 255;
 
             btnOk.Text = "Toevoegen";
             btnCancel.Text = "Annuleren";
@@ -103,6 +115,11 @@ namespace RBS
             }
         }
 
+        /// <summary>
+        /// Event dat een item van bestelRegels verwijdert
+        /// </summary>
+        /// <param name="sender">De button waar op geklikt is</param>
+        /// <param name="e"></param>
         private void BtnDecrement_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -122,7 +139,6 @@ namespace RBS
                 controls[2].Enabled = false;
                 controls[3].Enabled = false;
             }
-            UpdateListView();
         }
 
         /// <summary>
@@ -179,288 +195,131 @@ namespace RBS
             }
         }
 
+        /// <summary>
+        /// Maakt controls voor elk item in de gegeven lijst
+        /// </summary>
+        /// <param name="items">Lijst van Producten waarvoor controls gemaakt worden</param>
+        /// <returns>Een lijst van nog niet toegevoegde controls</returns>
+        private List<Control> CreateControls(List<Product> items)
+        {
+            List<Control> controls = new List<Control>();
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                int width = 350, height = 30;
+
+                Button btnItem = new Button();
+                Label lblNum = new Label();
+                Button btnDecrement = new Button();
+                Button btnAddComment = new Button();
+
+                btnItem.Click += BtnItem_Click;
+                btnDecrement.Click += BtnDecrement_Click;
+                btnAddComment.Click += BtnAddComment_Click;
+
+                btnItem.Tag = items[i];
+                lblNum.Tag = 0;
+                btnDecrement.Tag = items[i];
+
+                btnItem.Enabled = items[i].AantalVoorraad > 0;
+                btnDecrement.Enabled = false;
+                btnAddComment.Enabled = false;
+
+                if (i < 10)
+                {
+                    btnItem.Name = "row0" + i;
+                    lblNum.Name = "row0" + i;
+                    btnDecrement.Name = "row0" + i;
+                    btnAddComment.Name = "row0" + i;
+                }
+                else
+                {
+                    btnItem.Name = "row" + i;
+                    lblNum.Name = "row" + i;
+                    btnDecrement.Name = "row" + i;
+                    btnAddComment.Name = "row" + i;
+                }
+
+                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
+                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
+                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
+                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
+
+                btnItem.Text = items[i].Naam.Trim();
+                lblNum.Text = "0";
+                btnDecrement.Text = "-";
+                btnAddComment.Text = "Opmerking";
+
+                controls.Add(btnItem);
+                controls.Add(lblNum);
+                controls.Add(btnDecrement);
+                controls.Add(btnAddComment);
+            }
+
+            return controls;
+        }
+
+        /// <summary>
+        /// Voegt lunch items toe
+        /// </summary>
         private void DrawLunch()
         {
             List<Product> items = productDAO.GetAllByCategorie(1);
-            for (int i = 0; i < items.Count; i++)
-            {
-                int width = 350, height = 30;
-
-                Button btnItem = new Button();
-                Label lblNum = new Label();
-                Button btnDecrement = new Button();
-                Button btnAddComment = new Button();
-
-                btnItem.Click += BtnItem_Click;
-                btnDecrement.Click += BtnDecrement_Click;
-                btnAddComment.Click += BtnAddComment_Click;
-
-                btnItem.Tag = items[i];
-                lblNum.Tag = 0;
-                btnDecrement.Tag = items[i];
-
-                btnItem.Enabled = items[i].AantalVoorraad > 0;
-                btnDecrement.Enabled = false;
-                btnAddComment.Enabled = false;
-
-                if (i < 10)
-                {
-                    btnItem.Name = "row0" + i;
-                    lblNum.Name = "row0" + i;
-                    btnDecrement.Name = "row0" + i;
-                    btnAddComment.Name = "row0" + i;
-                }
-                else
-                {
-                    btnItem.Name = "row" + i;
-                    lblNum.Name = "row" + i;
-                    btnDecrement.Name = "row" + i;
-                    btnAddComment.Name = "row" + i;
-                }
-
-                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
-                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
-                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
-
-                btnItem.Text = items[i].Naam.Trim();
-                lblNum.Text = "0";
-                btnDecrement.Text = "-";
-                btnAddComment.Text = "Opmerking";
-
-                tabPageLunch.Controls.Add(btnItem);
-                tabPageLunch.Controls.Add(lblNum);
-                tabPageLunch.Controls.Add(btnDecrement);
-                tabPageLunch.Controls.Add(btnAddComment);
-            }
+            List<Control> controls = CreateControls(items);
+            for (int i = 0; i < controls.Count; i++)
+                tabPageLunch.Controls.Add(controls[i]);
         }
 
+        /// <summary>
+        /// Voegt diner items toe
+        /// </summary>
         private void DrawDiner()
         {
             List<Product> items = productDAO.GetAllByCategorie(2);
-            for (int i = 0; i < items.Count; i++)
-            {
-                int width = 350, height = 30;
-
-                Button btnItem = new Button();
-                Label lblNum = new Label();
-                Button btnDecrement = new Button();
-                Button btnAddComment = new Button();
-
-                btnItem.Click += BtnItem_Click;
-                btnDecrement.Click += BtnDecrement_Click;
-                btnAddComment.Click += BtnAddComment_Click;
-
-                btnItem.Tag = items[i];
-                lblNum.Tag = 0;
-                btnDecrement.Tag = items[i];
-
-                btnItem.Enabled = items[i].AantalVoorraad > 0;
-                btnDecrement.Enabled = false;
-                btnAddComment.Enabled = false;
-
-                if (i < 10)
-                {
-                    btnItem.Name = "row0" + i;
-                    lblNum.Name = "row0" + i;
-                    btnDecrement.Name = "row0" + i;
-                    btnAddComment.Name = "row0" + i;
-                }
-                else
-                {
-                    btnItem.Name = "row" + i;
-                    lblNum.Name = "row" + i;
-                    btnDecrement.Name = "row" + i;
-                    btnAddComment.Name = "row" + i;
-                }
-
-                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
-                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
-                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
-
-                btnItem.Text = items[i].Naam.Trim();
-                lblNum.Text = "0";
-                btnDecrement.Text = "-";
-                btnAddComment.Text = "Opmerking";
-
-                tabPageDiner.Controls.Add(btnItem);
-                tabPageDiner.Controls.Add(lblNum);
-                tabPageDiner.Controls.Add(btnDecrement);
-                tabPageDiner.Controls.Add(btnAddComment);
-            }
+            List<Control> controls = CreateControls(items);
+            for (int i = 0; i < controls.Count; i++)
+                tabPageDiner.Controls.Add(controls[i]);
         }
 
+        /// <summary>
+        /// Voegt frisdrank items toe
+        /// </summary>
         private void DrawFrisdranken()
         {
             List<Product> items = productDAO.GetAllBySubCategorie(8);
-            for (int i = 0; i < items.Count; i++)
-            {
-                int width = 350, height = 30;
-
-                Button btnItem = new Button();
-                Label lblNum = new Label();
-                Button btnDecrement = new Button();
-                Button btnAddComment = new Button();
-
-                btnItem.Click += BtnItem_Click;
-                btnDecrement.Click += BtnDecrement_Click;
-                btnAddComment.Click += BtnAddComment_Click;
-
-                btnItem.Tag = items[i];
-                lblNum.Tag = 0;
-                btnDecrement.Tag = items[i];
-
-                btnItem.Enabled = items[i].AantalVoorraad > 0;
-                btnDecrement.Enabled = false;
-                btnAddComment.Enabled = false;
-
-                if (i < 10)
-                {
-                    btnItem.Name = "row0" + i;
-                    lblNum.Name = "row0" + i;
-                    btnDecrement.Name = "row0" + i;
-                    btnAddComment.Name = "row0" + i;
-                }
-                else
-                {
-                    btnItem.Name = "row" + i;
-                    lblNum.Name = "row" + i;
-                    btnDecrement.Name = "row" + i;
-                    btnAddComment.Name = "row" + i;
-                }
-
-                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
-                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
-                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
-
-                btnItem.Text = items[i].Naam.Trim();
-                lblNum.Text = "0";
-                btnDecrement.Text = "-";
-                btnAddComment.Text = "Opmerking";
-
-                tabPageFris.Controls.Add(btnItem);
-                tabPageFris.Controls.Add(lblNum);
-                tabPageFris.Controls.Add(btnDecrement);
-                tabPageFris.Controls.Add(btnAddComment);
-            }
+            List<Control> controls = CreateControls(items);
+            for (int i = 0; i < controls.Count; i++)
+                tabPageFris.Controls.Add(controls[i]);
         }
 
+        /// <summary>
+        /// Voegt alcoholhoundende items toe
+        /// </summary>
         private void DrawAlcoholhoudend()
         {
             List<Product> items = productDAO.GetAllBySubCategorie(9);
             items.AddRange(productDAO.GetAllBySubCategorie(10));
             items.AddRange(productDAO.GetAllBySubCategorie(11));
-            for (int i = 0; i < items.Count; i++)
-            {
-                int width = 350, height = 30;
-
-                Button btnItem = new Button();
-                Label lblNum = new Label();
-                Button btnDecrement = new Button();
-                Button btnAddComment = new Button();
-
-                btnItem.Click += BtnItem_Click;
-                btnDecrement.Click += BtnDecrement_Click;
-                btnAddComment.Click += BtnAddComment_Click;
-
-                btnItem.Tag = items[i];
-                lblNum.Tag = 0;
-                btnDecrement.Tag = items[i];
-
-                btnItem.Enabled = items[i].AantalVoorraad > 0;
-                btnDecrement.Enabled = false;
-                btnAddComment.Enabled = false;
-
-                if (i < 10)
-                {
-                    btnItem.Name = "row0" + i;
-                    lblNum.Name = "row0" + i;
-                    btnDecrement.Name = "row0" + i;
-                    btnAddComment.Name = "row0" + i;
-                }
-                else
-                {
-                    btnItem.Name = "row" + i;
-                    lblNum.Name = "row" + i;
-                    btnDecrement.Name = "row" + i;
-                    btnAddComment.Name = "row" + i;
-                }
-
-                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
-                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
-                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
-
-                btnItem.Text = items[i].Naam.Trim();
-                lblNum.Text = "0";
-                btnDecrement.Text = "-";
-                btnAddComment.Text = "Opmerking";
-
-                tabPageDrank.Controls.Add(btnItem);
-                tabPageDrank.Controls.Add(lblNum);
-                tabPageDrank.Controls.Add(btnDecrement);
-                tabPageDrank.Controls.Add(btnAddComment);
-            }
+            List<Control> controls = CreateControls(items);
+            for (int i = 0; i < controls.Count; i++)
+                tabPageDrank.Controls.Add(controls[i]);
         }
 
+        /// <summary>
+        /// Voegt warme dranken toe
+        /// </summary>
         private void DrawWarmeDranken()
         {
             List<Product> items = productDAO.GetAllBySubCategorie(12);
-            for (int i = 0; i < items.Count; i++)
-            {
-                int width = 350, height = 30;
-
-                Button btnItem = new Button();
-                Label lblNum = new Label();
-                Button btnDecrement = new Button();
-                Button btnAddComment = new Button();
-
-                btnItem.Click += BtnItem_Click;
-                btnDecrement.Click += BtnDecrement_Click;
-                btnAddComment.Click += BtnAddComment_Click;
-
-                btnItem.Tag = items[i];
-                lblNum.Tag = 0;
-                btnDecrement.Tag = items[i];
-
-                btnItem.Enabled = items[i].AantalVoorraad > 0;
-                btnDecrement.Enabled = false;
-                btnAddComment.Enabled = false;
-
-                if (i < 10)
-                {
-                    btnItem.Name = "row0" + i;
-                    lblNum.Name = "row0" + i;
-                    btnDecrement.Name = "row0" + i;
-                    btnAddComment.Name = "row0" + i;
-                }
-                else
-                {
-                    btnItem.Name = "row" + i;
-                    lblNum.Name = "row" + i;
-                    btnDecrement.Name = "row" + i;
-                    btnAddComment.Name = "row" + i;
-                }
-
-                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
-                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
-                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
-
-                btnItem.Text = items[i].Naam.Trim();
-                lblNum.Text = "0";
-                btnDecrement.Text = "-";
-                btnAddComment.Text = "Opmerking";
-
-                tabPageKoffieThee.Controls.Add(btnItem);
-                tabPageKoffieThee.Controls.Add(lblNum);
-                tabPageKoffieThee.Controls.Add(btnDecrement);
-                tabPageKoffieThee.Controls.Add(btnAddComment);
-            }
+            List<Control> controls = CreateControls(items);
+            for (int i = 0; i < controls.Count; i++)
+                tabPageKoffieThee.Controls.Add(controls[i]);
         }
 
+        /// <summary>
+        /// Voegt een gegeven product toe aan de bestelling
+        /// </summary>
+        /// <param name="productId"></param>
         private void AddProduct(int productId)
         {
             for (int i = 0; i < bestelRegels.Count; i++)
@@ -475,6 +334,10 @@ namespace RBS
             bestelRegels.Add(new BestelRegel(tafelId, productId, 1, 0, "", 1, 0));
         }
 
+        /// <summary>
+        /// Verwijdert een product van de bestelling
+        /// </summary>
+        /// <param name="productId"></param>
         private void RemoveProduct(int productId)
         {
             for (int i = 0; i < bestelRegels.Count; i++)
@@ -502,11 +365,26 @@ namespace RBS
             }
         }
 
+        /// <summary>
+        /// Zoekt naar een product in de bestelRegels
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns>De BestelRegel waarin het product zich bevindt</returns>
         private BestelRegel FindBestelRegel(int productId)
         {
             foreach (BestelRegel br in bestelRegels)
                 if (br.ProductId == productId) return br;
             return bestelRegels[0];
+        }
+
+        /// <summary>
+        /// Voegt de bestelling toe aan de database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnVerwerkBestelling_Click(object sender, EventArgs e)
+        {
+            productDAO.VerwerkBestelling(bestelRegels);
         }
     }
 }

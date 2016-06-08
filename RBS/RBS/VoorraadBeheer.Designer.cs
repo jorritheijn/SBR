@@ -32,16 +32,20 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btn_Verwijder = new System.Windows.Forms.Button();
+            this.btn_Toevoeg = new System.Windows.Forms.Button();
+            this.btn_Diner = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.list_Producten = new System.Windows.Forms.ListBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.btn_Lunch = new System.Windows.Forms.Button();
+            this.btn_Drank = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.list_Aantal = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,9 +85,12 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btn_Verwijder);
+            this.tabPage3.Controls.Add(this.btn_Toevoeg);
+            this.tabPage3.Controls.Add(this.btn_Diner);
             this.tabPage3.Controls.Add(this.panel1);
-            this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.btn_Lunch);
+            this.tabPage3.Controls.Add(this.btn_Drank);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -94,56 +101,92 @@
             this.tabPage3.Text = "Voorraad";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btn_Verwijder
+            // 
+            this.btn_Verwijder.Location = new System.Drawing.Point(281, 409);
+            this.btn_Verwijder.Name = "btn_Verwijder";
+            this.btn_Verwijder.Size = new System.Drawing.Size(143, 31);
+            this.btn_Verwijder.TabIndex = 7;
+            this.btn_Verwijder.Text = "Product verwijderen";
+            this.btn_Verwijder.UseVisualStyleBackColor = true;
+            this.btn_Verwijder.Click += new System.EventHandler(this.btn_Verwijder_Click);
+            // 
+            // btn_Toevoeg
+            // 
+            this.btn_Toevoeg.Location = new System.Drawing.Point(82, 409);
+            this.btn_Toevoeg.Name = "btn_Toevoeg";
+            this.btn_Toevoeg.Size = new System.Drawing.Size(143, 31);
+            this.btn_Toevoeg.TabIndex = 6;
+            this.btn_Toevoeg.Text = "Product toevoegen";
+            this.btn_Toevoeg.UseVisualStyleBackColor = true;
+            this.btn_Toevoeg.Click += new System.EventHandler(this.btn_Toevoeg_Click);
+            // 
+            // btn_Diner
+            // 
+            this.btn_Diner.Location = new System.Drawing.Point(6, 95);
+            this.btn_Diner.Name = "btn_Diner";
+            this.btn_Diner.Size = new System.Drawing.Size(69, 23);
+            this.btn_Diner.TabIndex = 5;
+            this.btn_Diner.Text = "Diner";
+            this.btn_Diner.UseVisualStyleBackColor = true;
+            this.btn_Diner.Click += new System.EventHandler(this.btn_Diner_Click);
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.list_Aantal);
+            this.panel1.Controls.Add(this.list_Producten);
+            this.panel1.Controls.Add(this.splitter1);
             this.panel1.Location = new System.Drawing.Point(81, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(423, 436);
+            this.panel1.Size = new System.Drawing.Size(423, 381);
             this.panel1.TabIndex = 4;
             // 
-            // label4
+            // list_Producten
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "label4";
+            this.list_Producten.FormattingEnabled = true;
+            this.list_Producten.Location = new System.Drawing.Point(9, 4);
+            this.list_Producten.Name = "list_Producten";
+            this.list_Producten.Size = new System.Drawing.Size(324, 368);
+            this.list_Producten.TabIndex = 3;
+            this.list_Producten.SelectedIndexChanged += new System.EventHandler(this.list_Producten_SelectedIndexChanged);
+            this.list_Producten.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.list_Producten_MouseDoubleClick);
             // 
-            // panel2
+            // splitter1
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(297, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(126, 423);
-            this.panel2.TabIndex = 0;
+            this.splitter1.BackColor = System.Drawing.Color.White;
+            this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(342, 379);
+            this.splitter1.TabIndex = 2;
+            this.splitter1.TabStop = false;
             // 
-            // button2
+            // btn_Lunch
             // 
-            this.button2.Location = new System.Drawing.Point(6, 66);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(69, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Eten";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Lunch.Location = new System.Drawing.Point(6, 66);
+            this.btn_Lunch.Name = "btn_Lunch";
+            this.btn_Lunch.Size = new System.Drawing.Size(69, 23);
+            this.btn_Lunch.TabIndex = 2;
+            this.btn_Lunch.Text = "Lunch";
+            this.btn_Lunch.UseVisualStyleBackColor = true;
+            this.btn_Lunch.Click += new System.EventHandler(this.btn_Lunch_Click);
             // 
-            // button1
+            // btn_Drank
             // 
-            this.button1.Location = new System.Drawing.Point(6, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Dranken";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Drank.Location = new System.Drawing.Point(6, 124);
+            this.btn_Drank.Name = "btn_Drank";
+            this.btn_Drank.Size = new System.Drawing.Size(69, 23);
+            this.btn_Drank.TabIndex = 3;
+            this.btn_Drank.Text = "Dranken";
+            this.btn_Drank.UseVisualStyleBackColor = true;
+            this.btn_Drank.Click += new System.EventHandler(this.btn_Drank_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label2.Location = new System.Drawing.Point(386, 0);
+            this.label2.Location = new System.Drawing.Point(403, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 20);
             this.label2.TabIndex = 2;
@@ -172,10 +215,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label3.Location = new System.Drawing.Point(12, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 24);
+            this.label3.Size = new System.Drawing.Size(87, 26);
             this.label3.TabIndex = 1;
             this.label3.Text = "Manager";
             // 
@@ -191,6 +235,15 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // list_Aantal
+            // 
+            this.list_Aantal.FormattingEnabled = true;
+            this.list_Aantal.Location = new System.Drawing.Point(348, 4);
+            this.list_Aantal.Name = "list_Aantal";
+            this.list_Aantal.Size = new System.Drawing.Size(70, 368);
+            this.list_Aantal.TabIndex = 4;
+            this.list_Aantal.SelectedIndexChanged += new System.EventHandler(this.list_Aantal_SelectedIndexChanged);
+            // 
             // VoorraadBeheer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,7 +258,6 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,14 +270,18 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Lunch;
+        private System.Windows.Forms.Button btn_Drank;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_Diner;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.ListBox list_Producten;
+        private System.Windows.Forms.Button btn_Verwijder;
+        private System.Windows.Forms.Button btn_Toevoeg;
+        private System.Windows.Forms.ListBox list_Aantal;
     }
 }

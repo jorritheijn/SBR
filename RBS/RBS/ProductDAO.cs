@@ -11,11 +11,20 @@ namespace RBS
     {
         protected SqlConnection dbConnection;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dbConnection">Connectie info</param>
         public ProductDAO(SqlConnection dbConnection)
         {
             this.dbConnection = dbConnection;
         }
 
+        /// <summary>
+        /// Pakt 't eerste product met 't gegeven ID
+        /// </summary>
+        /// <param name="productId">ID van een product</param>
+        /// <returns>Geeft één object van 't type Product</returns>
         public Product GetProductById(int productId)
         {
             dbConnection.Open();
@@ -38,6 +47,11 @@ namespace RBS
             return product;
         }
 
+        /// <summary>
+        /// Maakt een lijst van producten van een gegeven categorie
+        /// </summary>
+        /// <param name="categorie">ID van een categorie</param>
+        /// <returns>Lijst met objecten van 't type Product</returns>
         public List<Product> GetAllByCategorie(int categorie)
         {
             dbConnection.Open();
@@ -62,6 +76,11 @@ namespace RBS
             return producten;
         }
 
+        /// <summary>
+        /// Maakt een lijst van producten van een gegeven subcategorie
+        /// </summary>
+        /// <param name="subCategorie">ID van een subcategorie</param>
+        /// <returns>Een lijst met objecten van het type Product</returns>
         public List<Product> GetAllBySubCategorie(int subCategorie)
         {
             dbConnection.Open();
@@ -84,103 +103,96 @@ namespace RBS
             return producten;
         }
 
-        public List<Product> GetFrisdrank()
+        /// <summary>
+        /// Gooit een bestelling per product in de database en verwijdert deze uit de voorraad
+        /// </summary>
+        /// <param name="items">Lijst van BestelRegels</param>
+        public void VerwerkBestelling(List<BestelRegel> items)
         {
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=8", dbConnection);
 
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> fris = new List<Product>();
-
-            while(reader.Read())
+            foreach (BestelRegel br in items)
             {
-                Product p = ReadProduct(reader);
-                fris.Add(p);
+                string query = String.Format("INSERT INTO bestelRegels (bestelId, productId, aantal, comment, productstatus) " +
+                    "VALUES ({0},{1},{2},@comment,{3})", br.BestelId, br.ProductId, br.Aantal, br.Status);
+                SqlCommand command = new SqlCommand(query, dbConnection);
+                command.Parameters.AddWithValue("@comment", br.Comment);
+                command.ExecuteNonQuery();
+
+                query = String.Format("UPDATE producten " +
+                    "SET aantalVoorraad=aantalVoorraad-{0} " +
+                    "WHERE productId={1}", br.Aantal, br.ProductId);
+                command = new SqlCommand(query, dbConnection);
+                command.ExecuteNonQuery();
             }
 
             dbConnection.Close();
-
-            return fris;
         }
 
-        public List<Product> GetAlcoholhoudend()
+        /// <summary>
+        /// Voegt een product toe aan de database tabel producten
+        /// </summary>
+        /// <param name="ProductId">ID van het nieuwe product</param>
+        /// <param name="productNaam">Naam van het nieuwe product</param>
+        /// <param name="productPrijs">Prijs van het nieuwe product</param>
+        /// <param name="aantalVoorraad">Grootte van het voorraad van het nieuwe product</param>
+        public void VoegtoeProduct(Product product)
         {
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM producten " +
-                "WHERE subCategorieId=9 OR subCategorieId=10 OR subCategorieId=11", dbConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> alcohol = new List<Product>();
-
-            while (reader.Read())
-            {
-                Product p = ReadProduct(reader);
-                alcohol.Add(p);
-            }
-
-            dbConnection.Close();
-
-            return alcohol;
-        }
-
-        public List<Product> GetWarmeDranken()
-        {
-            dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM producten WHERE subCategorieId=12", dbConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Product> dranken = new List<Product>();
-
-            while (reader.Read())
-            {
-                Product p = ReadProduct(reader);
-                dranken.Add(p);
-            }
-
-            dbConnection.Close();
-
-            return dranken;
-        }
-
-        public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)
-        {
-            dbConnection.Open();
-            string sql = "INSERT INTO Producten (id, naam, prijs, aantal) " + "VALUES (@id, @naam, @prijs, @aantal)";
+            string sql = "INSERT INTO Producten (productNaam, prijs, aantalVoorraad, subCategorieId) " + "VALUES (@productNaam, @prijs, @aantalVoorraad, @subCategorieId)";
             SqlCommand command = new SqlCommand(sql, dbConnection);
-            command.Parameters.AddWithValue("@id", ProductId);
-            command.Parameters.AddWithValue("@naam", productNaam);
-            command.Parameters.AddWithValue("@prijs", productPrijs);
-            command.Parameters.AddWithValue("@aantal", aantalVoorraad);
+            command.Parameters.AddWithValue("@productNaam", product.Naam);
+            command.Parameters.AddWithValue("@prijs", product.Prijs);
+            command.Parameters.AddWithValue("@aantalVoorraad", product.AantalVoorraad);
+            command.Parameters.AddWithValue("@subCategorieId", product.SubCategorieId);
             command.ExecuteNonQuery();
 
             dbConnection.Close();
         }
 
-        public void WijzigProduct(int productId, string productNaam, double productPrijs, int aantalVoorraad)
+        /// <summary>
+        /// Wijzigt een product in de database
+        /// </summary>
+        /// <param name="productId">Nieuwe ID van het product</param>
+        /// <param name="productNaam">Nieuwe naam van het product</param>
+        /// <param name="productPrijs">Nieuwe prijs van het product</param>
+        /// <param name="aantalVoorraad">Nieuwe voorraad van het product</param>
+        public void WijzigProduct(Product product)
         {
             dbConnection.Open();
             string sql = String.Format(
-                "UPDATE Producten " + "SET naam = @naam, prijs = @prijs, aantal= @aantal" + "WHERE Id={0}", productId);
+                "UPDATE Producten " + "SET productNaam=@productNaam, prijs=@prijs, aantalVoorraad=@aantalVoorraad, subCategorieId=@subCategorieId" + " WHERE productId={0}", product.Id);
             SqlCommand command = new SqlCommand(sql, dbConnection);
-            command.Parameters.AddWithValue("@naam", productNaam);
-            command.Parameters.AddWithValue("@prijs", productPrijs);
-            command.Parameters.AddWithValue("@aantal", aantalVoorraad);
+            command.Parameters.AddWithValue("@productNaam", product.Naam);
+            command.Parameters.AddWithValue("@prijs", product.Prijs);
+            command.Parameters.AddWithValue("@aantalVoorraad", product.AantalVoorraad);
+            command.Parameters.AddWithValue("@subCategorieId", product.SubCategorieId);
             command.ExecuteNonQuery();
             dbConnection.Close();
         }
 
-        public void VerwijderProduct(int productId, string productNaam, double ProductPrijs, int aantalVoorraad)
+        /// <summary>
+        /// Verwijdert een product uit de database
+        /// </summary>
+        /// <remarks>Waar zijn de extra 3 parameters voor?</remarks>
+        /// <param name="productId">ID van het product</param>
+        /// <param name="productNaam">???</param>
+        /// <param name="ProductPrijs">???</param>
+        /// <param name="aantalVoorraad">???</param>
+        public void VerwijderProduct(int productID)
         {
             dbConnection.Open();
-            string sql = String.Format("DELETE FROM Producten WHERE ID={0}", productId);
+            string sql = String.Format("DELETE FROM Producten WHERE productId={0}", productID);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             command.ExecuteNonQuery();
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Leest records van producten, kolom voor kolom, uit de database
+        /// </summary>
+        /// <param name="reader">Bevat de informatie om de juiste records te lezen</param>
+        /// <returns>Een object van het type Product</returns>
 
         private Product ReadProduct(SqlDataReader reader)
         {
@@ -191,6 +203,28 @@ namespace RBS
             int subCategorieId = (int)reader["subCategorieId"];
 
             return new Product(id, naam, prijs, aantalVoorraad, subCategorieId);
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT * FROM producten");
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> producten = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product product = ReadProduct(reader);
+                producten.Add(product);
+            }
+
+            dbConnection.Close();
+
+            return producten;
         }
     }
 }
