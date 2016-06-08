@@ -70,7 +70,7 @@ namespace RBS
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
 
-                bestellingDAO.MarkeerBestelRegel(regel.Status, regel.Id);
+                bestellingDAO.MarkeerBestelRegel(regel.BestelId);
                 listView1.Items.Clear();
                 listView2.Items.Clear();
             int i = 0;
