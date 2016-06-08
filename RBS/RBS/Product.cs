@@ -36,6 +36,7 @@ namespace RBS
             this.subCategorieId = subCategorieId;
         }
 
+      
         /// <summary>
         /// Berekent de btw op het product
         /// </summary>
@@ -57,6 +58,7 @@ namespace RBS
         public int Id
         {
             get { return id; }
+            set { id = value; }
         }
 
         /// <summary>
