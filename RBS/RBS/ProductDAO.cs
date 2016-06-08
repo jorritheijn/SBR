@@ -136,15 +136,15 @@ namespace RBS
         /// <param name="productNaam">Naam van het nieuwe product</param>
         /// <param name="productPrijs">Prijs van het nieuwe product</param>
         /// <param name="aantalVoorraad">Grootte van het voorraad van het nieuwe product</param>
-        public void VoegtoeProduct(int ProductId, string productNaam, double productPrijs, int aantalVoorraad)
+        public void VoegtoeProduct(Product product)
         {
             dbConnection.Open();
-            string sql = "INSERT INTO Producten (id, naam, prijs, aantal) " + "VALUES (@id, @naam, @prijs, @aantal)";
+            string sql = "INSERT INTO Producten (productNaam, prijs, aantalVoorraad, subCategorieId) " + "VALUES (@productNaam, @prijs, @aantalVoorraad, @subCategorieId)";
             SqlCommand command = new SqlCommand(sql, dbConnection);
-            command.Parameters.AddWithValue("@id", ProductId);
-            command.Parameters.AddWithValue("@naam", productNaam);
-            command.Parameters.AddWithValue("@prijs", productPrijs);
-            command.Parameters.AddWithValue("@aantal", aantalVoorraad);
+            command.Parameters.AddWithValue("@productNaam", product.Naam);
+            command.Parameters.AddWithValue("@prijs", product.Prijs);
+            command.Parameters.AddWithValue("@aantalVoorraad", product.AantalVoorraad);
+            command.Parameters.AddWithValue("@subCategorieId", product.SubCategorieId);
             command.ExecuteNonQuery();
 
             dbConnection.Close();
@@ -157,15 +157,16 @@ namespace RBS
         /// <param name="productNaam">Nieuwe naam van het product</param>
         /// <param name="productPrijs">Nieuwe prijs van het product</param>
         /// <param name="aantalVoorraad">Nieuwe voorraad van het product</param>
-        public void WijzigProduct(int productId, string productNaam, double productPrijs, int aantalVoorraad)
+        public void WijzigProduct(Product product)
         {
             dbConnection.Open();
             string sql = String.Format(
-                "UPDATE Producten " + "SET naam = @naam, prijs = @prijs, aantal= @aantal" + "WHERE Id={0}", productId);
+                "UPDATE Producten " + "SET productNaam=@productNaam, prijs=@prijs, aantalVoorraad=@aantalVoorraad, subCategorieId=@subCategorieId" + " WHERE productId={0}", product.Id);
             SqlCommand command = new SqlCommand(sql, dbConnection);
-            command.Parameters.AddWithValue("@naam", productNaam);
-            command.Parameters.AddWithValue("@prijs", productPrijs);
-            command.Parameters.AddWithValue("@aantal", aantalVoorraad);
+            command.Parameters.AddWithValue("@productNaam", product.Naam);
+            command.Parameters.AddWithValue("@prijs", product.Prijs);
+            command.Parameters.AddWithValue("@aantalVoorraad", product.AantalVoorraad);
+            command.Parameters.AddWithValue("@subCategorieId", product.SubCategorieId);
             command.ExecuteNonQuery();
             dbConnection.Close();
         }
@@ -178,10 +179,10 @@ namespace RBS
         /// <param name="productNaam">???</param>
         /// <param name="ProductPrijs">???</param>
         /// <param name="aantalVoorraad">???</param>
-        public void VerwijderProduct(int productId, string productNaam, double ProductPrijs, int aantalVoorraad)
+        public void VerwijderProduct(int productID)
         {
             dbConnection.Open();
-            string sql = String.Format("DELETE FROM Producten WHERE ID={0}", productId);
+            string sql = String.Format("DELETE FROM Producten WHERE productId={0}", productID);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             command.ExecuteNonQuery();
             dbConnection.Close();
@@ -192,6 +193,7 @@ namespace RBS
         /// </summary>
         /// <param name="reader">Bevat de informatie om de juiste records te lezen</param>
         /// <returns>Een object van het type Product</returns>
+
         private Product ReadProduct(SqlDataReader reader)
         {
             int id = (int)reader["productId"];
@@ -201,6 +203,28 @@ namespace RBS
             int subCategorieId = (int)reader["subCategorieId"];
 
             return new Product(id, naam, prijs, aantalVoorraad, subCategorieId);
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT * FROM producten");
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Product> producten = new List<Product>();
+
+            while (reader.Read())
+            {
+                Product product = ReadProduct(reader);
+                producten.Add(product);
+            }
+
+            dbConnection.Close();
+
+            return producten;
         }
     }
 }
