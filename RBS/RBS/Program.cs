@@ -25,7 +25,7 @@ namespace RBS
             PersoneelDAO personeelDAO = new PersoneelDAO(dbConnection);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
             ProductDAO productDAO = new ProductDAO(dbConnection);
-            Application.Run(new VoorraadBeheer());
+            Application.Run(new BarScherm());
             //Application.Run(new BestelScherm(1));
         }
     }
