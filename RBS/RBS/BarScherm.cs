@@ -122,7 +122,7 @@ namespace RBS
                 btn.Left = left;
                 btn.Top = top;
                 btn.Size = new Size(76, 15);
-                btn.Text = "Klaar";
+                btn.Text = "Verwijder";
                 btn.Tag = Bestelregel;
                 btn.Font = new Font("Arial", 5);
                 btn.Click += button_Click;
