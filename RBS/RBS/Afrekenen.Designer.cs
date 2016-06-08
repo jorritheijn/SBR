@@ -41,6 +41,8 @@
             this.creditcard = new System.Windows.Forms.Button();
             this.printBon = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -88,35 +90,35 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(16, 57);
+            this.listBox1.Location = new System.Drawing.Point(4, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(173, 95);
+            this.listBox1.Size = new System.Drawing.Size(173, 17);
             this.listBox1.TabIndex = 5;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(199, 57);
+            this.listBox2.Location = new System.Drawing.Point(183, 3);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(32, 95);
+            this.listBox2.Size = new System.Drawing.Size(32, 17);
             this.listBox2.TabIndex = 6;
             // 
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(238, 57);
+            this.listBox3.Location = new System.Drawing.Point(221, 3);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(51, 95);
+            this.listBox3.Size = new System.Drawing.Size(51, 17);
             this.listBox3.TabIndex = 7;
             this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.Location = new System.Drawing.Point(197, 170);
+            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label5.Location = new System.Drawing.Point(0, 257);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 17);
+            this.label5.Size = new System.Drawing.Size(529, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "Totaal: ";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -127,9 +129,9 @@
             this.pin.Enabled = false;
             this.pin.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.pin.FlatAppearance.BorderSize = 4;
-            this.pin.Location = new System.Drawing.Point(10, 407);
+            this.pin.Location = new System.Drawing.Point(28, 603);
             this.pin.Name = "pin";
-            this.pin.Size = new System.Drawing.Size(93, 54);
+            this.pin.Size = new System.Drawing.Size(150, 100);
             this.pin.TabIndex = 9;
             this.pin.Text = "Pin";
             this.pin.UseVisualStyleBackColor = true;
@@ -141,9 +143,9 @@
             this.cash.Enabled = false;
             this.cash.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.cash.FlatAppearance.BorderSize = 4;
-            this.cash.Location = new System.Drawing.Point(125, 407);
+            this.cash.Location = new System.Drawing.Point(199, 603);
             this.cash.Name = "cash";
-            this.cash.Size = new System.Drawing.Size(93, 54);
+            this.cash.Size = new System.Drawing.Size(150, 100);
             this.cash.TabIndex = 10;
             this.cash.Text = "Cash";
             this.cash.UseVisualStyleBackColor = true;
@@ -155,9 +157,9 @@
             this.creditcard.Enabled = false;
             this.creditcard.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.creditcard.FlatAppearance.BorderSize = 4;
-            this.creditcard.Location = new System.Drawing.Point(240, 407);
+            this.creditcard.Location = new System.Drawing.Point(374, 603);
             this.creditcard.Name = "creditcard";
-            this.creditcard.Size = new System.Drawing.Size(93, 54);
+            this.creditcard.Size = new System.Drawing.Size(150, 100);
             this.creditcard.TabIndex = 11;
             this.creditcard.Text = "Creditcard";
             this.creditcard.UseVisualStyleBackColor = true;
@@ -169,9 +171,9 @@
             this.printBon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.printBon.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.printBon.FlatAppearance.BorderSize = 4;
-            this.printBon.Location = new System.Drawing.Point(125, 337);
+            this.printBon.Location = new System.Drawing.Point(199, 476);
             this.printBon.Name = "printBon";
-            this.printBon.Size = new System.Drawing.Size(93, 54);
+            this.printBon.Size = new System.Drawing.Size(150, 100);
             this.printBon.TabIndex = 12;
             this.printBon.Text = "Print bon";
             this.printBon.UseVisualStyleBackColor = false;
@@ -179,34 +181,44 @@
             // 
             // label6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label6.Location = new System.Drawing.Point(196, 187);
+            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label6.Location = new System.Drawing.Point(0, 242);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 15);
+            this.label6.Size = new System.Drawing.Size(529, 15);
             this.label6.TabIndex = 0;
             this.label6.Text = "BTW: ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.listBox2);
+            this.panel1.Controls.Add(this.listBox3);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(10, 57);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(529, 274);
+            this.panel1.TabIndex = 13;
             // 
             // Afrekenen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 473);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(551, 729);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.printBon);
             this.Controls.Add(this.creditcard);
             this.Controls.Add(this.cash);
             this.Controls.Add(this.pin);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Afrekenen";
             this.Text = "Afrekenen";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +239,6 @@
         private System.Windows.Forms.Button creditcard;
         private System.Windows.Forms.Button printBon;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel1;
     }
 }
