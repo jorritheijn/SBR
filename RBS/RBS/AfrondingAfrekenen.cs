@@ -15,14 +15,17 @@ namespace RBS
     public partial class AfrondingAfrekenen : Form
     {
         private BestellingDAO bestellingDao;
+        int tafelId;
         int bestelId;
         string betaalMethode;
 
-        public AfrondingAfrekenen(int bestelIdx, string betaalMethodex)
+
+        public AfrondingAfrekenen(int bestelIdPara, string betaalMethodePara, int tafelIdPara)
         {
             InitializeComponent();
-            bestelId = bestelIdx;
-            betaalMethode = betaalMethodex;
+            bestelId = bestelIdPara;
+            betaalMethode = betaalMethodePara;
+            tafelId = tafelIdPara;
         }
 
         private void AfrondingAfrekenen_Load(object sender, EventArgs e)
@@ -38,6 +41,14 @@ namespace RBS
 
             string commentaar = commentaarBox.Text;
             bestellingDAO.AfrondingBestelling(bestelId, betaalMethode, commentaar);
+            this.Close();
+        }
+
+        private void terugBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form afrekenen = new Afrekenen(tafelId);
+            afrekenen.Show();
         }
     }
 }
