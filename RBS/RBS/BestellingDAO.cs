@@ -24,8 +24,8 @@ namespace RBS
 
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
-                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
+                    "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0} AND bestelStatus=''", bestelId);
 
             System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
@@ -49,17 +49,19 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                "SELECT producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
-                    "INNER JOIN bestellingen ON bestellingen.id = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON producten.id = bestelRegels.productId " +
+               "SELECT * FROM bestellingen " + //producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
+                    "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
+                    "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
-            if (afdeling != 3){
+            if (afdeling != 3)
+            {
                 sql = sql + " AND subCategorieId!=3";
             }
             else
             {
                 sql = sql + " AND subCategorieId=3";
             }
+            sql = sql + " ORDER BY tafelId";
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -76,30 +78,40 @@ namespace RBS
             return alleBestellingen;
         }
 
+        public void AfrondingBestelling(int bestelId, string betaalMethode)
+        {
+            dbConnection.Open();
+            string sql = String.Format(
+                "UPDATE bestellingen SET bestelStatus = @status, betaalMethode = @betaalMethode WHERE bestelId={0}", bestelId);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.Parameters.AddWithValue("@status", "betaald");
+            command.Parameters.AddWithValue("@betaalMethode", betaalMethode);
+            command.ExecuteNonQuery();
+            dbConnection.Close();
+        }
+
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
-            string productNaam = (string)reader["productNaam"];
+            int productId = (int)reader["productId"];
             int aantal = (int)reader["aantal"];
             int bestelId = (int)reader["bestelId"];
             int tafelId = (int)reader["tafelId"];
             string comment = "";
-            if (reader["comment"] != DBNull.Value)
-            {
-                comment= (string)reader["comment"];
-            }
+            if (reader["comment"] != DBNull.Value) comment = (string)reader["comment"];
             int status = (int)reader["productStatus"];
-            int BestelRegelId = (int)reader["bestelregels_id"];
+            int BestelRegelId = (int)reader["RegelId"];
 
-            return new BestelRegel(tafelId, productNaam, aantal, bestelId, comment, status, BestelRegelId);
+            return new BestelRegel(tafelId, productId, aantal, bestelId, comment, status, BestelRegelId);
         }
 
-        public void MarkeerBestelRegel(int bestelregelid)
+        public void MarkeerBestelRegel(int bestelregelid, int status)
         {
-            
+
             dbConnection.Open();
             string sql = string.Format(
-            "UPDATE bestelRegels SET productStatus = 2 WHERE  bestelRegels.id = {0}", bestelregelid);
+            "UPDATE bestelRegels SET productStatus = {1} WHERE  bestelRegels.id = {0}", bestelregelid, status);
             SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.ExecuteNonQuery();
             dbConnection.Close();
         }
 
@@ -107,14 +119,14 @@ namespace RBS
         {
             dbConnection.Open();
 
-            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+            string sql = string.Format("SELECT TOP 1 bestelId FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
 
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
             int bestelId = 0;
             while (reader.Read())
             {
-                bestelId = (int)reader["id"];
+                bestelId = (int)reader["bestelId"];
             }
 
             dbConnection.Close();
