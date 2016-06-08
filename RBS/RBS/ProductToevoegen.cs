@@ -58,7 +58,10 @@ namespace RBS
         }
 
 
-     
+        private void check_Btw_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void ProductToevoegen_Load(object sender, EventArgs e)
         {
