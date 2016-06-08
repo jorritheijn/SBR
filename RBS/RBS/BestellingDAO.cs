@@ -134,6 +134,99 @@ namespace RBS
             return bestelId;
         }
 
+        public bool OpenstaandeBestelling(int tafelId)
+        {
+            dbConnection.Open();
+
+            string sql = string.Format("SELECT TOP 1 bestelId,bestelStatus FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+            int bestelId, bestelStatus = 2;
+
+            while (reader.Read())
+            {
+                bestelId = (int)reader["bestelId"];
+                bestelStatus = (int)reader["bestelStatus"];
+            }
+
+            dbConnection.Close();
+
+            if (bestelStatus == 1) { return true; }
+            else return false;
+        }
+
+        /// <summary>
+        /// Checkt voor een open bestelId voor de tafel, als deze er niet is wordt er een nieuwe gemaakt
+        /// </summary>
+        /// <param name="tafelId">ID van de tafel</param>
+        /// <returns>Een bestelId</returns>
+        //public int GetBestelId(int tafelId)
+        //{
+        //    dbConnection.Open();
+
+        //    string sql = string.Format("SELECT TOP 1 bestelId,bestelStatus FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
+
+        //    SqlCommand command = new SqlCommand(sql, dbConnection);
+        //    SqlDataReader reader = command.ExecuteReader();
+        //    int bestelId = 0, bestelStatus = 1;
+
+        //    while (reader.Read())
+        //    {
+        //        bestelId = (int)reader["bestelId"];
+        //        bestelStatus = (int)reader["bestelStatus"];
+        //    }
+        //    dbConnection.Close();
+
+        //    if (bestelStatus == 1) { return bestelId; }
+        //    else return GenerateNewBestelId();
+        //}
+
+        /// <summary>
+        /// Genereert een nieuw, uniek bestelId
+        /// </summary>
+        /// <returns>Nieuw bestelId</returns>
+        //public int GenerateNewBestelId()
+        //{
+        //    dbConnection.Open();
+
+        //    string sql = string.Format("SELECT TOP 1 bestelId FROM bestellingen ORDER BY bestelId DESC");
+
+        //    SqlCommand command = new SqlCommand(sql, dbConnection);
+        //    SqlDataReader reader = command.ExecuteReader();
+        //    int bestelId = 0;
+
+        //    while (reader.Read())
+        //    {
+        //        bestelId = (int)reader["bestelId"];
+        //    }
+
+        //    bestelId++;
+
+        //    dbConnection.Close();
+
+        //    return bestelId;
+        //}
+
+        /// <summary>
+        /// Voeg nieuwe bestelling toe aan database tabel bestellingen
+        /// </summary>
+        /// <param name="personeelId">ID van 't personeelslid</param>
+        /// <param name="tafelId">ID van de tafel</param>
+        public void CreateNewBestelling(int personeelId, int tafelId)
+        {
+            dbConnection.Open();
+
+            string query = String.Format("INSERT INTO bestellingen (persooneelId, tafelId, opnameTijd, bestelStatus) " +
+                "VALUES ({0},{1},GETDATE(),1)", personeelId, tafelId);
+
+            SqlCommand command = new SqlCommand(query, dbConnection);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
+
         /*public List<Bestelling> GetAll(string status)
         {
             dbConnection.Open();
