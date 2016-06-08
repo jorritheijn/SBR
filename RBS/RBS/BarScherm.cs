@@ -54,9 +54,9 @@ namespace RBS
                 btn.Tag = Bestelregel;
                 btn.Font = new Font("Arial", 5);
                 btn.Click += button_Click;
-                top += btn.Height + 2;
                 tabPage1.Controls.Add(btn);
                 button.Add(btn);
+                top += btn.Height + 2;
                 i++;
 
             }
@@ -73,14 +73,15 @@ namespace RBS
                 bestellingDAO.MarkeerBestelRegel(regel.Status, regel.Id);
                 listView1.Items.Clear();
                 listView2.Items.Clear();
+            int i = 0;
+            foreach (var buttonlist in button)
+            {
+                button[i].Dispose();
+                i++;
+            }
                 BarScherm_Huidig_load();
                 BarScherm_Geschiedenis_load();
-                int i = 0;
-                foreach (var buttonlist in button)
-                {
-                    button[i].Dispose();
-                    i++;
-                }         
+     
         }
 
         private void BarScherm_Geschiedenis_load()
@@ -104,10 +105,10 @@ namespace RBS
                 lvi.SubItems.Add(Bestelregel.Comment.ToString());
                 lvi.SubItems.Add(Bestelregel.Aantal.ToString());
                 listView2.Items.AddRange(new ListViewItem[] { lvi });
-                listView2.Tag = Bestelregel;
+                //listView2.Tag = Bestelregel;
 
                 //create buttons
-                button[i].Left = left;
+                /*button[i].Left = left;
                 button[i].Top = top;
                 button[i].Size = new Size(76, 15);
                 button[i].Text = "Verwijder";
@@ -115,7 +116,20 @@ namespace RBS
                 button[i].Font = new Font("Arial", 5);
                 button[i].Click += button_Click;
                 tabPage2.Controls.Add(button[i]);
-                top += button[i].Height + 2;
+                top += button[i].Height + 2;*/
+
+                Button btn = new Button();
+                btn.Left = left;
+                btn.Top = top;
+                btn.Size = new Size(76, 15);
+                btn.Text = "Klaar";
+                btn.Tag = Bestelregel;
+                btn.Font = new Font("Arial", 5);
+                btn.Click += button_Click;
+                tabPage2.Controls.Add(btn);
+                button.Add(btn);
+                top += btn.Height + 2;
+                i++;
             }
         }
 
