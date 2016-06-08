@@ -15,7 +15,7 @@ namespace RBS
     public partial class BestelScherm : Form
     {
         private ProductDAO productDAO;
-        private int tafelId;
+        private int tafelId, bestelId;
         private List<BestelRegel> bestelRegels = new List<BestelRegel>();
 
         /// <summary>
@@ -168,7 +168,6 @@ namespace RBS
                 controls[2].Enabled = true;
                 controls[3].Enabled = true;
             }
-            UpdateListView();
         }
 
         /// <summary>
@@ -206,7 +205,7 @@ namespace RBS
 
             for (int i = 0; i < items.Count; i++)
             {
-                int width = 350, height = 30;
+                int width = 300, height = 30;
 
                 Button btnItem = new Button();
                 Label lblNum = new Label();
@@ -240,15 +239,15 @@ namespace RBS
                     btnAddComment.Name = "row" + i;
                 }
 
-                btnItem.SetBounds(7, 7 + ((height + 3) * i), width, height);
-                lblNum.SetBounds(360, 15 + ((height + 3) * i), 20, 15);
-                btnDecrement.SetBounds(381, 7 + ((height + 3) * i), 50, height);
-                btnAddComment.SetBounds(433, 7 + ((height + 3) * i), 75, height);
+                btnItem.SetBounds(0, 2 + ((height + 3) * i), width, height);
+                lblNum.SetBounds(303, 10 + ((height + 3) * i), 20, 15);
+                btnDecrement.SetBounds(324, 2 + ((height + 3) * i), 40, height);
+                btnAddComment.SetBounds(366, 2 + ((height + 3) * i), 63, height);
 
                 btnItem.Text = items[i].Naam.Trim();
                 lblNum.Text = "0";
                 btnDecrement.Text = "-";
-                btnAddComment.Text = "Opmerking";
+                btnAddComment.Text = "Nota";
 
                 controls.Add(btnItem);
                 controls.Add(lblNum);
@@ -352,19 +351,6 @@ namespace RBS
             }
         }
 
-        private void UpdateListView()
-        {
-            lstProducten.Items.Clear();
-
-            foreach (BestelRegel br in bestelRegels)
-            {
-                ListViewItem item = new ListViewItem();
-                item.Text = br.ProductId.ToString();
-                item.SubItems.Add(br.Aantal.ToString());
-                lstProducten.Items.Add(item);
-            }
-        }
-
         /// <summary>
         /// Zoekt naar een product in de bestelRegels
         /// </summary>
@@ -385,6 +371,11 @@ namespace RBS
         private void btnVerwerkBestelling_Click(object sender, EventArgs e)
         {
             productDAO.VerwerkBestelling(bestelRegels);
+        }
+
+        private void CheckBestelId()
+        {
+
         }
     }
 }
