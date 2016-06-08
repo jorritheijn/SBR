@@ -15,21 +15,29 @@ namespace RBS
     public partial class AfrondingAfrekenen : Form
     {
         private BestellingDAO bestellingDao;
+        int bestelId;
+        string betaalMethode;
 
-        public AfrondingAfrekenen(int bestelId, string betaalMethode)
+        public AfrondingAfrekenen(int bestelIdx, string betaalMethodex)
         {
             InitializeComponent();
-            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
-            SqlConnection dbConnection = new SqlConnection(connString);
-            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
-
-            bestellingDAO.AfrondingBestelling(bestelId, betaalMethode);
-
+            bestelId = bestelIdx;
+            betaalMethode = betaalMethodex;
         }
 
         private void AfrondingAfrekenen_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void afrondButton_Click(object sender, EventArgs e)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+
+            string commentaar = commentaarBox.Text;
+            bestellingDAO.AfrondingBestelling(bestelId, betaalMethode, commentaar);
         }
     }
 }

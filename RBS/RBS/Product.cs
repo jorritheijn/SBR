@@ -44,8 +44,8 @@ namespace RBS
         {
             get
             {
-                decimal btw = (decimal)0.09;
-                // subCategorie 9, 10 en 11 zijn de alcohol houdende producten. Hebben andere BTW.
+                decimal btw = (decimal)0.06;
+                //subCategorie 9, 10 en 11 zijn de alcohol houdende producten. Hebben andere BTW.
                 if (subCategorieId == 9 || subCategorieId == 10 || subCategorieId == 11) btw = (decimal)0.21;
                 btw = prijs * btw;
                 return btw;

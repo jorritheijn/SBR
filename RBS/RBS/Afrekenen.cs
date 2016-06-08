@@ -18,7 +18,7 @@ namespace RBS
         private BestellingDAO bestellingDao;
         private ProductDAO productDao;
 
-        //int bestelId;
+        int bestelId;
 
         public Afrekenen(int tafelId)
         {
@@ -32,7 +32,7 @@ namespace RBS
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
             ProductDAO productdao = new ProductDAO(dbConnection);
 
-            int bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
+            bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
 
             List<BestelRegel> rekeningRegels = bestellingDAO.GetRekening(bestelId);
 
@@ -82,8 +82,12 @@ namespace RBS
 
         private void afronding_Click(object sender, EventArgs e)
         {
-            //string naam = this.Name.ToLower();
-            //new AfrondingAfrekenen(bestelId, naam);
+
+            var afronding = sender as Button;
+            string naam = afronding.Name.ToLower();
+            var afronden = new AfrondingAfrekenen(bestelId, naam);
+            afronden.Show();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)

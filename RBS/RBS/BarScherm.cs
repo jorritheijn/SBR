@@ -70,7 +70,7 @@ namespace RBS
                 Button btn = (Button)sender;
                 BestelRegel regel = (BestelRegel)btn.Tag;
 
-                bestellingDAO.MarkeerBestelRegel(regel.Status, regel.Id);
+                bestellingDAO.MarkeerBestelRegel(regel.BestelId);
                 listView1.Items.Clear();
                 listView2.Items.Clear();
             int i = 0;
@@ -122,7 +122,7 @@ namespace RBS
                 btn.Left = left;
                 btn.Top = top;
                 btn.Size = new Size(76, 15);
-                btn.Text = "Klaar";
+                btn.Text = "Verwijder";
                 btn.Tag = Bestelregel;
                 btn.Font = new Font("Arial", 5);
                 btn.Click += button_Click;

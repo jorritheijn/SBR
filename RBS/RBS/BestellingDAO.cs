@@ -25,7 +25,7 @@ namespace RBS
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0} AND bestelStatus=''", bestelId);
+                    "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0} AND bestelStatus=1", bestelId);
 
             System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
@@ -49,12 +49,11 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-               "SELECT * FROM bestellingen " + //producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
+                "SELECT * FROM bestellingen " + //producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
-            if (afdeling != 3)
-            {
+            if (afdeling != 3) {
                 sql = sql + " AND subCategorieId!=3";
             }
             else
@@ -78,14 +77,15 @@ namespace RBS
             return alleBestellingen;
         }
 
-        public void AfrondingBestelling(int bestelId, string betaalMethode)
+        public void AfrondingBestelling(int bestelId, string betaalMethode, string commentaar)
         {
             dbConnection.Open();
             string sql = String.Format(
-                "UPDATE bestellingen SET bestelStatus = @status, betaalMethode = @betaalMethode WHERE bestelId={0}", bestelId);
+                "UPDATE bestellingen SET bestelStatus = @status, betaalMethode = @betaalMethode, bestelComment = @commentaar WHERE bestelId={0}", bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
-            command.Parameters.AddWithValue("@status", "betaald");
+            command.Parameters.AddWithValue("@status", 2);
             command.Parameters.AddWithValue("@betaalMethode", betaalMethode);
+            command.Parameters.AddWithValue("@commentaar", commentaar);
             command.ExecuteNonQuery();
             dbConnection.Close();
         }
@@ -97,19 +97,19 @@ namespace RBS
             int bestelId = (int)reader["bestelId"];
             int tafelId = (int)reader["tafelId"];
             string comment = "";
-            if (reader["comment"] != DBNull.Value) comment = (string)reader["comment"];
+            if (reader["comment"] != DBNull.Value) comment= (string)reader["comment"];
             int status = (int)reader["productStatus"];
             int BestelRegelId = (int)reader["RegelId"];
 
             return new BestelRegel(tafelId, productId, aantal, bestelId, comment, status, BestelRegelId);
         }
 
-        public void MarkeerBestelRegel(int bestelregelid, int status)
+        public void MarkeerBestelRegel(int bestelregelid)
         {
-
+            
             dbConnection.Open();
             string sql = string.Format(
-            "UPDATE bestelRegels SET productStatus = {1} WHERE  bestelRegels.id = {0}", bestelregelid, status);
+            "UPDATE bestelRegels SET productStatus = 2 WHERE  regelId = {0}", bestelregelid);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             command.ExecuteNonQuery();
             dbConnection.Close();
@@ -118,7 +118,7 @@ namespace RBS
         public int GetBestelIdFromTafel(int tafelId)
         {
             dbConnection.Open();
-
+            
             string sql = string.Format("SELECT TOP 1 bestelId FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
 
             SqlCommand command = new SqlCommand(sql, dbConnection);
