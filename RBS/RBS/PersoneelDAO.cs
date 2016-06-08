@@ -80,7 +80,7 @@ namespace RBS
         {
             dbConnection.Open();
 
-            string query = String.Format("DELETE FROM personeel WHERE id={0}", id);
+            string query = String.Format("DELETE FROM personeel WHERE personeelId={0}", id);
 
             SqlCommand command = new SqlCommand(query, dbConnection);
 
@@ -91,7 +91,7 @@ namespace RBS
 
         private Personeel ReadPersoneel(SqlDataReader reader)
         {
-            int id = (int)reader["id"];
+            int id = (int)reader["personeelId"];
             string username = (string)reader["username"];
             string pincode = (string)reader["pincode"];
             string functie = (string)reader["functie"];

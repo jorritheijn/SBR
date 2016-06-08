@@ -18,13 +18,14 @@ namespace RBS
         private BestellingDAO bestellingDao;
         private ProductDAO productDao;
 
+        //int bestelId;
+
         public Afrekenen(int tafelId)
         {
             InitializeComponent();
 
             this.bestellingDao = DataHelper.BestellingDao;
             this.productDao = DataHelper.ProductDao;
- 
 
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
@@ -32,32 +33,43 @@ namespace RBS
             ProductDAO productdao = new ProductDAO(dbConnection);
 
             int bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
+
             List<BestelRegel> rekeningRegels = bestellingDAO.GetRekening(bestelId);
+
             decimal totaalPrijs = 0;
+            decimal totaalBtw = 0;
             int regels = 0;
 
-            foreach (var rekeningRegel in rekeningRegels)
+            label1.Text = "Tafel " + tafelId;
+            listBox3.RightToLeft = RightToLeft.Yes;
+
+            foreach (BestelRegel rekeningRegel in rekeningRegels)
             {
-                //form items toevoegen
+                Product product = productdao.GetProductById(rekeningRegel.ProductId);
 
-                /*product = productdao.GetProductById(rekeningRegel.ProductId);
-                label1.Text = "Tafel " + rekeningRegel.TafelId.ToString();
+                int aantal = rekeningRegel.Aantal;
+                decimal prijs = product.Prijs;
+                decimal regelPrijs = aantal * prijs;
 
-                listBox1.Items.Add(rekeningRegel.Product);
-                listBox2.Items.Add(rekeningRegel.Aantal.ToString());
-                listBox3.Items.Add(rekeningRegel.TotaalPrijs.ToString());
-                totaalPrijs += rekeningRegel.TotaalPrijs;
-                regels++;*/
+                listBox1.Items.Add(product.Naam);
+                listBox2.Items.Add(aantal.ToString());
+                listBox3.Items.Add(regelPrijs.ToString());
+
+                totaalPrijs += regelPrijs;
+                decimal btw = Math.Ceiling(product.BerekenBTW * 100) / 100;
+                totaalBtw += (btw * aantal);
+                regels++;
             }
 
             //Form aanpassen op hoogte van de lijst
             label5.Text = "Totaal: " + totaalPrijs;
-            int y = 63 + (regels * 13);                    //één regel is 13 pixels, basis plaats is 63pixels
-            label5.Location = new Point(203, y);
+            label6.Text = "BTW: " + totaalBtw;
+            int y = regels * 13;                    //één regel is 13 pixels, basis plaats is 63pixels
+            label5.Location = new Point(208, (85 + y));
+            label6.Location = new Point(208, (70 + y));
             listBox1.Height = listBox1.PreferredHeight;
             listBox2.Height = listBox2.PreferredHeight;
             listBox3.Height = listBox3.PreferredHeight;
-
         }
 
         private void printBon_Click(object sender, EventArgs e)
@@ -66,6 +78,12 @@ namespace RBS
             pin.Enabled = true;
             cash.Enabled = true;
             creditcard.Enabled = true;
+        }
+
+        private void afronding_Click(object sender, EventArgs e)
+        {
+            //string naam = this.Name.ToLower();
+            //new AfrondingAfrekenen(bestelId, naam);
         }
 
         private void button1_Click(object sender, EventArgs e)

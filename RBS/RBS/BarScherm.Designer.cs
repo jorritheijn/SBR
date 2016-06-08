@@ -77,9 +77,10 @@
             this.columnHeader3,
             this.columnHeader4});
             this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(-1, -1);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(487, 475);
+            this.listView1.Size = new System.Drawing.Size(473, 475);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -110,7 +111,7 @@
             this.tabControl1.Location = new System.Drawing.Point(23, 49);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(495, 501);
+            this.tabControl1.Size = new System.Drawing.Size(576, 501);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -120,7 +121,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(487, 475);
+            this.tabPage1.Size = new System.Drawing.Size(568, 475);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Huidige Bestelling";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -132,7 +133,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(487, 475);
+            this.tabPage2.Size = new System.Drawing.Size(568, 475);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Geschiedenis";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -145,9 +146,10 @@
             this.columnHeader7,
             this.columnHeader8});
             this.listView2.FullRowSelect = true;
+            this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(-1, -1);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(487, 475);
+            this.listView2.Size = new System.Drawing.Size(475, 475);
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -175,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 582);
+            this.ClientSize = new System.Drawing.Size(624, 601);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.LogOut);
             this.Controls.Add(this.label1);

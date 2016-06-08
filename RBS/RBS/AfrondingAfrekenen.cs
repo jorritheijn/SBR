@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
@@ -8,25 +12,24 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
-    static class Program
+    public partial class AfrondingAfrekenen : Form
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+        private BestellingDAO bestellingDao;
 
+        public AfrondingAfrekenen(int bestelId, string betaalMethode)
+        {
+            InitializeComponent();
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
             SqlConnection dbConnection = new SqlConnection(connString);
-
-            PersoneelDAO personeelDAO = new PersoneelDAO(dbConnection);
             BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
-            ProductDAO productDAO = new ProductDAO(dbConnection);
 
-            Application.Run(new BestelScherm(1));
+            bestellingDAO.AfrondingBestelling(bestelId, betaalMethode);
+
+        }
+
+        private void AfrondingAfrekenen_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

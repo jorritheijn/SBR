@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\RBS.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +51,12 @@
     </Compile>
     <Compile Include="Afrekenen.Designer.cs">
       <DependentUpon>Afrekenen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AfrondingAfrekenen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AfrondingAfrekenen.Designer.cs">
+      <DependentUpon>AfrondingAfrekenen.cs</DependentUpon>
     </Compile>
     <Compile Include="BarScherm.cs">
       <SubType>Form</SubType>
@@ -111,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="Afrekenen.resx">
       <DependentUpon>Afrekenen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AfrondingAfrekenen.resx">
+      <DependentUpon>AfrondingAfrekenen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BarScherm.resx">
       <DependentUpon>BarScherm.cs</DependentUpon>
