@@ -100,7 +100,9 @@
     </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="ProductDAO.cs" />
-    <Compile Include="ProductToevoegen.cs" />
+    <Compile Include="ProductToevoegen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProductToevoegen.Designer.cs">
       <DependentUpon>ProductToevoegen.cs</DependentUpon>
     </Compile>
