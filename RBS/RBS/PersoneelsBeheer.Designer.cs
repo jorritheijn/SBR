@@ -46,11 +46,10 @@
             this.lstAccounts.FullRowSelect = true;
             this.lstAccounts.GridLines = true;
             this.lstAccounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lstAccounts.Location = new System.Drawing.Point(32, 119);
-            this.lstAccounts.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.lstAccounts.Location = new System.Drawing.Point(12, 50);
             this.lstAccounts.MultiSelect = false;
             this.lstAccounts.Name = "lstAccounts";
-            this.lstAccounts.Size = new System.Drawing.Size(1252, 400);
+            this.lstAccounts.Size = new System.Drawing.Size(440, 431);
             this.lstAccounts.TabIndex = 0;
             this.lstAccounts.Tag = "";
             this.lstAccounts.UseCompatibleStateImageBehavior = false;
@@ -67,7 +66,7 @@
             // 
             this.lstColNaam.Tag = "Naam";
             this.lstColNaam.Text = "Naam";
-            this.lstColNaam.Width = 300;
+            this.lstColNaam.Width = 265;
             // 
             // lstColFunctie
             // 
@@ -77,10 +76,9 @@
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(32, 623);
-            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnAddEmployee.Location = new System.Drawing.Point(12, 487);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(365, 114);
+            this.btnAddEmployee.Size = new System.Drawing.Size(440, 48);
             this.btnAddEmployee.TabIndex = 1;
             this.btnAddEmployee.Text = "Add employee";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
@@ -89,10 +87,9 @@
             // btnDelEmployee
             // 
             this.btnDelEmployee.Enabled = false;
-            this.btnDelEmployee.Location = new System.Drawing.Point(471, 623);
-            this.btnDelEmployee.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnDelEmployee.Location = new System.Drawing.Point(12, 541);
             this.btnDelEmployee.Name = "btnDelEmployee";
-            this.btnDelEmployee.Size = new System.Drawing.Size(379, 114);
+            this.btnDelEmployee.Size = new System.Drawing.Size(440, 48);
             this.btnDelEmployee.TabIndex = 2;
             this.btnDelEmployee.Text = "Delete employee";
             this.btnDelEmployee.UseVisualStyleBackColor = true;
@@ -102,9 +99,10 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1302, 13);
+            this.button1.Location = new System.Drawing.Point(361, 10);
+            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 55);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Log Uit";
             this.button1.UseVisualStyleBackColor = false;
@@ -112,14 +110,13 @@
             // 
             // PersoneelsBeheer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1564, 1433);
+            this.ClientSize = new System.Drawing.Size(464, 601);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDelEmployee);
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.lstAccounts);
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "PersoneelsBeheer";
             this.Text = "PersoneelsBeheer";
             this.ResumeLayout(false);

@@ -69,10 +69,12 @@ namespace RBS
             
             tbNaam.Text = "";
             tbPin.Text = "";
+
             cbFunctie.Items.Add("Manager");
             cbFunctie.Items.Add("Keuken");
             cbFunctie.Items.Add("Bar");
             cbFunctie.Items.Add("Bediening");
+            cbFunctie.SelectedIndex = 3;
 
             btnOk.Text = "Toevoegen";
             btnCancel.Text = "Annuleren";
@@ -91,6 +93,9 @@ namespace RBS
 
             btnOk.SetBounds(182, 141, 100, 25);
             btnCancel.SetBounds(285, 141, 100, 25);
+
+            tbNaam.MaxLength = 15;
+            tbPin.MaxLength = 4;
             
             lblNaam.AutoSize = true;
             lblPin.AutoSize = true;
