@@ -60,7 +60,7 @@ namespace RBS
             {
                 personeelId = werknemer.Id;
             }
-            catch
+            catch(Exception e)
             {
                 personeelId = 1;
             }
