@@ -224,5 +224,19 @@ namespace RBS
             Inloggen.Show();
             Hide();
         }
+
+        private void btn_Voorraad_Click(object sender, EventArgs e)
+        {
+            Application.Run(new VoorraadBeheer());
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form VoorraadBeheer = new VoorraadBeheer();
+           
+
+        }
     }
 }

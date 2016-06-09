@@ -20,13 +20,12 @@ namespace RBS
         private TabPage voorraad;
         private TabPage tafels;
 
+        
+
+
         private void MyTabs()
         {
-            
-            this.personeelszaken = new TabPage();
-            this.klachten = new TabPage();
-            this.voorraad = new TabPage();
-            this.tafels = new TabPage();
+            this.tabControl1.SelectedTab = tabPage3;
         }
 
           
@@ -48,7 +47,7 @@ namespace RBS
             dao = new ProductDAO(dbConnection);
 
             List<Product> producten = dao.GetAllProducts();
-
+            MyTabs();
             categorie = 1;
             foreach (Product product in producten)
             {
@@ -227,6 +226,26 @@ namespace RBS
             ProductUpdaten update = new ProductUpdaten(categorie, productID);
             update.FormClosed += new FormClosedEventHandler(VensterGesloten);
             update.Show();
+        }
+
+        private void btn_personeelbeheer_Click(object sender, EventArgs e)
+        {
+            Application.Run(new PersoneelsBeheer());
+            this.Close();
+            
+        }
+
+        private void goPersoneel(object sender, EventArgs e)
+        {
+            //Close();
+            Form personeel = new PersoneelsBeheer();
+            personeel.Show();
+            //Close();
+        }
+
+        private void VoorraadBeheer_Activated(object sender, EventArgs e)
+        {
+            MyTabs();
         }
     }    
 }

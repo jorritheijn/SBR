@@ -379,12 +379,12 @@ namespace RBS
         private void btnVerwerkBestelling_Click(object sender, EventArgs e)
         {
             productDAO.VerwerkBestelling(bestelRegels);
+            new TafelOverzicht().Show();
+            Close();
         }
 
         private void InitBestelId()
         {
-            //bestelId = bestellingDAO.GetBestelId(tafelId);
-
             if (bestellingDAO.OpenstaandeBestelling(tafelId))
                 bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
             else
