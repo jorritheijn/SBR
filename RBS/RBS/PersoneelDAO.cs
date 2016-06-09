@@ -11,6 +11,8 @@ namespace RBS
     {
         protected SqlConnection dbConnection;
 
+        public static int personeelId = 0;
+
         public PersoneelDAO(SqlConnection dbConnection)
         {
             this.dbConnection = dbConnection;
@@ -26,7 +28,7 @@ namespace RBS
 
             List<Personeel> allePersoneel = new List<Personeel>();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 Personeel personeel = ReadPersoneel(reader);
                 allePersoneel.Add(personeel);
@@ -53,11 +55,18 @@ namespace RBS
                 werknemer = ReadPersoneel(reader);
             }
 
+            //Tijdelijk voor de presentatie n shit
+            if (werknemer.Id != null)
+                personeelId = werknemer.Id;
+            else
+                personeelId = 1;
+
+
             //sluit de connectie
             dbConnection.Close();
 
-            return werknemer;
-        }
+                return werknemer;
+            }
 
         public void AddEmployee(string username, string pincode, string functie)
         {

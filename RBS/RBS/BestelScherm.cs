@@ -36,7 +36,7 @@ namespace RBS
             this.bestellingDAO = DataHelper.BestellingDao;
 
             //this.personeelId = personeelId;
-            personeelId = 2;
+            personeelId = PersoneelDAO.personeelId;
             this.tafelId = tafelId;
 
             InitBestelId();
@@ -338,7 +338,7 @@ namespace RBS
                 }
             }
 
-            bestelRegels.Add(new BestelRegel(tafelId, productId, 1, 0, "", 1, 0));
+            bestelRegels.Add(new BestelRegel(tafelId, productId, 1, bestelId, "", 1, 0));
         }
 
         /// <summary>

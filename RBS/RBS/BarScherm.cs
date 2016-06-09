@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using RBS.Helpers;
 
 namespace RBS
 {
@@ -37,7 +38,7 @@ namespace RBS
 
 
             int top = 25;
-            int left = 480;
+            int left = 370;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -76,7 +77,7 @@ namespace RBS
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
-            int left = 480;
+            int left = 370;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -119,6 +120,16 @@ namespace RBS
             BarScherm_Geschiedenis_load();
             ActiveForm.Refresh();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InlogScherm Inloggen = new InlogScherm();
+
+            UserHelper.Uitloggen();
+
+            Inloggen.Show();
+            Hide();
         }
     }
 }
