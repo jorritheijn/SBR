@@ -56,11 +56,14 @@ namespace RBS
             }
 
             //Tijdelijk voor de presentatie n shit
-            if (werknemer.Id != null)
+            try
+            {
                 personeelId = werknemer.Id;
-            else
+            }
+            catch
+            {
                 personeelId = 1;
-
+            }
 
             //sluit de connectie
             dbConnection.Close();
