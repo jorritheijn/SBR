@@ -228,6 +228,13 @@ namespace RBS
             update.FormClosed += new FormClosedEventHandler(VensterGesloten);
             update.Show();
         }
+
+        private void btn_personeelbeheer_Click(object sender, EventArgs e)
+        {
+            Application.Run(new PersoneelsBeheer());
+            this.Close();
+            
+        }
     }    
 }
 
