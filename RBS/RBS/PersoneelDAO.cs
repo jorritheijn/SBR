@@ -11,6 +11,8 @@ namespace RBS
     {
         protected SqlConnection dbConnection;
 
+        public static int personeelId = 0;
+
         public PersoneelDAO(SqlConnection dbConnection)
         {
             this.dbConnection = dbConnection;
@@ -52,6 +54,9 @@ namespace RBS
                 // Creeer een nieuw werknemer model
                 werknemer = ReadPersoneel(reader);
             }
+
+            //Tijdelijk voor de presentatie n shit
+            personeelId = werknemer.Id;
 
             //sluit de connectie
             dbConnection.Close();
