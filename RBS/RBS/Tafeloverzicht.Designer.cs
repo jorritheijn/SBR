@@ -338,9 +338,9 @@
             this.Ingelogde.AutoSize = true;
             this.Ingelogde.Location = new System.Drawing.Point(957, 31);
             this.Ingelogde.Name = "Ingelogde";
-            this.Ingelogde.Size = new System.Drawing.Size(39, 32);
+            this.Ingelogde.Size = new System.Drawing.Size(186, 32);
             this.Ingelogde.TabIndex = 23;
-            this.Ingelogde.Text = "...";
+            this.Ingelogde.Text = "Bob Schagen";
             // 
             // TafelOverzicht
             // 
