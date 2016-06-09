@@ -131,6 +131,8 @@ namespace RBS
 
         private void terugBtn_Click(object sender, EventArgs e)
         {
+            Form tafelOverzicht = new TafelOverzicht();
+            tafelOverzicht.Show();
             this.Close();
         }
     }
