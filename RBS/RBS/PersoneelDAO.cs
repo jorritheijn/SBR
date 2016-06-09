@@ -28,7 +28,7 @@ namespace RBS
 
             List<Personeel> allePersoneel = new List<Personeel>();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 Personeel personeel = ReadPersoneel(reader);
                 allePersoneel.Add(personeel);
@@ -56,13 +56,17 @@ namespace RBS
             }
 
             //Tijdelijk voor de presentatie n shit
-            personeelId = werknemer.Id;
+            if (werknemer.Id != null)
+                personeelId = werknemer.Id;
+            else
+                personeelId = 1;
+
 
             //sluit de connectie
             dbConnection.Close();
 
-            return werknemer;
-        }
+                return werknemer;
+            }
 
         public void AddEmployee(string username, string pincode, string functie)
         {
