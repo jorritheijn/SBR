@@ -94,12 +94,12 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Bestelling";
-            this.columnHeader2.Width = 236;
+            this.columnHeader2.Width = 176;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Comment";
-            this.columnHeader3.Width = 123;
+            this.columnHeader3.Width = 79;
             // 
             // columnHeader4
             // 
@@ -163,12 +163,12 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "Bestelling";
-            this.columnHeader6.Width = 236;
+            this.columnHeader6.Width = 170;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Comment";
-            this.columnHeader7.Width = 123;
+            this.columnHeader7.Width = 88;
             // 
             // columnHeader8
             // 

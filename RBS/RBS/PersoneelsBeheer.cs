@@ -234,7 +234,8 @@ namespace RBS
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            Application.Run(new VoorraadBeheer());
+            Form VoorraadBeheer = new VoorraadBeheer();
+           
 
         }
     }
