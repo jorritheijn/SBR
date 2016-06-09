@@ -115,7 +115,7 @@ namespace RBS
                 switch (gebruiker.Functie)
                 {
                     case "Manager":
-                        view = new PersoneelsBeheer();
+                        view = new VoorraadBeheer();
                         break;
                     case "Keuken":
                         view = new KeukenScherm();

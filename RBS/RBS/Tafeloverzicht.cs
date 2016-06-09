@@ -76,6 +76,7 @@ namespace RBS
                 {
                     tafelButton.BackColor = Color.DarkRed;
                 }
+
             }
         }
 
@@ -123,11 +124,11 @@ namespace RBS
                     var afrekenen = new Afrekenen(LaatstGeklikteTafel);
                     afrekenen.Show();
                     this.Close();
-
                     break;
                 case "Bestelling plaatsen":
                     var bestellen = new BestelScherm(LaatstGeklikteTafel);
                     bestellen.Show();
+                    this.Close();
                     break;
             }
         }
