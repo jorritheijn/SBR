@@ -371,6 +371,13 @@ namespace RBS
             return bestelRegels[0];
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            InlogScherm Check = new InlogScherm();
+            Check.Show();
+            Hide();
+        }
+
         /// <summary>
         /// Voegt de bestelling toe aan de database
         /// </summary>
