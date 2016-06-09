@@ -239,7 +239,7 @@ namespace RBS
         {
             Form personeel = new PersoneelsBeheer();
             personeel.Show();
-            
+            this.Close();
         }
     }    
 }
