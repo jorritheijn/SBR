@@ -36,7 +36,7 @@ namespace RBS
             this.bestellingDAO = DataHelper.BestellingDao;
 
             //this.personeelId = personeelId;
-            personeelId = 2;
+            personeelId = PersoneelDAO.personeelId;
             this.tafelId = tafelId;
 
             InitBestelId();
