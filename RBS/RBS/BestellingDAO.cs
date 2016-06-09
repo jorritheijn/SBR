@@ -53,12 +53,12 @@ namespace RBS
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
-            if (afdeling != 3) {
-                sql = sql + " AND subCategorieId!=3";
+            if (afdeling == 1) {
+                sql = sql + " AND SubcategorieId<8 ";
             }
             else
             {
-                sql = sql + " AND subCategorieId=3";
+                sql = sql + " AND SubcategorieId>8 ";
             }
             sql = sql + " ORDER BY tafelId";
             SqlCommand command = new SqlCommand(sql, dbConnection);
@@ -104,12 +104,19 @@ namespace RBS
             return new BestelRegel(tafelId, productId, aantal, bestelId, comment, status, BestelRegelId);
         }
 
-        public void MarkeerBestelRegel(int bestelregelid)
+        public void MarkeerBestelRegel(int bestelregelid, int status)
         {
-            
+            if (status == 2)
+            {
+                status = 1;
+            }
+            else if (status == 1)
+            {
+                status = 2;
+            }
             dbConnection.Open();
             string sql = string.Format(
-            "UPDATE bestelRegels SET productStatus = 2 WHERE  regelId = {0}", bestelregelid);
+            "UPDATE bestelRegels SET productStatus = {1} WHERE  regelId = {0}", bestelregelid, status);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             command.ExecuteNonQuery();
             dbConnection.Close();
