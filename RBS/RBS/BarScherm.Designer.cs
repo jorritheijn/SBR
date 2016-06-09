@@ -43,6 +43,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -80,7 +81,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(-1, -1);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(474, 475);
+            this.listView1.Size = new System.Drawing.Size(372, 475);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -108,10 +109,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(23, 49);
+            this.tabControl1.Location = new System.Drawing.Point(9, 49);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(576, 501);
+            this.tabControl1.Size = new System.Drawing.Size(440, 517);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -121,7 +122,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(568, 475);
+            this.tabPage1.Size = new System.Drawing.Size(432, 491);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Huidige Bestellingen";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -133,7 +134,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(568, 475);
+            this.tabPage2.Size = new System.Drawing.Size(432, 491);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Geschiedenis";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -149,7 +150,7 @@
             this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(-1, -1);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(475, 475);
+            this.listView2.Size = new System.Drawing.Size(372, 475);
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -173,11 +174,24 @@
             // 
             this.columnHeader8.Text = "Aantal";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Crimson;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(377, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Log uit";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BarScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 601);
+            this.ClientSize = new System.Drawing.Size(464, 604);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.LogOut);
             this.Controls.Add(this.label1);
@@ -209,6 +223,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Button button1;
     }
 }
 
