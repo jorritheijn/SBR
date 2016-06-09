@@ -47,7 +47,7 @@ namespace RBS
             dao = new ProductDAO(dbConnection);
 
             List<Product> producten = dao.GetAllProducts();
-
+            MyTabs();
             categorie = 1;
             foreach (Product product in producten)
             {
@@ -239,7 +239,7 @@ namespace RBS
         {
             Form personeel = new PersoneelsBeheer();
             personeel.Show();
-            this.Close();
+            //this.Close();
         }
     }    
 }
