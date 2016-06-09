@@ -338,7 +338,7 @@ namespace RBS
                 }
             }
 
-            bestelRegels.Add(new BestelRegel(tafelId, productId, 1, 0, "", 1, 0));
+            bestelRegels.Add(new BestelRegel(tafelId, productId, 1, bestelId, "", 1, 0));
         }
 
         /// <summary>
