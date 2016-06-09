@@ -62,7 +62,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Crimson;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(525, 25);
+            this.button1.Location = new System.Drawing.Point(377, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -73,10 +73,10 @@
             // 
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage2.Controls.Add(this.listView2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(559, 487);
+            this.tabPage2.Size = new System.Drawing.Size(432, 491);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Geschiedenis";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -88,7 +88,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(559, 491);
+            this.tabPage1.Size = new System.Drawing.Size(432, 491);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Huidige Bestellingen";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -98,10 +98,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.tabControl1.Location = new System.Drawing.Point(33, 62);
+            this.tabControl1.Location = new System.Drawing.Point(12, 49);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(567, 517);
+            this.tabControl1.Size = new System.Drawing.Size(440, 517);
             this.tabControl1.TabIndex = 8;
             // 
             // listView1
@@ -115,7 +115,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(-5, -1);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(473, 475);
+            this.listView1.Size = new System.Drawing.Size(381, 475);
             this.listView1.TabIndex = 12;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -150,7 +150,7 @@
             this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(-1, -1);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(473, 475);
+            this.listView2.Size = new System.Drawing.Size(372, 475);
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -178,7 +178,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 591);
+            this.ClientSize = new System.Drawing.Size(464, 601);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);

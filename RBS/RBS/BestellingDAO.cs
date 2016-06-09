@@ -53,12 +53,12 @@ namespace RBS
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
-            if (afdeling != 3) {
-                sql = sql + " AND subCategorieId!=3";
+            if (afdeling == 1) {
+                sql = sql + " AND SubcategorieId<8 ";
             }
             else
             {
-                sql = sql + " AND subCategorieId=3";
+                sql = sql + " AND SubcategorieId>8 ";
             }
             sql = sql + " ORDER BY tafelId";
             SqlCommand command = new SqlCommand(sql, dbConnection);

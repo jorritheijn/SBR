@@ -38,7 +38,7 @@ namespace RBS
 
 
             int top = 25;
-            int left = 480;
+            int left = 370;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -52,7 +52,7 @@ namespace RBS
                 Button btn = new Button();
                 btn.Left = left;
                 btn.Top = top;
-                btn.Size = new Size(76, 15);
+                btn.Size = new Size(55, 15);
                 btn.Text = "Klaar";
                 btn.Tag = Bestelregel;
                 btn.Font = new Font("Arial", 5);
@@ -75,7 +75,7 @@ namespace RBS
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
-            int left = 480;
+            int left = 370;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -88,7 +88,7 @@ namespace RBS
                 Button btn = new Button();
                 btn.Left = left;
                 btn.Top = top;
-                btn.Size = new Size(76, 15);
+                btn.Size = new Size(55, 15);
                 btn.Text = "Verwijder";
                 btn.Tag = Bestelregel;
                 btn.Font = new Font("Arial", 5);
