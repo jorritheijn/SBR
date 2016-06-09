@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using RBS.Helpers;
 
 namespace RBS
 {
@@ -119,6 +120,16 @@ namespace RBS
             BarScherm_Geschiedenis_load();
             ActiveForm.Refresh();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InlogScherm Inloggen = new InlogScherm();
+
+            UserHelper.Uitloggen();
+
+            Inloggen.Show();
+            Hide();
         }
     }
 }
