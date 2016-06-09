@@ -38,7 +38,7 @@ namespace RBS
 
 
             int top = 25;
-            int left = 480;
+            int left = 370;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -77,7 +77,7 @@ namespace RBS
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
-            int left = 480;
+            int left = 370;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
