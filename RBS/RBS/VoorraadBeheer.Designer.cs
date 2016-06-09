@@ -43,10 +43,8 @@
             this.btn_Diner = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.btn_personeelbeheer = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,7 +190,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btn_personeelbeheer);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -210,16 +207,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(463, 575);
             this.tabControl1.TabIndex = 0;
-            // 
-            // btn_personeelbeheer
-            // 
-            this.btn_personeelbeheer.Location = new System.Drawing.Point(8, 19);
-            this.btn_personeelbeheer.Name = "btn_personeelbeheer";
-            this.btn_personeelbeheer.Size = new System.Drawing.Size(86, 23);
-            this.btn_personeelbeheer.TabIndex = 0;
-            this.btn_personeelbeheer.Text = "PersoneelBeheer";
-            this.btn_personeelbeheer.UseVisualStyleBackColor = true;
-            this.btn_personeelbeheer.Click += new System.EventHandler(this.btn_personeelbeheer_Click);
+            this.tabControl1.Click += new System.EventHandler(this.goPersoneel);
             // 
             // VoorraadBeheer
             // 
@@ -234,7 +222,6 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -257,7 +244,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button btn_personeelbeheer;
         private System.Windows.Forms.TabControl tabControl1;
     }
 }

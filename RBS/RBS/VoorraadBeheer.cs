@@ -20,13 +20,12 @@ namespace RBS
         private TabPage voorraad;
         private TabPage tafels;
 
+        
+
+
         private void MyTabs()
         {
-            
-            this.personeelszaken = new TabPage();
-            this.klachten = new TabPage();
-            this.voorraad = new TabPage();
-            this.tafels = new TabPage();
+            this.tabControl1.SelectedTab = tabPage3;
         }
 
           
@@ -234,6 +233,13 @@ namespace RBS
             Application.Run(new PersoneelsBeheer());
             this.Close();
             
+        }
+
+        private void goPersoneel(object sender, EventArgs e)
+        {
+            Form personeel = new PersoneelsBeheer();
+            personeel.Show();
+            this.Close();
         }
     }    
 }
