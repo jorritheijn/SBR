@@ -41,7 +41,11 @@ namespace RBS
 
             string commentaar = commentaarBox.Text;
             bestellingDAO.AfrondingBestelling(bestelId, betaalMethode, commentaar);
+     
+            Form tafelOverzicht = new TafelOverzicht();
+            tafelOverzicht.Show();
             this.Close();
+
         }
 
         private void terugBtn_Click(object sender, EventArgs e)
