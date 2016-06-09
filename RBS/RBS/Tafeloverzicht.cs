@@ -37,10 +37,23 @@ namespace RBS
             return resultaat[0] as Button;
         }
 
+        public Label ZoekLabel(string naam)
+        {
+            var resultaat = this.Controls.Find(naam, true);
+
+            if (resultaat.Length == 0)
+            {
+                return null;
+            }
+
+            return resultaat[0] as Label;
+        }
+
         /// <summary>
         /// Update het tafeloverzicht met de statussen.
         /// </summary>
-        public void UpdateOverzicht() {
+        public void UpdateOverzicht()
+        {
             var list = DataHelper.TafelDao.GetAll();
 
             // Loop alle tafels langs
@@ -65,6 +78,7 @@ namespace RBS
                 }
             }
         }
+
 
         /// <summary>
         /// Wanneer er op een tafel geklikt wordt verwijst deze naar het
