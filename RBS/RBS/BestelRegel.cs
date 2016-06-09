@@ -15,8 +15,9 @@ namespace RBS
         private string comment;
         private int status;
         private int id;
+        private DateTime tijd;
 
-        public BestelRegel(int tafelId, int productId, int aantal,  int bestelId, string comment, int status, int id)
+        public BestelRegel(int tafelId, int productId, int aantal,  int bestelId, string comment, int status, int id, DateTime tijd)
         {
             this.tafelId = tafelId;
             this.productId = productId;
@@ -25,6 +26,7 @@ namespace RBS
             this.comment = comment;
             this.status = status;
             this.id = id;
+            this.tijd = tijd;
         }
 
         public int TafelId
@@ -66,6 +68,11 @@ namespace RBS
         {
             get { return id; }
             set { id = value; }
+        }
+        public DateTime Tijd
+        {
+            get { return tijd; }
+            set { tijd = value; }
         }
     }
 }

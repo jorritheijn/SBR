@@ -44,6 +44,8 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
+            this.Tijd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -76,7 +78,8 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.Tijd});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(-1, -1);
@@ -94,12 +97,12 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Bestelling";
-            this.columnHeader2.Width = 236;
+            this.columnHeader2.Width = 176;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Comment";
-            this.columnHeader3.Width = 123;
+            this.columnHeader3.Width = 79;
             // 
             // columnHeader4
             // 
@@ -145,7 +148,8 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader8,
+            this.columnHeader9});
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(-1, -1);
@@ -163,12 +167,12 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "Bestelling";
-            this.columnHeader6.Width = 236;
+            this.columnHeader6.Width = 170;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Comment";
-            this.columnHeader7.Width = 123;
+            this.columnHeader7.Width = 88;
             // 
             // columnHeader8
             // 
@@ -185,6 +189,14 @@
             this.button1.Text = "Log uit";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Tijd
+            // 
+            this.Tijd.Text = "Tijd";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Tijd";
             // 
             // BarScherm
             // 
@@ -224,6 +236,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader Tijd;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }
 

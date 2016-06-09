@@ -100,8 +100,9 @@ namespace RBS
             if (reader["comment"] != DBNull.Value) comment= (string)reader["comment"];
             int status = (int)reader["productStatus"];
             int BestelRegelId = (int)reader["RegelId"];
+            DateTime tijd = (DateTime)reader["productOpnameTijd"];
 
-            return new BestelRegel(tafelId, productId, aantal, bestelId, comment, status, BestelRegelId);
+            return new BestelRegel(tafelId, productId, aantal, bestelId, comment, status, BestelRegelId, tijd);
         }
 
         public void MarkeerBestelRegel(int bestelregelid, int status)
