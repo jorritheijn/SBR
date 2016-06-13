@@ -38,7 +38,7 @@ namespace RBS
 
 
             int top = 25;
-            int left = 370;
+            int left = 380;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -52,7 +52,7 @@ namespace RBS
                 Button btn = new Button();
                 btn.Left = left;
                 btn.Top = top;
-                btn.Size = new Size(76, 15);
+                btn.Size = new Size(55, 15);
                 btn.Text = "Klaar";
                 btn.Tag = Bestelregel;
                 btn.Font = new Font("Arial", 5);
@@ -77,7 +77,7 @@ namespace RBS
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
-            int left = 370;
+            int left = 380;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -90,7 +90,7 @@ namespace RBS
                 Button btn = new Button();
                 btn.Left = left;
                 btn.Top = top;
-                btn.Size = new Size(76, 15);
+                btn.Size = new Size(55, 15);
                 btn.Text = "Verwijder";
                 btn.Tag = Bestelregel;
                 btn.Font = new Font("Arial", 5);
@@ -130,6 +130,23 @@ namespace RBS
 
             Inloggen.Show();
             Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+
+            listView1.Items.Clear();
+            listView2.Items.Clear();
+            foreach (Button b in button)
+            {
+                b.Dispose();
+            }
+            BarScherm_Huidig_load();
+            BarScherm_Geschiedenis_load();
+            ActiveForm.Refresh();
         }
     }
 }
