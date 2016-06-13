@@ -8,11 +8,17 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
+    /// <summary>
+    /// Class dient als link tussen de databasetabellen 'bestellingen', 'bestelRegels' en de applicatie
+    /// </summary>
     public class BestellingDAO
     {
+        private SqlConnection dbConnection;
 
-        protected SqlConnection dbConnection;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dbConnection">Bevat de informatie om met de database te kunnen verbinden</param>
         public BestellingDAO(SqlConnection dbConnection)
         {
             this.dbConnection = dbConnection;
@@ -90,6 +96,11 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Leest één record uit de tabel 'bestelRegels'
+        /// </summary>
+        /// <param name="reader">De reader waaruit gelezen wordt</param>
+        /// <returns>Een object van het type bestelRegel</returns>
         private BestelRegel ReadBestelRegel(SqlDataReader reader)
         {
             int productId = (int)reader["productId"];
@@ -141,6 +152,13 @@ namespace RBS
             return bestelId;
         }
 
+        /// <summary>
+        /// Controlleert voor een openstaande bestelling voor een gegeven tafel
+        /// </summary>
+        /// <param name="tafelId">Het ID van de tafel die gecontrolleerd wordt</param>
+        /// <returns>
+        /// True=Er is een openstaande bestelling
+        /// False=Er is geen openstaande bestelling</returns>
         public bool OpenstaandeBestelling(int tafelId)
         {
             dbConnection.Open();
