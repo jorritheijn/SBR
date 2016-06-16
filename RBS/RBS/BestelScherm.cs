@@ -12,6 +12,9 @@ using System.Diagnostics;
 
 namespace RBS
 {
+    /// <summary>
+    /// Class voor het scherm waar bestellingen worden geplaatst
+    /// </summary>
     public partial class BestelScherm : Form
     {
         private ProductDAO productDAO;
@@ -169,8 +172,7 @@ namespace RBS
                 controls[1].Tag = ++n;
                 controls[1].Text = n.ToString();
                 p.AantalVoorraad -= 1;
-
-                //if (p.AantalVoorraad == 0) { DisableButtons(controls); }
+                
                 btn.Enabled = p.AantalVoorraad != 0;
 
                 controls[2].Enabled = true;
@@ -226,7 +228,7 @@ namespace RBS
 
                 btnItem.Tag = items[i];
                 lblNum.Tag = 0;
-                btnDecrement.Tag = items[i];
+                //btnDecrement.Tag = items[i];
 
                 btnItem.Enabled = items[i].AantalVoorraad > 0;
                 btnDecrement.Enabled = false;

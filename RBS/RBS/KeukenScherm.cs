@@ -39,7 +39,7 @@ namespace RBS
 
 
             int top = 25;
-            int left = 370;
+            int left = 380;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -76,7 +76,7 @@ namespace RBS
             List<BestelRegel> bestelregel = bestellingDAO.GetAllByStatus(status, afdeling);
 
             int top = 25;
-            int left = 370;
+            int left = 380;
             foreach (var Bestelregel in bestelregel)
             {
                 ListViewItem lvi = new ListViewItem(Bestelregel.TafelId.ToString());
@@ -128,6 +128,23 @@ namespace RBS
 
             Inloggen.Show();
             Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+
+            listView1.Items.Clear();
+            listView2.Items.Clear();
+            foreach (Button b in button)
+            {
+                b.Dispose();
+            }
+            KeukenScherm_Huidig_load();
+            KeukenScherm_Geschiedenis_load();
+            ActiveForm.Refresh();
         }
     }
 }

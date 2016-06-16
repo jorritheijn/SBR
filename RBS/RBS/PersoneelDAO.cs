@@ -7,17 +7,31 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
+    /// <summary>
+    /// Class dient als link tussen de databasetabel 'personeel' en de applicatie
+    /// </summary>
     public class PersoneelDAO
     {
-        protected SqlConnection dbConnection;
+        private SqlConnection dbConnection;
 
+        /// <summary>
+        /// ID van het ingelogde personeelslid
+        /// </summary>
         public static int personeelId = 0;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dbConnection">Bevat de informatie over de verbinding</param>
         public PersoneelDAO(SqlConnection dbConnection)
         {
             this.dbConnection = dbConnection;
         }
 
+        /// <summary>
+        /// Genereert een lijst van al het personeel in de database
+        /// </summary>
+        /// <returns>List met objecten van type Personeel</returns>
         public List<Personeel> GetAll()
         {
             dbConnection.Open();
@@ -55,22 +69,22 @@ namespace RBS
                 werknemer = ReadPersoneel(reader);
             }
 
-            //Tijdelijk voor de presentatie n shit
-            try
-            {
-                personeelId = werknemer.Id;
-            }
-            catch(Exception e)
-            {
-                personeelId = 1;
-            }
+            //Voorkomt error bij verkeerde input
+            try { personeelId = werknemer.Id; }
+            catch { personeelId = 1; }
 
             //sluit de connectie
             dbConnection.Close();
 
-                return werknemer;
+            return werknemer;
             }
 
+        /// <summary>
+        /// Voeg een nieuwe account toe aan de database
+        /// </summary>
+        /// <param name="username">De naam</param>
+        /// <param name="pincode">De pincode</param>
+        /// <param name="functie">De functie (medewerkerk, keuken, bar, bediening)</param>
         public void AddEmployee(string username, string pincode, string functie)
         {
             dbConnection.Open();
@@ -88,6 +102,10 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Verwijder een account uit de database
+        /// </summary>
+        /// <param name="id">ID van het te verwijderen account</param>
         public void DeleteEmployee(int id)
         {
             dbConnection.Open();
@@ -101,6 +119,11 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Leest één record uit de databasetabel 'personeel'
+        /// </summary>
+        /// <param name="reader">Reader om te lezen</param>
+        /// <returns></returns>
         private Personeel ReadPersoneel(SqlDataReader reader)
         {
             int id = (int)reader["personeelId"];
