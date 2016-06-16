@@ -39,10 +39,10 @@ namespace RBS
 
             List<BestelRegel> rekeningRegels = bestellingDao.GetRekening(bestelId);
 
+            label1.Text = "Tafel " + tafelId;
+
             decimal totaalPrijs = 0;
             decimal totaalBtw = 0;
-
-            label1.Text = "Tafel " + tafelId;
 
             foreach (BestelRegel rekeningRegel in rekeningRegels)
             {
