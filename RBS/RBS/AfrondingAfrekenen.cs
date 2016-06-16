@@ -35,6 +35,9 @@ namespace RBS
             this.tafelId = tafelId;
         }
 
+        /// <summary>
+        /// De bestelling wordt afgerond en geupdate in de database
+        /// </summary>
         private void afrondButton_Click(object sender, EventArgs e)
         {
             this.bestellingDao = DataHelper.BestellingDao;
@@ -48,10 +51,10 @@ namespace RBS
         }
 
         private void terugBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
+        {    
             Form afrekenen = new Afrekenen(tafelId);
             afrekenen.Show();
+            this.Close();
         }
     }
 }
