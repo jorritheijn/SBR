@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RBS.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,40 +13,38 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
+    /// <summary>
+    /// Class voor het scherm waar afrekenen wordt afgerond
+    /// </summary>
     public partial class AfrondingAfrekenen : Form
     {
         private BestellingDAO bestellingDao;
-        int tafelId;
-        int bestelId;
-        string betaalMethode;
 
+        private int tafelId, bestelId;
+        private string betaalMethode;
 
-        public AfrondingAfrekenen(int bestelIdPara, string betaalMethodePara, int tafelIdPara)
+        /// <summary>
+        /// Het afronding afrekenscherm
+        /// </summary>
+        public AfrondingAfrekenen(int bestelId, string betaalMethode, int tafelId)
         {
             InitializeComponent();
-            bestelId = bestelIdPara;
-            betaalMethode = betaalMethodePara;
-            tafelId = tafelIdPara;
-        }
 
-        private void AfrondingAfrekenen_Load(object sender, EventArgs e)
-        {
-
+            this.bestelId = bestelId;
+            this.betaalMethode = betaalMethode;
+            this.tafelId = tafelId;
         }
 
         private void afrondButton_Click(object sender, EventArgs e)
         {
-            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
-            SqlConnection dbConnection = new SqlConnection(connString);
-            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
+            this.bestellingDao = DataHelper.BestellingDao;
 
             string commentaar = commentaarBox.Text;
-            bestellingDAO.AfrondingBestelling(bestelId, betaalMethode, commentaar);
+            bestellingDao.AfrondingBestelling(bestelId, betaalMethode, commentaar);
      
             Form tafelOverzicht = new TafelOverzicht();
             tafelOverzicht.Show();
             this.Close();
-
         }
 
         private void terugBtn_Click(object sender, EventArgs e)

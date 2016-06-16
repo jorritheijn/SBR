@@ -13,41 +13,41 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
+    /// <summary>
+    /// Class voor het scherm waar bestellingen worden afgerekend
+    /// </summary>
     public partial class Afrekenen : Form
     {
         private BestellingDAO bestellingDao;
         private ProductDAO productDao;
 
-        int bestelId;
-        int tafelId;
+        private int bestelId, tafelId;
 
-        public Afrekenen(int tafelIdPara)
+        /// <summary>
+        /// Het afrekenscherm
+        /// </summary>
+        public Afrekenen(int tafelId)
         {
-            tafelId = tafelIdPara;
             InitializeComponent();
+
+            this.tafelId = tafelId;
 
             this.bestellingDao = DataHelper.BestellingDao;
             this.productDao = DataHelper.ProductDao;
 
-            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
-            SqlConnection dbConnection = new SqlConnection(connString);
-            BestellingDAO bestellingDAO = new BestellingDAO(dbConnection);
-            ProductDAO productdao = new ProductDAO(dbConnection);
+            bestelId = bestellingDao.GetBestelIdFromTafel(tafelId);
 
-            bestelId = bestellingDAO.GetBestelIdFromTafel(tafelId);
-
-            List<BestelRegel> rekeningRegels = bestellingDAO.GetRekening(bestelId);
+            List<BestelRegel> rekeningRegels = bestellingDao.GetRekening(bestelId);
 
             decimal totaalPrijs = 0;
             decimal totaalBtw = 0;
-            int regels = 0;
 
             label1.Text = "Tafel " + tafelId;
             listBox3.RightToLeft = RightToLeft.Yes;
 
             foreach (BestelRegel rekeningRegel in rekeningRegels)
             {
-                Product product = productdao.GetProductById(rekeningRegel.ProductId);
+                Product product = productDao.GetProductById(rekeningRegel.ProductId);
 
                 int aantal = rekeningRegel.Aantal;
                 decimal prijs = product.Prijs;
@@ -60,17 +60,17 @@ namespace RBS
                 totaalPrijs += regelPrijs;
                 decimal btw = Math.Ceiling(product.BerekenBTW * 100) / 100;
                 totaalBtw += (btw * aantal);
-                regels++;
             }
+
             // ----- Form changes ----- //
             totaalTxt.Text = "Totaal: " + totaalPrijs;
-            btwTxt.Text = "BTW: " + totaalBtw;
+            btwTxt.Text = "BTW: " + totaalBtw.ToString("0.00");
 
             listBox1.Height = listBox1.PreferredHeight;
             listBox2.Height = listBox2.PreferredHeight;
             listBox3.Height = listBox3.PreferredHeight;
 
-            //set panel height Listbox + BTW and Totaal labels(40px)
+            //set panel height Listbox + BTW and Totaal labels(50px)
             panel1.Height = listBox1.Height + 50;
 
             //set max panel Height
@@ -89,46 +89,24 @@ namespace RBS
             printBon.Enabled = false;
         }
 
+        /// <summary>
+        /// Naar het afrondingAfrekenen scherm
+        /// </summary>
+        /// <remarks>
+        /// Wordt opgeroepen door de knoppen Pin, Cash en Creditcard
+        /// </remarks>
         private void afronding_Click(object sender, EventArgs e)
         {
-
             var afronding = sender as Button;
-            string naam = afronding.Name.ToLower();
-            //var afronden = new AfrondingAfrekenen(bestelId, naam);
-            /*afronden.Show();
-            this.Hide();*/
-            Form afrondFrm = new AfrondingAfrekenen(bestelId, naam, tafelId);
+            string betaalMethode = afronding.Name.ToLower();
+            Form afrondFrm = new AfrondingAfrekenen(bestelId, betaalMethode, tafelId);
             afrondFrm.Show();
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-             
-        }
-
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btwTxt_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Terug naar het tafel overzicht
+        /// </summary>
         private void terugBtn_Click(object sender, EventArgs e)
         {
             Form tafelOverzicht = new TafelOverzicht();

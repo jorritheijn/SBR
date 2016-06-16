@@ -59,7 +59,6 @@
             this.label1.Size = new System.Drawing.Size(800, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tafel";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -100,7 +99,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(293, 24);
             this.listBox1.TabIndex = 5;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBox2
             // 
@@ -121,7 +119,6 @@
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(55, 24);
             this.listBox3.TabIndex = 7;
-            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // totaalTxt
             // 
@@ -203,7 +200,6 @@
             this.btwTxt.TabIndex = 0;
             this.btwTxt.Text = "BTW:  0,00";
             this.btwTxt.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btwTxt.Click += new System.EventHandler(this.btwTxt_Click);
             // 
             // panel1
             // 

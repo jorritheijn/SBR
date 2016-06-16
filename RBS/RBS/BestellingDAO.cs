@@ -34,7 +34,6 @@ namespace RBS
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
                     "INNER JOIN producten ON bestelRegels.productId = producten.productId WHERE bestelRegels.bestelId={0} AND bestelStatus=1", bestelId);
 
-            System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -42,7 +41,6 @@ namespace RBS
 
             while (reader.Read())
             {
-                //System.Diagnostics.Debug.WriteLine((int)reader["tafelId"]);
                 BestelRegel bestelRegel = ReadBestelRegel(reader);
                 rekeningRegels.Add(bestelRegel);
             }
@@ -56,7 +54,7 @@ namespace RBS
             dbConnection.Open();
 
             string sql = string.Format(
-                "SELECT * FROM bestellingen " + //producten.id as product_id, bestellingen.id as bestellingen_id, bestelRegels.id as bestelregels_id, aantal, bestelId, comment, productStatus, persooneelId, tafelId, productNaam, subCategorieId FROM bestelRegels " +
+                "SELECT * FROM bestellingen " + 
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
@@ -129,6 +127,9 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Update de bestelling naar betaald
+        /// </summary>
         public void AfrondingBestelling(int bestelId, string betaalMethode, string commentaar)
         {
             dbConnection.Open();
@@ -228,58 +229,6 @@ namespace RBS
         }
 
         /// <summary>
-        /// Checkt voor een open bestelId voor de tafel, als deze er niet is wordt er een nieuwe gemaakt
-        /// </summary>
-        /// <param name="tafelId">ID van de tafel</param>
-        /// <returns>Een bestelId</returns>
-        //public int GetBestelId(int tafelId)
-        //{
-        //    dbConnection.Open();
-
-        //    string sql = string.Format("SELECT TOP 1 bestelId,bestelStatus FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
-
-        //    SqlCommand command = new SqlCommand(sql, dbConnection);
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    int bestelId = 0, bestelStatus = 1;
-
-        //    while (reader.Read())
-        //    {
-        //        bestelId = (int)reader["bestelId"];
-        //        bestelStatus = (int)reader["bestelStatus"];
-        //    }
-        //    dbConnection.Close();
-
-        //    if (bestelStatus == 1) { return bestelId; }
-        //    else return GenerateNewBestelId();
-        //}
-
-        /// <summary>
-        /// Genereert een nieuw, uniek bestelId
-        /// </summary>
-        /// <returns>Nieuw bestelId</returns>
-        //public int GenerateNewBestelId()
-        //{
-        //    dbConnection.Open();
-
-        //    string sql = string.Format("SELECT TOP 1 bestelId FROM bestellingen ORDER BY bestelId DESC");
-
-        //    SqlCommand command = new SqlCommand(sql, dbConnection);
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    int bestelId = 0;
-
-        //    while (reader.Read())
-        //    {
-        //        bestelId = (int)reader["bestelId"];
-        //    }
-
-        //    bestelId++;
-
-        //    dbConnection.Close();
-
-        //    return bestelId;
-        //}
-
-        /// <summary>
         /// Voeg nieuwe bestelling toe aan database tabel bestellingen
         /// </summary>
         /// <param name="personeelId">ID van 't personeelslid</param>
@@ -298,74 +247,6 @@ namespace RBS
             dbConnection.Close();
         }
 
-        /*public List<Bestelling> GetAll(string status)
-        {
-            dbConnection.Open();
-
-            string sql = string.Format("SELECT * FROM bestellingen WHERE status='{0}' ORDER by tafelId", status);
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Bestelling> alleBestellingen = new List<Bestelling>();
-
-            while (reader.Read())
-            {
-                Bestelling bestelling = ReadBestelling(reader);
-                alleBestellingen.Add(bestelling);
-            }
-
-            dbConnection.Close();
-
-            return alleBestellingen;
-        }
-
-        
-
-        //voor bestell-regel class.
-        public List<BestelRegel> GetRekening(int bestelId)
-        {
-            dbConnection.Open();
-
-            string sql = string.Format(
-                "SELECT * FROM bestellingen " +
-                    "INNER JOIN bestelRegels ON bestellingen.id = bestelRegels.bestelId " +
-                    "INNER JOIN producten ON bestelRegels.productId = producten.id WHERE bestelId={0}", bestelId);
-
-            System.Diagnostics.Debug.WriteLine("cooldduud" + bestelId);
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<BestelRegel> rekeningRegels = new List<BestelRegel>();
-
-            while (reader.Read())
-            {
-                //System.Diagnostics.Debug.WriteLine((int)reader["tafelId"]);
-                BestelRegel bestelRegel = ReadBestelRegel(reader);
-                rekeningRegels.Add(bestelRegel);
-            }
-            dbConnection.Close();
-
-            return rekeningRegels;
-        }
-        public int GetBestelIdFromTafel(int tafelId)
-        {
-            dbConnection.Open();
-
-            string sql = string.Format("SELECT TOP 1 id FROM bestellingen WHERE tafelId={0} ORDER BY opnameTijd DESC", tafelId);
-
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-            int bestelId = 0;
-            while (reader.Read())
-            {
-                bestelId = (int)reader["id"];
-            }
-
-            dbConnection.Close();
-
-            return bestelId;
-        }*/
-
         private Bestelling ReadBestelling(SqlDataReader reader)
         {
             int id = (int)reader["bestelId"];
@@ -382,110 +263,5 @@ namespace RBS
 
             return new Bestelling(id, personeelId, tafelId, betaalMethode, opnameTijd, status);
         }
-
-
-        /*public List<Tafel> GetAllTafel()
-        {
-            dbConnection.Open();
-
-            string sql = string.Format(
-                    "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
-                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
-                        "INNER JOIN producten on productId = producten.id " +
-                        "ORDER BY tafelId");
-
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<int> tafelid = new List<int>();
-            while (reader.Read())
-            {
-                int tafelID = (int)reader["tafelId"];
-                tafelid.Add(tafelID);
-            }
-            dbConnection.Close();
-
-            return tafelid;
-        }
-        public List<string> GetAllProducten()
-        {
-            dbConnection.Open();
-
-            string sql = string.Format(
-                     "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
-                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
-                        "INNER JOIN producten on productId = producten.id " +
-                        "ORDER BY tafelId");
-
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<string> productennaam = new List<string>();
-
-            while (reader.Read())
-            {
-                string Productennaam = (string)reader["naam"];
-
-                productennaam.Add(Productennaam);
-            }
-
-            dbConnection.Close();
-
-            return productennaam;
-        }
-        public List<string> GetAllComment()
-        {
-            dbConnection.Open();
-
-            string sql = string.Format(
-                     "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
-                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
-                        "INNER JOIN producten on productId = producten.id " +
-                        "ORDER BY tafelId");
-
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<string> comment = new List<string>();
-
-            while (reader.Read())
-            {
-                string comments;
-                try { comments = (string)reader["comment"]; }
-                catch { comments = ""; }
-
-                comment.Add(comments);
-            }
-
-            dbConnection.Close();
-
-            return comment;
-        }
-        public List<int> GetAllAantal()
-        {
-            dbConnection.Open();
-
-            string sql = string.Format(
-                     "SELECT tafelId, naam, comment, aantal FROM bestellingen " +
-                        "INNER JOIN bestelRegels on bestellingen.id = bestelRegels.bestelId " +
-                        "INNER JOIN producten on productId = producten.id " +
-                        "ORDER BY tafelId");
-
-            SqlCommand command = new SqlCommand(sql, dbConnection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<int> aantal = new List<int>();
-
-            while (reader.Read())
-            {
-                int Aantal = (int)reader["aantal"];
-
-                aantal.Add(Aantal);
-            }
-
-            dbConnection.Close();
-
-            return aantal;
-        }*/
     }
 }

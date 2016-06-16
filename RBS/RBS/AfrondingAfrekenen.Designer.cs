@@ -112,7 +112,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "AfrondingAfrekenen";
             this.Text = "AfrondingAfrekenen";
-            this.Load += new System.EventHandler(this.AfrondingAfrekenen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
