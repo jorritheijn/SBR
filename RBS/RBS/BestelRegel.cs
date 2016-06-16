@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RBS
 {
-
+    /// <summary>
+    /// Klasse voor het maken van (deel)bestellingen
+    /// </summary>
     public class BestelRegel
     {
         private int tafelId, productId, aantal, bestelId, status, id;

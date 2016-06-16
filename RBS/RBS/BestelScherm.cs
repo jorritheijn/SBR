@@ -19,6 +19,7 @@ namespace RBS
     {
         private ProductDAO productDAO;
         private BestellingDAO bestellingDAO;
+
         private int bestelId, personeelId, tafelId;
         private List<BestelRegel> bestelRegels = new List<BestelRegel>();
 
@@ -340,7 +341,7 @@ namespace RBS
                 }
             }
 
-            bestelRegels.Add(new BestelRegel(tafelId, productId, 1, bestelId, "", 1, 0));
+            bestelRegels.Add(new BestelRegel(tafelId, productId, 1, bestelId, ""));
         }
 
         /// <summary>
