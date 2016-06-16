@@ -53,6 +53,11 @@ namespace RBS
             return allePersoneel;
         }
 
+        /// <summary>
+        /// Vindt een personeelslid via pincode
+        /// </summary>
+        /// <param name="pincode">De pincode waarop gezocht wordt</param>
+        /// <returns>Een Personeel object</returns>
         public Personeel GetByPincode(string pincode)
         {
             dbConnection.Open();

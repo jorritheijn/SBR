@@ -373,11 +373,16 @@ namespace RBS
             return bestelRegels[0];
         }
 
+        /// <summary>
+        /// Log uit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             InlogScherm Check = new InlogScherm();
             Check.Show();
-            Hide();
+            Close();
         }
 
         /// <summary>
@@ -392,6 +397,11 @@ namespace RBS
             Close();
         }
 
+        /// <summary>
+        /// Controlleert of er al een lopende bestelling draait
+        /// Zo ja, pak 't ID van de bestelling en ga daar mee verder
+        /// Zo nee, maak een nieuwe bestelling aan en pak het ID hiervan
+        /// </summary>
         private void InitBestelId()
         {
             if (bestellingDAO.OpenstaandeBestelling(tafelId))

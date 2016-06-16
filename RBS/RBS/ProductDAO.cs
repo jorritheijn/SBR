@@ -7,9 +7,12 @@ using System.Data.SqlClient;
 
 namespace RBS
 {
+    /// <summary>
+    /// Klasse voor de conntectie met de databasetabel 'producten'
+    /// </summary>
     public class ProductDAO
     {
-        protected SqlConnection dbConnection;
+        private SqlConnection dbConnection;
 
         /// <summary>
         /// Constructor

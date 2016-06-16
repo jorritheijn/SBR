@@ -222,7 +222,7 @@ namespace RBS
             UserHelper.Uitloggen();
 
             Inloggen.Show();
-            Hide();
+            Close();
         }
 
         private void btn_Voorraad_Click(object sender, EventArgs e)
@@ -230,13 +230,11 @@ namespace RBS
             Application.Run(new VoorraadBeheer());
             this.Close();
         }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
             Form VoorraadBeheer = new VoorraadBeheer();
-           
-
         }
     }
 }

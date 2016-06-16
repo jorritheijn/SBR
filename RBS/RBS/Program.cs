@@ -20,7 +20,6 @@ namespace RBS
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new InlogScherm());
-            
         }
     }
 }
