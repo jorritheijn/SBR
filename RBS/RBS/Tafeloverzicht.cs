@@ -191,10 +191,10 @@ namespace RBS
         }
 
         /// <summary>
-        /// 
+        /// Update Tafelstatussen (loopt, gereed, uitgeserveerd)
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">automatisch updaten</param>
+        /// <param name="e">updatetafelstatussen</param>
         private void UpdateTafelStatussen_Tick(object sender, EventArgs e)
         {
             UpdateTafelStatussen();
@@ -218,10 +218,9 @@ namespace RBS
         }
 
         /// <summary>
-        /// 
+        /// Als de form wordt gesloten zal de refreshtimer niet doorgaan
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">gesloten form</param>
         private void TafelOverzicht_FormClosing(object sender, FormClosingEventArgs e)
         {
             RefreshTimer.Stop();
@@ -229,11 +228,10 @@ namespace RBS
         }
 
         /// <summary>
-        /// 
+        /// Alle statussen worden bekeken en de statussen worden gereturnt.
         /// </summary>
-        /// <param name="tafelId"></param>
-        /// <param name="bestellingen"></param>
-        /// <returns></returns>
+        /// <param name="tafelId">Kijk via tafelId</param>
+        /// <returns>De status</returns>
         private BestelStatus FilterStatus(int tafelId, List<Bestelling> bestellingen)
         {
             BestelStatus status = BestelStatus.Onbekend;
