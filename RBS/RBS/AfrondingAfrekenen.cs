@@ -50,6 +50,9 @@ namespace RBS
             this.Close();
         }
 
+        /// <summary>
+        /// Terug naar het afrekenscherm van dezelfde tafel
+        /// </summary>
         private void terugBtn_Click(object sender, EventArgs e)
         {    
             Form afrekenen = new Afrekenen(tafelId);
