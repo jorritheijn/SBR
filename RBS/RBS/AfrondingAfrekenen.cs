@@ -51,6 +51,17 @@ namespace RBS
         }
 
         /// <summary>
+        /// Voorkom verkeerde characters in fooi veld
+        /// </summary>
+        private void fooiBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
         /// Terug naar het afrekenscherm van dezelfde tafel
         /// </summary>
         private void terugBtn_Click(object sender, EventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fooiBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.afrondButton = new System.Windows.Forms.Button();
             this.commentaarBox = new System.Windows.Forms.TextBox();
@@ -36,14 +36,15 @@
             this.terugBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // fooiBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(38, 95);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(379, 25);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "0,00";
+            this.fooiBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fooiBox.Location = new System.Drawing.Point(38, 95);
+            this.fooiBox.Name = "fooiBox";
+            this.fooiBox.Size = new System.Drawing.Size(379, 25);
+            this.fooiBox.TabIndex = 0;
+            this.fooiBox.Text = "0,00";
+            this.fooiBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fooiBox_KeyPress);
             // 
             // label1
             // 
@@ -109,7 +110,7 @@
             this.Controls.Add(this.commentaarBox);
             this.Controls.Add(this.afrondButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.fooiBox);
             this.Name = "AfrondingAfrekenen";
             this.Text = "AfrondingAfrekenen";
             this.ResumeLayout(false);
@@ -119,7 +120,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox fooiBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button afrondButton;
         private System.Windows.Forms.TextBox commentaarBox;
