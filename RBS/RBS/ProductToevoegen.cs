@@ -82,7 +82,7 @@ namespace RBS
             }
             else if (categorie == 3)
             {
-                subcategorie = list_Subcategorie.SelectedIndex + 1 + 4;
+                subcategorie = list_Subcategorie.SelectedIndex + 1 + 7;
             }
 
 
