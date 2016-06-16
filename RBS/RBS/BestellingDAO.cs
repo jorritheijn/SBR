@@ -180,6 +180,9 @@ namespace RBS
             dbConnection.Close();
         }
 
+        /// <summary>
+        /// Geeft de huidige bestel id van de tafel op
+        /// </summary>
         public int GetBestelIdFromTafel(int tafelId)
         {
             dbConnection.Open();
