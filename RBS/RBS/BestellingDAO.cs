@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using RBS.Enums;
 
 namespace RBS
 {
@@ -53,7 +54,8 @@ namespace RBS
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
                     "INNER JOIN producten ON producten.productId = bestelRegels.productId " +
                     "WHERE bestelRegels.productStatus = {0} ", status);
-            if (afdeling == 1) {
+            if (afdeling == 1)
+            {
                 sql = sql + " AND SubcategorieId<8 ";
             }
             else
@@ -75,6 +77,50 @@ namespace RBS
             dbConnection.Close();
 
             return alleBestellingen;
+        }
+
+        /// <summary>
+        /// Lees alle niet gesloten bestellingen van de database.
+        /// </summary>
+        /// <returns>De niet gesloten bestellingen</returns>
+        public List<Bestelling> GetAllNonClosedBestellingen()
+        {
+            //opent connectie
+            dbConnection.Open();
+
+            // Lees de data uit de database
+            SqlCommand command = new SqlCommand("SELECT * FROM bestellingen WHERE bestelStatus!=@status ORDER BY bestelStatus ASC", dbConnection);
+            command.Parameters.AddWithValue("@status", BestelStatus.Uitgeserveerd);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            var alleBestellingen = new List<Bestelling>();
+            while (reader.Read())
+            {
+                // Creeer een nieuw tafel model
+                var bestelling = ReadBestelling(reader);
+                alleBestellingen.Add(bestelling);
+            }
+
+            //sluit de connectie
+            dbConnection.Close();
+
+            return alleBestellingen;
+        }
+
+        public void UpdateTafelBestellingen(int tafelId, BestelStatus status)
+        {
+            //opent connectie
+            dbConnection.Open();
+
+            // Lees de data uit de database
+            SqlCommand command = new SqlCommand("UPDATE bestellingen SET bestelStatus = @status WHERE tafelId=@tafelId", dbConnection);
+            command.Parameters.AddWithValue("@status", status);
+            command.Parameters.AddWithValue("@tafelId", tafelId);
+            command.ExecuteNonQuery();
+            
+            //sluit de connectie
+            dbConnection.Close();
         }
 
         public void AfrondingBestelling(int bestelId, string betaalMethode, string commentaar)
@@ -300,22 +346,27 @@ namespace RBS
             dbConnection.Close();
 
             return bestelId;
-        }
+        }*/
 
         private Bestelling ReadBestelling(SqlDataReader reader)
         {
-            int id = (int)reader["id"];
-            int personeelId = (int)reader["personeelId"];
+            int id = (int)reader["bestelId"];
+            int personeelId = (int)reader["persooneelId"];
             int tafelId = (int)reader["tafelId"];
-            int betaalMethode = (int)reader["betaalMethode"];
             DateTime opnameTijd = (DateTime)reader["opnameTijd"];
-            string status = (string)reader["status"];
+            BestelStatus status = (BestelStatus)reader["bestelStatus"];
+
+            string betaalMethode = String.Empty;
+            if (!(reader["betaalMethode"] is DBNull))
+            {
+                betaalMethode = (string)reader["betaalMethode"];
+            }
 
             return new Bestelling(id, personeelId, tafelId, betaalMethode, opnameTijd, status);
         }
 
 
-        public List<Tafel> GetAllTafel()
+        /*public List<Tafel> GetAllTafel()
         {
             dbConnection.Open();
 

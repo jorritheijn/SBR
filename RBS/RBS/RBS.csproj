@@ -74,7 +74,7 @@
       <DependentUpon>BestelScherm.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\Functies.cs" />
-    <Compile Include="Enums\ProductStatus.cs" />
+    <Compile Include="Enums\BestelStatus.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Enums\TafelStatus.cs" />
     <Compile Include="Helpers\UserHelper.cs" />

@@ -9,10 +9,11 @@ namespace RBS.Enums
     /// <summary>
     /// Enumeratie voor de ProductStatus
     /// </summary>
-    public enum ProductStatus
+    public enum BestelStatus
     {
-        Besteld = 1,
+        Onbekend = 0,
+        Besteld,
         Gereed,
-        Geserveerd
+        Uitgeserveerd
     }
 }

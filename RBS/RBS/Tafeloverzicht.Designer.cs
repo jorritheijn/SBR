@@ -58,6 +58,7 @@
             this.lbl_Tafel1 = new System.Windows.Forms.Label();
             this.lbl_Tafel2 = new System.Windows.Forms.Label();
             this.Ingelogde = new System.Windows.Forms.Label();
+            this.uitgeserveerdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -224,9 +225,10 @@
             this.tblOptionBezet,
             this.tblOptionVrij,
             this.bestellingPlaatsenToolStripMenuItem,
+            this.uitgeserveerdToolStripMenuItem,
             this.afrekenenToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(381, 188);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(381, 234);
             // 
             // tblOptionBezet
             // 
@@ -337,9 +339,15 @@
             this.Ingelogde.AutoSize = true;
             this.Ingelogde.Location = new System.Drawing.Point(957, 31);
             this.Ingelogde.Name = "Ingelogde";
-            this.Ingelogde.Size = new System.Drawing.Size(186, 32);
+            this.Ingelogde.Size = new System.Drawing.Size(39, 32);
             this.Ingelogde.TabIndex = 23;
-            this.Ingelogde.Text = "Bob Schagen";
+            this.Ingelogde.Text = "...";
+            // 
+            // uitgeserveerdToolStripMenuItem
+            // 
+            this.uitgeserveerdToolStripMenuItem.Name = "uitgeserveerdToolStripMenuItem";
+            this.uitgeserveerdToolStripMenuItem.Size = new System.Drawing.Size(380, 46);
+            this.uitgeserveerdToolStripMenuItem.Text = "Uitgeserveerd";
             // 
             // TafelOverzicht
             // 
@@ -374,6 +382,8 @@
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "TafelOverzicht";
             this.Text = "TafelOverzicht";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TafelOverzicht_FormClosing);
+            this.Load += new System.EventHandler(this.TafelOverzicht_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -411,5 +421,6 @@
         private System.Windows.Forms.Label lbl_Tafel1;
         private System.Windows.Forms.Label lbl_Tafel2;
         private System.Windows.Forms.Label Ingelogde;
+        private System.Windows.Forms.ToolStripMenuItem uitgeserveerdToolStripMenuItem;
     }
 }

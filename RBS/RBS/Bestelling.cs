@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RBS.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,14 @@ namespace RBS
 {
     public class Bestelling
     {
-        int id;
-        int personeelId;
-        int tafelId;
-        int betaalMethode;
-        DateTime opnameTijd;
-        string status;
+        public int id;
+        public int personeelId;
+        public int tafelId;
+        public string betaalMethode;
+        public DateTime opnameTijd;
+        public BestelStatus status;
 
-        public Bestelling(int id, int personeelId, int tafelId, int betaalMethode, DateTime opnameTijd, string status)
+        public Bestelling (int id, int personeelId, int tafelId, string betaalMethode, DateTime opnameTijd, BestelStatus status)
         {
             this.id = id;
             this.personeelId = personeelId;
