@@ -115,7 +115,17 @@ namespace RBS
                 product.Naam = txt_Naam.Text;
                 product.AantalVoorraad = (int)txt_Aantal.Value;
                 product.Prijs = decimal.Parse(txt_Prijs.Text);
-                product.SubCategorieId = list_Subcategorie.SelectedIndex;
+                if (categorie == 2)
+                {
+                    product.SubCategorieId = list_Subcategorie.SelectedIndex + 1 + 3;
+                }
+                else if (categorie == 3)
+                {
+                    product.SubCategorieId = list_Subcategorie.SelectedIndex + 1 + 7;
+                }
+                else
+                    product.SubCategorieId = list_Subcategorie.SelectedIndex + 1;
+
                 if (MessageBox.Show("Weet u zeker dat u dit product wilt aanpassen?", "Akkoord", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     dao.WijzigProduct(product);

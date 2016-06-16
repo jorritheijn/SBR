@@ -14,11 +14,7 @@ namespace RBS
 {
     public partial class VoorraadBeheer : Form
     {
-        //private TabControl tabControl1;
-        private TabPage personeelszaken;
-        private TabPage klachten;
-        private TabPage voorraad;
-        private TabPage tafels;
+    
 
         
 
@@ -38,8 +34,9 @@ namespace RBS
 
         public VoorraadBeheer()
         {
-            
+          
             InitializeComponent();
+          
             
             ButtonSelected(btn_Lunch);
 
@@ -56,6 +53,7 @@ namespace RBS
 
                     list_Producten.Items.Add(product.Id + ". " + product.Naam);
                     list_Aantal.Items.Add(product.AantalVoorraad);
+                    list_Prijs.Items.Add(product.Prijs);
                     
                 }
             }
@@ -76,6 +74,8 @@ namespace RBS
             ButtonSelected((Button)sender);
             list_Producten.Items.Clear();
             list_Aantal.Items.Clear();
+            list_Prijs.Items.Clear();
+
 
             categorie = 1;
             List<Product> producten = dao.GetAllProducts();
@@ -85,6 +85,7 @@ namespace RBS
                 {
                     list_Producten.Items.Add(product.Id + ". " + product.Naam);
                     list_Aantal.Items.Add(product.AantalVoorraad);
+                    list_Prijs.Items.Add(product.Prijs);
                 }
             }
         }
@@ -94,6 +95,7 @@ namespace RBS
             ButtonSelected((Button)sender);
             list_Producten.Items.Clear();
             list_Aantal.Items.Clear();
+            list_Prijs.Items.Clear();
             categorie = 2;
             List<Product> producten = dao.GetAllProducts();
             foreach (Product product in producten)
@@ -102,6 +104,7 @@ namespace RBS
                 {
                     list_Producten.Items.Add(product.Id + ". " + product.Naam);
                     list_Aantal.Items.Add(product.AantalVoorraad);
+                    list_Prijs.Items.Add(product.Prijs);
                 }
             }
         }
@@ -111,6 +114,7 @@ namespace RBS
             ButtonSelected((Button)sender);
             list_Producten.Items.Clear();
             list_Aantal.Items.Clear();
+            list_Prijs.Items.Clear();
             categorie = 3;
             List<Product> producten = dao.GetAllProducts();
 
@@ -120,6 +124,7 @@ namespace RBS
                 {
                     list_Producten.Items.Add(product.Id + ". " + product.Naam);
                     list_Aantal.Items.Add(product.AantalVoorraad);
+                    list_Prijs.Items.Add(product.Prijs);
                 }
             }
         }
@@ -208,13 +213,25 @@ namespace RBS
         private void list_Producten_SelectedIndexChanged(object sender, EventArgs e)
         {
             list_Aantal.SelectedIndex = list_Producten.SelectedIndex;
-
+            list_Prijs.SelectedIndex = list_Producten.SelectedIndex;
+          
+            
+           
         }
 
         private void list_Aantal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            list_Producten.SelectedIndex = list_Aantal.SelectedIndex;
+           list_Producten.SelectedIndex = list_Aantal.SelectedIndex;
+           list_Prijs.SelectedIndex = list_Aantal.SelectedIndex;
+          
+            
         }
+        private void list_Prijs_SelectedIndexChanged(object sender, EventArgs e)
+       {
+           list_Aantal.SelectedIndex = list_Prijs.SelectedIndex;
+           list_Prijs.SelectedIndex = list_Producten.SelectedIndex;
+         
+      }
 
         private void list_Producten_MouseDoubleClick(object sender, MouseEventArgs e)
         {
