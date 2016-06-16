@@ -117,6 +117,7 @@
             this.listBox3.ItemHeight = 20;
             this.listBox3.Location = new System.Drawing.Point(362, 3);
             this.listBox3.Name = "listBox3";
+            this.listBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.listBox3.Size = new System.Drawing.Size(55, 24);
             this.listBox3.TabIndex = 7;
             // 

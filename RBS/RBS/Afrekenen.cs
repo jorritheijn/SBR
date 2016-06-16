@@ -43,7 +43,6 @@ namespace RBS
             decimal totaalBtw = 0;
 
             label1.Text = "Tafel " + tafelId;
-            listBox3.RightToLeft = RightToLeft.Yes;
 
             foreach (BestelRegel rekeningRegel in rekeningRegels)
             {
@@ -81,7 +80,6 @@ namespace RBS
                 totaalTxt.Padding = new Padding(0, 0, 8, 0);
                 btwTxt.Padding = new Padding(0, 9, 8, 0);  //9top for space between listbox and label
             }
-
         }
 
         private void printBon_Click(object sender, EventArgs e)
