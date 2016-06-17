@@ -22,7 +22,9 @@ namespace RBS
             BarScherm_Huidig_load();
             BarScherm_Geschiedenis_load();
         }
-        //test
+        /// <summary>
+        /// Huidige bestellingen laden en buttons aanmaken
+        /// </summary>
         private void BarScherm_Huidig_load()
         {
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
@@ -63,7 +65,9 @@ namespace RBS
 
             }
         }
-
+        /// <summary>
+        /// Oude bestellingen laden en buttons aanmaken
+        /// </summary>
         private void BarScherm_Geschiedenis_load()
         {
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
@@ -100,6 +104,11 @@ namespace RBS
                 top += btn.Height + 2;
             }
         }
+        /// <summary>
+        /// Wanneer een button wordt geclickt, wordt de bestelling gemarkeerd en de button verwijderd. Ook refresht het scherm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void button_Click(object sender, EventArgs e)
         {
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
@@ -121,7 +130,11 @@ namespace RBS
             ActiveForm.Refresh();
 
         }
-
+        /// <summary>
+        /// uitloggen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             InlogScherm Inloggen = new InlogScherm();
@@ -131,7 +144,11 @@ namespace RBS
             Inloggen.Show();
             Hide();
         }
-
+        /// <summary>
+        /// refresh
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
