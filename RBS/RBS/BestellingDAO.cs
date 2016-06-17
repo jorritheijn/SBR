@@ -24,11 +24,13 @@ namespace RBS
         {
             this.dbConnection = dbConnection;
         }
-
+        /// <summary>
+        /// Verkrijg alle rekening regels van één bestelling
+        /// </summary>
+        /// <param name="bestelId"></param>
+        /// <returns></returns>
         public List<BestelRegel> GetRekening(int bestelId)
         {
-            dbConnection.Open();
-
             string sql = string.Format(
                 "SELECT * FROM bestellingen " +
                     "INNER JOIN bestelRegels ON bestellingen.bestelId = bestelRegels.bestelId " +
@@ -36,6 +38,7 @@ namespace RBS
 
             SqlCommand command = new SqlCommand(sql, dbConnection);
             SqlDataReader reader = command.ExecuteReader();
+            dbConnection.Open();
 
             List<BestelRegel> rekeningRegels = new List<BestelRegel>();
 
