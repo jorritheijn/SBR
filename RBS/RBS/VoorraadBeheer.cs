@@ -108,15 +108,14 @@ namespace RBS
             ButtonSelected((Button)sender);
             LeegLijst();
 
+            //string name = Button.name();
+
 
             categorie = 1;
             List<Product> producten = dao.GetAllByCategorie(categorie);
             foreach (Product product in producten)
             {
-                if (product.SubCategorieId < 4)
-                {
-                    VulLijst(product);
-                }
+                VulLijst(product);
             }
         }
 
