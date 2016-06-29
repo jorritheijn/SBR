@@ -32,19 +32,16 @@ namespace RBS
             SqlConnection dbConnection = Connection();
             dao = new ProductDAO(dbConnection);
 
-            List<Product> producten = dao.GetAllProducts();
+            List<Product> producten = dao.GetAllByCategorie(categorie);
 
 
             categorie = 1;
+
             foreach (Product product in producten)
             {
-                if (product.SubCategorieId < 4)
-                {
-
-                    VulLijst(product);
-
-                }
+                VulLijst(product);
             }
+
         }
         /// <summary>
         /// Vult de listboxes
