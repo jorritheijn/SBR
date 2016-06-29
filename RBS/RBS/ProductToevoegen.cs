@@ -28,17 +28,38 @@ namespace RBS
         /// <param name="categorie"></param>
         public ProductToevoegen(int categorie)
         {
+            
             InitializeComponent();
+            
             this.categorie = categorie;
             dao = new ProductDAO(Connection());
-            InitProducten();
+           InitProducten();
 
         }
+        private void GetSubcategory(int i)
+        {
+            string subcategoryNaam = "";
+ 
+            if (Enum.IsDefined(typeof(Lunch), i))
+            {
+                subcategoryNaam = ((Lunch)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
+            }
+            else if (Enum.IsDefined(typeof(Diner), i))
+            {
+                subcategoryNaam = ((Diner)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
+            }
+            else if (Enum.IsDefined(typeof(Drank), i))
+            {
+                subcategoryNaam = ((Drank)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
+            }
+            list_Subcategorie.Text = subcategoryNaam;
+        }
+
         private void InitProducten()
         {
-            dao = new ProductDAO(Connection());
-            Product product = dao.GetProductById(productID);
-
             if (categorie == 1)
             {
                 lbl_Categorie.Text = "Lunch";
@@ -66,68 +87,13 @@ namespace RBS
 
             list_Subcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
             list_Subcategorie.SelectedIndex = 0;
-
-            txt_Naam.Text = product.Naam;
-            txt_Aantal.Value = product.AantalVoorraad;
-            txt_Prijs.Text = product.Prijs.ToString();
-
-            GetSubcategory(product.SubCategorieId);
         }
-
-        private void GetSubcategory(int i)
-        {
-            string subcategoryNaam = "";
-
-            if (Enum.IsDefined(typeof(Lunch), i))
-            {
-                subcategoryNaam = ((Lunch)i).ToString();
-                list_Subcategorie.Items.Add(subcategoryNaam);
-            }
-            else if (Enum.IsDefined(typeof(Diner), i))
-            {
-                subcategoryNaam = ((Diner)i).ToString();
-                list_Subcategorie.Items.Add(subcategoryNaam);
-            }
-            else if (Enum.IsDefined(typeof(Drank), i))
-            {
-                subcategoryNaam = ((Drank)i).ToString();
-                list_Subcategorie.Items.Add(subcategoryNaam);
-            }
-            list_Subcategorie.Text = subcategoryNaam;
-        }
-     /*
-        private void SubCategorie()
-        {
-            if (categorie == 1)
-            {
-                lbl_Categorie.Text = "Lunch";
-                list_Subcategorie.Items.Add("Voorgerecht");
-                list_Subcategorie.Items.Add("Hoofdgerecht");
-                list_Subcategorie.Items.Add("Nagerecht");
-            }
-            else if (categorie == 2)
-            {
-
-                lbl_Categorie.Text = "Diner";
-                list_Subcategorie.Items.Add("Voorgerecht");
-                list_Subcategorie.Items.Add("Tussengerecht");
-                list_Subcategorie.Items.Add("Hoofdgerecht");
-                list_Subcategorie.Items.Add("Nagerecht");
-            }
-            else
-            {
-                lbl_Categorie.Text = "Drank";
-                list_Subcategorie.Items.Add("Frisdrank");
-                list_Subcategorie.Items.Add("Bier");
-                list_Subcategorie.Items.Add("Wijn");
-                list_Subcategorie.Items.Add("Gedestilleerde dranken");
-                list_Subcategorie.Items.Add("Koffie/thee");
-            }
-
-            list_Subcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
-            list_Subcategorie.SelectedIndex = 0;
-        }
-        */
+        
+        
+        
+        
+        
+         
         private void ProductToevoegen_Load(object sender, EventArgs e)
         {
 
