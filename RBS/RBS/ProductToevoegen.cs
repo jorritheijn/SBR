@@ -31,9 +31,71 @@ namespace RBS
             InitializeComponent();
             this.categorie = categorie;
             dao = new ProductDAO(Connection());
-            SubCategorie();
+            InitProducten();
 
         }
+        private void InitProducten()
+        {
+            dao = new ProductDAO(Connection());
+            Product product = dao.GetProductById(productID);
+
+            if (categorie == 1)
+            {
+                lbl_Categorie.Text = "Lunch";
+                for (int i = 1; i < 4; i++)
+                {
+                    GetSubcategory(i);
+                }
+            }
+            else if (categorie == 2)
+            {
+                lbl_Categorie.Text = "Diner";
+                for (int i = 4; i < 8; i++)
+                {
+                    GetSubcategory(i);
+                }
+            }
+            else if (categorie == 3)
+            {
+                lbl_Categorie.Text = "Drank";
+                for (int i = 8; i < 13; i++)
+                {
+                    GetSubcategory(i);
+                }
+            }
+
+            list_Subcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
+            list_Subcategorie.SelectedIndex = 0;
+
+            txt_Naam.Text = product.Naam;
+            txt_Aantal.Value = product.AantalVoorraad;
+            txt_Prijs.Text = product.Prijs.ToString();
+
+            GetSubcategory(product.SubCategorieId);
+        }
+
+        private void GetSubcategory(int i)
+        {
+            string subcategoryNaam = "";
+
+            if (Enum.IsDefined(typeof(Lunch), i))
+            {
+                subcategoryNaam = ((Lunch)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
+            }
+            else if (Enum.IsDefined(typeof(Diner), i))
+            {
+                subcategoryNaam = ((Diner)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
+            }
+            else if (Enum.IsDefined(typeof(Drank), i))
+            {
+                subcategoryNaam = ((Drank)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
+            }
+            list_Subcategorie.Text = subcategoryNaam;
+        }
+     /*
         private void SubCategorie()
         {
             if (categorie == 1)
@@ -65,7 +127,7 @@ namespace RBS
             list_Subcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
             list_Subcategorie.SelectedIndex = 0;
         }
-
+        */
         private void ProductToevoegen_Load(object sender, EventArgs e)
         {
 

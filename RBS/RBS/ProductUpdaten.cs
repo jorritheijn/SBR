@@ -39,72 +39,74 @@ namespace RBS
 
             this.categorie = categorie;
             this.productID = productID;
-            InitProductUpdate();
+            InitProducten();
 
 
 
         }
-
-        private void InitProductUpdate()
+        
+        private void InitProducten()
         {
-            if (categorie == 1)
-            {
+            dao = new ProductDAO(Connection());
+            Product product = dao.GetProductById(productID);
+       
+            if (categorie == 1) {
                 lbl_Categorie.Text = "Lunch";
-                list_Subcategorie.Items.Add("Voorgerecht");
-                list_Subcategorie.Items.Add("Hoofdgerecht");
-                list_Subcategorie.Items.Add("Nagerecht");
+                for (int i = 1; i < 4; i++) {
+                    GetSubcategory(i);
+                }
             }
             else if (categorie == 2)
             {
                 lbl_Categorie.Text = "Diner";
-                list_Subcategorie.Items.Add("Voorgerecht");
-                list_Subcategorie.Items.Add("Tussengerecht");
-                list_Subcategorie.Items.Add("Hoofdgerecht");
-                list_Subcategorie.Items.Add("Nagerecht");
+                for (int i = 4; i < 8; i++)
+                {
+                    GetSubcategory(i);
+                }
             }
-            else
+            else if (categorie == 3)
             {
                 lbl_Categorie.Text = "Drank";
-                list_Subcategorie.Items.Add("Frisdrank");
-                list_Subcategorie.Items.Add("Bier");
-                list_Subcategorie.Items.Add("Wijn");
-                list_Subcategorie.Items.Add("Gedestilleerde dranken");
-                list_Subcategorie.Items.Add("Koffie/thee");
+                for (int i = 8; i < 13; i++)
+                {
+                    GetSubcategory(i);
+                }
             }
-
+ 
             list_Subcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
             list_Subcategorie.SelectedIndex = 0;
-
-
-            dao = new ProductDAO(Connection());
-            Product product = dao.GetProductById(productID);
-
+ 
             txt_Naam.Text = product.Naam;
             txt_Aantal.Value = product.AantalVoorraad;
             txt_Prijs.Text = product.Prijs.ToString();
-
-            list_Subcategorie.Text = GetSubcategorie(product.SubCategorieId);
-        }
-
-        private string GetSubcategorie(int subCategorieId)
+ 
+            GetSubcategory(product.SubCategorieId);
+         }
+    
+        private void GetSubcategory(int i)
         {
-
-            string subCategorie = "";
-            if (subCategorieId < 4)
+            string subcategoryNaam = "";
+ 
+            if (Enum.IsDefined(typeof(Lunch), i))
             {
-                subCategorie = ((Lunch)subCategorieId).ToString();
+                subcategoryNaam = ((Lunch)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
             }
-            else if (subCategorieId < 8)
+            else if (Enum.IsDefined(typeof(Diner), i))
             {
-                subCategorie = ((Diner)subCategorieId).ToString();
-
+                subcategoryNaam = ((Diner)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
             }
-            else if (subCategorieId < 13)
+            else if (Enum.IsDefined(typeof(Drank), i))
             {
-                subCategorie = ((Drank)subCategorieId).ToString();
+                subcategoryNaam = ((Drank)i).ToString();
+                list_Subcategorie.Items.Add(subcategoryNaam);
             }
-            return subCategorie;
+            list_Subcategorie.Text = subcategoryNaam;
         }
+      
+      
+        
 
         /// <summary>
         /// Past het product aan en sluit dit venster. Als er een subcategorie ingevoegd wordt moet dit hier veranderd worden.
@@ -112,11 +114,14 @@ namespace RBS
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+       
+       
         private void btn_OK_Click(object sender, EventArgs e)
         {
 
             try
             {
+
                 Product product = new Product();
                 product.Id = productID;
                 product.Naam = txt_Naam.Text;
