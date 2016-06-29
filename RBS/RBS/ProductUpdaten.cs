@@ -22,13 +22,31 @@ namespace RBS
         {
             InitializeComponent();
         }
-
+        private SqlConnection Connection()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
+            SqlConnection dbConnection = new SqlConnection(connString);
+            return dbConnection;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categorie"></param>
+        /// <param name="productID"></param>
         public ProductUpdaten(int categorie, int productID)
         {
+            InitializeComponent();
+
             this.categorie = categorie;
             this.productID = productID;
+            InitProductUpdate();
 
-            InitializeComponent();
+
+
+        }
+
+        private void InitProductUpdate()
+        {
             if (categorie == 1)
             {
                 lbl_Categorie.Text = "Lunch";
@@ -57,57 +75,46 @@ namespace RBS
             list_Subcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
             list_Subcategorie.SelectedIndex = 0;
 
-            
+
             dao = new ProductDAO(Connection());
             Product product = dao.GetProductById(productID);
 
             txt_Naam.Text = product.Naam;
             txt_Aantal.Value = product.AantalVoorraad;
             txt_Prijs.Text = product.Prijs.ToString();
-            switch (product.SubCategorieId)
-            {
-                case 1:
-                    list_Subcategorie.Text = "Voorgerecht";
-                    break;
-                case 2:
-                    list_Subcategorie.Text = "Hoofdgerecht";
-                    break;
-                case 3:
-                    list_Subcategorie.Text = "Nagerecht";
-                    break;
-                case 4:
-                    list_Subcategorie.Text = "Voorgerecht";
-                    break;
-                case 5:
-                    list_Subcategorie.Text = "Tussengerecht";
-                    break;
-                case 6:
-                    list_Subcategorie.Text = "Hoofdgerecht";
-                    break;
-                case 7:
-                    list_Subcategorie.Text = "Nagerecht";
-                    break;
-                case 8:
-                    list_Subcategorie.Text = "Frisdrank";
-                    break;
-                case 9:
-                    list_Subcategorie.Text = "Bier";
-                    break;
-                case 10:
-                    list_Subcategorie.Text = "Wijn";
-                    break;
-                case 11:
-                    list_Subcategorie.Text = "Gedestilleerde dranken";
-                    break;
-                case 12:
-                    list_Subcategorie.Text = "Koffie/thee";
-                    break;
-            }
+
+            list_Subcategorie.Text = GetSubcategorie(product.SubCategorieId);
         }
 
+        private string GetSubcategorie(int subCategorieId)
+        {
+
+            string subCategorie = "";
+            if (subCategorieId < 4)
+            {
+                subCategorie = ((Lunch)subCategorieId).ToString();
+            }
+            else if (subCategorieId < 8)
+            {
+                subCategorie = ((Diner)subCategorieId).ToString();
+
+            }
+            else if (subCategorieId < 13)
+            {
+                subCategorie = ((Drank)subCategorieId).ToString();
+            }
+            return subCategorie;
+        }
+
+        /// <summary>
+        /// Past het product aan en sluit dit venster. Als er een subcategorie ingevoegd wordt moet dit hier veranderd worden.
+        /// try en catch zit hier in om error te geven bij verkeerde invoer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 Product product = new Product();
@@ -143,11 +150,6 @@ namespace RBS
             this.Close();
         }
 
-        private SqlConnection Connection()
-        {
-            string connString = ConfigurationManager.ConnectionStrings["MayaMayaConnection"].ConnectionString;
-            SqlConnection dbConnection = new SqlConnection(connString);
-            return dbConnection;
-        }
+
     }
 }

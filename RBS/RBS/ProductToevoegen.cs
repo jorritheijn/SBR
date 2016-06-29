@@ -20,14 +20,22 @@ namespace RBS
         public ProductToevoegen()
         {
             InitializeComponent();
-            
-        }
 
+        }
+        /// <summary>
+        /// Constructor, kijkt naar categorie en stopt tekst in label en in dropdown
+        /// </summary>
+        /// <param name="categorie"></param>
         public ProductToevoegen(int categorie)
         {
+            InitializeComponent();
             this.categorie = categorie;
             dao = new ProductDAO(Connection());
-            InitializeComponent();
+            SubCategorie();
+
+        }
+        private void SubCategorie()
+        {
             if (categorie == 1)
             {
                 lbl_Categorie.Text = "Lunch";
@@ -37,6 +45,7 @@ namespace RBS
             }
             else if (categorie == 2)
             {
+
                 lbl_Categorie.Text = "Diner";
                 list_Subcategorie.Items.Add("Voorgerecht");
                 list_Subcategorie.Items.Add("Tussengerecht");
@@ -57,20 +66,18 @@ namespace RBS
             list_Subcategorie.SelectedIndex = 0;
         }
 
-
-        private void check_Btw_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ProductToevoegen_Load(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// Kijkt naar de selectedindex om te bepalen welke subcategorie er wordt gegeven.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            
+
             int subcategorie = 1;
             if (categorie == 1)
             {
@@ -113,5 +120,7 @@ namespace RBS
         {
             this.Close();
         }
+
+
     }
 }

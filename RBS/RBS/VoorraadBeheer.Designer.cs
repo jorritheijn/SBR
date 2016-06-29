@@ -43,7 +43,6 @@
             this.btn_Lunch = new System.Windows.Forms.Button();
             this.btn_Toevoeg = new System.Windows.Forms.Button();
             this.btn_Drank = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,7 +70,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Log uit";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            
             // 
             // tabPage3
             // 
@@ -211,26 +210,14 @@
             this.btn_Drank.UseVisualStyleBackColor = true;
             this.btn_Drank.Click += new System.EventHandler(this.btn_Drank_Click);
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(455, 549);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Personeelszaken";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(1, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(463, 575);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.Click += new System.EventHandler(this.goPersoneel);
             // 
             // VoorraadBeheer
             // 
@@ -242,7 +229,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "VoorraadBeheer";
             this.Text = "VoorraadBeheer";
-            this.Activated += new System.EventHandler(this.VoorraadBeheer_Activated);
             this.tabPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -262,7 +248,6 @@
         private System.Windows.Forms.Button btn_Drank;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button btn_Verwijder;
         private System.Windows.Forms.Panel panel1;
