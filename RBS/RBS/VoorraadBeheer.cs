@@ -110,7 +110,7 @@ namespace RBS
 
 
             categorie = 1;
-            List<Product> producten = dao.GetAllProducts();
+            List<Product> producten = dao.GetAllByCategorie(categorie);
             foreach (Product product in producten)
             {
                 if (product.SubCategorieId < 4)
