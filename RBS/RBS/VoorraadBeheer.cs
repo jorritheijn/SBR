@@ -27,23 +27,17 @@ namespace RBS
             InitializeComponent();
 
 
-            ButtonSelected(btn_Lunch);
+            ButtonSelected(lunch);
 
             SqlConnection dbConnection = Connection();
             dao = new ProductDAO(dbConnection);
 
-            List<Product> producten = dao.GetAllProducts();
-
-
             categorie = 1;
+            List<Product> producten = dao.GetAllByCategorie(categorie);
+
             foreach (Product product in producten)
             {
-                if (product.SubCategorieId < 4)
-                {
-
                     VulLijst(product);
-
-                }
             }
         }
         /// <summary>
@@ -99,19 +93,25 @@ namespace RBS
             Hide();
         }
         /// <summary>
-        /// Klik op button lunch dan worden de listboxes gecleared en worden de prijzen, naam en het aantal van de producten met subcategorie 1,2 of 3 uitgelezen.
+        /// Klik op button lunch, diner of dranken dan worden de listboxes gecleared en worden de prijzen, naam en het aantal van de producten met subcategorie 1,2 of 3 uitgelezen.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btn_Lunch_Click(object sender, EventArgs e)
+        private void btn_categorie_click(object sender, EventArgs e)
         {
             ButtonSelected((Button)sender);
             LeegLijst();
 
-            //string name = Button.name();
+            var getCategorie = sender as Button;
+            string btnName = getCategorie.Name.ToLower();
 
+            switch (btnName)
+            {
+                case "lunch": categorie = 1; break;
+                case "diner": categorie = 2; break;
+                case "drank": categorie = 3; break;
+            }
 
-            categorie = 1;
             List<Product> producten = dao.GetAllByCategorie(categorie);
             foreach (Product product in producten)
             {
@@ -120,58 +120,14 @@ namespace RBS
         }
 
         /// <summary>
-        /// Klik, categorie wordt op 2 gezet, listboxes gecleared, product prijs, naam, aantal uitgelezen in listbox van subcategorie 4 t/m 7.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_Diner_Click(object sender, EventArgs e)
-        {
-            ButtonSelected((Button)sender);
-            LeegLijst();
-            categorie = 2;
-            List<Product> producten = dao.GetAllProducts();
-            foreach (Product product in producten)
-            {
-                if (product.SubCategorieId > 3 && product.SubCategorieId < 8)
-                {
-                    VulLijst(product);
-                }
-            }
-        }
-        /// <summary>
-        /// Klik, categorie wordt op 3 gezet, listboxes gecleared en product prijs, naam en aantaal uitgelezen in listbox van subcategorie 8 t/m 12.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_Drank_Click(object sender, EventArgs e)
-        {
-            ButtonSelected((Button)sender);
-            LeegLijst();
-            categorie = 3;
-            List<Product> producten = dao.GetAllProducts();
-
-            foreach (Product product in producten)
-            {
-                if (product.SubCategorieId > 7 && product.SubCategorieId < 13)
-                {
-                    VulLijst(product);
-                }
-            }
-        }
-
-
-
-
-
-        /// <summary>
         /// Maakt de actieve btn LightGray en alle andere knoppen WhiteSmoke
         /// </summary>
         /// <param name="btn"></param>
         private void ButtonSelected(Button btn)
         {
-            btn_Lunch.BackColor = Color.WhiteSmoke;
-            btn_Diner.BackColor = Color.WhiteSmoke;
-            btn_Drank.BackColor = Color.WhiteSmoke;
+            lunch.BackColor = Color.WhiteSmoke;
+            diner.BackColor = Color.WhiteSmoke;
+            drank.BackColor = Color.WhiteSmoke;
 
             btn.BackColor = Color.LightGray;
         }
@@ -199,15 +155,15 @@ namespace RBS
             list_Producten.Items.Clear();
             if (categorie == 1)
             {
-                btn_Lunch.PerformClick();
+                lunch.PerformClick();
             }
             else if (categorie == 2)
             {
-                btn_Diner.PerformClick();
+                diner.PerformClick();
             }
             else if (categorie == 3)
             {
-                btn_Drank.PerformClick();
+                drank.PerformClick();
             }
         }
         /// <summary>
@@ -236,15 +192,15 @@ namespace RBS
 
                     if (categorie == 1)
                     {
-                        btn_Lunch.PerformClick();
+                        lunch.PerformClick();
                     }
                     else if (categorie == 2)
                     {
-                        btn_Diner.PerformClick();
+                        diner.PerformClick();
                     }
                     else if (categorie == 3)
                     {
-                        btn_Drank.PerformClick();
+                        drank.PerformClick();
                     }
                 }
             }

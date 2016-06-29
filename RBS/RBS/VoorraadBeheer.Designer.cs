@@ -31,7 +31,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btn_Diner = new System.Windows.Forms.Button();
+            this.diner = new System.Windows.Forms.Button();
             this.btn_Verwijder = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label_prijs = new System.Windows.Forms.Label();
@@ -40,9 +40,9 @@
             this.list_Producten = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_Lunch = new System.Windows.Forms.Button();
+            this.lunch = new System.Windows.Forms.Button();
             this.btn_Toevoeg = new System.Windows.Forms.Button();
-            this.btn_Drank = new System.Windows.Forms.Button();
+            this.drank = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -70,16 +70,15 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Log uit";
             this.button3.UseVisualStyleBackColor = false;
-            
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btn_Diner);
+            this.tabPage3.Controls.Add(this.diner);
             this.tabPage3.Controls.Add(this.btn_Verwijder);
             this.tabPage3.Controls.Add(this.panel1);
-            this.tabPage3.Controls.Add(this.btn_Lunch);
+            this.tabPage3.Controls.Add(this.lunch);
             this.tabPage3.Controls.Add(this.btn_Toevoeg);
-            this.tabPage3.Controls.Add(this.btn_Drank);
+            this.tabPage3.Controls.Add(this.drank);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -88,15 +87,15 @@
             this.tabPage3.Text = "Voorraad";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btn_Diner
+            // diner
             // 
-            this.btn_Diner.Location = new System.Drawing.Point(6, 95);
-            this.btn_Diner.Name = "btn_Diner";
-            this.btn_Diner.Size = new System.Drawing.Size(69, 23);
-            this.btn_Diner.TabIndex = 5;
-            this.btn_Diner.Text = "Diner";
-            this.btn_Diner.UseVisualStyleBackColor = true;
-            this.btn_Diner.Click += new System.EventHandler(this.btn_Diner_Click);
+            this.diner.Location = new System.Drawing.Point(6, 95);
+            this.diner.Name = "diner";
+            this.diner.Size = new System.Drawing.Size(69, 23);
+            this.diner.TabIndex = 5;
+            this.diner.Text = "Diner";
+            this.diner.UseVisualStyleBackColor = true;
+            this.diner.Click += new System.EventHandler(this.btn_categorie_click);
             // 
             // btn_Verwijder
             // 
@@ -180,15 +179,15 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Aantal";
             // 
-            // btn_Lunch
+            // lunch
             // 
-            this.btn_Lunch.Location = new System.Drawing.Point(6, 66);
-            this.btn_Lunch.Name = "btn_Lunch";
-            this.btn_Lunch.Size = new System.Drawing.Size(69, 23);
-            this.btn_Lunch.TabIndex = 2;
-            this.btn_Lunch.Text = "Lunch";
-            this.btn_Lunch.UseVisualStyleBackColor = true;
-            this.btn_Lunch.Click += new System.EventHandler(this.btn_Lunch_Click);
+            this.lunch.Location = new System.Drawing.Point(6, 66);
+            this.lunch.Name = "lunch";
+            this.lunch.Size = new System.Drawing.Size(69, 23);
+            this.lunch.TabIndex = 2;
+            this.lunch.Text = "Lunch";
+            this.lunch.UseVisualStyleBackColor = true;
+            this.lunch.Click += new System.EventHandler(this.btn_categorie_click);
             // 
             // btn_Toevoeg
             // 
@@ -200,15 +199,15 @@
             this.btn_Toevoeg.UseVisualStyleBackColor = true;
             this.btn_Toevoeg.Click += new System.EventHandler(this.btn_Toevoeg_Click);
             // 
-            // btn_Drank
+            // drank
             // 
-            this.btn_Drank.Location = new System.Drawing.Point(6, 124);
-            this.btn_Drank.Name = "btn_Drank";
-            this.btn_Drank.Size = new System.Drawing.Size(69, 23);
-            this.btn_Drank.TabIndex = 3;
-            this.btn_Drank.Text = "Dranken";
-            this.btn_Drank.UseVisualStyleBackColor = true;
-            this.btn_Drank.Click += new System.EventHandler(this.btn_Drank_Click);
+            this.drank.Location = new System.Drawing.Point(6, 124);
+            this.drank.Name = "drank";
+            this.drank.Size = new System.Drawing.Size(69, 23);
+            this.drank.TabIndex = 3;
+            this.drank.Text = "Dranken";
+            this.drank.UseVisualStyleBackColor = true;
+            this.drank.Click += new System.EventHandler(this.btn_categorie_click);
             // 
             // tabControl1
             // 
@@ -243,9 +242,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btn_Diner;
-        private System.Windows.Forms.Button btn_Lunch;
-        private System.Windows.Forms.Button btn_Drank;
+        private System.Windows.Forms.Button diner;
+        private System.Windows.Forms.Button lunch;
+        private System.Windows.Forms.Button drank;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
